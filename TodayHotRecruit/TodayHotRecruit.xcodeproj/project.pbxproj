@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20649419A1B1EB4618957C4E /* libPods-TodayHotRecruitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051FA7742CC32BA115E9CDF3 /* libPods-TodayHotRecruitTests.a */; };
+		894378ED4BA77D049536BC48 /* libPods-TodayHotRecruit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E60F9CE571E131D695D4966F /* libPods-TodayHotRecruit.a */; };
+		F2C13BDE1646393BCCCB6C1D /* libPods-TodayHotRecruitUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */; };
 		F7599FCF212D69A500A98074 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7599FCE212D69A500A98074 /* AppDelegate.m */; };
-		F7599FD2212D69A500A98074 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7599FD1212D69A500A98074 /* ViewController.m */; };
 		F7599FD5212D69A500A98074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7599FD3212D69A500A98074 /* Main.storyboard */; };
 		F7599FD7212D69A700A98074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7599FD6212D69A700A98074 /* Assets.xcassets */; };
 		F7599FDA212D69A700A98074 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7599FD8212D69A700A98074 /* LaunchScreen.storyboard */; };
 		F7599FDD212D69A700A98074 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7599FDC212D69A700A98074 /* main.m */; };
 		F7599FE7212D69A700A98074 /* TodayHotRecruitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F7599FE6212D69A700A98074 /* TodayHotRecruitTests.m */; };
 		F7599FF2212D69A700A98074 /* TodayHotRecruitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F7599FF1212D69A700A98074 /* TodayHotRecruitUITests.m */; };
+		F759A00C212D873E00A98074 /* AppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F759A00B212D873E00A98074 /* AppTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +38,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		051FA7742CC32BA115E9CDF3 /* libPods-TodayHotRecruitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TodayHotRecruitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		082DF9C62D69260888F1C6BD /* Pods-TodayHotRecruit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruit.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruit/Pods-TodayHotRecruit.release.xcconfig"; sourceTree = "<group>"; };
+		BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TodayHotRecruitUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7B9A2DAF8FDFCE4B82C0241 /* Pods-TodayHotRecruitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruitUITests/Pods-TodayHotRecruitUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DB8A18A450CDAC1214EEEDCA /* Pods-TodayHotRecruit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruit/Pods-TodayHotRecruit.debug.xcconfig"; sourceTree = "<group>"; };
+		E60F9CE571E131D695D4966F /* libPods-TodayHotRecruit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TodayHotRecruit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7E5250E2B27252AD032A0E6 /* Pods-TodayHotRecruitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruitTests/Pods-TodayHotRecruitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E892E221385A515C8BA906DF /* Pods-TodayHotRecruitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruitTests/Pods-TodayHotRecruitTests.release.xcconfig"; sourceTree = "<group>"; };
 		F7599FCA212D69A500A98074 /* TodayHotRecruit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayHotRecruit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7599FCD212D69A500A98074 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F7599FCE212D69A500A98074 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F7599FD0212D69A500A98074 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F7599FD1212D69A500A98074 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F7599FD4212D69A500A98074 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7599FD6212D69A700A98074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7599FD9212D69A700A98074 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +60,10 @@
 		F7599FED212D69A700A98074 /* TodayHotRecruitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayHotRecruitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7599FF1212D69A700A98074 /* TodayHotRecruitUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayHotRecruitUITests.m; sourceTree = "<group>"; };
 		F7599FF3212D69A700A98074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F759A001212D7B0000A98074 /* THRPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRPrefixHeader.pch; sourceTree = "<group>"; };
+		F759A00A212D873E00A98074 /* AppTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppTabBarController.h; sourceTree = "<group>"; };
+		F759A00B212D873E00A98074 /* AppTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppTabBarController.m; sourceTree = "<group>"; };
+		FD21E05FCD6AD835CB4C1994 /* Pods-TodayHotRecruitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruitUITests/Pods-TodayHotRecruitUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894378ED4BA77D049536BC48 /* libPods-TodayHotRecruit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20649419A1B1EB4618957C4E /* libPods-TodayHotRecruitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +87,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2C13BDE1646393BCCCB6C1D /* libPods-TodayHotRecruitUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B660D21E1E8490027645325 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DB8A18A450CDAC1214EEEDCA /* Pods-TodayHotRecruit.debug.xcconfig */,
+				082DF9C62D69260888F1C6BD /* Pods-TodayHotRecruit.release.xcconfig */,
+				E7E5250E2B27252AD032A0E6 /* Pods-TodayHotRecruitTests.debug.xcconfig */,
+				E892E221385A515C8BA906DF /* Pods-TodayHotRecruitTests.release.xcconfig */,
+				D7B9A2DAF8FDFCE4B82C0241 /* Pods-TodayHotRecruitUITests.debug.xcconfig */,
+				FD21E05FCD6AD835CB4C1994 /* Pods-TodayHotRecruitUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A67A6EF2B168A8D73C2B4BBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E60F9CE571E131D695D4966F /* libPods-TodayHotRecruit.a */,
+				051FA7742CC32BA115E9CDF3 /* libPods-TodayHotRecruitTests.a */,
+				BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F7599FC1212D69A500A98074 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +124,8 @@
 				F7599FE5212D69A700A98074 /* TodayHotRecruitTests */,
 				F7599FF0212D69A700A98074 /* TodayHotRecruitUITests */,
 				F7599FCB212D69A500A98074 /* Products */,
+				5B660D21E1E8490027645325 /* Pods */,
+				A67A6EF2B168A8D73C2B4BBA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,15 +142,10 @@
 		F7599FCC212D69A500A98074 /* TodayHotRecruit */ = {
 			isa = PBXGroup;
 			children = (
-				F7599FCD212D69A500A98074 /* AppDelegate.h */,
-				F7599FCE212D69A500A98074 /* AppDelegate.m */,
-				F7599FD0212D69A500A98074 /* ViewController.h */,
-				F7599FD1212D69A500A98074 /* ViewController.m */,
-				F7599FD3212D69A500A98074 /* Main.storyboard */,
-				F7599FD6212D69A700A98074 /* Assets.xcassets */,
-				F7599FD8212D69A700A98074 /* LaunchScreen.storyboard */,
-				F7599FDB212D69A700A98074 /* Info.plist */,
-				F7599FDC212D69A700A98074 /* main.m */,
+				F759A004212D7EB400A98074 /* BusinessLine */,
+				F7599FFF212D6AA400A98074 /* PrivateFoundation */,
+				F759A002212D7E1500A98074 /* AppDelegate */,
+				F759A003212D7E5E00A98074 /* SupportingFiles */,
 			);
 			path = TodayHotRecruit;
 			sourceTree = "<group>";
@@ -132,6 +168,84 @@
 			path = TodayHotRecruitUITests;
 			sourceTree = "<group>";
 		};
+		F7599FFF212D6AA400A98074 /* PrivateFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				F759A001212D7B0000A98074 /* THRPrefixHeader.pch */,
+			);
+			path = PrivateFoundation;
+			sourceTree = "<group>";
+		};
+		F759A002212D7E1500A98074 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				F7599FCD212D69A500A98074 /* AppDelegate.h */,
+				F7599FCE212D69A500A98074 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		F759A003212D7E5E00A98074 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F7599FD3212D69A500A98074 /* Main.storyboard */,
+				F7599FD6212D69A700A98074 /* Assets.xcassets */,
+				F7599FD8212D69A700A98074 /* LaunchScreen.storyboard */,
+				F7599FDB212D69A700A98074 /* Info.plist */,
+				F7599FDC212D69A700A98074 /* main.m */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		F759A004212D7EB400A98074 /* BusinessLine */ = {
+			isa = PBXGroup;
+			children = (
+				F759A006212D81DB00A98074 /* THRHomepage */,
+				F759A007212D81F800A98074 /* THRMessage */,
+				F759A009212D823D00A98074 /* THRBBS */,
+				F759A008212D822500A98074 /* THRUserCenter */,
+				F759A005212D809F00A98074 /* BaseComponets */,
+			);
+			path = BusinessLine;
+			sourceTree = "<group>";
+		};
+		F759A005212D809F00A98074 /* BaseComponets */ = {
+			isa = PBXGroup;
+			children = (
+				F759A00A212D873E00A98074 /* AppTabBarController.h */,
+				F759A00B212D873E00A98074 /* AppTabBarController.m */,
+			);
+			path = BaseComponets;
+			sourceTree = "<group>";
+		};
+		F759A006212D81DB00A98074 /* THRHomepage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = THRHomepage;
+			sourceTree = "<group>";
+		};
+		F759A007212D81F800A98074 /* THRMessage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = THRMessage;
+			sourceTree = "<group>";
+		};
+		F759A008212D822500A98074 /* THRUserCenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = THRUserCenter;
+			sourceTree = "<group>";
+		};
+		F759A009212D823D00A98074 /* THRBBS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = THRBBS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,9 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7599FF6212D69A700A98074 /* Build configuration list for PBXNativeTarget "TodayHotRecruit" */;
 			buildPhases = (
+				6C0B78640D29375E568F4EE7 /* 📦 Check Pods Manifest.lock */,
 				F7599FC6212D69A500A98074 /* Sources */,
 				F7599FC7212D69A500A98074 /* Frameworks */,
 				F7599FC8212D69A500A98074 /* Resources */,
+				12718A547BC7971C4FE02EA4 /* 📦 Embed Pods Frameworks */,
+				48D56F374B36FD36DE8C7E98 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,9 +273,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7599FF9212D69A700A98074 /* Build configuration list for PBXNativeTarget "TodayHotRecruitTests" */;
 			buildPhases = (
+				2B0D0F4F80D124023DAF7EF1 /* 📦 Check Pods Manifest.lock */,
 				F7599FDE212D69A700A98074 /* Sources */,
 				F7599FDF212D69A700A98074 /* Frameworks */,
 				F7599FE0212D69A700A98074 /* Resources */,
+				C0B9F688DAD680FEDE75CE43 /* 📦 Embed Pods Frameworks */,
+				9730626F05793A97C16685D8 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -174,9 +294,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7599FFC212D69A700A98074 /* Build configuration list for PBXNativeTarget "TodayHotRecruitUITests" */;
 			buildPhases = (
+				AFBD5D2FEBA8EDBB300C7873 /* 📦 Check Pods Manifest.lock */,
 				F7599FE9212D69A700A98074 /* Sources */,
 				F7599FEA212D69A700A98074 /* Frameworks */,
 				F7599FEB212D69A700A98074 /* Resources */,
+				68D6E46CD05117394D160F45 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,14 +379,137 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12718A547BC7971C4FE02EA4 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodayHotRecruit/Pods-TodayHotRecruit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B0D0F4F80D124023DAF7EF1 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		48D56F374B36FD36DE8C7E98 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodayHotRecruit/Pods-TodayHotRecruit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68D6E46CD05117394D160F45 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodayHotRecruitUITests/Pods-TodayHotRecruitUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C0B78640D29375E568F4EE7 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9730626F05793A97C16685D8 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodayHotRecruitTests/Pods-TodayHotRecruitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFBD5D2FEBA8EDBB300C7873 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C0B9F688DAD680FEDE75CE43 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodayHotRecruitTests/Pods-TodayHotRecruitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F7599FC6212D69A500A98074 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7599FD2212D69A500A98074 /* ViewController.m in Sources */,
 				F7599FDD212D69A700A98074 /* main.m in Sources */,
 				F7599FCF212D69A500A98074 /* AppDelegate.m in Sources */,
+				F759A00C212D873E00A98074 /* AppTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +605,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TodayHotRecruit/PrivateFoundation/THRPrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -416,6 +663,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TodayHotRecruit/PrivateFoundation/THRPrefixHeader.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -431,40 +680,43 @@
 		};
 		F7599FF7212D69A700A98074 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB8A18A450CDAC1214EEEDCA /* Pods-TodayHotRecruit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GN9RV4RK7D;
-				INFOPLIST_FILE = TodayHotRecruit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TodayHotRecruit/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjs.666.TodayHotRecruit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		F7599FF8212D69A700A98074 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 082DF9C62D69260888F1C6BD /* Pods-TodayHotRecruit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GN9RV4RK7D;
-				INFOPLIST_FILE = TodayHotRecruit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TodayHotRecruit/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjs.666.TodayHotRecruit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		F7599FFA212D69A700A98074 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7E5250E2B27252AD032A0E6 /* Pods-TodayHotRecruitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -484,6 +736,7 @@
 		};
 		F7599FFB212D69A700A98074 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E892E221385A515C8BA906DF /* Pods-TodayHotRecruitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -503,6 +756,7 @@
 		};
 		F7599FFD212D69A700A98074 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7B9A2DAF8FDFCE4B82C0241 /* Pods-TodayHotRecruitUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GN9RV4RK7D;
@@ -521,6 +775,7 @@
 		};
 		F7599FFE212D69A700A98074 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD21E05FCD6AD835CB4C1994 /* Pods-TodayHotRecruitUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GN9RV4RK7D;

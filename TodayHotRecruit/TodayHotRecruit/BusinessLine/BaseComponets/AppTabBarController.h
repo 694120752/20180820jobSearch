@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AppTabBarController.h
 //  TodayHotRecruit
 //
 //  Created by sn_zjs on 2018/8/22.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface AppTabBarController : UITabBarController
 
 @end
-

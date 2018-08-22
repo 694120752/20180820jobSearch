@@ -1,0 +1,16 @@
+//
+//  THRPrefixHeader.pch
+//  TodayHotRecruit
+//
+//  Created by sn_zjs on 2018/8/22.
+//  Copyright © 2018年 sn_zjs. All rights reserved.
+//
+
+#ifndef THRPrefixHeader_pch
+#define THRPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#endif /* THRPrefixHeader_pch */
