@@ -12,6 +12,7 @@
 //常量定义
 #import "Constant.h"
 
+#import "UIView+zFoundation.h"
 
 
 #endif /* THRPrefixHeader_pch */

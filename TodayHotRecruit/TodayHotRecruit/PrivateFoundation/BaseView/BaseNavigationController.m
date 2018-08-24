@@ -23,7 +23,6 @@
     return self;
 }
 
-// fixed 侧滑引起的bug
 - (void)navigationController:(UINavigationController *)navigationController
        didShowViewController:(UIViewController *)viewController
                     animated:(BOOL)animated {

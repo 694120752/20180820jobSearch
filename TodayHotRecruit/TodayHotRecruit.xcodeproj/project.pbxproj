@@ -20,6 +20,9 @@
 		F759A00C212D873E00A98074 /* AppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F759A00B212D873E00A98074 /* AppTabBarController.m */; };
 		F759A011212D922700A98074 /* UIView+zFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = F759A010212D922700A98074 /* UIView+zFoundation.m */; };
 		F759A014212D955900A98074 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F759A013212D955900A98074 /* BaseNavigationController.m */; };
+		F79A7F8E212F96C7002E73E0 /* BaseNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F79A7F8D212F96C7002E73E0 /* BaseNavigationBar.m */; };
+		F79A7F91212FA889002E73E0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79A7F90212FA889002E73E0 /* BaseViewController.m */; };
+		F79A7F94212FE22E002E73E0 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F79A7F93212FE22D002E73E0 /* BaseTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,12 @@
 		F759A010212D922700A98074 /* UIView+zFoundation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+zFoundation.m"; sourceTree = "<group>"; };
 		F759A012212D955900A98074 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		F759A013212D955900A98074 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		F79A7F8C212F96C7002E73E0 /* BaseNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationBar.h; sourceTree = "<group>"; };
+		F79A7F8D212F96C7002E73E0 /* BaseNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationBar.m; sourceTree = "<group>"; };
+		F79A7F8F212FA889002E73E0 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		F79A7F90212FA889002E73E0 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		F79A7F92212FE22D002E73E0 /* BaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
+		F79A7F93212FE22D002E73E0 /* BaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
 		FD21E05FCD6AD835CB4C1994 /* Pods-TodayHotRecruitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruitUITests/Pods-TodayHotRecruitUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,12 +187,9 @@
 		F7599FFF212D6AA400A98074 /* PrivateFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				F79A7F8B212F9691002E73E0 /* BaseView */,
 				F759A001212D7B0000A98074 /* THRPrefixHeader.pch */,
 				F759A00E212D8A4600A98074 /* Constant.h */,
-				F759A00F212D922700A98074 /* UIView+zFoundation.h */,
-				F759A010212D922700A98074 /* UIView+zFoundation.m */,
-				F759A012212D955900A98074 /* BaseNavigationController.h */,
-				F759A013212D955900A98074 /* BaseNavigationController.m */,
 			);
 			path = PrivateFoundation;
 			sourceTree = "<group>";
@@ -256,6 +262,23 @@
 			children = (
 			);
 			path = THRBBS;
+			sourceTree = "<group>";
+		};
+		F79A7F8B212F9691002E73E0 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				F759A00F212D922700A98074 /* UIView+zFoundation.h */,
+				F759A010212D922700A98074 /* UIView+zFoundation.m */,
+				F759A012212D955900A98074 /* BaseNavigationController.h */,
+				F759A013212D955900A98074 /* BaseNavigationController.m */,
+				F79A7F8C212F96C7002E73E0 /* BaseNavigationBar.h */,
+				F79A7F8D212F96C7002E73E0 /* BaseNavigationBar.m */,
+				F79A7F8F212FA889002E73E0 /* BaseViewController.h */,
+				F79A7F90212FA889002E73E0 /* BaseViewController.m */,
+				F79A7F92212FE22D002E73E0 /* BaseTableView.h */,
+				F79A7F93212FE22D002E73E0 /* BaseTableView.m */,
+			);
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,10 +542,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F79A7F94212FE22E002E73E0 /* BaseTableView.m in Sources */,
 				F7599FDD212D69A700A98074 /* main.m in Sources */,
 				F759A011212D922700A98074 /* UIView+zFoundation.m in Sources */,
 				F7599FCF212D69A500A98074 /* AppDelegate.m in Sources */,
 				F759A00C212D873E00A98074 /* AppTabBarController.m in Sources */,
+				F79A7F8E212F96C7002E73E0 /* BaseNavigationBar.m in Sources */,
+				F79A7F91212FA889002E73E0 /* BaseViewController.m in Sources */,
 				F759A014212D955900A98074 /* BaseNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
