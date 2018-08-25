@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface BaseNavigationBar : UIView
 
 @property (nonatomic,strong) UIView   *barItem;
@@ -21,4 +20,5 @@
 + (BaseNavigationBar *)navigationBar;
 
 - (void)setUnreadLabelNeedWhiteBorder:(BOOL)needWhiteBorder;
+
 @end

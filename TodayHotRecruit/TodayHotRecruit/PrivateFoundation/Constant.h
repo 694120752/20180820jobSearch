@@ -27,6 +27,7 @@
 //iPhoneX底部偏移量
 #define Bottom_iPhoneX_SPACE         (iPhoneX ? 34.f : 0)
 
+#define NavigationBar_Bottom_Y     (iPhoneX ? 88.0 : 64.0)
 
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 #define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750,1334), [[UIScreen mainScreen] currentMode].size) : NO)

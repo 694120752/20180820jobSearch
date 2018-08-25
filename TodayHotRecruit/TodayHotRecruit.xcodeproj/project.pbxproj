@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		20649419A1B1EB4618957C4E /* libPods-TodayHotRecruitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051FA7742CC32BA115E9CDF3 /* libPods-TodayHotRecruitTests.a */; };
 		894378ED4BA77D049536BC48 /* libPods-TodayHotRecruit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E60F9CE571E131D695D4966F /* libPods-TodayHotRecruit.a */; };
+		ED25C04921314A5D0022717E /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C04821314A5D0022717E /* HomePageViewController.m */; };
+		ED25C04C21315DFF0022717E /* AppTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C04B21315DFF0022717E /* AppTabBar.m */; };
+		ED25C053213169C20022717E /* THRBBSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C052213169C20022717E /* THRBBSViewController.m */; };
+		ED25C056213169D20022717E /* THRMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C055213169D20022717E /* THRMessageViewController.m */; };
+		ED25C059213169E10022717E /* THRUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C058213169E10022717E /* THRUserCenterViewController.m */; };
+		EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */; };
 		F2C13BDE1646393BCCCB6C1D /* libPods-TodayHotRecruitUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */; };
 		F7599FCF212D69A500A98074 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7599FCE212D69A500A98074 /* AppDelegate.m */; };
 		F7599FD5212D69A500A98074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7599FD3212D69A500A98074 /* Main.storyboard */; };
@@ -51,6 +57,18 @@
 		E60F9CE571E131D695D4966F /* libPods-TodayHotRecruit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TodayHotRecruit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7E5250E2B27252AD032A0E6 /* Pods-TodayHotRecruitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruitTests/Pods-TodayHotRecruitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E892E221385A515C8BA906DF /* Pods-TodayHotRecruitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruitTests/Pods-TodayHotRecruitTests.release.xcconfig"; sourceTree = "<group>"; };
+		ED25C04721314A5D0022717E /* HomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		ED25C04821314A5D0022717E /* HomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		ED25C04A21315DFF0022717E /* AppTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppTabBar.h; sourceTree = "<group>"; };
+		ED25C04B21315DFF0022717E /* AppTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppTabBar.m; sourceTree = "<group>"; };
+		ED25C051213169C20022717E /* THRBBSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRBBSViewController.h; sourceTree = "<group>"; };
+		ED25C052213169C20022717E /* THRBBSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRBBSViewController.m; sourceTree = "<group>"; };
+		ED25C054213169D20022717E /* THRMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRMessageViewController.h; sourceTree = "<group>"; };
+		ED25C055213169D20022717E /* THRMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRMessageViewController.m; sourceTree = "<group>"; };
+		ED25C057213169E10022717E /* THRUserCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRUserCenterViewController.h; sourceTree = "<group>"; };
+		ED25C058213169E10022717E /* THRUserCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRUserCenterViewController.m; sourceTree = "<group>"; };
+		EDAC72AE2131393D00FA61C5 /* HomePageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageNavController.h; sourceTree = "<group>"; };
+		EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageNavController.m; sourceTree = "<group>"; };
 		F7599FCA212D69A500A98074 /* TodayHotRecruit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayHotRecruit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7599FCD212D69A500A98074 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F7599FCE212D69A500A98074 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,6 +149,44 @@
 				BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED25C04E213169670022717E /* THRBBS */ = {
+			isa = PBXGroup;
+			children = (
+				ED25C051213169C20022717E /* THRBBSViewController.h */,
+				ED25C052213169C20022717E /* THRBBSViewController.m */,
+			);
+			path = THRBBS;
+			sourceTree = "<group>";
+		};
+		ED25C04F2131696E0022717E /* THRMessage */ = {
+			isa = PBXGroup;
+			children = (
+				ED25C054213169D20022717E /* THRMessageViewController.h */,
+				ED25C055213169D20022717E /* THRMessageViewController.m */,
+			);
+			path = THRMessage;
+			sourceTree = "<group>";
+		};
+		ED25C050213169760022717E /* THRUserCenter */ = {
+			isa = PBXGroup;
+			children = (
+				ED25C057213169E10022717E /* THRUserCenterViewController.h */,
+				ED25C058213169E10022717E /* THRUserCenterViewController.m */,
+			);
+			path = THRUserCenter;
+			sourceTree = "<group>";
+		};
+		EDAC72AD2131391B00FA61C5 /* THRHomePage */ = {
+			isa = PBXGroup;
+			children = (
+				EDAC72AE2131393D00FA61C5 /* HomePageNavController.h */,
+				EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */,
+				ED25C04721314A5D0022717E /* HomePageViewController.h */,
+				ED25C04821314A5D0022717E /* HomePageViewController.m */,
+			);
+			path = THRHomePage;
 			sourceTree = "<group>";
 		};
 		F7599FC1212D69A500A98074 = {
@@ -218,10 +274,10 @@
 		F759A004212D7EB400A98074 /* BusinessLine */ = {
 			isa = PBXGroup;
 			children = (
-				F759A006212D81DB00A98074 /* THRHomepage */,
-				F759A007212D81F800A98074 /* THRMessage */,
-				F759A009212D823D00A98074 /* THRBBS */,
-				F759A008212D822500A98074 /* THRUserCenter */,
+				ED25C050213169760022717E /* THRUserCenter */,
+				ED25C04F2131696E0022717E /* THRMessage */,
+				ED25C04E213169670022717E /* THRBBS */,
+				EDAC72AD2131391B00FA61C5 /* THRHomePage */,
 				F759A005212D809F00A98074 /* BaseComponets */,
 			);
 			path = BusinessLine;
@@ -232,36 +288,10 @@
 			children = (
 				F759A00A212D873E00A98074 /* AppTabBarController.h */,
 				F759A00B212D873E00A98074 /* AppTabBarController.m */,
+				ED25C04A21315DFF0022717E /* AppTabBar.h */,
+				ED25C04B21315DFF0022717E /* AppTabBar.m */,
 			);
 			path = BaseComponets;
-			sourceTree = "<group>";
-		};
-		F759A006212D81DB00A98074 /* THRHomepage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = THRHomepage;
-			sourceTree = "<group>";
-		};
-		F759A007212D81F800A98074 /* THRMessage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = THRMessage;
-			sourceTree = "<group>";
-		};
-		F759A008212D822500A98074 /* THRUserCenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = THRUserCenter;
-			sourceTree = "<group>";
-		};
-		F759A009212D823D00A98074 /* THRBBS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = THRBBS;
 			sourceTree = "<group>";
 		};
 		F79A7F8B212F9691002E73E0 /* BaseView */ = {
@@ -542,8 +572,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED25C04C21315DFF0022717E /* AppTabBar.m in Sources */,
+				ED25C059213169E10022717E /* THRUserCenterViewController.m in Sources */,
 				F79A7F94212FE22E002E73E0 /* BaseTableView.m in Sources */,
+				EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */,
+				ED25C056213169D20022717E /* THRMessageViewController.m in Sources */,
+				ED25C04921314A5D0022717E /* HomePageViewController.m in Sources */,
 				F7599FDD212D69A700A98074 /* main.m in Sources */,
+				ED25C053213169C20022717E /* THRBBSViewController.m in Sources */,
 				F759A011212D922700A98074 /* UIView+zFoundation.m in Sources */,
 				F7599FCF212D69A500A98074 /* AppDelegate.m in Sources */,
 				F759A00C212D873E00A98074 /* AppTabBarController.m in Sources */,
