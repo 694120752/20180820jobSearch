@@ -13,6 +13,6 @@
 #import "Constant.h"
 
 #import "UIView+zFoundation.h"
-
+#import <UIView+MJExtension.h>
 
 #endif /* THRPrefixHeader_pch */

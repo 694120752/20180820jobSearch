@@ -19,7 +19,9 @@
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define kScreenWidth  [[UIScreen mainScreen] bounds].size.width
 
-#define Get375Height(h)  (h) * kScreenWidth / 375.0f
+#define Get375Width(w)  (w) * kScreenWidth / 375.0f
+
+#define PXGet375Width(w)  (w/2) * kScreenWidth / 375.0f
 
 //iPhoneX顶部部偏移量
 #define Top_iPhoneX_SPACE            (iPhoneX ? 24.f : 0)
@@ -52,4 +54,16 @@
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 #define RANDOMCOLOR [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1]
+
+#define viewTag 1000
+
+//获取temp
+#define kPathTemp NSTemporaryDirectory()
+
+//获取沙盒 Document
+#define kPathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+
+//获取沙盒 Cache
+#define kPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+
 #endif /* Constant_h */

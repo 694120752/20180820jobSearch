@@ -77,7 +77,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        self.hidesBottomBarWhenPushed = YES;
+        //self.hidesBottomBarWhenPushed = YES;
         _isAnimatedWhenPopOrDismiss   = YES;
         _isNavBarHidden               = NO;
         _isNavBackItemHidden          = NO;
@@ -143,7 +143,6 @@
         [self popOrSlideRightToForeVC];
     }
     [super didMoveToParentViewController:parent];
-    
 }
 
 // 设置animate flg when pop or dismiss

@@ -43,19 +43,24 @@
     HomePageNavController* homeNavi = [[HomePageNavController alloc]initWithRootViewController:[[HomePageViewController alloc]init]];
     homeNavi.tabBarItem.title = @"找工作";
     homeNavi.hidesBottomBarWhenPushed = NO;
+    homeNavi.tabBarItem.accessibilityLabel = @"找工作";
     
     
     BaseNavigationController* message = [[BaseNavigationController alloc]initWithRootViewController:[[THRMessageViewController alloc]init]];
     message.tabBarItem.title = @"消息";
     message.hidesBottomBarWhenPushed = NO;
+    homeNavi.tabBarItem.accessibilityLabel = @"消息";
+    
     
     BaseNavigationController* bbs =  [[BaseNavigationController alloc]initWithRootViewController:[[THRBBSViewController alloc]init]];
     bbs.tabBarItem.title = @"消息天地";
     bbs.hidesBottomBarWhenPushed = NO;
+
     
     BaseNavigationController* userCenter =  [[BaseNavigationController alloc]initWithRootViewController:[[THRUserCenterViewController alloc]init]];
     userCenter.tabBarItem.title = @"我的";
     userCenter.hidesBottomBarWhenPushed = NO;
+    
     
     self.viewControllers = @[homeNavi,message,bbs,userCenter];
     
