@@ -64,6 +64,10 @@
 		F700071221356F8900D52677 /* ZJProgressHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070B21356F8800D52677 /* ZJProgressHUDView.m */; };
 		F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070D21356F8800D52677 /* ZJTextAndImageHUDView.m */; };
 		F700071421356F8900D52677 /* ZJTextOnlyHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070F21356F8800D52677 /* ZJTextOnlyHUDView.m */; };
+		F70DBD38213639F50031E642 /* UserHeaderLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70DBD37213639F50031E642 /* UserHeaderLineTableViewCell.m */; };
+		F70DBD4021369AB90031E642 /* UserSecondLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F70DBD3F21369AB90031E642 /* UserSecondLine.m */; };
+		F70DBD4221369AC40031E642 /* UserSecondLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DBD4121369AC40031E642 /* UserSecondLine.xib */; };
+		F70DBD492136BA560031E642 /* UserCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */; };
 		F7599FCF212D69A500A98074 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7599FCE212D69A500A98074 /* AppDelegate.m */; };
 		F7599FD5212D69A500A98074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7599FD3212D69A500A98074 /* Main.storyboard */; };
 		F7599FD7212D69A700A98074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7599FD6212D69A700A98074 /* Assets.xcassets */; };
@@ -218,6 +222,13 @@
 		F700070D21356F8800D52677 /* ZJTextAndImageHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextAndImageHUDView.m; sourceTree = "<group>"; };
 		F700070E21356F8800D52677 /* ZJTextOnlyHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextOnlyHUDView.h; sourceTree = "<group>"; };
 		F700070F21356F8800D52677 /* ZJTextOnlyHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextOnlyHUDView.m; sourceTree = "<group>"; };
+		F70DBD36213639F50031E642 /* UserHeaderLineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserHeaderLineTableViewCell.h; sourceTree = "<group>"; };
+		F70DBD37213639F50031E642 /* UserHeaderLineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHeaderLineTableViewCell.m; sourceTree = "<group>"; };
+		F70DBD3E21369AB90031E642 /* UserSecondLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSecondLine.h; sourceTree = "<group>"; };
+		F70DBD3F21369AB90031E642 /* UserSecondLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSecondLine.m; sourceTree = "<group>"; };
+		F70DBD4121369AC40031E642 /* UserSecondLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSecondLine.xib; sourceTree = "<group>"; };
+		F70DBD462136BA560031E642 /* UserCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenterTableViewCell.h; sourceTree = "<group>"; };
+		F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterTableViewCell.m; sourceTree = "<group>"; };
 		F7599FCA212D69A500A98074 /* TodayHotRecruit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayHotRecruit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7599FCD212D69A500A98074 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F7599FCE212D69A500A98074 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -330,8 +341,9 @@
 		ED25C050213169760022717E /* THRUserCenter */ = {
 			isa = PBXGroup;
 			children = (
-				ED25C057213169E10022717E /* THRUserCenterViewController.h */,
-				ED25C058213169E10022717E /* THRUserCenterViewController.m */,
+				F70DBD35213639550031E642 /* Model */,
+				F70DBD342136394F0031E642 /* Controller */,
+				F70DBD33213639400031E642 /* View */,
 			);
 			path = THRUserCenter;
 			sourceTree = "<group>";
@@ -505,6 +517,36 @@
 				F700070F21356F8800D52677 /* ZJTextOnlyHUDView.m */,
 			);
 			path = ZJProgressHUD;
+			sourceTree = "<group>";
+		};
+		F70DBD33213639400031E642 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F70DBD36213639F50031E642 /* UserHeaderLineTableViewCell.h */,
+				F70DBD37213639F50031E642 /* UserHeaderLineTableViewCell.m */,
+				F70DBD3E21369AB90031E642 /* UserSecondLine.h */,
+				F70DBD3F21369AB90031E642 /* UserSecondLine.m */,
+				F70DBD4121369AC40031E642 /* UserSecondLine.xib */,
+				F70DBD462136BA560031E642 /* UserCenterTableViewCell.h */,
+				F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F70DBD342136394F0031E642 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED25C057213169E10022717E /* THRUserCenterViewController.h */,
+				ED25C058213169E10022717E /* THRUserCenterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F70DBD35213639550031E642 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F7599FC1212D69A500A98074 = {
@@ -790,6 +832,7 @@
 				F7599FD7212D69A700A98074 /* Assets.xcassets in Resources */,
 				F7599FD5212D69A500A98074 /* Main.storyboard in Resources */,
 				F70006DF21356ED900D52677 /* cityGroups.plist in Resources */,
+				F70DBD4221369AC40031E642 /* UserSecondLine.xib in Resources */,
 				F70006FD21356F0D00D52677 /* unicode_to_hanyu_pinyin.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -958,6 +1001,7 @@
 				F70006BA2135255600D52677 /* SDWebImagePrefetcher.m in Sources */,
 				F70006E821356EEA00D52677 /* ZJCityTableViewCell.m in Sources */,
 				F70006DD21356ED900D52677 /* ZJCity.m in Sources */,
+				F70DBD4021369AB90031E642 /* UserSecondLine.m in Sources */,
 				F70006702134EB4400D52677 /* SelectDto.m in Sources */,
 				F70006872135251500D52677 /* UIView+SDExtension.m in Sources */,
 				F70006CB2135345600D52677 /* NSDate+Helper.m in Sources */,
@@ -968,10 +1012,12 @@
 				F70006BB2135255600D52677 /* UIButton+WebCache.m in Sources */,
 				F70006BC2135255600D52677 /* UIImage+GIF.m in Sources */,
 				F70006BE2135255600D52677 /* UIImageView+HighlightedWebCache.m in Sources */,
+				F70DBD492136BA560031E642 /* UserCenterTableViewCell.m in Sources */,
 				ED25C04921314A5D0022717E /* HomePageViewController.m in Sources */,
 				F7599FDD212D69A700A98074 /* main.m in Sources */,
 				F70006842135251500D52677 /* TAPageControl.m in Sources */,
 				F70006F821356F0D00D52677 /* ChineseToPinyinResource.m in Sources */,
+				F70DBD38213639F50031E642 /* UserHeaderLineTableViewCell.m in Sources */,
 				ED25C053213169C20022717E /* THRBBSViewController.m in Sources */,
 				F759A011212D922700A98074 /* UIView+zFoundation.m in Sources */,
 				F7B9BB502133E84E003F9277 /* BannerTableViewCell.m in Sources */,

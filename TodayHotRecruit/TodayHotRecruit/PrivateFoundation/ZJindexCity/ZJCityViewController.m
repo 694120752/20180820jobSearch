@@ -67,6 +67,12 @@ static NSString *const kLocationCellId = @"kLocationCellId";
 
 - (void)setUpNavi{
     self.navBar.backgroundColor = RGBACOLOR(66, 146, 255, 1);
+    self.navBarItemView.backgroundColor = RGBACOLOR(66, 146, 255, 1);
+    self.navBar.backButton.hidden = NO;
+}
+
+-(void)onBack:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 // 开始定位
@@ -213,6 +219,7 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     for (ZJCitiesGroup *citiesGroup in _data) {
         [indexTitles addObject:citiesGroup.indexTitle];
     }
+    indexTitles[0] = @"";
     return indexTitles;
 }
 
@@ -247,6 +254,23 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     // 销毁
     self.searchController = nil;
 }
+
+// 颜色代理
+- (UIImage*) GetImageWithColor:(UIColor*)color andHeight:(CGFloat)height
+{
+    CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, height);
+    UIGraphicsBeginImageContext(r.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, r);
+    
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return img;
+}
+
 
 - (UISearchController *)searchController {
     if (!_searchController) {
@@ -293,8 +317,22 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     if (!_searchBar) {
         UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(44, 0.f, kScreenWidth - 88, kSearchBarHeight)];
         searchBar.delegate = self;
-        searchBar.backgroundColor = RGBACOLOR(66, 164, 255, 1);
-        searchBar.placeholder = @"搜索城市名称/首字母缩写";
+        //searchBar.backgroundColor = RGBACOLOR(66, 164, 255, 1);
+        //searchBar.placeholder = @"搜索城市名称/首字母缩写";
+        
+        //设置背景色
+        UIImage* searchBarBg = [self GetImageWithColor:RGBACOLOR(66, 146, 255, 1) andHeight:kSearchBarHeight];
+        
+        //设置背景图片
+        [searchBar setBackgroundImage:searchBarBg];
+        //设置背景色
+        [searchBar setBackgroundColor:[UIColor clearColor]];
+        //设置文本框背景
+        //[searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
+        
+        [searchBar setImage:[UIImage imageNamed:@"search"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+        //[searchBar setSearchFieldBackgroundImage:[self GetImageWithColor:[UIColor whiteColor] andHeight:kSearchBarHeight] forState:UIControlStateNormal];
+       // [searchBar setSearchFieldBackgroundImage:[UIImage imageNamed:@"searchField"] forState:UIControlStateNormal];
         _searchBar = searchBar;
     }
     return _searchBar;

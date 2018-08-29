@@ -44,6 +44,8 @@
     
 }
 
+
+
 // 设置导航栏
 - (void)setUpNavi{
 
@@ -81,6 +83,7 @@
 
 - (void)locationVC{
     ZJCityViewController* city = [[ZJCityViewController alloc]initWithDataArray:nil];
+    city.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:city animated:YES];
 }
 

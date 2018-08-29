@@ -20,9 +20,9 @@
 - (UIButton *)backButton {
     if (nil == _backButton) {
         _backButton = [[UIButton alloc] initWithFrame:CGRectMake(.0f,.0f,44.0f,44.0f)];
-        [_backButton setImage:[UIImage imageNamed:@"返回图片"]
+        [_backButton setImage:[UIImage imageNamed:@"backArrow"]
                      forState:UIControlStateNormal];
-        [_backButton setImage:[UIImage imageNamed:@"返回图片高亮"]
+        [_backButton setImage:[UIImage imageNamed:@"backArrow"]
                      forState:UIControlStateHighlighted];
         _backButton.accessibilityLabel = @"返回";
     }

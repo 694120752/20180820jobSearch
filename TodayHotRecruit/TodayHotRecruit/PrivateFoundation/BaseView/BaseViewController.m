@@ -68,8 +68,8 @@
         _navBackBT = [[UIButton alloc] initWithFrame:CGRectMake(.0,.0,54.0,44)];
         _navBackBT.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         _navBackBT.contentEdgeInsets = UIEdgeInsetsMake(.0,-7.0f,.0f,.0f);
-        [_navBackBT setImage:[UIImage imageNamed:@"返回图片"] forState:UIControlStateNormal];
-        [_navBackBT setImage:[UIImage imageNamed:@"高亮返回图片"] forState:UIControlStateHighlighted];
+        [_navBackBT setImage:[UIImage imageNamed:@"backArrow"] forState:UIControlStateNormal];
+        [_navBackBT setImage:[UIImage imageNamed:@"backArrow"] forState:UIControlStateHighlighted];
         [_navBackBT addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _navBackBT;
