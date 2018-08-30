@@ -17,7 +17,6 @@
     return self;
 }
 
-
 -(void)setUpJobDetail{
     //主图
     UIImageView* jobImage = [[UIImageView alloc]initWithFrame:CGRectMake(PXGet375Width(20), PXGet375Width(20), PXGet375Width(170), PXGet375Width(120))];

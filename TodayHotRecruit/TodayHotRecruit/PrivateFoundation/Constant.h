@@ -23,6 +23,8 @@
 
 #define PXGet375Width(w)  (w/2) * kScreenWidth / 375.0f
 
+#define font(w) [UIFont systemFontOfSize:w]
+
 //iPhoneX顶部部偏移量
 #define Top_iPhoneX_SPACE            (iPhoneX ? 24.f : 0)
 

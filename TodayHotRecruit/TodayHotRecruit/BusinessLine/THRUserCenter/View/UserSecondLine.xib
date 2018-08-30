@@ -107,7 +107,15 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-3978.5" y="-70"/>
+            <connections>
+                <outlet property="conButton" destination="wbe-bf-BBg" id="YYu-ff-usa"/>
+                <outlet property="contitle" destination="sDt-er-HCu" id="GPU-L6-fwx"/>
+                <outlet property="fd" destination="qoh-7J-vfR" id="bff-Yl-rm6"/>
+                <outlet property="fdTitle" destination="kgC-SM-HCq" id="cea-nG-B13"/>
+                <outlet property="score" destination="yzU-tW-h3O" id="Nou-ow-Gkc"/>
+                <outlet property="scoreTitle" destination="aK9-Hr-QOa" id="iET-cC-q1S"/>
+            </connections>
+            <point key="canvasLocation" x="-3899" y="-102"/>
         </view>
     </objects>
     <resources>

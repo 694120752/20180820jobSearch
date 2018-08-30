@@ -14,7 +14,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         //四个icon
         [self setUpIcon];
-        self.contentView.backgroundColor = RANDOMCOLOR;
+        self.contentView.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -22,7 +22,7 @@
 -(void)setUpIcon{
     
     UIView* iconContent = [[UIView alloc]initWithFrame:CGRectMake(kScreenWidth * 0.1, 0, kScreenWidth* 0.8, Get375Width(165 / 2))];
-    iconContent.backgroundColor = RANDOMCOLOR;
+    
     
     NSArray* iconArray = @[@"今日热招",@"线下门店",@"专属顾问",@"转盘抽奖"];
     NSArray* iconImage = @[@"icon_1",@"icon_2",@"icon_3",@"icon_4"];
@@ -34,9 +34,11 @@
         IconButton* button = [IconButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:iconArray[i] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:iconImage[i]] forState:UIControlStateNormal];
+        [button setTitleColor:RGBACOLOR(180, 180, 180, 1) forState:UIControlStateNormal];
         [iconContent addSubview:button];
         button.frame = CGRectMake(i*buttonWidth, 0, buttonWidth, buttonHeight);
         button.tag = viewTag + i;
+        button.titleLabel.font = font(PXGet375Width(30));
         [button addTarget:self action:@selector(selectIcon:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -69,7 +71,7 @@
     
     self.imageView.frame = CGRectMake(0, 0, self.width, self.height * 0.7);
     self.imageView.contentMode = UIViewContentModeCenter;
-    self.titleLabel.frame = CGRectMake(0, self.height * 0.7, self.width, self.height * 0.3);
+    self.titleLabel.frame = CGRectMake(0, self.height * 0.6, self.width, self.height * 0.4);
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
 }
 @end

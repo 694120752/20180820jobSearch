@@ -6,7 +6,7 @@
 //  Copyright © 2016年 ZeroJ. All rights reserved.
 //
 
-#import "ZJCityViewController.h"
+#import "CityLocationViewController.h"
 #import "ZJCity.h"
 #import "ZJSearchResultController.h"
 #import "ZJProgressHUD.h"
@@ -17,13 +17,13 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface ZJCityViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate> {
+@interface CityLocationViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate> {
     NSArray<ZJCitiesGroup *> *_data;
     NSMutableDictionary *cellsHeight;
 }
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) CitySearch *searchBar;
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) NSArray<ZJCity *> *allData;
 @property (copy, nonatomic) ZJCitySelectedHandler citySelectedHandler;
@@ -31,6 +31,9 @@
 @property (strong, nonatomic) CLLocationManager *locManager;//获取用户位置
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (copy, nonatomic) NSString *locationCityName;
+
+// sectionHeader
+@property (nonatomic, strong) UIView *headerView;
 
 
 @end
@@ -40,7 +43,22 @@ static NSString *const kHotCellId = @"kHotCellId";
 static NSString *const kNormalCellId = @"kNormalCellId";
 static NSString *const kLocationCellId = @"kLocationCellId";
 
-@implementation ZJCityViewController
+@implementation CitySearch
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    for (UIView* subView in self.subviews) {
+        for (UIView* ssubView in subView.subviews) {
+            if ([ssubView isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
+                ssubView.layer.cornerRadius = PXGet375Width(35);
+                ssubView.clipsToBounds  = YES;
+            }
+        }
+    }
+}
+@end
+
+
+@implementation CityLocationViewController
 
 - (instancetype)initWithDataArray:(NSArray<ZJCitiesGroup *> *)dataArray {
     if (self = [super initWithNibName:nil bundle:nil]) {
@@ -58,16 +76,16 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     cellsHeight = [NSMutableDictionary dictionary];
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
-    //self.tableView.tableHeaderView = self.searchBar;
     [self setUpNavi];
     
     [self.navBarItemView addSubview:self.searchBar];
     [self beginGetLocation];
+    
 }
 
 - (void)setUpNavi{
-    self.navBar.backgroundColor = RGBACOLOR(66, 146, 255, 1);
-    self.navBarItemView.backgroundColor = RGBACOLOR(66, 146, 255, 1);
+    self.navBar.backgroundColor = CommmonBlue;
+    self.navBarItemView.backgroundColor = CommmonBlue;
     self.navBar.backButton.hidden = NO;
 }
 
@@ -159,6 +177,7 @@ static NSString *const kLocationCellId = @"kLocationCellId";
             [weakSelf cityDidSelected:title];
         }];
         [cellsHeight setValue:[NSNumber numberWithFloat:cell.cellHeight] forKey:[NSString stringWithFormat:@"%ld", indexPath.section]];
+        cell.backgroundColor = RGBACOLOR(245, 245, 245, 1);
         return cell;
     }
     else {
@@ -313,15 +332,15 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     return allData;
 }
 
-- (UISearchBar *)searchBar {
+- (CitySearch *)searchBar {
     if (!_searchBar) {
-        UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(44, 0.f, kScreenWidth - 88, kSearchBarHeight)];
+        CitySearch *searchBar = [[CitySearch alloc] initWithFrame:CGRectMake(44, 0.f, kScreenWidth - 88, kSearchBarHeight)];
         searchBar.delegate = self;
         //searchBar.backgroundColor = RGBACOLOR(66, 164, 255, 1);
         //searchBar.placeholder = @"搜索城市名称/首字母缩写";
         
         //设置背景色
-        UIImage* searchBarBg = [self GetImageWithColor:RGBACOLOR(66, 146, 255, 1) andHeight:kSearchBarHeight];
+        UIImage* searchBarBg = [self GetImageWithColor:CommmonBlue andHeight:kSearchBarHeight];
         
         //设置背景图片
         [searchBar setBackgroundImage:searchBarBg];
@@ -351,7 +370,8 @@ static NSString *const kLocationCellId = @"kLocationCellId";
         // 行高度
         tableView.rowHeight = 44.f;
         // sectionHeader 的高度  这边放到naviController 上面
-        //tableView.sectionHeaderHeight = 28.f;
+        tableView.sectionHeaderHeight = PXGet375Width(80);
+        tableView.tableHeaderView = self.headerView;
         // sectionIndexBar上的文字的颜色
         tableView.sectionIndexColor = [UIColor lightGrayColor];
         // 普通状态的sectionIndexBar的背景颜色
@@ -361,6 +381,28 @@ static NSString *const kLocationCellId = @"kLocationCellId";
         _tableView = tableView;
     }
     return _tableView;
+}
+
+-(UIView *)headerView{
+    if (!_headerView) {
+        _headerView = [UIView new];
+        _headerView.frame = CGRectMake(0, 0, kScreenWidth, PXGet375Width(80));
+        UILabel* titleContent = [UILabel new];
+        // useDefault 中取上一次的
+        NSUserDefaults* uf = [NSUserDefaults standardUserDefaults];
+        NSString* st = [uf stringForKey:@"recentLocation"]?:@"最近无定位";
+        titleContent.text = st;
+        [_headerView addSubview:titleContent];
+        
+        titleContent.sd_layout
+        .leftSpaceToView(_headerView, PXGet375Width(40))
+        .topSpaceToView(_headerView, 0)
+        .bottomSpaceToView(_headerView, 0)
+        .rightSpaceToView(_headerView, 0);
+        
+        _headerView.backgroundColor = [UIColor whiteColor];
+    }
+    return _headerView;
 }
 
 - (CLLocationManager *)locManager{
@@ -380,3 +422,5 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     return _geocoder;
 }
 @end
+
+

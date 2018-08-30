@@ -25,9 +25,11 @@
 - (void)dealloc {
     NSLog(@"ZJSearchResultController ---- dealloc");
 }
+
 - (void)setupCityCellClickHandler:(ZJCitySearchCellClickHandler)searchCityCellClickHandler {
     _searchCityCellClickHandler = [searchCityCellClickHandler copy];
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _data.count;
 }
@@ -40,7 +42,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellId];
     }
     cell.textLabel.text = _data[indexPath.row].name;
-    cell.backgroundColor = [UIColor yellowColor];
+    cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -68,6 +70,13 @@
         _tableView = tableView;
     }
     return _tableView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
 }
 
 @end

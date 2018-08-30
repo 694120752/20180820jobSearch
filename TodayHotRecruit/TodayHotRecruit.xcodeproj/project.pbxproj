@@ -48,7 +48,7 @@
 		F70006DD21356ED900D52677 /* ZJCity.m in Sources */ = {isa = PBXBuildFile; fileRef = F70006D821356ED900D52677 /* ZJCity.m */; };
 		F70006DE21356ED900D52677 /* ZJCitiesGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F70006D921356ED900D52677 /* ZJCitiesGroup.m */; };
 		F70006DF21356ED900D52677 /* cityGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = F70006DC21356ED900D52677 /* cityGroups.plist */; };
-		F70006E621356EEA00D52677 /* ZJCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70006E021356EEA00D52677 /* ZJCityViewController.m */; };
+		F70006E621356EEA00D52677 /* CityLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70006E021356EEA00D52677 /* CityLocationViewController.m */; };
 		F70006E721356EEA00D52677 /* ZJLocationCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70006E121356EEA00D52677 /* ZJLocationCityTableViewCell.m */; };
 		F70006E821356EEA00D52677 /* ZJCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70006E321356EEA00D52677 /* ZJCityTableViewCell.m */; };
 		F70006F821356F0D00D52677 /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = F70006EC21356F0C00D52677 /* ChineseToPinyinResource.m */; };
@@ -68,6 +68,10 @@
 		F70DBD4021369AB90031E642 /* UserSecondLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F70DBD3F21369AB90031E642 /* UserSecondLine.m */; };
 		F70DBD4221369AC40031E642 /* UserSecondLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DBD4121369AC40031E642 /* UserSecondLine.xib */; };
 		F70DBD492136BA560031E642 /* UserCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */; };
+		F7557CA521379FE2009C92D8 /* AdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CA421379FE2009C92D8 /* AdTableViewCell.m */; };
+		F7557CAF2137E9DC009C92D8 /* FSPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CAB2137E9DC009C92D8 /* FSPageContentView.m */; };
+		F7557CB02137E9DC009C92D8 /* FSSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CAE2137E9DC009C92D8 /* FSSegmentTitleView.m */; };
+		F7557CB32137F167009C92D8 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CB22137F167009C92D8 /* HomeSearchViewController.m */; };
 		F7599FCF212D69A500A98074 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7599FCE212D69A500A98074 /* AppDelegate.m */; };
 		F7599FD5212D69A500A98074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7599FD3212D69A500A98074 /* Main.storyboard */; };
 		F7599FD7212D69A700A98074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7599FD6212D69A700A98074 /* Assets.xcassets */; };
@@ -189,11 +193,11 @@
 		F70006DA21356ED900D52677 /* ZJCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCity.h; sourceTree = "<group>"; };
 		F70006DB21356ED900D52677 /* ZJCitiesGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCitiesGroup.h; sourceTree = "<group>"; };
 		F70006DC21356ED900D52677 /* cityGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityGroups.plist; sourceTree = "<group>"; };
-		F70006E021356EEA00D52677 /* ZJCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCityViewController.m; sourceTree = "<group>"; };
+		F70006E021356EEA00D52677 /* CityLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityLocationViewController.m; sourceTree = "<group>"; };
 		F70006E121356EEA00D52677 /* ZJLocationCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLocationCityTableViewCell.m; sourceTree = "<group>"; };
 		F70006E221356EEA00D52677 /* ZJLocationCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLocationCityTableViewCell.h; sourceTree = "<group>"; };
 		F70006E321356EEA00D52677 /* ZJCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCityTableViewCell.m; sourceTree = "<group>"; };
-		F70006E421356EEA00D52677 /* ZJCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCityViewController.h; sourceTree = "<group>"; };
+		F70006E421356EEA00D52677 /* CityLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityLocationViewController.h; sourceTree = "<group>"; };
 		F70006E521356EEA00D52677 /* ZJCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCityTableViewCell.h; sourceTree = "<group>"; };
 		F70006EB21356F0C00D52677 /* ChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyinResource.h; sourceTree = "<group>"; };
 		F70006EC21356F0C00D52677 /* ChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyinResource.m; sourceTree = "<group>"; };
@@ -229,6 +233,15 @@
 		F70DBD4121369AC40031E642 /* UserSecondLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSecondLine.xib; sourceTree = "<group>"; };
 		F70DBD462136BA560031E642 /* UserCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenterTableViewCell.h; sourceTree = "<group>"; };
 		F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterTableViewCell.m; sourceTree = "<group>"; };
+		F7557CA321379FE2009C92D8 /* AdTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdTableViewCell.h; sourceTree = "<group>"; };
+		F7557CA421379FE2009C92D8 /* AdTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdTableViewCell.m; sourceTree = "<group>"; };
+		F7557CAA2137E9DC009C92D8 /* FSPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPageContentView.h; sourceTree = "<group>"; };
+		F7557CAB2137E9DC009C92D8 /* FSPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPageContentView.m; sourceTree = "<group>"; };
+		F7557CAC2137E9DC009C92D8 /* FSScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSScrollContentView.h; sourceTree = "<group>"; };
+		F7557CAD2137E9DC009C92D8 /* FSSegmentTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSegmentTitleView.h; sourceTree = "<group>"; };
+		F7557CAE2137E9DC009C92D8 /* FSSegmentTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSegmentTitleView.m; sourceTree = "<group>"; };
+		F7557CB12137F167009C92D8 /* HomeSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
+		F7557CB22137F167009C92D8 /* HomeSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchViewController.m; sourceTree = "<group>"; };
 		F7599FCA212D69A500A98074 /* TodayHotRecruit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayHotRecruit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7599FCD212D69A500A98074 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F7599FCE212D69A500A98074 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -454,8 +467,8 @@
 				F70006D821356ED900D52677 /* ZJCity.m */,
 				F70006E521356EEA00D52677 /* ZJCityTableViewCell.h */,
 				F70006E321356EEA00D52677 /* ZJCityTableViewCell.m */,
-				F70006E421356EEA00D52677 /* ZJCityViewController.h */,
-				F70006E021356EEA00D52677 /* ZJCityViewController.m */,
+				F70006E421356EEA00D52677 /* CityLocationViewController.h */,
+				F70006E021356EEA00D52677 /* CityLocationViewController.m */,
 				F70006E221356EEA00D52677 /* ZJLocationCityTableViewCell.h */,
 				F70006E121356EEA00D52677 /* ZJLocationCityTableViewCell.m */,
 				F70006FF21356F2200D52677 /* ZJSearchResultController.h */,
@@ -529,6 +542,8 @@
 				F70DBD4121369AC40031E642 /* UserSecondLine.xib */,
 				F70DBD462136BA560031E642 /* UserCenterTableViewCell.h */,
 				F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */,
+				F7557CA321379FE2009C92D8 /* AdTableViewCell.h */,
+				F7557CA421379FE2009C92D8 /* AdTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -547,6 +562,19 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F7557CA92137E9DC009C92D8 /* FSScrollContentViewLib */ = {
+			isa = PBXGroup;
+			children = (
+				F7557CAA2137E9DC009C92D8 /* FSPageContentView.h */,
+				F7557CAB2137E9DC009C92D8 /* FSPageContentView.m */,
+				F7557CAC2137E9DC009C92D8 /* FSScrollContentView.h */,
+				F7557CAD2137E9DC009C92D8 /* FSSegmentTitleView.h */,
+				F7557CAE2137E9DC009C92D8 /* FSSegmentTitleView.m */,
+			);
+			name = FSScrollContentViewLib;
+			path = "../../../../../../Downloads/FSScrollContentView-master/FSScrollContentViewDemo/FSScrollContentViewLib";
 			sourceTree = "<group>";
 		};
 		F7599FC1212D69A500A98074 = {
@@ -603,12 +631,12 @@
 		F7599FFF212D6AA400A98074 /* PrivateFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				F7557CA92137E9DC009C92D8 /* FSScrollContentViewLib */,
 				F70006E921356F0C00D52677 /* PinYin4Objc */,
 				F70006D721356EC100D52677 /* ZJindexCity */,
 				F70006C2213528A000D52677 /* Global */,
 				F70006712135251500D52677 /* SDCycleScrollView */,
 				F79A7F8B212F9691002E73E0 /* BaseView */,
-				F759A001212D7B0000A98074 /* THRPrefixHeader.pch */,
 				F759A00E212D8A4600A98074 /* Constant.h */,
 			);
 			path = PrivateFoundation;
@@ -638,6 +666,7 @@
 		F759A004212D7EB400A98074 /* BusinessLine */ = {
 			isa = PBXGroup;
 			children = (
+				F759A001212D7B0000A98074 /* THRPrefixHeader.pch */,
 				ED25C050213169760022717E /* THRUserCenter */,
 				ED25C04F2131696E0022717E /* THRMessage */,
 				ED25C04E213169670022717E /* THRBBS */,
@@ -704,6 +733,8 @@
 				EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */,
 				ED25C04721314A5D0022717E /* HomePageViewController.h */,
 				ED25C04821314A5D0022717E /* HomePageViewController.m */,
+				F7557CB12137F167009C92D8 /* HomeSearchViewController.h */,
+				F7557CB22137F167009C92D8 /* HomeSearchViewController.m */,
 			);
 			name = Controller;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/Controller;
@@ -981,6 +1012,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7557CA521379FE2009C92D8 /* AdTableViewCell.m in Sources */,
 				F70006C12135255600D52677 /* UIView+WebCacheOperation.m in Sources */,
 				ED25C04C21315DFF0022717E /* AppTabBar.m in Sources */,
 				F70006B32135255600D52677 /* SDImageCache.m in Sources */,
@@ -991,7 +1023,7 @@
 				F70006E721356EEA00D52677 /* ZJLocationCityTableViewCell.m in Sources */,
 				F70006F921356F0D00D52677 /* HanyuPinyinOutputFormat.m in Sources */,
 				ED25C059213169E10022717E /* THRUserCenterViewController.m in Sources */,
-				F70006E621356EEA00D52677 /* ZJCityViewController.m in Sources */,
+				F70006E621356EEA00D52677 /* CityLocationViewController.m in Sources */,
 				F79A7F94212FE22E002E73E0 /* BaseTableView.m in Sources */,
 				F70006B12135255600D52677 /* NSData+ImageContentType.m in Sources */,
 				F700071021356F8900D52677 /* ZJImageOnlyHUDView.m in Sources */,
@@ -1013,11 +1045,13 @@
 				F70006BC2135255600D52677 /* UIImage+GIF.m in Sources */,
 				F70006BE2135255600D52677 /* UIImageView+HighlightedWebCache.m in Sources */,
 				F70DBD492136BA560031E642 /* UserCenterTableViewCell.m in Sources */,
+				F7557CB32137F167009C92D8 /* HomeSearchViewController.m in Sources */,
 				ED25C04921314A5D0022717E /* HomePageViewController.m in Sources */,
 				F7599FDD212D69A700A98074 /* main.m in Sources */,
 				F70006842135251500D52677 /* TAPageControl.m in Sources */,
 				F70006F821356F0D00D52677 /* ChineseToPinyinResource.m in Sources */,
 				F70DBD38213639F50031E642 /* UserHeaderLineTableViewCell.m in Sources */,
+				F7557CB02137E9DC009C92D8 /* FSSegmentTitleView.m in Sources */,
 				ED25C053213169C20022717E /* THRBBSViewController.m in Sources */,
 				F759A011212D922700A98074 /* UIView+zFoundation.m in Sources */,
 				F7B9BB502133E84E003F9277 /* BannerTableViewCell.m in Sources */,
@@ -1029,6 +1063,7 @@
 				F70006C8213531EB00D52677 /* MessageCollectionViewCell.m in Sources */,
 				F700070021356F2200D52677 /* ZJSearchResultController.m in Sources */,
 				F7B9BB5A21343629003F9277 /* HomeJobTableViewCell.m in Sources */,
+				F7557CAF2137E9DC009C92D8 /* FSPageContentView.m in Sources */,
 				F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */,
 				F70006B22135255600D52677 /* NSImage+WebCache.m in Sources */,
 				F79A7F8E212F96C7002E73E0 /* BaseNavigationBar.m in Sources */,
@@ -1223,6 +1258,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GN9RV4RK7D;
+				GCC_PREFIX_HEADER = TodayHotRecruit/BusinessLine/THRPrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/TodayHotRecruit/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1241,6 +1277,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GN9RV4RK7D;
+				GCC_PREFIX_HEADER = TodayHotRecruit/BusinessLine/THRPrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/TodayHotRecruit/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

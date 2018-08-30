@@ -34,7 +34,7 @@
     /// 70*70
     self.QRImage.frame = CGRectMake(0, (PXGet375Width(175) - PXGet375Width(70))/2, PXGet375Width(70), PXGet375Width(70));
     self.forWardImage.frame = CGRectMake(PXGet375Width(70) + PXGet375Width(40), (PXGet375Width(175) - PXGet375Width(70))/2, PXGet375Width(50), PXGet375Width(70));
-    
+ 
 }
 @end
 
@@ -53,7 +53,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        self.backgroundColor = RGBACOLOR(66, 146, 255, 1);
+        self.backgroundColor = CommmonBlue;
         //分成两行 第一行为头像 h:180  第二行为展示按钮 h:100
         [self setUpFirstLine];
         [self setUpSecondLine];
@@ -65,7 +65,6 @@
 - (void)setUpFirstLine{
     // headerImage
     UIImageView * headerImage = [[UIImageView alloc]initWithFrame:CGRectMake(PXGet375Width(30) + Top_iPhoneX_SPACE, PXGet375Width(40), PXGet375Width(100), PXGet375Width(100))];
-//    headerImage.image = [UIImage imageNamed:@"placeHolder"];
     headerImage.backgroundColor = RANDOMCOLOR;
     headerImage.layer.cornerRadius = PXGet375Width(50);
     headerImage.clipsToBounds = YES;
@@ -84,7 +83,7 @@
     [self.contentView addSubview:cerLabel];
   
     //用户名
-    UILabel* userName = [[UILabel alloc]initWithFrame:CGRectMake(headerImage.mj_x + headerImage.mj_w + PXGet375Width(30), headerImage.mj_y, PXGet375Width(400), PXGet375Width(50))];
+    UILabel* userName = [[UILabel alloc]initWithFrame:CGRectMake(headerImage.mj_x + headerImage.mj_w + PXGet375Width(30), headerImage.mj_y, iPhoneX?PXGet375Width(350):PXGet375Width(400), PXGet375Width(50))];
     userName.text = @"用户名";
     userName.textColor = [UIColor whiteColor];
     userName.font = [UIFont systemFontOfSize:PXGet375Width(35)];
@@ -96,12 +95,15 @@
     userPhone.frame = CGRectMake(userName.mj_x, userName.mj_y + userName.height + PXGet375Width(5), PXGet375Width(400), PXGet375Width(50));
     [userPhone setTitle:@"18066666666" forState:UIControlStateNormal];
     userPhone.userInteractionEnabled = NO;
+    
     [self.contentView addSubview:userPhone];
     
     //二维码 + 右箭头
     QRButton* qr = [QRButton buttonWithType:UIButtonTypeCustom];
     qr.mj_origin = CGPointMake(kScreenWidth - (kScreenWidth - userName.mj_x - userName.mj_w), 0);
+    
     [self.contentView addSubview:qr];
+    qr.sd_layout.rightSpaceToView(self.contentView, 5);
 }
 
 - (void)setUpSecondLine{
@@ -113,12 +115,11 @@
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0, PXGet375Width(180), kScreenWidth, PXGet375Width(80))];
     [backView addSubview:second];
     [self.contentView addSubview:backView];
- 
     
 }
 
 + (CGFloat)selfHeight{
-    return PXGet375Width(280) + Top_iPhoneX_SPACE;
+    return PXGet375Width(290);
 }
 @end
 

@@ -15,15 +15,18 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - MJRefresh (3.1.15.3)
+  - SDAutoLayout (2.2.0)
 
 DEPENDENCIES:
   - AFNetworking
   - MJRefresh
+  - SDAutoLayout
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  SDAutoLayout: c5509e77ae75735d9a39f7bc83dba6d3f75d49d8
 
-PODFILE CHECKSUM: 3186fd2b20a40e2ff0f3dada406fe970164e85d0
+PODFILE CHECKSUM: c02a2ae4e14173aeb3c203616484dd4317023787
 
 COCOAPODS: 1.0.0

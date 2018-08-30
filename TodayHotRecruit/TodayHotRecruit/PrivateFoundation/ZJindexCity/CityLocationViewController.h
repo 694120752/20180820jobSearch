@@ -9,7 +9,11 @@
 #import "ZJCitiesGroup.h"
 #import "BaseViewController.h"
 
-@interface ZJCityViewController : BaseViewController
+@interface CitySearch:UISearchBar
+@end
+
+
+@interface CityLocationViewController : BaseViewController
 typedef void(^ZJCitySelectedHandler)(NSString *title);
 /**
  *  初始化城市控制器

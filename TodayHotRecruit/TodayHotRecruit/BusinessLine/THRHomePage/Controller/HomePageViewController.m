@@ -9,7 +9,8 @@
 
 //controller
 #import "HomePageViewController.h"
-#import "ZJCityViewController.h"
+#import "CityLocationViewController.h"
+#import "HomeSearchViewController.h"
 
 //view
 #import "BaseTableView.h"
@@ -73,6 +74,7 @@
     UIButton* mirror = [UIButton buttonWithType:UIButtonTypeCustom];
     mirror.frame = CGRectMake(signButton.mj_x - PXGet375Width(60) - 5 , 20, PXGet375Width(60), NavigationBar_Bottom_Y - 20);
     [mirror setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
+    [mirror addTarget:self action:@selector(searchVc) forControlEvents:UIControlEventTouchUpInside];
     [customNavi addSubview:mirror];
     
     self.navBar.bottomLine.hidden = YES;
@@ -82,9 +84,15 @@
 
 
 - (void)locationVC{
-    ZJCityViewController* city = [[ZJCityViewController alloc]initWithDataArray:nil];
+    CityLocationViewController* city = [[CityLocationViewController alloc]initWithDataArray:nil];
     city.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:city animated:YES];
+}
+
+- (void)searchVc{
+    HomeSearchViewController* search = [[HomeSearchViewController alloc]init];
+    search.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:search animated:YES];
 }
 
 #pragma mark ---- iconSelectDelegate

@@ -17,9 +17,17 @@
     // Drawing code
 }
 */
-//-(void)awakeFromNib{
-//    [super awakeFromNib];
-//    self.width = kScreenWidth;
-//}
+
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    
+    _scoreTitle.font = font(PXGet375Width(30));
+    _score.font = font(PXGet375Width(30));
+    
+    _fd.font = font(PXGet375Width(30));
+    _fdTitle.font = font(PXGet375Width(30));
+    
+    _contitle.font = font(PXGet375Width(30));
+}
 
 @end

@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface UserSecondLine : UIView
+@property (weak, nonatomic) IBOutlet UILabel *scoreTitle;
+@property (weak, nonatomic) IBOutlet UILabel *score;
+@property (weak, nonatomic) IBOutlet UILabel *fd;
+@property (weak, nonatomic) IBOutlet UILabel *fdTitle;
+@property (weak, nonatomic) IBOutlet UILabel *contitle;
+//顾问按钮
+@property (weak, nonatomic) IBOutlet UIButton *conButton;
 
 @end

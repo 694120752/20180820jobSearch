@@ -9,7 +9,7 @@ target 'TodayHotRecruit' do
 
     pod 'AFNetworking'
     pod 'MJRefresh'
-    pod 'SDWebImage'
+    pod 'SDAutoLayout'
 
   target 'TodayHotRecruitTests' do
     inherit! :search_paths

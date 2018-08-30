@@ -100,7 +100,7 @@ static CGFloat kCityYmargin = 10.f;
         [btn addTarget:self action:@selector(hotCitiesDidSelected:) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:self.citiesGroup.cities[i].name forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        btn.backgroundColor = [UIColor yellowColor];
+        btn.backgroundColor = [UIColor whiteColor];
         [_citiesView addSubview:btn];
         [citys addObject:btn];
     }
