@@ -8,8 +8,10 @@
 
 #import "ZJSearchResultController.h"
 #import "ZJCity.h"
+
+#import "BaseTableView.h"
 @interface ZJSearchResultController ()<UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) BaseTableView *tableView;
 @property (copy, nonatomic) ZJCitySearchCellClickHandler searchCityCellClickHandler;
 
 @end
@@ -19,11 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
-
-}
-
-- (void)dealloc {
-    NSLog(@"ZJSearchResultController ---- dealloc");
+    
+    self.tableView.sd_layout
+    .topSpaceToView(self.navBarItemView, 0)
+    .rightSpaceToView(self.view, 0)
+    .leftSpaceToView(self.view, 0)
+    .bottomEqualToView(self.view);
 }
 
 - (void)setupCityCellClickHandler:(ZJCitySearchCellClickHandler)searchCityCellClickHandler {
@@ -59,12 +62,13 @@
     [self.tableView reloadData];
 }
 
-- (UITableView *)tableView {
+- (BaseTableView *)tableView {
     if (!_tableView) {
-        UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        BaseTableView *tableView = [[BaseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         tableView.delegate = self;
         tableView.dataSource = self;
-        tableView.tableFooterView = [UIView new];
+//        tableView.tableFooterView = [UIView new];
+        tableView.backgroundColor = [UIColor whiteColor];
         // 行高度
         tableView.rowHeight = 44.f;
         _tableView = tableView;
@@ -73,10 +77,10 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0;
+    return CGFLOAT_MIN;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0;
+    return CGFLOAT_MIN;
 }
 
 @end

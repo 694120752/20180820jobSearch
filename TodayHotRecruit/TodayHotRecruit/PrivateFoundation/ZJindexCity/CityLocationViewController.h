@@ -8,6 +8,7 @@
 
 #import "ZJCitiesGroup.h"
 #import "BaseViewController.h"
+#import "CustomSearch.h"
 
 @interface CitySearch:UISearchBar
 @end

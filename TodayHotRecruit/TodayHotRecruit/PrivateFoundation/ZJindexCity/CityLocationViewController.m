@@ -23,7 +23,7 @@
 }
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) CitySearch *searchBar;
+@property (strong, nonatomic) CustomSearch *searchBar;
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) NSArray<ZJCity *> *allData;
 @property (copy, nonatomic) ZJCitySelectedHandler citySelectedHandler;
@@ -38,23 +38,23 @@
 
 @end
 
-static CGFloat const kSearchBarHeight = 40.f;
+
 static NSString *const kHotCellId = @"kHotCellId";
 static NSString *const kNormalCellId = @"kNormalCellId";
 static NSString *const kLocationCellId = @"kLocationCellId";
 
 @implementation CitySearch
-- (void)layoutSubviews{
-    [super layoutSubviews];
-    for (UIView* subView in self.subviews) {
-        for (UIView* ssubView in subView.subviews) {
-            if ([ssubView isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
-                ssubView.layer.cornerRadius = PXGet375Width(35);
-                ssubView.clipsToBounds  = YES;
-            }
-        }
-    }
-}
+//- (void)layoutSubviews{
+//    [super layoutSubviews];
+//    for (UIView* subView in self.subviews) {
+//        for (UIView* ssubView in subView.subviews) {
+//            if ([ssubView isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
+//                ssubView.layer.cornerRadius = PXGet375Width(35);
+//                ssubView.clipsToBounds  = YES;
+//            }
+//        }
+//    }
+//}
 @end
 
 
@@ -249,15 +249,15 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     return index+1;
 }
 
+
+#pragma mark -----------------------------------  UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     if (searchBar == self.searchBar) {
         [self presentViewController:self.searchController animated:YES completion:nil];
         return NO;
     }
     return YES;
-
 }
-
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchBar == _searchController.searchBar) {
@@ -274,22 +274,7 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     self.searchController = nil;
 }
 
-// 颜色代理
-- (UIImage*) GetImageWithColor:(UIColor*)color andHeight:(CGFloat)height
-{
-    CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, height);
-    UIGraphicsBeginImageContext(r.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, r);
-    
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return img;
-}
-
+#pragma mark ------------------------------------ End
 
 - (UISearchController *)searchController {
     if (!_searchController) {
@@ -332,15 +317,15 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     return allData;
 }
 
-- (CitySearch *)searchBar {
+- (CustomSearch *)searchBar {
     if (!_searchBar) {
-        CitySearch *searchBar = [[CitySearch alloc] initWithFrame:CGRectMake(44, 0.f, kScreenWidth - 88, kSearchBarHeight)];
+        CustomSearch *searchBar = [[CustomSearch alloc] initWithFrame:CGRectMake(44, 0.f, kScreenWidth - 88, kSearchBarHeight)];
         searchBar.delegate = self;
         //searchBar.backgroundColor = RGBACOLOR(66, 164, 255, 1);
         //searchBar.placeholder = @"搜索城市名称/首字母缩写";
         
         //设置背景色
-        UIImage* searchBarBg = [self GetImageWithColor:CommmonBlue andHeight:kSearchBarHeight];
+        UIImage* searchBarBg = [searchBar GetImageWithColor:CommmonBlue andHeight:kSearchBarHeight];
         
         //设置背景图片
         [searchBar setBackgroundImage:searchBarBg];

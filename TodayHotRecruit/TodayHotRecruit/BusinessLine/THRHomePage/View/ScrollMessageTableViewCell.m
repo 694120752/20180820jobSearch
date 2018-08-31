@@ -22,8 +22,9 @@
         self.messageScroll.scrollDirection = UICollectionViewScrollDirectionVertical;
         self.messageScroll.imageURLStringsGroup = @[@"1",@"2",@"3"];
         self.messageScroll.pageControlStyle = SDCycleScrollViewPageContolStyleNone;
-        self.contentView.backgroundColor = RGBACOLOR(230, 230, 230, 1);
+        self.contentView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.messageScroll];
+        self.contentView.backgroundColor = RGBACOLOR(226, 226, 226, 1);
     }
     return self;
 }

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 @class ZJCity;
-@interface ZJSearchResultController : UIViewController
+@interface ZJSearchResultController : BaseViewController
 typedef void(^ZJCitySearchCellClickHandler)(NSString *title);
 
 @property (strong, nonatomic, readonly) UITableView *tableView;

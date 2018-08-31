@@ -68,6 +68,8 @@
 		F70DBD4021369AB90031E642 /* UserSecondLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F70DBD3F21369AB90031E642 /* UserSecondLine.m */; };
 		F70DBD4221369AC40031E642 /* UserSecondLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DBD4121369AC40031E642 /* UserSecondLine.xib */; };
 		F70DBD492136BA560031E642 /* UserCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */; };
+		F746CC902138E1D7009C2478 /* CustomSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = F746CC8F2138E1D7009C2478 /* CustomSearch.m */; };
+		F746CC9321393158009C2478 /* THRApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = F746CC9221393158009C2478 /* THRApplication.m */; };
 		F7557CA521379FE2009C92D8 /* AdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CA421379FE2009C92D8 /* AdTableViewCell.m */; };
 		F7557CAF2137E9DC009C92D8 /* FSPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CAB2137E9DC009C92D8 /* FSPageContentView.m */; };
 		F7557CB02137E9DC009C92D8 /* FSSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CAE2137E9DC009C92D8 /* FSSegmentTitleView.m */; };
@@ -233,6 +235,10 @@
 		F70DBD4121369AC40031E642 /* UserSecondLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSecondLine.xib; sourceTree = "<group>"; };
 		F70DBD462136BA560031E642 /* UserCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenterTableViewCell.h; sourceTree = "<group>"; };
 		F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterTableViewCell.m; sourceTree = "<group>"; };
+		F746CC8E2138E1D7009C2478 /* CustomSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSearch.h; sourceTree = "<group>"; };
+		F746CC8F2138E1D7009C2478 /* CustomSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSearch.m; sourceTree = "<group>"; };
+		F746CC9121393158009C2478 /* THRApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRApplication.h; sourceTree = "<group>"; };
+		F746CC9221393158009C2478 /* THRApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRApplication.m; sourceTree = "<group>"; };
 		F7557CA321379FE2009C92D8 /* AdTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdTableViewCell.h; sourceTree = "<group>"; };
 		F7557CA421379FE2009C92D8 /* AdTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdTableViewCell.m; sourceTree = "<group>"; };
 		F7557CAA2137E9DC009C92D8 /* FSPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPageContentView.h; sourceTree = "<group>"; };
@@ -475,6 +481,8 @@
 				F70006FE21356F2100D52677 /* ZJSearchResultController.m */,
 				F700070121356F5300D52677 /* ZJCityCollectionViewCell.h */,
 				F700070221356F5300D52677 /* ZJCityCollectionViewCell.m */,
+				F746CC8E2138E1D7009C2478 /* CustomSearch.h */,
+				F746CC8F2138E1D7009C2478 /* CustomSearch.m */,
 			);
 			path = ZJindexCity;
 			sourceTree = "<group>";
@@ -647,6 +655,8 @@
 			children = (
 				F7599FCD212D69A500A98074 /* AppDelegate.h */,
 				F7599FCE212D69A500A98074 /* AppDelegate.m */,
+				F746CC9121393158009C2478 /* THRApplication.h */,
+				F746CC9221393158009C2478 /* THRApplication.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -1046,6 +1056,7 @@
 				F70006BE2135255600D52677 /* UIImageView+HighlightedWebCache.m in Sources */,
 				F70DBD492136BA560031E642 /* UserCenterTableViewCell.m in Sources */,
 				F7557CB32137F167009C92D8 /* HomeSearchViewController.m in Sources */,
+				F746CC902138E1D7009C2478 /* CustomSearch.m in Sources */,
 				ED25C04921314A5D0022717E /* HomePageViewController.m in Sources */,
 				F7599FDD212D69A700A98074 /* main.m in Sources */,
 				F70006842135251500D52677 /* TAPageControl.m in Sources */,
@@ -1064,6 +1075,7 @@
 				F700070021356F2200D52677 /* ZJSearchResultController.m in Sources */,
 				F7B9BB5A21343629003F9277 /* HomeJobTableViewCell.m in Sources */,
 				F7557CAF2137E9DC009C92D8 /* FSPageContentView.m in Sources */,
+				F746CC9321393158009C2478 /* THRApplication.m in Sources */,
 				F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */,
 				F70006B22135255600D52677 /* NSImage+WebCache.m in Sources */,
 				F79A7F8E212F96C7002E73E0 /* BaseNavigationBar.m in Sources */,

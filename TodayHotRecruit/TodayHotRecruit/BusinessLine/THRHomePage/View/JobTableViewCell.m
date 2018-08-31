@@ -20,15 +20,17 @@
 -(void)setUpJobDetail{
     //主图
     UIImageView* jobImage = [[UIImageView alloc]initWithFrame:CGRectMake(PXGet375Width(20), PXGet375Width(20), PXGet375Width(170), PXGet375Width(120))];
-    jobImage.image = [UIImage imageNamed:@"placeHolder"];
+    //jobImage.image = [UIImage imageNamed:@"placeHolder"];
+    jobImage.backgroundColor = RANDOMCOLOR;
+    jobImage.layer.cornerRadius = PXGet375Width(15);
+    jobImage.clipsToBounds = YES;
     [self.contentView addSubview:jobImage];
     
     //地区
     UILabel* areaLabel = [[UILabel alloc]init];
     areaLabel.frame = CGRectMake(0, jobImage.mj_h + jobImage.mj_x, jobImage.mj_w + PXGet375Width(20)*2, PXGet375Width(55));
-    areaLabel.backgroundColor = RANDOMCOLOR;
     areaLabel.font = [UIFont systemFontOfSize:PXGet375Width(25)];
-    areaLabel.textColor = RGBACOLOR(177, 177, 177, 1);
+    areaLabel.textColor = RGBACOLOR(134, 134, 134, 1);
     areaLabel.textAlignment = NSTextAlignmentCenter;
     areaLabel.text = @"南京市 - 江宁区";
     [self.contentView addSubview:areaLabel];
@@ -42,8 +44,10 @@
     // 公司名
     UILabel* comLabel = [UILabel new];
     comLabel.frame = CGRectMake(jobImage.mj_w + PXGet375Width(40), PXGet375Width(20), kScreenWidth - (jobImage.mj_w + PXGet375Width(40) + PXGet375Width(180)), PXGet375Width(40));
+    comLabel.font = font(PXGet375Width(30));
+    comLabel.textColor = RGBACOLOR(98, 98, 98, 1);
     comLabel.text = @"Zjs6666666666666666666666666666666666666666666666666";
-    comLabel.backgroundColor = RANDOMCOLOR;
+//    comLabel.backgroundColor = RANDOMCOLOR;
     [self.contentView addSubview:comLabel];
     
     //生活补助的按钮  加上左右边距总计宽度 为PXGet375Width(180)

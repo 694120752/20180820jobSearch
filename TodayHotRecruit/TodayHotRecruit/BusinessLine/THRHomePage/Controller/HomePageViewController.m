@@ -22,7 +22,6 @@
 #import "ScrollMessageTableViewCell.h"
 #import "JobTableViewCell.h"
 
-
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,THRCommonDelegate>
 
 /** 主体tableView*/
@@ -41,11 +40,8 @@
     [self.view addSubview:self.tableView];
     
     [self setUpNavi];
-    
-    
+
 }
-
-
 
 // 设置导航栏
 - (void)setUpNavi{
@@ -86,6 +82,13 @@
 - (void)locationVC{
     CityLocationViewController* city = [[CityLocationViewController alloc]initWithDataArray:nil];
     city.hidesBottomBarWhenPushed = YES;
+    __weak typeof(self) weakSelf = self;
+    [city setupCityCellClickHandler:^(NSString *title) {
+       // NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+        
+        
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+    }];
     [self.navigationController pushViewController:city animated:YES];
 }
 
