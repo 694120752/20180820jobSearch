@@ -14,6 +14,8 @@
 		ED25C053213169C20022717E /* THRBBSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C052213169C20022717E /* THRBBSViewController.m */; };
 		ED25C056213169D20022717E /* THRMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C055213169D20022717E /* THRMessageViewController.m */; };
 		ED25C059213169E10022717E /* THRUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C058213169E10022717E /* THRUserCenterViewController.m */; };
+		ED25C06F213A90460022717E /* FSSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C06A213A90460022717E /* FSSegmentTitleView.m */; };
+		ED25C070213A90460022717E /* FSPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C06D213A90460022717E /* FSPageContentView.m */; };
 		EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */; };
 		F2C13BDE1646393BCCCB6C1D /* libPods-TodayHotRecruitUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */; };
 		F70006702134EB4400D52677 /* SelectDto.m in Sources */ = {isa = PBXBuildFile; fileRef = F700066F2134EB4400D52677 /* SelectDto.m */; };
@@ -71,8 +73,6 @@
 		F746CC902138E1D7009C2478 /* CustomSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = F746CC8F2138E1D7009C2478 /* CustomSearch.m */; };
 		F746CC9321393158009C2478 /* THRApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = F746CC9221393158009C2478 /* THRApplication.m */; };
 		F7557CA521379FE2009C92D8 /* AdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CA421379FE2009C92D8 /* AdTableViewCell.m */; };
-		F7557CAF2137E9DC009C92D8 /* FSPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CAB2137E9DC009C92D8 /* FSPageContentView.m */; };
-		F7557CB02137E9DC009C92D8 /* FSSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CAE2137E9DC009C92D8 /* FSSegmentTitleView.m */; };
 		F7557CB32137F167009C92D8 /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CB22137F167009C92D8 /* HomeSearchViewController.m */; };
 		F7599FCF212D69A500A98074 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7599FCE212D69A500A98074 /* AppDelegate.m */; };
 		F7599FD5212D69A500A98074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7599FD3212D69A500A98074 /* Main.storyboard */; };
@@ -129,6 +129,11 @@
 		ED25C055213169D20022717E /* THRMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRMessageViewController.m; sourceTree = "<group>"; };
 		ED25C057213169E10022717E /* THRUserCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRUserCenterViewController.h; sourceTree = "<group>"; };
 		ED25C058213169E10022717E /* THRUserCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRUserCenterViewController.m; sourceTree = "<group>"; };
+		ED25C06A213A90460022717E /* FSSegmentTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSegmentTitleView.m; sourceTree = "<group>"; };
+		ED25C06B213A90460022717E /* FSPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPageContentView.h; sourceTree = "<group>"; };
+		ED25C06C213A90460022717E /* FSScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSScrollContentView.h; sourceTree = "<group>"; };
+		ED25C06D213A90460022717E /* FSPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPageContentView.m; sourceTree = "<group>"; };
+		ED25C06E213A90460022717E /* FSSegmentTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSegmentTitleView.h; sourceTree = "<group>"; };
 		EDAC72AE2131393D00FA61C5 /* HomePageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageNavController.h; sourceTree = "<group>"; };
 		EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageNavController.m; sourceTree = "<group>"; };
 		F700066E2134EB4400D52677 /* SelectDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectDto.h; sourceTree = "<group>"; };
@@ -241,11 +246,6 @@
 		F746CC9221393158009C2478 /* THRApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRApplication.m; sourceTree = "<group>"; };
 		F7557CA321379FE2009C92D8 /* AdTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdTableViewCell.h; sourceTree = "<group>"; };
 		F7557CA421379FE2009C92D8 /* AdTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdTableViewCell.m; sourceTree = "<group>"; };
-		F7557CAA2137E9DC009C92D8 /* FSPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPageContentView.h; sourceTree = "<group>"; };
-		F7557CAB2137E9DC009C92D8 /* FSPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPageContentView.m; sourceTree = "<group>"; };
-		F7557CAC2137E9DC009C92D8 /* FSScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSScrollContentView.h; sourceTree = "<group>"; };
-		F7557CAD2137E9DC009C92D8 /* FSSegmentTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSegmentTitleView.h; sourceTree = "<group>"; };
-		F7557CAE2137E9DC009C92D8 /* FSSegmentTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSegmentTitleView.m; sourceTree = "<group>"; };
 		F7557CB12137F167009C92D8 /* HomeSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
 		F7557CB22137F167009C92D8 /* HomeSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchViewController.m; sourceTree = "<group>"; };
 		F7599FCA212D69A500A98074 /* TodayHotRecruit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayHotRecruit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -365,6 +365,18 @@
 				F70DBD33213639400031E642 /* View */,
 			);
 			path = THRUserCenter;
+			sourceTree = "<group>";
+		};
+		ED25C069213A90460022717E /* FSScrollContentViewLib */ = {
+			isa = PBXGroup;
+			children = (
+				ED25C06A213A90460022717E /* FSSegmentTitleView.m */,
+				ED25C06B213A90460022717E /* FSPageContentView.h */,
+				ED25C06C213A90460022717E /* FSScrollContentView.h */,
+				ED25C06D213A90460022717E /* FSPageContentView.m */,
+				ED25C06E213A90460022717E /* FSSegmentTitleView.h */,
+			);
+			path = FSScrollContentViewLib;
 			sourceTree = "<group>";
 		};
 		EDAC72AD2131391B00FA61C5 /* THRHomePage */ = {
@@ -572,19 +584,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		F7557CA92137E9DC009C92D8 /* FSScrollContentViewLib */ = {
-			isa = PBXGroup;
-			children = (
-				F7557CAA2137E9DC009C92D8 /* FSPageContentView.h */,
-				F7557CAB2137E9DC009C92D8 /* FSPageContentView.m */,
-				F7557CAC2137E9DC009C92D8 /* FSScrollContentView.h */,
-				F7557CAD2137E9DC009C92D8 /* FSSegmentTitleView.h */,
-				F7557CAE2137E9DC009C92D8 /* FSSegmentTitleView.m */,
-			);
-			name = FSScrollContentViewLib;
-			path = "../../../../../../Downloads/FSScrollContentView-master/FSScrollContentViewDemo/FSScrollContentViewLib";
-			sourceTree = "<group>";
-		};
 		F7599FC1212D69A500A98074 = {
 			isa = PBXGroup;
 			children = (
@@ -639,7 +638,7 @@
 		F7599FFF212D6AA400A98074 /* PrivateFoundation */ = {
 			isa = PBXGroup;
 			children = (
-				F7557CA92137E9DC009C92D8 /* FSScrollContentViewLib */,
+				ED25C069213A90460022717E /* FSScrollContentViewLib */,
 				F70006E921356F0C00D52677 /* PinYin4Objc */,
 				F70006D721356EC100D52677 /* ZJindexCity */,
 				F70006C2213528A000D52677 /* Global */,
@@ -1033,6 +1032,7 @@
 				F70006E721356EEA00D52677 /* ZJLocationCityTableViewCell.m in Sources */,
 				F70006F921356F0D00D52677 /* HanyuPinyinOutputFormat.m in Sources */,
 				ED25C059213169E10022717E /* THRUserCenterViewController.m in Sources */,
+				ED25C070213A90460022717E /* FSPageContentView.m in Sources */,
 				F70006E621356EEA00D52677 /* CityLocationViewController.m in Sources */,
 				F79A7F94212FE22E002E73E0 /* BaseTableView.m in Sources */,
 				F70006B12135255600D52677 /* NSData+ImageContentType.m in Sources */,
@@ -1062,7 +1062,7 @@
 				F70006842135251500D52677 /* TAPageControl.m in Sources */,
 				F70006F821356F0D00D52677 /* ChineseToPinyinResource.m in Sources */,
 				F70DBD38213639F50031E642 /* UserHeaderLineTableViewCell.m in Sources */,
-				F7557CB02137E9DC009C92D8 /* FSSegmentTitleView.m in Sources */,
+				ED25C06F213A90460022717E /* FSSegmentTitleView.m in Sources */,
 				ED25C053213169C20022717E /* THRBBSViewController.m in Sources */,
 				F759A011212D922700A98074 /* UIView+zFoundation.m in Sources */,
 				F7B9BB502133E84E003F9277 /* BannerTableViewCell.m in Sources */,
@@ -1074,7 +1074,6 @@
 				F70006C8213531EB00D52677 /* MessageCollectionViewCell.m in Sources */,
 				F700070021356F2200D52677 /* ZJSearchResultController.m in Sources */,
 				F7B9BB5A21343629003F9277 /* HomeJobTableViewCell.m in Sources */,
-				F7557CAF2137E9DC009C92D8 /* FSPageContentView.m in Sources */,
 				F746CC9321393158009C2478 /* THRApplication.m in Sources */,
 				F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */,
 				F70006B22135255600D52677 /* NSImage+WebCache.m in Sources */,
