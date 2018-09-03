@@ -38,6 +38,9 @@ static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
 
 - (void)layoutSubviews
 {
+//
+//    [self.parentVC.view setNeedsLayout];
+//    [self.parentVC.view layoutIfNeeded];
     [super layoutSubviews];
 }
 

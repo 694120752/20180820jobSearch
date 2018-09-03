@@ -9,10 +9,10 @@
 #ifndef THRPrefixHeader_pch
 #define THRPrefixHeader_pch
 
-//常量定义
 #import "Constant.h"
 
 #import "UIView+zFoundation.h"
+#import "NSString+zFundation.h"
 #import <UIView+MJExtension.h>
 #import <SDAutoLayout.h>
 

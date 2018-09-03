@@ -61,7 +61,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.frame = CGRectMake(44.0f,.0f,sz.width-88.0f,44.0f);
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.textColor = [UIColor colorWithRed:68/255.0f green:68/255.0f  blue:68/255.0f  alpha:1];
+        _titleLabel.textColor = [UIColor whiteColor];//[UIColor colorWithRed:68/255.0f green:68/255.0f  blue:68/255.0f  alpha:1];
         _titleLabel.font      = [UIFont systemFontOfSize:17.0f];
         _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     }

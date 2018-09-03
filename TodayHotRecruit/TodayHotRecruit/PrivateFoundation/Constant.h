@@ -68,4 +68,6 @@
 //获取沙盒 Cache
 #define kPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
 
+#define UserDefault NSUserDefaults*ud=[NSUserDefaults standardUserDefaults];
+
 #endif /* Constant_h */

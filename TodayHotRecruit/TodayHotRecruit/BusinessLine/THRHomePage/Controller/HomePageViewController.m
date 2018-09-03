@@ -11,6 +11,7 @@
 #import "HomePageViewController.h"
 #import "CityLocationViewController.h"
 #import "HomeSearchViewController.h"
+#import "ExclusiveConsultantViewController.h"
 
 //view
 #import "BaseTableView.h"
@@ -100,7 +101,18 @@
 
 #pragma mark ---- iconSelectDelegate
 - (void)selectIconWithIndex:(NSInteger)index{
-    NSLog(@"%ld",(long)index);
+    switch (index) {
+        case 2:
+        {
+            ExclusiveConsultantViewController* ec = [ExclusiveConsultantViewController new];
+            ec.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:ec animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark ---- tableViewDelegate && tableViewDataSource

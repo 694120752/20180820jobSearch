@@ -14,6 +14,7 @@
 #import "THRBBSViewController.h"
 #import "THRMessageViewController.h"
 #import "THRUserCenterViewController.h"
+#import "LoginViewController.h"
 
 //Tab
 #import "AppTabBar.h"
@@ -70,10 +71,37 @@
     self.tabBar.backgroundColor = [UIColor whiteColor];
     AppTabBar *tabbar = [[AppTabBar alloc] init];
     [self setValue:tabbar forKeyPath:@"tabBar"];
-//
-//    [self performSelectorOnMainThread:@selector(tabBarController:didSelectViewController:) withObject:[self.tabBarController.viewControllers objectAtIndex:0] waitUntilDone:NO];
     
-//    self.selectedIndex = 0;
-    //[self.tabBarController performSelector:@selector(_tabBarItemClicked:) withObject:0 afterDelay:0];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //未登录 弹登录页
+//    [self showLoginTriger];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self showLoginTriger];
+}
+
+- (void)showLoginTriger{
+    UserDefault
+    if (![ud objectForKey:@"isLogin"]) {
+        UIViewController *topRootViewController = [[UIApplication  sharedApplication] keyWindow].rootViewController;
+        
+        // 在这里加一个这个样式的循环
+        while (topRootViewController.presentedViewController)
+        {
+            // 这里固定写法
+            topRootViewController = topRootViewController.presentedViewController;
+        }
+        
+        LoginViewController * login = [LoginViewController new];
+        // 然后再进行present操作
+        
+        [topRootViewController presentViewController:[[BaseNavigationController alloc]initWithRootViewController:login] animated:YES completion:nil];
+
+    }
 }
 @end

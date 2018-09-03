@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "THRApplication.h"
 #import "AppDelegate.h"
-//#import "THRApplication.h"
 int main(int argc, char * argv[]) {
     @autoreleasepool {
-        //NSStringFromClass([THRApplication class])
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        return UIApplicationMain(argc, argv, NSStringFromClass([THRApplication class]), NSStringFromClass([AppDelegate class]));
     }
 }
