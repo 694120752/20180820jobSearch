@@ -83,11 +83,12 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self showLoginTriger];
+
 }
 
 - (void)showLoginTriger{
     UserDefault
-    if (![ud objectForKey:@"isLogin"]) {
+    if (![[ud objectForKey:@"isLogin"] isEqualToString:@"YES"]) {
         UIViewController *topRootViewController = [[UIApplication  sharedApplication] keyWindow].rootViewController;
         
         // 在这里加一个这个样式的循环

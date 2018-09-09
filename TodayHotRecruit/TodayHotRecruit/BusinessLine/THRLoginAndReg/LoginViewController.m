@@ -123,6 +123,7 @@
     loginButton.backgroundColor = RGBACOLOR(64, 146, 255, 1);
     loginButton.layer.cornerRadius  = 7;
     loginButton.titleLabel.font = font(15);
+    [loginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginButton];
     
     loginButton.sd_layout
@@ -144,6 +145,14 @@
     
     [self.navigationController pushViewController:[RegistViewController new] animated:YES];
     
+}
+
+
+- (void)loginAction{
+    
+    UserDefault
+    [ud setValue:@"YES" forKey:@"isLogin"];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
