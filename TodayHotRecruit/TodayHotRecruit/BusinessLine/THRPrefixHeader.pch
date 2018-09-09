@@ -16,7 +16,7 @@
 #import <UIView+MJExtension.h>
 #import <SDAutoLayout.h>
 
-#define CommmonBlue RGBACOLOR(66, 146, 255, 1)
+#define CommonBlue RGBACOLOR(66, 146, 255, 1)
 
 
 

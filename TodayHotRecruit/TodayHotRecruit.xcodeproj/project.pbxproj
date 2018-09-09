@@ -16,6 +16,10 @@
 		ED25C059213169E10022717E /* THRUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C058213169E10022717E /* THRUserCenterViewController.m */; };
 		ED25C06F213A90460022717E /* FSSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C06A213A90460022717E /* FSSegmentTitleView.m */; };
 		ED25C070213A90460022717E /* FSPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25C06D213A90460022717E /* FSPageContentView.m */; };
+		ED3B90842144F55300D3661C /* THRUserCerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90832144F55300D3661C /* THRUserCerViewController.m */; };
+		ED3B90872144F8A000D3661C /* THRRealNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90862144F8A000D3661C /* THRRealNameViewController.m */; };
+		ED3B908A2144FE4600D3661C /* THRUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90892144FE4600D3661C /* THRUserInfoViewController.m */; };
+		ED3B908D214502AE00D3661C /* UserInfoHeadImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B908C214502AE00D3661C /* UserInfoHeadImageTableViewCell.m */; };
 		EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */; };
 		F2C13BDE1646393BCCCB6C1D /* libPods-TodayHotRecruitUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */; };
 		F70006702134EB4400D52677 /* SelectDto.m in Sources */ = {isa = PBXBuildFile; fileRef = F700066F2134EB4400D52677 /* SelectDto.m */; };
@@ -142,6 +146,14 @@
 		ED25C06C213A90460022717E /* FSScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSScrollContentView.h; sourceTree = "<group>"; };
 		ED25C06D213A90460022717E /* FSPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPageContentView.m; sourceTree = "<group>"; };
 		ED25C06E213A90460022717E /* FSSegmentTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSegmentTitleView.h; sourceTree = "<group>"; };
+		ED3B90822144F55300D3661C /* THRUserCerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRUserCerViewController.h; sourceTree = "<group>"; };
+		ED3B90832144F55300D3661C /* THRUserCerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRUserCerViewController.m; sourceTree = "<group>"; };
+		ED3B90852144F8A000D3661C /* THRRealNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRRealNameViewController.h; sourceTree = "<group>"; };
+		ED3B90862144F8A000D3661C /* THRRealNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRRealNameViewController.m; sourceTree = "<group>"; };
+		ED3B90882144FE4600D3661C /* THRUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRUserInfoViewController.h; sourceTree = "<group>"; };
+		ED3B90892144FE4600D3661C /* THRUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRUserInfoViewController.m; sourceTree = "<group>"; };
+		ED3B908B214502AE00D3661C /* UserInfoHeadImageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoHeadImageTableViewCell.h; sourceTree = "<group>"; };
+		ED3B908C214502AE00D3661C /* UserInfoHeadImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoHeadImageTableViewCell.m; sourceTree = "<group>"; };
 		EDAC72AE2131393D00FA61C5 /* HomePageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageNavController.h; sourceTree = "<group>"; };
 		EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageNavController.m; sourceTree = "<group>"; };
 		F700066E2134EB4400D52677 /* SelectDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectDto.h; sourceTree = "<group>"; };
@@ -590,6 +602,8 @@
 				F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */,
 				F7557CA321379FE2009C92D8 /* AdTableViewCell.h */,
 				F7557CA421379FE2009C92D8 /* AdTableViewCell.m */,
+				ED3B908B214502AE00D3661C /* UserInfoHeadImageTableViewCell.h */,
+				ED3B908C214502AE00D3661C /* UserInfoHeadImageTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -599,6 +613,12 @@
 			children = (
 				ED25C057213169E10022717E /* THRUserCenterViewController.h */,
 				ED25C058213169E10022717E /* THRUserCenterViewController.m */,
+				ED3B90822144F55300D3661C /* THRUserCerViewController.h */,
+				ED3B90832144F55300D3661C /* THRUserCerViewController.m */,
+				ED3B90852144F8A000D3661C /* THRRealNameViewController.h */,
+				ED3B90862144F8A000D3661C /* THRRealNameViewController.m */,
+				ED3B90882144FE4600D3661C /* THRUserInfoViewController.h */,
+				ED3B90892144FE4600D3661C /* THRUserInfoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1091,6 +1111,7 @@
 				F76D2276213D1A4700466BC2 /* ExPersonalDataTableViewCell.m in Sources */,
 				F70006B82135255600D52677 /* SDWebImageDownloaderOperation.m in Sources */,
 				F70006BA2135255600D52677 /* SDWebImagePrefetcher.m in Sources */,
+				ED3B90872144F8A000D3661C /* THRRealNameViewController.m in Sources */,
 				F70006E821356EEA00D52677 /* ZJCityTableViewCell.m in Sources */,
 				F70006DD21356ED900D52677 /* ZJCity.m in Sources */,
 				F70DBD4021369AB90031E642 /* UserSecondLine.m in Sources */,
@@ -1100,6 +1121,7 @@
 				ED25C056213169D20022717E /* THRMessageViewController.m in Sources */,
 				F70006BD2135255600D52677 /* UIImage+MultiFormat.m in Sources */,
 				F76D2270213CD97600466BC2 /* ConsultantSubDataViewController.m in Sources */,
+				ED3B90842144F55300D3661C /* THRUserCerViewController.m in Sources */,
 				F70006822135251500D52677 /* TAAnimatedDotView.m in Sources */,
 				F76D2283213D621000466BC2 /* RegistViewController.m in Sources */,
 				F70006862135251500D52677 /* SDCycleScrollView.m in Sources */,
@@ -1119,6 +1141,7 @@
 				ED25C053213169C20022717E /* THRBBSViewController.m in Sources */,
 				F759A011212D922700A98074 /* UIView+zFoundation.m in Sources */,
 				F7B9BB502133E84E003F9277 /* BannerTableViewCell.m in Sources */,
+				ED3B908D214502AE00D3661C /* UserInfoHeadImageTableViewCell.m in Sources */,
 				F7B9BB532133E9AF003F9277 /* IconTableViewCell.m in Sources */,
 				F7599FCF212D69A500A98074 /* AppDelegate.m in Sources */,
 				F70006B92135255600D52677 /* SDWebImageManager.m in Sources */,
@@ -1141,6 +1164,7 @@
 				F700071121356F8900D52677 /* ZJProgressHUD.m in Sources */,
 				F79A7F91212FA889002E73E0 /* BaseViewController.m in Sources */,
 				F70006DE21356ED900D52677 /* ZJCitiesGroup.m in Sources */,
+				ED3B908A2144FE4600D3661C /* THRUserInfoViewController.m in Sources */,
 				F70006B62135255600D52677 /* SDWebImageDecoder.m in Sources */,
 				F70006CE21353CD000D52677 /* JobTableViewCell.m in Sources */,
 				F70006B52135255600D52677 /* SDWebImageCompat.m in Sources */,

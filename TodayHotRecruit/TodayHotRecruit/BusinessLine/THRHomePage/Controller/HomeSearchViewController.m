@@ -26,8 +26,8 @@
 }
 
 -(void)setUpNavi{
-    self.navBarItemView.backgroundColor = CommmonBlue;
-    self.navBar.backgroundColor = CommmonBlue;
+    self.navBarItemView.backgroundColor = CommonBlue;
+    self.navBar.backgroundColor = CommonBlue;
     
 //    UITextField* searchField = [UITextField new];
 //    searchField.backgroundColor = [UIColor whiteColor];
@@ -63,7 +63,7 @@
         //searchBar.placeholder = @"搜索城市名称/首字母缩写";
         
         //设置背景色
-        UIImage* searchBarBg = [searchBar GetImageWithColor:CommmonBlue andHeight:kSearchBarHeight];
+        UIImage* searchBarBg = [searchBar GetImageWithColor:CommonBlue andHeight:kSearchBarHeight];
         
         //设置背景图片
         [searchBar setBackgroundImage:searchBarBg];

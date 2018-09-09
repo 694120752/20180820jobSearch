@@ -6,7 +6,12 @@
 //  Copyright © 2018年 sn_zjs. All rights reserved.
 //
 
+
+// 控制器
 #import "THRUserCenterViewController.h"
+#import "THRUserCerViewController.h"
+#import "THRRealNameViewController.h"
+#import "THRUserInfoViewController.h"
 
 // tableViewCell
 #import "BaseTableView.h"
@@ -29,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = CommmonBlue;
+    self.view.backgroundColor = CommonBlue;
     self.navBar.hidden = YES;
     [self.view addSubview:self.contentTableView];
     
@@ -38,6 +43,9 @@
         self.contentTableView.top = 20;
     }
 }
+
+
+#pragma mark ----- DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 8;
@@ -93,9 +101,40 @@
     }
 }
 
+#pragma mark ---- Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+            
+        case 0:
+        {
+            THRUserInfoViewController *info = [THRUserInfoViewController new];
+            info.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:info animated:YES];
+        }
+            break;
+        case 1:
+        {
+            THRRealNameViewController* realName = [THRRealNameViewController new];
+            realName.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:realName animated:YES];
+        }
+            break;
+        case 2:
+        {
+            THRUserCerViewController* cer = [THRUserCerViewController new];
+            cer.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:cer animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 #pragma mark ---- lazy
--(BaseTableView *)contentTableView{
+- (BaseTableView *)contentTableView{
     if (!_contentTableView) {
         _contentTableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0, Top_iPhoneX_SPACE, kScreenWidth, kScreenHeight - Bottom_iPhoneX_SPACE) style:UITableViewStylePlain];
         _contentTableView.dataSource = self;

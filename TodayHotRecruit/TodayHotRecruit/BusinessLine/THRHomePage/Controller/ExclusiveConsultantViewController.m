@@ -107,8 +107,8 @@
 }
 
 - (void)setUpNavi{
-    self.navBarItemView.backgroundColor = CommmonBlue;
-    self.navBar.backgroundColor = CommmonBlue;
+    self.navBarItemView.backgroundColor = CommonBlue;
+    self.navBar.backgroundColor = CommonBlue;
     self.navBar.titleLabel.text = @"专属顾问";
     self.navBar.bottomLine.hidden = YES;
 }
@@ -126,7 +126,7 @@
     
     // 蓝色的
     UIView* blueView = [UIView new];
-    blueView.backgroundColor = CommmonBlue;
+    blueView.backgroundColor = CommonBlue;
     [bigBGView addSubview:blueView];
     
     // 灰色的

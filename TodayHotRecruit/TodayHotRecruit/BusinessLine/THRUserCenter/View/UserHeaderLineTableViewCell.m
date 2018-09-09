@@ -9,11 +9,9 @@
 #import "UserHeaderLineTableViewCell.h"
 #import "UserSecondLine.h"
 
-
 @implementation ScoreButton
 +(instancetype)buttonWithType:(UIButtonType)buttonType andIsLast:(BOOL)condition{
     ScoreButton *button = [super buttonWithType:UIButtonTypeCustom];
-    
     return button;
 }
 @end
@@ -53,7 +51,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        self.backgroundColor = CommmonBlue;
+        self.backgroundColor = CommonBlue;
         //分成两行 第一行为头像 h:180  第二行为展示按钮 h:100
         [self setUpFirstLine];
         [self setUpSecondLine];
@@ -68,6 +66,7 @@
     headerImage.backgroundColor = RANDOMCOLOR;
     headerImage.layer.cornerRadius = PXGet375Width(50);
     headerImage.clipsToBounds = YES;
+    headerImage.userInteractionEnabled = YES;
     [self.contentView addSubview:headerImage];
     
     //认证tag
@@ -101,9 +100,12 @@
     //二维码 + 右箭头
     QRButton* qr = [QRButton buttonWithType:UIButtonTypeCustom];
     qr.mj_origin = CGPointMake(kScreenWidth - (kScreenWidth - userName.mj_x - userName.mj_w), 0);
-    
+    // 关闭交互 交由cell处理
+    qr.userInteractionEnabled = NO;
     [self.contentView addSubview:qr];
     qr.sd_layout.rightSpaceToView(self.contentView, 5);
+    
+    
 }
 
 - (void)setUpSecondLine{
@@ -114,12 +116,24 @@
     // 无语。。。。
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0, PXGet375Width(180), kScreenWidth, PXGet375Width(80))];
     [backView addSubview:second];
+    
+    [second.conButton addTarget:self action:@selector(checkConsultantInfo) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:backView];
+    
+    // 添加空白事件 点击前两个Label的时候不响应
+    UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+    [second addGestureRecognizer:tapGesturRecognizer];
     
 }
 
 + (CGFloat)selfHeight{
     return PXGet375Width(290);
 }
+
+- (void)checkConsultantInfo{
+    NSLog(@"截获");
+}
+// voidAction
+- (void)tapAction{}
 @end
 
