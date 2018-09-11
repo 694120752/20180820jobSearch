@@ -28,6 +28,7 @@
     
     UIImageView * imageView = [UIImageView new];
     imageView.image = [UIImage imageNamed:@"loginBG"];
+    imageView.userInteractionEnabled = YES;
     [self.view addSubview:imageView];
     imageView.sd_layout
     .topEqualToView(self.view)
@@ -47,10 +48,17 @@
     .rightSpaceToView(imageView, 0)
     .leftSpaceToView(imageView, 0);
     
-    
     // 返回按钮
-    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:backButton];
+    UIButton* backButton = [[UIButton alloc] initWithFrame:CGRectMake(.0f,.0f,44.0f,44.0f)];
+    [backButton setImage:[UIImage imageNamed:@"backArrow"]
+                forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"backArrow"]
+                forState:UIControlStateHighlighted];
+    backButton.accessibilityLabel = @"返回";
+    [imageView addSubview:backButton];
+    [backButton addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+    backButton.sd_layout.centerYEqualToView(titleLabel);
+    
     
     UIImageView* headerImage = [UIImageView new];
     headerImage.image = [UIImage imageNamed:@"noHead"];
@@ -72,9 +80,34 @@
     phoneTextfield.font = font(PXGet375Width(28));
     [self.view addSubview:phoneTextfield];
     
-    // 输入密码
+    // 验证码
+    LoginField* verTextfield = [[LoginField alloc]init];
+    verTextfield.placeholder = @"   请输入验证码";
+    [verTextfield setValue:[NSNumber numberWithInt:10] forKey:@"paddingLeft"];
+    verTextfield.leftView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"verCode"]];
+    verTextfield.leftViewMode = UITextFieldViewModeAlways;
+    verTextfield.font = font(PXGet375Width(28));
+    [self.view addSubview:verTextfield];
+    // 添加获取验证码按钮
+    UIButton* getVerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    getVerButton.titleLabel.font = font(20);
+    getVerButton.layer.borderColor = CommmonBlue.CGColor;
+    getVerButton.layer.borderWidth = 1;
+    getVerButton.layer.cornerRadius = 5;
+    [getVerButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [getVerButton setTitleColor:CommmonBlue forState:UIControlStateNormal];
+    getVerButton.titleLabel.font = font(PXGet375Width(20));
+    [verTextfield addSubview:getVerButton];
+    getVerButton.sd_layout
+    .bottomSpaceToView(verTextfield, 3)
+    .topSpaceToView(verTextfield, -3)
+    .rightSpaceToView(verTextfield, 0)
+    .widthIs(PXGet375Width(120));
+    
+    
+    // 密码
     LoginField* passTextfield = [[LoginField alloc]init];
-    passTextfield.placeholder = @"   请输入验证码";
+    passTextfield.placeholder = @"   请输入密码";
     [passTextfield setValue:[NSNumber numberWithInt:10] forKey:@"paddingLeft"];
     passTextfield.leftView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"passWord"]];
     passTextfield.leftViewMode = UITextFieldViewModeAlways;
@@ -87,30 +120,40 @@
     .widthRatioToView(self.view, 0.6)
     .heightIs(PXGet375Width(45));
     
-    passTextfield.sd_layout
+    verTextfield.sd_layout
     .topSpaceToView(phoneTextfield, PXGet375Width(80))
     .centerXEqualToView(self.view)
     .widthRatioToView(self.view, 0.6)
     .heightIs(PXGet375Width(45));
     
-    
-    UIButton* loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [loginButton setTitle:@"注册" forState:UIControlStateNormal];
-    loginButton.backgroundColor = RGBACOLOR(64, 146, 255, 1);
-    loginButton.layer.cornerRadius  = 7;
-    loginButton.titleLabel.font = font(15);
-    [self.view addSubview:loginButton];
-    
-//    loginButton.sd_layout
-//    .topSpaceToView(goReg, PXGet375Width(60))
-//    .widthRatioToView(self.view, 0.59)
-//    .centerXEqualToView(self.view)
-//    .heightIs(PXGet375Width(75));
+    passTextfield.sd_layout
+    .topSpaceToView(verTextfield, PXGet375Width(80))
+    .centerXEqualToView(self.view)
+    .widthRatioToView(self.view, 0.6)
+    .heightIs(PXGet375Width(45));
     
     
+    UIButton* regButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [regButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [regButton setTitle:@"注册" forState:UIControlStateNormal];
+    regButton.backgroundColor = RGBACOLOR(64, 146, 255, 1);
+    regButton.layer.cornerRadius  = 7;
+    regButton.titleLabel.font = font(15);
+    [self.view addSubview:regButton];
     
+    regButton.sd_layout
+    .topSpaceToView(passTextfield, PXGet375Width(90))
+    .widthRatioToView(self.view, 0.59)
+    .centerXEqualToView(self.view)
+    .heightIs(PXGet375Width(75));
+
 }
 
+-(void)onBack:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
 @end
