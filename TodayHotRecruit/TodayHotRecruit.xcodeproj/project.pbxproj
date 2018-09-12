@@ -103,6 +103,7 @@
 		F7B9BB532133E9AF003F9277 /* IconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9BB522133E9AF003F9277 /* IconTableViewCell.m */; };
 		F7B9BB572133EC1F003F9277 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9BB562133EC1F003F9277 /* BaseTableViewCell.m */; };
 		F7B9BB5A21343629003F9277 /* HomeJobTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9BB5921343629003F9277 /* HomeJobTableViewCell.m */; };
+		F7F6ECB02149482800C46446 /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F6ECAF2149482800C46446 /* BaseRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,6 +322,8 @@
 		F7B9BB562133EC1F003F9277 /* BaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		F7B9BB5821343628003F9277 /* HomeJobTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeJobTableViewCell.h; sourceTree = "<group>"; };
 		F7B9BB5921343629003F9277 /* HomeJobTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeJobTableViewCell.m; sourceTree = "<group>"; };
+		F7F6ECAE2149482800C46446 /* BaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
+		F7F6ECAF2149482800C46446 /* BaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		FD21E05FCD6AD835CB4C1994 /* Pods-TodayHotRecruitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruitUITests/Pods-TodayHotRecruitUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -684,6 +687,7 @@
 		F7599FFF212D6AA400A98074 /* PrivateFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				F7F6ECAD2149480E00C46446 /* Request */,
 				ED25C069213A90460022717E /* FSScrollContentViewLib */,
 				F70006E921356F0C00D52677 /* PinYin4Objc */,
 				F70006D721356EC100D52677 /* ZJindexCity */,
@@ -824,6 +828,15 @@
 			name = Model;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/Model;
 			sourceTree = SOURCE_ROOT;
+		};
+		F7F6ECAD2149480E00C46446 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				F7F6ECAE2149482800C46446 /* BaseRequest.h */,
+				F7F6ECAF2149482800C46446 /* BaseRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -1167,6 +1180,7 @@
 				ED3B908A2144FE4600D3661C /* THRUserInfoViewController.m in Sources */,
 				F70006B62135255600D52677 /* SDWebImageDecoder.m in Sources */,
 				F70006CE21353CD000D52677 /* JobTableViewCell.m in Sources */,
+				F7F6ECB02149482800C46446 /* BaseRequest.m in Sources */,
 				F70006B52135255600D52677 /* SDWebImageCompat.m in Sources */,
 				F759A014212D955900A98074 /* BaseNavigationController.m in Sources */,
 				F70006FA21356F0D00D52677 /* NSString+PinYin4Cocoa.m in Sources */,

@@ -91,11 +91,11 @@
     // 添加获取验证码按钮
     UIButton* getVerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     getVerButton.titleLabel.font = font(20);
-    getVerButton.layer.borderColor = CommmonBlue.CGColor;
+    getVerButton.layer.borderColor = CommonBlue.CGColor;
     getVerButton.layer.borderWidth = 1;
     getVerButton.layer.cornerRadius = 5;
     [getVerButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-    [getVerButton setTitleColor:CommmonBlue forState:UIControlStateNormal];
+    [getVerButton setTitleColor:CommonBlue forState:UIControlStateNormal];
     getVerButton.titleLabel.font = font(PXGet375Width(20));
     [verTextfield addSubview:getVerButton];
     getVerButton.sd_layout
