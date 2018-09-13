@@ -7,10 +7,21 @@
 //
 
 #import "RegistViewController.h"
+
+#import "VerifyCodeRequest.h"
+
+#import "NSString+zFundation.h"
+#import "BaseToast.h"
+
 #import "LoginField.h"
+#import "WLCaptcheButton.h"
 
-@interface RegistViewController ()
+@interface RegistViewController () <VerCodeProtocol>
+//获取验证码
+@property (nonatomic, strong) VerifyCodeRequest *verRequest;
 
+// 手机号field
+@property (nonatomic, strong) LoginField* phoneTextfield;
 @end
 
 @implementation RegistViewController
@@ -22,6 +33,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setHeaderViewAndTextfield];
+   
 }
 
 - (void)setHeaderViewAndTextfield{
@@ -73,6 +85,7 @@
     
     // 输入手机号
     LoginField *phoneTextfield = [[LoginField alloc]init];
+    _phoneTextfield = phoneTextfield;
     phoneTextfield.placeholder = @"   请输入手机号";
     [phoneTextfield setValue:[NSNumber numberWithInt:10] forKey:@"paddingLeft"];
     phoneTextfield.leftView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"userName"]];
@@ -89,14 +102,19 @@
     verTextfield.font = font(PXGet375Width(28));
     [self.view addSubview:verTextfield];
     // 添加获取验证码按钮
-    UIButton* getVerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    WLCaptcheButton* getVerButton = [[WLCaptcheButton alloc]init];
+    getVerButton.identifyKey = @"regist";
+    getVerButton.disabledBackgroundColor = [UIColor lightGrayColor];
+    getVerButton.disabledTitleColor = [UIColor whiteColor];
     getVerButton.titleLabel.font = font(20);
     getVerButton.layer.borderColor = CommonBlue.CGColor;
     getVerButton.layer.borderWidth = 1;
     getVerButton.layer.cornerRadius = 5;
     [getVerButton setTitle:@"获取验证码" forState:UIControlStateNormal];
     [getVerButton setTitleColor:CommonBlue forState:UIControlStateNormal];
+    [getVerButton addTarget:self action:@selector(getVerCode:) forControlEvents:UIControlEventTouchUpInside];
     getVerButton.titleLabel.font = font(PXGet375Width(20));
+   
     [verTextfield addSubview:getVerButton];
     getVerButton.sd_layout
     .bottomSpaceToView(verTextfield, 3)
@@ -136,6 +154,7 @@
     UIButton* regButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [regButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [regButton setTitle:@"注册" forState:UIControlStateNormal];
+    [regButton addTarget:self action:@selector(registAction) forControlEvents:UIControlEventTouchUpInside];
     regButton.backgroundColor = RGBACOLOR(64, 146, 255, 1);
     regButton.layer.cornerRadius  = 7;
     regButton.titleLabel.font = font(15);
@@ -149,11 +168,45 @@
 
 }
 
--(void)onBack:(id)sender{
+- (void)onBack:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
+}
+
+- (void)registAction{
+    
+}
+
+- (void)getVerCode:(WLCaptcheButton*)button{
+    // 搜集信息
+    NSString* phoneStr = _phoneTextfield.text;
+    
+    if (![phoneStr isPhoneNumber]) {
+        [BaseToast toast:@"请输入正确的验证码"];
+        return;
+    }
+    
+    [button fire];
+    
+    [self.verRequest getCodeWithSource:VerCodeSourceRregist andPhoneNumber:phoneStr WithResult:^{
+        [BaseToast toast:@"验证码发送成功"];
+    } andFailedBlock:^{
+        [BaseToast toast:@"验证码发送失败"];
+    }];
+}
+
+
+#pragma mark ---------------- lazy
+
+- (VerifyCodeRequest *)verRequest{
+    if (!_verRequest) {
+        _verRequest = [[VerifyCodeRequest alloc]init];
+        _verRequest.verDelegate = self;
+        
+    }
+    return _verRequest;
 }
 @end

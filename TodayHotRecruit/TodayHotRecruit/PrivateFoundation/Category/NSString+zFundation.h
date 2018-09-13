@@ -9,5 +9,17 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (zFundation)
+
+
+// 计算字体
+
 - (CGSize)sizeWithFont:(UIFont *)font limitedSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode;
+
+/**
+ *    @brief    校验有效手机号
+ *
+ *
+ *    @return    是否为有效手机号码
+ */
+- (BOOL)isPhoneNumber;
 @end

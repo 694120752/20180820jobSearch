@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+//#import <YTKNetwork.h>
 #import "AppTabBarController.h"
 
 @interface AppDelegate ()
@@ -26,8 +26,21 @@
     self.window.rootViewController = tabbar;
     
     [self.window makeKeyAndVisible];
+    
+    //[self configNewWorking];
+    
     return YES;
 }
+
+//-(void)configNewWorking{
+//    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+//    //config.baseUrl = @"http://47.105.48.3/job.api";
+//    config.baseUrl = @"https://lib.suning.com";
+//
+//    YTKNetworkAgent* manager = [YTKNetworkAgent sharedAgent];
+//    NSSet *contentTypeSet = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json",@"text/html",@"text/css", nil];
+//    [manager setValue:contentTypeSet forKeyPath:@"_manager.responseSerializer.acceptableContentTypes"];
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

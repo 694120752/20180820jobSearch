@@ -19,4 +19,20 @@
     retSize = rect.size;
     return retSize;
 }
+
+
+/**
+ *    @brief    校验有效手机号
+ *
+ *
+ *    @return    是否为有效手机号码
+ */
+- (BOOL)isPhoneNumber
+
+{
+    NSString *mobileNoRegex = @"1\\d{10}";
+    NSPredicate *mobileNoTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", mobileNoRegex];
+    return [mobileNoTest evaluateWithObject:self];
+}
+
 @end

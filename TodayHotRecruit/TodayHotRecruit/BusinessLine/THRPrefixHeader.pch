@@ -18,6 +18,6 @@
 
 #define CommonBlue RGBACOLOR(66, 146, 255, 1)
 
-
+#define HTTP @"http://47.105.48.3/job.api"
 
 #endif /* THRPrefixHeader_pch */

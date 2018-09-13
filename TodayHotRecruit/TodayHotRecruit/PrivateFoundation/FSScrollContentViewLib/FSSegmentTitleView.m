@@ -104,7 +104,7 @@
     titleFont = selectBtn.isSelected?_titleSelectFont:_titleFont;
     CGFloat indicatorWidth = [FSSegmentTitleView getWidthWithString:self.titlesArr[self.selectIndex] font:titleFont];
     [UIView animateWithDuration:(animated?0.05:0) animations:^{
-        switch (_indicatorType) {
+        switch (self->_indicatorType) {
             case FSIndicatorTypeDefault:
                 self.indicatorView.frame = CGRectMake(selectBtn.frame.origin.x , CGRectGetHeight(self.scrollView.bounds) - 2, CGRectGetWidth(selectBtn.bounds), 2);
                 break;
