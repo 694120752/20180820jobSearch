@@ -20,4 +20,6 @@
 
 #define HTTP @"http://47.105.48.3/job.api"
 
+#define DESC NSDictionary*resultDic=responseObject;NSString*desc = [resultDic objectForKey:@"desc"];
+
 #endif /* THRPrefixHeader_pch */

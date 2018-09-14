@@ -20,6 +20,23 @@
                                 };
     [manager POST:[HTTP stringByAppendingString:@"/user/register"] parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
+        NSDictionary* resultDic = responseObject;
+        NSString* desc = [resultDic objectForKey:@"desc"];
+        
+        if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
+            success();
+            
+            // 这边存入用户信息
+            NSDictionary* userDic = [resultDic objectForKey:@"userInfo"];
+            UserDefault
+            if ([userDic isKindOfClass:[NSDictionary class]]) {
+                [ud setValue:userDic forKey:@"userInfo"];
+            }
+            
+        }else{
+            failed(desc);
+        }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failed(@"网络不通");
     }];

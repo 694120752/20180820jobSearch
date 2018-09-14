@@ -11,6 +11,7 @@ target 'TodayHotRecruit' do
     pod 'AFNetworking'
     pod 'MJRefresh'
     pod 'SDAutoLayout'
+    pod 'MBProgressHUD'
 
   target 'TodayHotRecruitTests' do
     inherit! :search_paths

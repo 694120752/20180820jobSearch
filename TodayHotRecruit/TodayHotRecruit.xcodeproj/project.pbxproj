@@ -70,6 +70,9 @@
 		F700071221356F8900D52677 /* ZJProgressHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070B21356F8800D52677 /* ZJProgressHUDView.m */; };
 		F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070D21356F8800D52677 /* ZJTextAndImageHUDView.m */; };
 		F700071421356F8900D52677 /* ZJTextOnlyHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070F21356F8800D52677 /* ZJTextOnlyHUDView.m */; };
+		F708B7E0214B667B00328555 /* FindPassRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7DF214B667B00328555 /* FindPassRequest.m */; };
+		F708B7E3214B93CA00328555 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7E2214B93CA00328555 /* LoginRequest.m */; };
+		F708B7E8214BB7AB00328555 /* NSDictionary+zFundation.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7E7214BB7AB00328555 /* NSDictionary+zFundation.m */; };
 		F70C8DAF214A0F9F0027DBAB /* VerifyCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C8DAE214A0F9F0027DBAB /* VerifyCodeRequest.m */; };
 		F70C8DB2214A507E0027DBAB /* BaseToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C8DB1214A507E0027DBAB /* BaseToast.m */; };
 		F70C8DB5214A585F0027DBAB /* RegistRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C8DB4214A585F0027DBAB /* RegistRequest.m */; };
@@ -259,6 +262,12 @@
 		F700070D21356F8800D52677 /* ZJTextAndImageHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextAndImageHUDView.m; sourceTree = "<group>"; };
 		F700070E21356F8800D52677 /* ZJTextOnlyHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextOnlyHUDView.h; sourceTree = "<group>"; };
 		F700070F21356F8800D52677 /* ZJTextOnlyHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextOnlyHUDView.m; sourceTree = "<group>"; };
+		F708B7DE214B667B00328555 /* FindPassRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindPassRequest.h; sourceTree = "<group>"; };
+		F708B7DF214B667B00328555 /* FindPassRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindPassRequest.m; sourceTree = "<group>"; };
+		F708B7E1214B93CA00328555 /* LoginRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
+		F708B7E2214B93CA00328555 /* LoginRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
+		F708B7E6214BB7AB00328555 /* NSDictionary+zFundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+zFundation.h"; sourceTree = "<group>"; };
+		F708B7E7214BB7AB00328555 /* NSDictionary+zFundation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+zFundation.m"; sourceTree = "<group>"; };
 		F70C8DAD214A0F9F0027DBAB /* VerifyCodeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerifyCodeRequest.h; sourceTree = "<group>"; };
 		F70C8DAE214A0F9F0027DBAB /* VerifyCodeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerifyCodeRequest.m; sourceTree = "<group>"; };
 		F70C8DB0214A507E0027DBAB /* BaseToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseToast.h; sourceTree = "<group>"; };
@@ -613,6 +622,8 @@
 				F76D2278213D1C7F00466BC2 /* NSString+zFundation.m */,
 				F70006C92135345600D52677 /* NSDate+Helper.h */,
 				F70006CA2135345600D52677 /* NSDate+Helper.m */,
+				F708B7E6214BB7AB00328555 /* NSDictionary+zFundation.h */,
+				F708B7E7214BB7AB00328555 /* NSDictionary+zFundation.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -624,6 +635,10 @@
 				F70C8DAE214A0F9F0027DBAB /* VerifyCodeRequest.m */,
 				F70C8DB3214A585F0027DBAB /* RegistRequest.h */,
 				F70C8DB4214A585F0027DBAB /* RegistRequest.m */,
+				F708B7DE214B667B00328555 /* FindPassRequest.h */,
+				F708B7DF214B667B00328555 /* FindPassRequest.m */,
+				F708B7E1214B93CA00328555 /* LoginRequest.h */,
+				F708B7E2214B93CA00328555 /* LoginRequest.m */,
 			);
 			path = LARRequest;
 			sourceTree = "<group>";
@@ -1164,6 +1179,7 @@
 				EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */,
 				F7B9BB572133EC1F003F9277 /* BaseTableViewCell.m in Sources */,
 				F70C8DAF214A0F9F0027DBAB /* VerifyCodeRequest.m in Sources */,
+				F708B7E0214B667B00328555 /* FindPassRequest.m in Sources */,
 				F76D2276213D1A4700466BC2 /* ExPersonalDataTableViewCell.m in Sources */,
 				F70006B82135255600D52677 /* SDWebImageDownloaderOperation.m in Sources */,
 				F70006BA2135255600D52677 /* SDWebImagePrefetcher.m in Sources */,
@@ -1190,6 +1206,7 @@
 				F70DBD492136BA560031E642 /* UserCenterTableViewCell.m in Sources */,
 				F7557CB32137F167009C92D8 /* HomeSearchViewController.m in Sources */,
 				F746CC902138E1D7009C2478 /* CustomSearch.m in Sources */,
+				F708B7E3214B93CA00328555 /* LoginRequest.m in Sources */,
 				F76D2273213CD9C500466BC2 /* ConsultantSubActivityViewController.m in Sources */,
 				ED25C04921314A5D0022717E /* HomePageViewController.m in Sources */,
 				F7599FDD212D69A700A98074 /* main.m in Sources */,
@@ -1233,6 +1250,7 @@
 				F700070321356F5300D52677 /* ZJCityCollectionViewCell.m in Sources */,
 				F76D2279213D1C7F00466BC2 /* NSString+zFundation.m in Sources */,
 				F70006C521352CBA00D52677 /* ScrollMessageTableViewCell.m in Sources */,
+				F708B7E8214BB7AB00328555 /* NSDictionary+zFundation.m in Sources */,
 				F70006852135251500D52677 /* SDCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

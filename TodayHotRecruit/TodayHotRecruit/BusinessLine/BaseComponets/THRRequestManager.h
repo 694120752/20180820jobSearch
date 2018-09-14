@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
 @interface THRRequestManager : AFHTTPSessionManager
+
+// 请求头文件
+@property (nonatomic, strong) NSDictionary *headerDic;
+
 + (instancetype)manager;
 @end

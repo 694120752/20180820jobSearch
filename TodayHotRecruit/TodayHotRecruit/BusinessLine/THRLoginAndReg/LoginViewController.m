@@ -9,8 +9,12 @@
 #import "LoginViewController.h"
 #import "LoginField.h"
 #import "RegistViewController.h"
+#import "LoginRequest.h"
+#import <MBProgressHUD.h>
 
 @interface LoginViewController ()
+@property (nonatomic, strong) LoginField *phoneTextfield;
+@property (nonatomic, strong) LoginField *passTextfield;
 @end
 
 @implementation LoginViewController
@@ -60,6 +64,8 @@
     
     // 输入手机号
     LoginField *phoneTextfield = [[LoginField alloc]init];
+    _phoneTextfield = phoneTextfield;
+    phoneTextfield.keyboardType = UIKeyboardTypePhonePad;
     phoneTextfield.placeholder = @"   请输入手机号";
     [phoneTextfield setValue:[NSNumber numberWithInt:10] forKey:@"paddingLeft"];
     phoneTextfield.leftView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"userName"]];
@@ -69,6 +75,7 @@
     
     // 输入密码
     LoginField* passTextfield = [[LoginField alloc]init];
+    _passTextfield = passTextfield;
     passTextfield.placeholder = @"   请输入密码";
     [passTextfield setValue:[NSNumber numberWithInt:10] forKey:@"paddingLeft"];
     passTextfield.leftView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"passWord"]];
@@ -109,6 +116,7 @@
     [forGetPass setTitle:@"忘记密码？" forState:UIControlStateNormal];
     [forGetPass setTitleColor:RGBACOLOR(139, 139, 139, 1) forState:UIControlStateNormal];
     forGetPass.titleLabel.font = font(13);
+    [forGetPass addTarget:self action:@selector(goFindPassWord) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:forGetPass];
     
     forGetPass.sd_layout
@@ -131,7 +139,6 @@
     .widthRatioToView(self.view, 0.59)
     .centerXEqualToView(self.view)
     .heightIs(PXGet375Width(75));
-    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -139,20 +146,47 @@
 }
 
 - (void)goOpenRegistVc{
-    // 正确的返回姿势
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    
-    
-    [self.navigationController pushViewController:[RegistViewController new] animated:YES];
-    
+    RegistViewController* reg = [RegistViewController new];
+    reg.vcType = RegistVc;
+    [self.navigationController pushViewController:reg animated:YES];
+}
+
+- (void)goFindPassWord{
+    RegistViewController* pass = [RegistViewController new];
+    pass.vcType = FindPassVc;
+    [self.navigationController pushViewController:pass animated:YES];
 }
 
 
 - (void)loginAction{
+    // 登录
     
-    UserDefault
-    [ud setValue:@"YES" forKey:@"isLogin"];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSString* userName = _phoneTextfield.text;
+    NSString* pass = _passTextfield.text;
+    
+//    if (IsStrEmpty(userName) || IsStrEmpty(pass)) {
+//        return;
+//    }
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.minSize = CGSizeMake(150.f, 100.f);
+    hud.mode = MBProgressHUDModeIndeterminate;
+    
+    
+    [LoginRequest loginWithUsernName:userName andPassWord:pass WithSUccessBlock:^{
+        UserDefault
+        [ud setValue:@"YES" forKey:@"isLogin"];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [hud hideAnimated:YES];
+    } andFailedBlock:^(NSString *reason) {
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = NSLocalizedString(reason, @"HUD completed title");
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES];
+        });
+    }];
+    
+    
 }
 
 @end

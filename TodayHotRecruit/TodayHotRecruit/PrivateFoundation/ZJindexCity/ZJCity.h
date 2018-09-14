@@ -10,6 +10,8 @@
 
 @interface ZJCity : NSObject
 @property (copy, nonatomic) NSString *name;
+
+@property (nonatomic, strong) NSString *addressID;
 // 搜索联系人的方法 (拼音/拼音首字母缩写/汉字)
 + (NSArray<ZJCity *> *)searchText:(NSString *)searchText inDataArray:(NSArray<ZJCity *> *)dataArray;
 @end

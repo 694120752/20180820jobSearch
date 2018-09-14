@@ -273,7 +273,7 @@
         // animate to show
         _toastView.alpha  = .0f;
         [UIView animateWithDuration:.35f animations:^{
-            _toastView.alpha = 0.8f;
+            self->_toastView.alpha = 0.8f;
         } completion:^(BOOL finished) {
             [self performSelector:@selector(hideToast) withObject:nil afterDelay:2.5f];
         }];

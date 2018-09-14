@@ -7,7 +7,13 @@
 //
 
 #import "BaseViewController.h"
+#import <MBProgressHUD.h>
+
+typedef enum : NSUInteger {
+    RegistVc,
+    FindPassVc,
+} THRRegVCType;
 
 @interface RegistViewController : BaseViewController
-
+@property (nonatomic, assign) THRRegVCType vcType;
 @end

@@ -13,6 +13,10 @@
 #import "ZJCitiesGroup.h"
 #import "ZJCityTableViewCell.h"
 #import "ZJLocationCityTableViewCell.h"
+#import "NSDictionary+zFundation.h"
+
+#import "THRRequestManager.h"
+#import "BaseToast.h"
 
 #import <CoreLocation/CoreLocation.h>
 
@@ -62,12 +66,7 @@ static NSString *const kLocationCellId = @"kLocationCellId";
 
 - (instancetype)initWithDataArray:(NSArray<ZJCitiesGroup *> *)dataArray {
     if (self = [super initWithNibName:nil bundle:nil]) {
-        if (dataArray) {
-            _data = dataArray;
-        }
-        else {
-            [self setupLocalData];
-        }
+         [self setupData];
     }
     return self;
 }
@@ -112,15 +111,55 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     }];
 }
 
-// 初始化本地数据
-- (void)setupLocalData {
-    NSArray *rootArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"cityGroups.plist" ofType:nil]];
-    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:rootArray.count];
+// 初始化数据
+- (void)setupData {
     
-    for (NSDictionary *citisDic in rootArray) {
-        ZJCitiesGroup *citiesGroup = [[ZJCitiesGroup alloc] initWithDictionary:citisDic];
-        [tempArray addObject:citiesGroup];
+    UserDefault
+    NSDictionary* dic = [ud objectForKey:@"userInfo"];
+    if (!NotNilAndNull(dic)) {
+        [BaseToast toast:@"请登录后操作"];
+        return;
     }
+    
+    NSString* userName = [dic objectForKey:@"userName"];
+    if (IsStrEmpty(userName)) {
+        [BaseToast toast:@"请重新登录"];
+        return;
+    }
+    
+    THRRequestManager* manager = [THRRequestManager manager];
+    manager.headerDic = @{@"x-s-loginName":userName};
+    
+//    NSArray *rootArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"cityGroups.plist" ofType:nil]];
+//    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:rootArray.count];
+    NSMutableArray* tempArray = [NSMutableArray array];
+    [manager POST:[HTTP stringByAppendingString:@"/address/list"] parameters:@{@"level":@"",@"parentID":@"",@"parentName":@""} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        DESC
+        if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
+            NSArray* cityArr = [resultDic objectForKey:@"dataList"];
+            NSMutableArray* allCity = [NSMutableArray array];
+            for (NSDictionary* dict in cityArr) {
+                
+                @autoreleasepool {
+                    ZJCity* city = [ZJCity new];
+                    city.name = EncodeStringFromDic(dict, @"name");
+                    city.addressID = EncodeStringFromDic(dict, @"addressID");
+                }
+                
+                
+            }
+        }else{
+            [BaseToast toast:desc];
+        }
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [BaseToast toast:@"地址出错咯"];
+    }];
+//    for (NSDictionary *citisDic in rootArray) {
+//        ZJCitiesGroup *citiesGroup = [[ZJCitiesGroup alloc] initWithDictionary:citisDic];
+//        [tempArray addObject:citiesGroup];
+//    }
     _data = tempArray;
 }
 

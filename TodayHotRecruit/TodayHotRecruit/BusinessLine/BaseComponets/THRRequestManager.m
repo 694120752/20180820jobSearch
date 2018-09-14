@@ -10,6 +10,7 @@
 
 
 @implementation THRRequestManager
+
 + (THRRequestManager* )manager{
     
     THRRequestManager *manager = [super manager];
@@ -17,4 +18,15 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     return manager;
 }
+
+// 添加请求头文件
+- (void)setHeaderDic:(NSDictionary *)headerDic{
+    if (headerDic != nil) {
+        for (NSString *httpHeaderField in headerDic.allKeys) {
+            NSString *value = headerDic[httpHeaderField];
+            [self.requestSerializer setValue:value forHTTPHeaderField:httpHeaderField];
+        }
+    }
+}
+
 @end
