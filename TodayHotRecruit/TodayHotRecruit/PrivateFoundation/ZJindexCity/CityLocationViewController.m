@@ -111,6 +111,9 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     }];
 }
 
+
+
+#pragma mark ------------------------------- 处理城市数据
 // 初始化数据
 - (void)setupData {
     
@@ -132,23 +135,73 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     
 //    NSArray *rootArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"cityGroups.plist" ofType:nil]];
 //    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:rootArray.count];
-    NSMutableArray* tempArray = [NSMutableArray array];
-    [manager POST:[HTTP stringByAppendingString:@"/address/list"] parameters:@{@"level":@"",@"parentID":@"",@"parentName":@""} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    __weak typeof(self)weakSelf = self;
+    [manager POST:[HTTP stringByAppendingString:@"/address/list"] parameters:@{@"level":@"2",@"parentID":@"",@"parentName":@""} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         DESC
+        NSMutableArray* allCity = [NSMutableArray array];
+        
         if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
             NSArray* cityArr = [resultDic objectForKey:@"dataList"];
-            NSMutableArray* allCity = [NSMutableArray array];
             for (NSDictionary* dict in cityArr) {
-                
-                @autoreleasepool {
-                    ZJCity* city = [ZJCity new];
-                    city.name = EncodeStringFromDic(dict, @"name");
-                    city.addressID = EncodeStringFromDic(dict, @"addressID");
-                }
-                
-                
+                ZJCity* city = [ZJCity new];
+                city.name = EncodeStringFromDic(dict, @"name");
+                city.addressID = EncodeStringFromDic(dict, @"addressID");
+                [allCity addObject:city];
             }
+            
+            [allCity sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                
+                ZJCity * c1 = obj1;
+                ZJCity* c2 = obj2;
+                return [c1.firstLetter compare:c2.firstLetter options:NSNumericSearch];
+            }];
+            
+//            把这个数组转换成 二位的
+            NSMutableArray* tempArray = [NSMutableArray array];
+            if (!IsArrEmpty(allCity)) {
+                
+                NSString* lastMark = @"";
+                NSUInteger j = -1;
+                
+                for (NSUInteger i = 0; i< allCity.count; i++) {
+                    ZJCity* city = allCity[i];
+                    NSString* compareMark = city.firstLetter;
+                    if (![lastMark isEqualToString:compareMark]) {
+//                        NSMutableDictionary* mDic = [NSMutableDictionary dictionary];
+                        ZJCitiesGroup* group = [ZJCitiesGroup new];
+                        group.cities = @[city];
+                        group.indexTitle = compareMark;
+//                        NSMutableArray* cities = [NSMutableArray array];
+//                        [cities addObject:city.name];
+//                        [mDic setValue:cities forKey:@"cities"];
+//                        [mDic setValue:compareMark forKey:@"title"];
+                        
+                        [tempArray addObject:group];
+                        lastMark = [compareMark copy];
+                        j++;
+                    }else{
+                        // 取出来加进去
+                        ZJCitiesGroup* group = tempArray[j];
+                        NSMutableArray* temp = [group.cities mutableCopy];//[group objectForKey:@"cities"];
+                        [temp addObject:city];
+                        group.cities = [temp copy];
+//                        [dict setValue:temp forKey:@"cities"];
+                    }
+                    
+                }
+            }
+            
+            // 添加热门城市
+            ZJCity* city = [ZJCity new];
+            city.name = @"北京";
+            ZJCitiesGroup* hot = [ZJCitiesGroup new];
+            hot.cities = @[city];
+            hot.indexTitle = @"热门城市";
+            
+            [tempArray insertObject:hot atIndex:0];
+            
+            self->_data = tempArray;
+            [weakSelf.tableView reloadData];
         }else{
             [BaseToast toast:desc];
         }
@@ -160,7 +213,7 @@ static NSString *const kLocationCellId = @"kLocationCellId";
 //        ZJCitiesGroup *citiesGroup = [[ZJCitiesGroup alloc] initWithDictionary:citisDic];
 //        [tempArray addObject:citiesGroup];
 //    }
-    _data = tempArray;
+//    _data = tempArray;
 }
 
 // 刷新定位城市的section == 0
@@ -432,7 +485,7 @@ static NSString *const kLocationCellId = @"kLocationCellId";
 - (CLLocationManager *)locManager{
     if (!_locManager) {
         CLLocationManager *locManager = [CLLocationManager new];
-        locManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         locManager.distanceFilter = kCLDistanceFilterNone;
         _locManager = locManager;
     }

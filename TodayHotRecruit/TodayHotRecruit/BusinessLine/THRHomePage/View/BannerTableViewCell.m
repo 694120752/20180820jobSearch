@@ -41,7 +41,7 @@
 
 -(void)updateWithURL:(NSArray*)urlArray{
     // 更新轮播数据
-    
+    _bannerView.imageURLStringsGroup = urlArray;
 }
 
 @end

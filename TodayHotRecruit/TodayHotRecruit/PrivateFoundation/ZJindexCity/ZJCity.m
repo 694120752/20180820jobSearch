@@ -81,5 +81,18 @@ static BOOL isIncludeChineseInNSString(NSString *string) {
     return results;
 }
 
-
+-(void)setName:(NSString *)name{
+    _name = name;
+    HanyuPinyinOutputFormat *outputFormat = [[HanyuPinyinOutputFormat alloc] init];
+    [outputFormat setToneType:ToneTypeWithoutTone];
+    [outputFormat setVCharType:VCharTypeWithV];
+    [outputFormat setCaseType:CaseTypeLowercase];
+    
+    NSString* first = [PinyinHelper getFirstHanyuPinyinStringWithChar:[name characterAtIndex:0]  withHanyuPinyinOutputFormat:outputFormat];
+    NSString* result = @"";
+    if (!IsStrEmpty(first)) {
+        result = [first substringToIndex:1];
+    }
+    self.firstLetter = [result uppercaseString];
+}
 @end

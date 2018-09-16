@@ -164,9 +164,9 @@
     NSString* userName = _phoneTextfield.text;
     NSString* pass = _passTextfield.text;
     
-//    if (IsStrEmpty(userName) || IsStrEmpty(pass)) {
-//        return;
-//    }
+    if (IsStrEmpty(userName) || IsStrEmpty(pass)) {
+        return;
+    }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.minSize = CGSizeMake(150.f, 100.f);

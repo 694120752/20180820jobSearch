@@ -20,6 +20,8 @@
 		ED3B90872144F8A000D3661C /* THRRealNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90862144F8A000D3661C /* THRRealNameViewController.m */; };
 		ED3B908A2144FE4600D3661C /* THRUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90892144FE4600D3661C /* THRUserInfoViewController.m */; };
 		ED3B908D214502AE00D3661C /* UserInfoHeadImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B908C214502AE00D3661C /* UserInfoHeadImageTableViewCell.m */; };
+		ED3B9090214E681900D3661C /* THRJob.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B908F214E681900D3661C /* THRJob.m */; };
+		ED3B9093214E740000D3661C /* THRCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B9092214E740000D3661C /* THRCompany.m */; };
 		EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */; };
 		F2C13BDE1646393BCCCB6C1D /* libPods-TodayHotRecruitUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */; };
 		F70006702134EB4400D52677 /* SelectDto.m in Sources */ = {isa = PBXBuildFile; fileRef = F700066F2134EB4400D52677 /* SelectDto.m */; };
@@ -163,6 +165,10 @@
 		ED3B90892144FE4600D3661C /* THRUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRUserInfoViewController.m; sourceTree = "<group>"; };
 		ED3B908B214502AE00D3661C /* UserInfoHeadImageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoHeadImageTableViewCell.h; sourceTree = "<group>"; };
 		ED3B908C214502AE00D3661C /* UserInfoHeadImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoHeadImageTableViewCell.m; sourceTree = "<group>"; };
+		ED3B908E214E681900D3661C /* THRJob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = THRJob.h; path = TodayHotRecruit/BusinessLine/THRUserCenter/View/THRJob.h; sourceTree = SOURCE_ROOT; };
+		ED3B908F214E681900D3661C /* THRJob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = THRJob.m; path = TodayHotRecruit/BusinessLine/THRUserCenter/View/THRJob.m; sourceTree = SOURCE_ROOT; };
+		ED3B9091214E740000D3661C /* THRCompany.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = THRCompany.h; path = TodayHotRecruit/BusinessLine/THRUserCenter/View/THRCompany.h; sourceTree = SOURCE_ROOT; };
+		ED3B9092214E740000D3661C /* THRCompany.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = THRCompany.m; path = TodayHotRecruit/BusinessLine/THRUserCenter/View/THRCompany.m; sourceTree = SOURCE_ROOT; };
 		EDAC72AE2131393D00FA61C5 /* HomePageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageNavController.h; sourceTree = "<group>"; };
 		EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageNavController.m; sourceTree = "<group>"; };
 		F700066E2134EB4400D52677 /* SelectDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectDto.h; sourceTree = "<group>"; };
@@ -889,6 +895,10 @@
 		F7B9BB4D2133E55D003F9277 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ED3B908E214E681900D3661C /* THRJob.h */,
+				ED3B908F214E681900D3661C /* THRJob.m */,
+				ED3B9091214E740000D3661C /* THRCompany.h */,
+				ED3B9092214E740000D3661C /* THRCompany.m */,
 			);
 			name = Model;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/Model;
@@ -1170,6 +1180,7 @@
 				F70006E721356EEA00D52677 /* ZJLocationCityTableViewCell.m in Sources */,
 				F70006F921356F0D00D52677 /* HanyuPinyinOutputFormat.m in Sources */,
 				ED25C059213169E10022717E /* THRUserCenterViewController.m in Sources */,
+				ED3B9093214E740000D3661C /* THRCompany.m in Sources */,
 				ED25C070213A90460022717E /* FSPageContentView.m in Sources */,
 				F70006E621356EEA00D52677 /* CityLocationViewController.m in Sources */,
 				F79A7F94212FE22E002E73E0 /* BaseTableView.m in Sources */,
@@ -1244,6 +1255,7 @@
 				ED3B908A2144FE4600D3661C /* THRUserInfoViewController.m in Sources */,
 				F70006B62135255600D52677 /* SDWebImageDecoder.m in Sources */,
 				F70006CE21353CD000D52677 /* JobTableViewCell.m in Sources */,
+				ED3B9090214E681900D3661C /* THRJob.m in Sources */,
 				F70006B52135255600D52677 /* SDWebImageCompat.m in Sources */,
 				F759A014212D955900A98074 /* BaseNavigationController.m in Sources */,
 				F70006FA21356F0D00D52677 /* NSString+PinYin4Cocoa.m in Sources */,

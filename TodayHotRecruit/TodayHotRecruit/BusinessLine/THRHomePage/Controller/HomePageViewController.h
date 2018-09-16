@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
+extern const NSUInteger listPageSize;
+
 @interface HomePageViewController : BaseViewController
 
 @end

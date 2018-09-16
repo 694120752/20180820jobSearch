@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSDictionary *headerDic;
 
 + (instancetype)manager;
+
+- (instancetype)setDefaultHeader;
 @end

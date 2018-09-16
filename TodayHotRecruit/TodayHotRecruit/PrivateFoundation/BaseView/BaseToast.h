@@ -6,7 +6,7 @@
 //  Copyright © 2018年 sn_zjs. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-
+#import <MBProgressHUD.h>
 @interface BaseToast : NSObject
 
 /*

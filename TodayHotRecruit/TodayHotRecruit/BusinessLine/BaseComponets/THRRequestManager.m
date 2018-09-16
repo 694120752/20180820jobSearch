@@ -12,7 +12,6 @@
 @implementation THRRequestManager
 
 + (THRRequestManager* )manager{
-    
     THRRequestManager *manager = [super manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -27,6 +26,18 @@
             [self.requestSerializer setValue:value forHTTPHeaderField:httpHeaderField];
         }
     }
+}
+
+// 添加默认头
+- (instancetype)setDefaultHeader{
+    UserDefault
+    NSString* userName = @"";
+    NSDictionary* dic = [ud objectForKey:@"userInfo"];
+    if (NotNilAndNull(dic)) {
+        userName = [dic objectForKey:@"userName"];
+        [self setHeaderDic:@{@"x-s-loginName":userName}];
+    }
+    return self;
 }
 
 @end
