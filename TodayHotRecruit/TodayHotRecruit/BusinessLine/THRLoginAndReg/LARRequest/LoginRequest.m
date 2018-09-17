@@ -26,6 +26,7 @@
         }else{
             faileBlock(desc);
         }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         faileBlock(@"网络不通");
     }];

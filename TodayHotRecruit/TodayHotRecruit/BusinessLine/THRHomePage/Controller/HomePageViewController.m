@@ -32,6 +32,10 @@
 #import "THRJob.h"
 #import "THRCompany.h"
 
+// MJ
+#import <MJExtension.h>
+#import <MJRefresh.h>
+
 NSUInteger const listPageSize = 10;
 
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,THRCommonDelegate>
@@ -45,13 +49,13 @@ NSUInteger const listPageSize = 10;
 /** 定位按钮*/
 @property(nonatomic,strong)UIButton* locationButton;
 
-
 /** 定位三件套*/
 @property (strong, nonatomic) CLLocationManager *locManager;
 @property (strong, nonatomic) CLGeocoder *geocoder;
 
 /** 页数*/
 @property(nonatomic,assign)NSUInteger pageNo;
+
 @end
 
 @implementation HomePageViewController
@@ -219,7 +223,7 @@ NSUInteger const listPageSize = 10;
             break;
         case 1:
         {
-            return 10;//self.dataArray.count;
+            return self.dataArray.count ;
         }
             break;
             
@@ -273,6 +277,7 @@ NSUInteger const listPageSize = 10;
         {
             //job
             JobTableViewCell* base = [[JobTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([BaseTableViewCell class])];
+            base.job = self.dataArray[indexPath.row];
             return base;
         }
             break;
@@ -386,25 +391,40 @@ NSUInteger const listPageSize = 10;
     THRRequestManager* jobRequest = [[THRRequestManager manager] setDefaultHeader];
     NSDictionary* pagrameter = @{
                                  @"pageNo":@(self.pageNo),
-                                 @"pageSize":@(listPageSize)
+                                 @"pageSize":@(listPageSize),@"city":@"上海"
                                  };
+    __weak typeof(self)weakSelf = self;
     [jobRequest POST:[HTTP stringByAppendingString:@"/job/list"] parameters:pagrameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
         DESC
+        NSArray* dataList = @[];
         if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
-            NSArray* dataList = [resultDic objectForKey:@"dataList"];
-            for (NSDictionary* dataDic in dataList) {
-              
-            }
+            dataList = [resultDic objectForKey:@"dataList"];
+           weakSelf.dataArray = [[weakSelf.dataArray arrayByAddingObjectsFromArray:[THRJob mj_objectArrayWithKeyValuesArray:dataList]] mutableCopy];
         }
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+        if (dataList.count < listPageSize ) {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }else{
+            [weakSelf.tableView.mj_footer endRefreshing];
+        }
+        
+        weakSelf.tableView.mj_footer.hidden = NO;
+        
+        [weakSelf.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@",error);
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshing];
+        weakSelf.tableView.mj_footer.hidden = NO;
     }];
 }
 
 
 - (void)getNewJobList{
     self.pageNo = 0;
+    [self.tableView.mj_footer resetNoMoreData];
+    [self.dataArray removeAllObjects];
     [self getJobList];
 }
 
@@ -417,9 +437,23 @@ NSUInteger const listPageSize = 10;
 
 - (BaseTableView *)tableView{
     if (!_tableView) {
-        _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, kScreenHeight - NavigationBar_Bottom_Y - Bottom_iPhoneX_SPACE) style:UITableViewStylePlain];
+        _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, kScreenHeight - NavigationBar_Bottom_Y - Bottom_iPhoneX_SPACE - 5)  style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        
+        __weak typeof(self)weakSelf = self;
+        MJRefreshNormalHeader* normaleHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [weakSelf getNewJobList];
+        }];
+        normaleHeader.stateLabel.text = @"找工作正在刷新";
+        _tableView.mj_header = normaleHeader;
+        
+        MJRefreshAutoNormalFooter* mjFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            [weakSelf getMoreJobList];
+        }];
+        mjFoot.automaticallyRefresh = NO;
+        _tableView.mj_footer = mjFoot;
+        _tableView.mj_footer.hidden = YES;
         
         [_tableView registerClass:[BannerTableViewCell class] forCellReuseIdentifier:NSStringFromClass([BannerTableViewCell class])];
         [_tableView registerClass:[IconTableViewCell class] forCellReuseIdentifier:NSStringFromClass([IconTableViewCell class])];
