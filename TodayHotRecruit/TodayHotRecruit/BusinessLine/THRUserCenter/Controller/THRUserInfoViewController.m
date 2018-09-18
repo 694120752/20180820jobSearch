@@ -132,6 +132,8 @@ typedef enum : NSUInteger {
         case HeaderImage:
         {
             // 上传头像
+            
+            
         }
             break;
             
