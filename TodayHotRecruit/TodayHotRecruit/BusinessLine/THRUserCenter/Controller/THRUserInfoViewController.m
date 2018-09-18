@@ -11,6 +11,7 @@
 
 // tableViewCell
 #import "UserInfoHeadImageTableViewCell.h"
+#import "UserInfoBaseTableViewCell.h"
 
 @interface THRUserInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 主体tableVIew*/
@@ -58,12 +59,83 @@ typedef enum : NSUInteger {
             return cell;
         }
             break;
-            
-        default:
+        case NickName:
         {
-            BaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BaseTableViewCell class])];
+            UserInfoBaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserInfoBaseTableViewCell class])];
+            cell.labelCase = @"nickName";
             return cell;
         }
+            break;
+        case Gender:
+        {
+            UserInfoBaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserInfoBaseTableViewCell class])];
+            cell.labelCase = @"sex";
+            return cell;
+        }
+            break;
+        case PhoneNumber:
+        {
+            UserInfoBaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserInfoBaseTableViewCell class])];
+            cell.labelCase = @"userName";
+            return cell;
+        }
+            break;
+        case BirthDay:
+        {
+            UserInfoBaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserInfoBaseTableViewCell class])];
+            cell.labelCase = @"birthday";
+            return cell;
+        }
+            break;
+        case City:
+        {
+            UserInfoBaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserInfoBaseTableViewCell class])];
+            cell.labelCase = @"cityName";
+            return cell;
+        }
+            break;
+        case HomeLand:
+        {
+            UserInfoBaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserInfoBaseTableViewCell class])];
+            cell.labelCase = @"birthCityName";
+            return cell;
+        }
+        case AcademicBackground:
+        {
+            UserInfoBaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserInfoBaseTableViewCell class])];
+            cell.labelCase = @"education";
+            return cell;
+        }
+        default:
+        {
+            UserInfoBaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserInfoBaseTableViewCell class])];
+            return cell;
+        }
+            break;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+        case HeaderImage:
+            return PXGet375Width(140);
+            break;
+            
+        default:
+            return PXGet375Width(100);
+            break;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+        case HeaderImage:
+        {
+            // 上传头像
+        }
+            break;
+            
+        default:
             break;
     }
 }
@@ -75,10 +147,10 @@ typedef enum : NSUInteger {
         _tableView.frame = CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, kScreenHeight - NavigationBar_Bottom_Y);
         _tableView.dataSource = self;
         _tableView.delegate = self;
-        
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         [_tableView registerClass:[UserInfoHeadImageTableViewCell class] forCellReuseIdentifier:NSStringFromClass([UserInfoHeadImageTableViewCell class])];
-        [_tableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:NSStringFromClass([BaseTableViewCell class])];
-        
+        [_tableView registerClass:[UserInfoBaseTableViewCell class] forCellReuseIdentifier:NSStringFromClass([UserInfoBaseTableViewCell class])];
+        _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     }
     return _tableView;
 }

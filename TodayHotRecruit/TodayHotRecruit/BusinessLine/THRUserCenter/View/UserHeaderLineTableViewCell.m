@@ -8,6 +8,8 @@
 
 #import "UserHeaderLineTableViewCell.h"
 #import "UserSecondLine.h"
+#import "UserDetail.h"
+#import "UIImageView+WebCache.h"
 
 @implementation ScoreButton
 +(instancetype)buttonWithType:(UIButtonType)buttonType andIsLast:(BOOL)condition{
@@ -46,6 +48,15 @@
 }
 @end
 
+@interface UserHeaderLineTableViewCell()
+@property (nonatomic, strong) UserSecondLine *second;
+@property (nonatomic, strong) UILabel *userName;
+@property (nonatomic, strong) PhoneButton *phone;
+// 认证状态
+@property (nonatomic, strong) UILabel *cerLabel;
+@property (nonatomic, strong) UIImageView *headerImage;
+@end
+
 @implementation UserHeaderLineTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -63,6 +74,7 @@
 - (void)setUpFirstLine{
     // headerImage
     UIImageView * headerImage = [[UIImageView alloc]initWithFrame:CGRectMake(PXGet375Width(30) + Top_iPhoneX_SPACE, PXGet375Width(40), PXGet375Width(100), PXGet375Width(100))];
+    _headerImage = headerImage;
     headerImage.backgroundColor = RANDOMCOLOR;
     headerImage.layer.cornerRadius = PXGet375Width(50);
     headerImage.clipsToBounds = YES;
@@ -71,9 +83,10 @@
     
     //认证tag
     UILabel* cerLabel = [[UILabel alloc]init];
+    _cerLabel = cerLabel;
     cerLabel.text = @"未认证";
     cerLabel.textColor = [UIColor whiteColor];
-    cerLabel.frame = CGRectMake(headerImage.mj_x + PXGet375Width(10), headerImage.mj_y + headerImage.mj_h - PXGet375Width(30)/2, headerImage.mj_w - 2*PXGet375Width(10), PXGet375Width(30));
+    cerLabel.frame = CGRectMake(headerImage.mj_x + PXGet375Width(10) / 2, headerImage.mj_y + headerImage.mj_h - PXGet375Width(30)/2, headerImage.mj_w - PXGet375Width(10), PXGet375Width(30));
     cerLabel.backgroundColor = RGBACOLOR(205, 205, 205, 1);
     cerLabel.layer.cornerRadius = PXGet375Width(15);
     cerLabel.clipsToBounds = YES;
@@ -83,16 +96,17 @@
   
     //用户名
     UILabel* userName = [[UILabel alloc]initWithFrame:CGRectMake(headerImage.mj_x + headerImage.mj_w + PXGet375Width(30), headerImage.mj_y, iPhoneX?PXGet375Width(350):PXGet375Width(400), PXGet375Width(50))];
-    userName.text = @"用户名";
+    _userName = userName;
     userName.textColor = [UIColor whiteColor];
     userName.font = [UIFont systemFontOfSize:PXGet375Width(35)];
     [self.contentView addSubview:userName];
     
     //用户电话
     PhoneButton *userPhone = [PhoneButton buttonWithType:UIButtonTypeCustom];
+    _phone = userPhone;
     [userPhone setImage:[UIImage imageNamed:@"phone"] forState:UIControlStateNormal];
     userPhone.frame = CGRectMake(userName.mj_x, userName.mj_y + userName.height + PXGet375Width(5), PXGet375Width(400), PXGet375Width(50));
-    [userPhone setTitle:@"18066666666" forState:UIControlStateNormal];
+    //[userPhone setTitle:@"18066666666" forState:UIControlStateNormal];
     userPhone.userInteractionEnabled = NO;
     
     [self.contentView addSubview:userPhone];
@@ -112,6 +126,7 @@
     
     //三个按钮
     UserSecondLine *second = [[[NSBundle mainBundle] loadNibNamed:@"UserSecondLine" owner:self options:nil] lastObject];
+    _second = second;
     second.frame = CGRectMake(0, 0, kScreenWidth, PXGet375Width(80));
     // 无语。。。。
     UIView* backView = [[UIView alloc]initWithFrame:CGRectMake(0, PXGet375Width(180), kScreenWidth, PXGet375Width(80))];
@@ -124,7 +139,22 @@
     UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
     [second addGestureRecognizer:tapGesturRecognizer];
     
+    // UserDetail
+    NSDictionary* ud = [UserDetail getDetail];
+    second.score.text = EncodeStringFromDic(ud, @"points");
+    second.fd.text = EncodeStringFromDic(ud, @"amount");
+    
 }
+
+- (void)upDateData{
+    NSDictionary* ud = [UserDetail getDetail];
+    _second.score.text = EncodeStringFromDic(ud, @"points");
+    _second.fd.text = EncodeStringFromDic(ud, @"amount");
+    _userName.text = EncodeStringFromDic(ud, @"nickName");
+    [_phone setTitle:EncodeStringFromDic(ud, @"userName") forState:UIControlStateNormal];
+    [_headerImage sd_setImageWithURL:[NSURL URLWithString:EncodeStringFromDic(ud, @"portraitRequestUrl")] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+}
+
 
 + (CGFloat)selfHeight{
     return PXGet375Width(290);

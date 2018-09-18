@@ -12,6 +12,7 @@
 #import "THRUserCerViewController.h"
 #import "THRRealNameViewController.h"
 #import "THRUserInfoViewController.h"
+#import "THRSettingViewController.h"
 
 // tableViewCell
 #import "BaseTableView.h"
@@ -20,6 +21,8 @@
 #import "UserCenterTableViewCell.h"
 #import "AdTableViewCell.h"
 
+#import "UserDetail.h"
+
 @interface THRUserCenterViewController () <UITableViewDataSource,UITableViewDelegate>
 // 主体tableView
 @property (nonatomic, strong) BaseTableView *contentTableView;
@@ -27,9 +30,13 @@
 
 @implementation THRUserCenterViewController
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
 }
 
 - (void)viewDidLoad {
@@ -42,8 +49,9 @@
     if (!iPhoneX) {
         self.contentTableView.top = 20;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshAction) name:UserCenterRefresh object:nil];
 }
-
 
 #pragma mark ----- DataSource
 
@@ -56,7 +64,7 @@
         case 0:
         {
             UserHeaderLineTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserHeaderLineTableViewCell class])];
-            
+            [cell upDateData];
             return cell;
         }
             break;
@@ -127,11 +135,32 @@
         }
             break;
             
+        case 4:{
+            [self.contentTableView reloadData];
+        }
+            break;
+        case 6:
+        {
+            THRSettingViewController* cer = [[THRSettingViewController alloc]init];
+            cer.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:cer animated:YES];
+        }
+            break;
+            
         default:
             break;
     }
 }
 
+#pragma mark --------------- 刷新相关
+
+- (void)getDataFormUserDetail{
+    [self.contentTableView reloadData];
+}
+// 备用
+- (void)refreshAction{
+    [self getDataFormUserDetail];
+}
 
 #pragma mark ---- lazy
 - (BaseTableView *)contentTableView{
@@ -144,7 +173,6 @@
         [_contentTableView registerClass:[UserCenterTableViewCell class] forCellReuseIdentifier:NSStringFromClass([UserCenterTableViewCell class])];
         [_contentTableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:NSStringFromClass([BaseTableViewCell class])];
         [_contentTableView registerClass:[AdTableViewCell class] forCellReuseIdentifier:NSStringFromClass([AdTableViewCell class])];
-        
     }
     return _contentTableView;
 }

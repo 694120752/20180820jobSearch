@@ -16,4 +16,6 @@
 + (instancetype)manager;
 
 - (instancetype)setDefaultHeader;
+
++ (NSString*)getuserName;
 @end

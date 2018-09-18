@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-//#import <YTKNetwork.h>
 #import "AppTabBarController.h"
+#import "UserDetail.h"
 
 @interface AppDelegate ()
 
@@ -27,20 +27,8 @@
     
     [self.window makeKeyAndVisible];
     
-    //[self configNewWorking];
-    
     return YES;
 }
-
-//-(void)configNewWorking{
-//    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-//    //config.baseUrl = @"http://47.105.48.3/job.api";
-//    config.baseUrl = @"https://lib.suning.com";
-//
-//    YTKNetworkAgent* manager = [YTKNetworkAgent sharedAgent];
-//    NSSet *contentTypeSet = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json",@"text/html",@"text/css", nil];
-//    [manager setValue:contentTypeSet forKeyPath:@"_manager.responseSerializer.acceptableContentTypes"];
-//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -53,14 +41,16 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
-
+// 即将进入前台
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [UserDetail refreshUserDetail];
 }
 
 

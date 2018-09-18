@@ -7,6 +7,7 @@
 //
 
 #import "UserCenterTableViewCell.h"
+#import "UserDetail.h"
 
 @implementation UserCenterTableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -99,7 +100,6 @@
     
     self.rightLabel.hidden = !isNeed;
     
-    
     self.iconImage.sd_layout
     .centerYEqualToView(self.contentView)
     .centerXIs(PXGet375Width(60))
@@ -112,7 +112,27 @@
     .rightSpaceToView(self.contentView, PXGet375Width(220))
     .topSpaceToView(self.contentView, 0);
     
+    NSDictionary* dic = [UserDetail getDetail];
+    // 查询一下 重新定义标题  实名认证 0-否，1-是, 2-待审核，
+    NSNumber* mark;
+    if (titleIndex == 1) {
+        // 实名认证
+        mark  = EncodeNumberFromDic(dic, @"realFlag");
+    }
     
+    //Hr认证 0-否，1-是, 2-待审核，
+    if (titleIndex == 2) {
+        // 公司HR认证
+        mark = EncodeNumberFromDic(dic, @"hrStatus");
+    }
+    
+    if ([mark integerValue] == 0) {
+        self.rightLabel.text = @"立即认证";
+    }else if ([mark integerValue] == 1){
+        self.rightLabel.text = @"已认证";
+    }else if ([mark integerValue] == 2){
+        self.rightLabel.text = @"待审核";
+    }
     
 }
 

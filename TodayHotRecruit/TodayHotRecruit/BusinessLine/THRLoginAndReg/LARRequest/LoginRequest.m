@@ -8,6 +8,7 @@
 
 #import "LoginRequest.h"
 #import "THRRequestManager.h"
+#import "UserDetail.h"
 
 @implementation LoginRequest
 + (void)loginWithUsernName:(NSString*)userName andPassWord:(NSString *)pass WithSUccessBlock:(successBlock)successBlock andFailedBlock:(failedBlock)faileBlock{
@@ -23,6 +24,8 @@
             if ([userDic isKindOfClass:[NSDictionary class]]) {
                 [ud setValue:userDic forKey:@"userInfo"];
             }
+            // 刷新一下用户信息
+            [UserDetail refreshUserDetail];
         }else{
             faileBlock(desc);
         }

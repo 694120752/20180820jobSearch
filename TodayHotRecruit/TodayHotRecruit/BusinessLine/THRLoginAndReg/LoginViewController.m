@@ -11,6 +11,7 @@
 #import "RegistViewController.h"
 #import "LoginRequest.h"
 #import <MBProgressHUD.h>
+#import "AppTabBarController.h"
 
 @interface LoginViewController ()
 @property (nonatomic, strong) LoginField *phoneTextfield;
@@ -176,8 +177,19 @@
     [LoginRequest loginWithUsernName:userName andPassWord:pass WithSUccessBlock:^{
         UserDefault
         [ud setValue:@"YES" forKey:@"isLogin"];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        
+        NSArray *vcs = self.navigationController.viewControllers;
+        if (vcs.count > 1 && [vcs objectAtIndex:vcs.count-1] == self) {
+            UIWindow* key = [UIApplication sharedApplication].keyWindow;
+            AppTabBarController* app = (AppTabBarController*)key.rootViewController;
+            app.selectedIndex = 0;
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        
         [hud hideAnimated:YES];
+        
     } andFailedBlock:^(NSString *reason) {
         hud.mode = MBProgressHUDModeText;
         hud.label.text = NSLocalizedString(reason, @"HUD completed title");

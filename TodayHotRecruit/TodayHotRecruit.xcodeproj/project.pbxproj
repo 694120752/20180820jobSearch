@@ -114,6 +114,9 @@
 		F7B9BB532133E9AF003F9277 /* IconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9BB522133E9AF003F9277 /* IconTableViewCell.m */; };
 		F7B9BB572133EC1F003F9277 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9BB562133EC1F003F9277 /* BaseTableViewCell.m */; };
 		F7B9BB5A21343629003F9277 /* HomeJobTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9BB5921343629003F9277 /* HomeJobTableViewCell.m */; };
+		F7FE4AFA215092E4005D5772 /* UserInfoBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE4AF9215092E4005D5772 /* UserInfoBaseTableViewCell.m */; };
+		F7FE4AFD215097D6005D5772 /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE4AFC215097D6005D5772 /* UserDetail.m */; };
+		F7FE4B002150FFC9005D5772 /* THRSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE4AFF2150FFC9005D5772 /* THRSettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,6 +357,12 @@
 		F7B9BB562133EC1F003F9277 /* BaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		F7B9BB5821343628003F9277 /* HomeJobTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeJobTableViewCell.h; sourceTree = "<group>"; };
 		F7B9BB5921343629003F9277 /* HomeJobTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeJobTableViewCell.m; sourceTree = "<group>"; };
+		F7FE4AF8215092E4005D5772 /* UserInfoBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoBaseTableViewCell.h; sourceTree = "<group>"; };
+		F7FE4AF9215092E4005D5772 /* UserInfoBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoBaseTableViewCell.m; sourceTree = "<group>"; };
+		F7FE4AFB215097D6005D5772 /* UserDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDetail.h; sourceTree = "<group>"; };
+		F7FE4AFC215097D6005D5772 /* UserDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDetail.m; sourceTree = "<group>"; };
+		F7FE4AFE2150FFC9005D5772 /* THRSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRSettingViewController.h; sourceTree = "<group>"; };
+		F7FE4AFF2150FFC9005D5772 /* THRSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRSettingViewController.m; sourceTree = "<group>"; };
 		FD21E05FCD6AD835CB4C1994 /* Pods-TodayHotRecruitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayHotRecruitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayHotRecruitUITests/Pods-TodayHotRecruitUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -674,6 +683,8 @@
 				F7557CA421379FE2009C92D8 /* AdTableViewCell.m */,
 				ED3B908B214502AE00D3661C /* UserInfoHeadImageTableViewCell.h */,
 				ED3B908C214502AE00D3661C /* UserInfoHeadImageTableViewCell.m */,
+				F7FE4AF8215092E4005D5772 /* UserInfoBaseTableViewCell.h */,
+				F7FE4AF9215092E4005D5772 /* UserInfoBaseTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -683,12 +694,14 @@
 			children = (
 				ED25C057213169E10022717E /* THRUserCenterViewController.h */,
 				ED25C058213169E10022717E /* THRUserCenterViewController.m */,
+				ED3B90882144FE4600D3661C /* THRUserInfoViewController.h */,
+				ED3B90892144FE4600D3661C /* THRUserInfoViewController.m */,
 				ED3B90822144F55300D3661C /* THRUserCerViewController.h */,
 				ED3B90832144F55300D3661C /* THRUserCerViewController.m */,
 				ED3B90852144F8A000D3661C /* THRRealNameViewController.h */,
 				ED3B90862144F8A000D3661C /* THRRealNameViewController.m */,
-				ED3B90882144FE4600D3661C /* THRUserInfoViewController.h */,
-				ED3B90892144FE4600D3661C /* THRUserInfoViewController.m */,
+				F7FE4AFE2150FFC9005D5772 /* THRSettingViewController.h */,
+				F7FE4AFF2150FFC9005D5772 /* THRSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -696,6 +709,8 @@
 		F70DBD35213639550031E642 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F7FE4AFB215097D6005D5772 /* UserDetail.h */,
+				F7FE4AFC215097D6005D5772 /* UserDetail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1198,6 +1213,7 @@
 				F70C8DB5214A585F0027DBAB /* RegistRequest.m in Sources */,
 				F70006E821356EEA00D52677 /* ZJCityTableViewCell.m in Sources */,
 				F70006DD21356ED900D52677 /* ZJCity.m in Sources */,
+				F7FE4B002150FFC9005D5772 /* THRSettingViewController.m in Sources */,
 				F70DBD4021369AB90031E642 /* UserSecondLine.m in Sources */,
 				F70006702134EB4400D52677 /* SelectDto.m in Sources */,
 				F70006872135251500D52677 /* UIView+SDExtension.m in Sources */,
@@ -1225,6 +1241,7 @@
 				F70006842135251500D52677 /* TAPageControl.m in Sources */,
 				F70006F821356F0D00D52677 /* ChineseToPinyinResource.m in Sources */,
 				F70DBD38213639F50031E642 /* UserHeaderLineTableViewCell.m in Sources */,
+				F7FE4AFD215097D6005D5772 /* UserDetail.m in Sources */,
 				ED25C06F213A90460022717E /* FSSegmentTitleView.m in Sources */,
 				ED25C053213169C20022717E /* THRBBSViewController.m in Sources */,
 				F759A011212D922700A98074 /* UIView+zFoundation.m in Sources */,
@@ -1238,6 +1255,7 @@
 				F70006BF2135255600D52677 /* UIImageView+WebCache.m in Sources */,
 				F70006C8213531EB00D52677 /* MessageCollectionViewCell.m in Sources */,
 				F700070021356F2200D52677 /* ZJSearchResultController.m in Sources */,
+				F7FE4AFA215092E4005D5772 /* UserInfoBaseTableViewCell.m in Sources */,
 				F7B9BB5A21343629003F9277 /* HomeJobTableViewCell.m in Sources */,
 				F746CC9321393158009C2478 /* THRApplication.m in Sources */,
 				F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */,

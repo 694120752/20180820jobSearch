@@ -10,4 +10,6 @@
 #import "THRCommonDelegate.h"
 @interface BaseTableViewCell : UITableViewCell
 @property (nonatomic, weak) id<THRCommonDelegate> delegate;
+
+- (void)upDateData;
 @end
