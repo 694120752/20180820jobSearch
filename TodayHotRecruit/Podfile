@@ -13,6 +13,7 @@ target 'TodayHotRecruit' do
     pod 'SDAutoLayout'
     pod 'MBProgressHUD'
     pod 'MJExtension'
+    pod 'BRPickerView'
 
   target 'TodayHotRecruitTests' do
     inherit! :search_paths

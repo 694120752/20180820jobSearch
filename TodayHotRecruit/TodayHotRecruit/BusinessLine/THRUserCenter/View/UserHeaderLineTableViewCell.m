@@ -139,10 +139,6 @@
     UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
     [second addGestureRecognizer:tapGesturRecognizer];
     
-    // UserDetail
-    NSDictionary* ud = [UserDetail getDetail];
-    second.score.text = EncodeStringFromDic(ud, @"points");
-    second.fd.text = EncodeStringFromDic(ud, @"amount");
     
 }
 
@@ -151,7 +147,7 @@
     _second.score.text = EncodeStringFromDic(ud, @"points");
     _second.fd.text = EncodeStringFromDic(ud, @"amount");
     _userName.text = EncodeStringFromDic(ud, @"nickName");
-    [_phone setTitle:EncodeStringFromDic(ud, @"userName") forState:UIControlStateNormal];
+    [_phone setTitle:EncodeStringFromDic(ud, @"phone") forState:UIControlStateNormal];
     [_headerImage sd_setImageWithURL:[NSURL URLWithString:EncodeStringFromDic(ud, @"portraitRequestUrl")] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
 }
 

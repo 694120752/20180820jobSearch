@@ -31,7 +31,7 @@
         [self.contentView addSubview:self.rightTitle];
         
         self.leftTitle.textColor = [UIColor darkTextColor];
-        self.rightTitle.textColor = [UIColor lightTextColor];
+        self.rightTitle.textColor = [UIColor grayColor];
 
         
         self.leftTitle.font = font(PXGet375Width(28));
@@ -78,7 +78,7 @@
     }
 
     //phone
-    if ([labelCase isEqualToString:@"userName"]) {
+    if ([labelCase isEqualToString:@"phone"]) {
         self.leftTitle.text = @"手机号码";
         self.rightTitle.text = [[UserDetail getDetail] objectForKey:labelCase];
     }

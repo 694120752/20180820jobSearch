@@ -132,9 +132,6 @@ static NSString *const kLocationCellId = @"kLocationCellId";
     
     THRRequestManager* manager = [THRRequestManager manager];
     manager.headerDic = @{@"x-s-loginName":userName};
-    
-//    NSArray *rootArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"cityGroups.plist" ofType:nil]];
-//    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:rootArray.count];
     __weak typeof(self)weakSelf = self;
     [manager POST:[HTTP stringByAppendingString:@"/address/list"] parameters:@{@"level":@"2",@"parentID":@"",@"parentName":@""} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         DESC

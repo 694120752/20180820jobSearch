@@ -69,7 +69,9 @@ static UserDetail* userDetail = nil;
     [[[THRRequestManager manager]setDefaultHeader] POST:[HTTP stringByAppendingString:@"/user/detail"] parameters:@{@"userID":[UserDetail getUserID]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         DESC
         if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
+            [UserDetail sharedInstance].uDict = [resultDic objectForKey:@"user"];
             successBlock();
+            [[NSNotificationCenter defaultCenter]postNotificationName:UserCenterRefresh object:nil];
         }else{
             failedBlock(desc);
         }

@@ -10,6 +10,10 @@
 #import "UserDetail.h"
 #import "UIImageView+WebCache.h"
 
+@interface UserInfoHeadImageTableViewCell()
+@property (nonatomic, strong) UIImageView *headerImage;
+@end
+
 @implementation UserInfoHeadImageTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -27,6 +31,7 @@
         
         /// 头像 120 * 120  右边20
         UIImageView* headerImage = [UIImageView new];
+        _headerImage = headerImage;
         headerImage.layer.cornerRadius = PXGet375Width(120) / 2;
         headerImage.clipsToBounds = YES;
         [self.contentView addSubview:headerImage];
@@ -36,12 +41,15 @@
         .widthIs(PXGet375Width(120))
         .heightIs(PXGet375Width(120))
         .centerYEqualToView(self.contentView);
-        
-        NSDictionary* dic = [UserDetail getDetail];
-        [headerImage sd_setImageWithURL:[NSURL URLWithString:EncodeStringFromDic(dic, @"portraitRequestUrl")] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
-        
+
     }
     return self;
 }
+
+-(void)upDateData{
+    NSDictionary* dic = [UserDetail getDetail];
+    [_headerImage sd_setImageWithURL:[NSURL URLWithString:EncodeStringFromDic(dic, @"portraitRequestUrl")] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+}
+
 
 @end
