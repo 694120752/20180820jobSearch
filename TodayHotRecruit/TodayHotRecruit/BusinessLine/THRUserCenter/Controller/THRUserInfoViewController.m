@@ -378,7 +378,7 @@ typedef enum : NSUInteger {
 - (void)addressChangeWithParameterFirst:(NSString *)first ParameterSecond:(NSString *)second{
     [BRAddressPickerView showAddressPickerWithShowType:BRAddressPickerModeCity defaultSelected:nil isAutoSelect:NO themeColor:CommonBlue resultBlock:^(BRProvinceModel *province, BRCityModel *city, BRAreaModel *area) {
         // 先查询
-        [[[THRRequestManager manager]setDefaultHeader] POST:[HTTP stringByAppendingString:@"/address/list"] parameters:@{@"name":city.name} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [[[THRRequestManager manager]setDefaultHeader] POST:[HTTP stringByAppendingString:@"/address/list"] parameters:@{@"name":city.name,@"level":@"2"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSDictionary* resultDic = responseObject;
             NSArray* dataArray = EncodeArrayFromDic(resultDic, @"dataList");
             
@@ -388,7 +388,7 @@ typedef enum : NSUInteger {
                 // 修改动作
                 NSDictionary *adressDic = dataArray.firstObject;
                
-                [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/user/update"] parameters:@{first:EncodeStringFromDic(adressDic, @"parentID")?:@"",second:EncodeStringFromDic(adressDic, @"adressID")?:@""} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/user/update"] parameters:@{first:EncodeStringFromDic(adressDic, @"parentID")?:@"",second:EncodeStringFromDic(adressDic, @"addressID")?:@""} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     DESC
                     if ([desc isEqualToString:@"success"]) {
                         [UserDetail refreshUserDetail];
