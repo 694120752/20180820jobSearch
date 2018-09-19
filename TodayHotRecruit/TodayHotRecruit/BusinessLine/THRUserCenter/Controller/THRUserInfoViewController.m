@@ -13,9 +13,16 @@
 #import "UserInfoHeadImageTableViewCell.h"
 #import "UserInfoBaseTableViewCell.h"
 
-@interface THRUserInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
+// 工具
+#import "THRPhotoAction.h"
+#import "THRUploadFile.h"
+
+@interface THRUserInfoViewController ()<UITableViewDelegate,UITableViewDataSource,THRPhotoDelegate>
 /** 主体tableVIew*/
 @property(nonatomic,strong)BaseTableView* tableView;
+
+// 照片的assert
+@property (nonatomic, strong) NSArray *imageAssert;
 @end
 
 typedef enum : NSUInteger {
@@ -132,13 +139,45 @@ typedef enum : NSUInteger {
         case HeaderImage:
         {
             // 上传头像
-            
-            
+            THRPhotoAction* photo = [[THRPhotoAction alloc]initWithVc:self andPhotoCount:1 andLastAsset:self.imageAssert];
+            [photo showAlertVc];
         }
             break;
             
         default:
             break;
+    }
+}
+
+#pragma mark ---- THRPhotoDelegate
+-(void)pickResult:(NSArray *)photoArray andAssert:(NSArray *)asset{
+    self.imageAssert = asset;
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeDeterminate;
+    if (!IsArrEmpty(photoArray)) {
+        UIImage* photo = photoArray.firstObject;
+        NSData* photoData = UIImageJPEGRepresentation(photo, 0.8);
+        [THRUploadFile upLoadFileWithData:@[photoData] andTitleArray:nil UploadFailedReason:^(NSString *reasonStr, THRUploadFailedReason reason) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                hud.label.text = NSLocalizedString(reasonStr, @"图像上传出现问题！");
+                [hud hideAnimated:YES afterDelay:1];
+            });
+        } UploadProgressBlock:^(float progress) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                hud.progress = progress;
+            });
+        } UploadSuccessBlock:^(NSString *filePath) {
+            [UserDetail refreshUserDetail];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+                hud.customView = imageView;
+                hud.mode = MBProgressHUDModeCustomView;
+                hud.label.text = NSLocalizedString(@"上传成功", @"HUD completed title");
+                [hud hideAnimated:YES afterDelay:1];
+            });
+        }];
+        
     }
 }
 
@@ -155,6 +194,13 @@ typedef enum : NSUInteger {
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     }
     return _tableView;
+}
+
+-(NSArray *)imageAssert{
+    if (!_imageAssert) {
+        _imageAssert = [NSArray array];
+    }
+    return _imageAssert;
 }
 
 @end

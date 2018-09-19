@@ -86,7 +86,7 @@
 
 - (void)setIndex:(NSInteger)index {
     _index = index;
-    self.indexLabel.text = [NSString stringWithFormat:@"%zd", index];
+    self.indexLabel.text = [NSString stringWithFormat:@"%ld", (long)index];
     [self.contentView bringSubviewToFront:self.indexLabel];
 }
 
@@ -357,7 +357,7 @@
     _model = model;
     
     NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:model.name attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor blackColor]}];
-    NSAttributedString *countString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"  (%zd)",model.count] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+    NSAttributedString *countString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"  (%ld)",(long)model.count] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
     [nameString appendAttributedString:countString];
     self.titleLabel.attributedText = nameString;
     [[TZImageManager manager] getPostImageWithAlbumModel:model completion:^(UIImage *postImage) {
@@ -365,7 +365,7 @@
     }];
     if (model.selectedCount) {
         self.selectedCountButton.hidden = NO;
-        [self.selectedCountButton setTitle:[NSString stringWithFormat:@"%zd",model.selectedCount] forState:UIControlStateNormal];
+        [self.selectedCountButton setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)model.selectedCount] forState:UIControlStateNormal];
     } else {
         self.selectedCountButton.hidden = YES;
     }

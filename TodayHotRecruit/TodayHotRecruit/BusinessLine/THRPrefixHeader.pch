@@ -17,6 +17,7 @@
 #import "NSDictionary+zFundation.h"
 #import <SDAutoLayout.h>
 #import <MBProgressHUD.h>
+#import "UserDetail.h"
 
 #define CommonBlue RGBACOLOR(66, 146, 255, 1)
 

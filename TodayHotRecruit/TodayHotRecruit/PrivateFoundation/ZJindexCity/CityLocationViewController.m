@@ -268,7 +268,7 @@ static NSString *const kLocationCellId = @"kLocationCellId";
         [cell setupCityCellClickHandler:^(NSString *title) {
             [weakSelf cityDidSelected:title];
         }];
-        [cellsHeight setValue:[NSNumber numberWithFloat:cell.cellHeight] forKey:[NSString stringWithFormat:@"%ld", indexPath.section]];
+        [cellsHeight setValue:[NSNumber numberWithFloat:cell.cellHeight] forKey:[NSString stringWithFormat:@"%ld", (long)indexPath.section]];
         cell.backgroundColor = RGBACOLOR(245, 245, 245, 1);
         return cell;
     }
@@ -289,7 +289,7 @@ static NSString *const kLocationCellId = @"kLocationCellId";
         if (cellsHeight.count == 0) {
             return 0;
         }
-        return [[cellsHeight valueForKey:[NSString stringWithFormat:@"%ld", indexPath.section]] floatValue];
+        return [[cellsHeight valueForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.section]] floatValue];
     }
     else {
         return 44.f;

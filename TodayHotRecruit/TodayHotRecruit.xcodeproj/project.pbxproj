@@ -129,6 +129,8 @@
 		F7FB56762151372200DB118E /* TZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB56652151372200DB118E /* TZProgressView.m */; };
 		F7FB56772151372200DB118E /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB56672151372200DB118E /* TZVideoPlayerController.m */; };
 		F7FB56782151372200DB118E /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB56692151372200DB118E /* UIView+Layout.m */; };
+		F7FC4E1A2151DBC600E1AC8D /* THRPhotoAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FC4E192151DBC600E1AC8D /* THRPhotoAction.m */; };
+		F7FC4E1D2151FBFC00E1AC8D /* THRUploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FC4E1C2151FBFC00E1AC8D /* THRUploadFile.m */; };
 		F7FE4AFA215092E4005D5772 /* UserInfoBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE4AF9215092E4005D5772 /* UserInfoBaseTableViewCell.m */; };
 		F7FE4AFD215097D6005D5772 /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE4AFC215097D6005D5772 /* UserDetail.m */; };
 		F7FE4B002150FFC9005D5772 /* THRSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE4AFF2150FFC9005D5772 /* THRSettingViewController.m */; };
@@ -401,6 +403,10 @@
 		F7FB56672151372200DB118E /* TZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZVideoPlayerController.m; sourceTree = "<group>"; };
 		F7FB56682151372200DB118E /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		F7FB56692151372200DB118E /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		F7FC4E182151DBC500E1AC8D /* THRPhotoAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRPhotoAction.h; sourceTree = "<group>"; };
+		F7FC4E192151DBC600E1AC8D /* THRPhotoAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRPhotoAction.m; sourceTree = "<group>"; };
+		F7FC4E1B2151FBFC00E1AC8D /* THRUploadFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRUploadFile.h; sourceTree = "<group>"; };
+		F7FC4E1C2151FBFC00E1AC8D /* THRUploadFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRUploadFile.m; sourceTree = "<group>"; };
 		F7FE4AF8215092E4005D5772 /* UserInfoBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoBaseTableViewCell.h; sourceTree = "<group>"; };
 		F7FE4AF9215092E4005D5772 /* UserInfoBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoBaseTableViewCell.m; sourceTree = "<group>"; };
 		F7FE4AFB215097D6005D5772 /* UserDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDetail.h; sourceTree = "<group>"; };
@@ -590,6 +596,8 @@
 				F7B9BB542133EB99003F9277 /* THRCommonDelegate.h */,
 				F700066E2134EB4400D52677 /* SelectDto.h */,
 				F700066F2134EB4400D52677 /* SelectDto.m */,
+				F7FC4E182151DBC500E1AC8D /* THRPhotoAction.h */,
+				F7FC4E192151DBC600E1AC8D /* THRPhotoAction.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -755,6 +763,8 @@
 			children = (
 				F7FE4AFB215097D6005D5772 /* UserDetail.h */,
 				F7FE4AFC215097D6005D5772 /* UserDetail.m */,
+				F7FC4E1B2151FBFC00E1AC8D /* THRUploadFile.h */,
+				F7FC4E1C2151FBFC00E1AC8D /* THRUploadFile.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1308,6 +1318,7 @@
 				ED25C056213169D20022717E /* THRMessageViewController.m in Sources */,
 				F70006BD2135255600D52677 /* UIImage+MultiFormat.m in Sources */,
 				F76D2270213CD97600466BC2 /* ConsultantSubDataViewController.m in Sources */,
+				F7FC4E1A2151DBC600E1AC8D /* THRPhotoAction.m in Sources */,
 				ED3B90842144F55300D3661C /* THRUserCerViewController.m in Sources */,
 				F70006822135251500D52677 /* TAAnimatedDotView.m in Sources */,
 				F70C8DBF214A87BD0027DBAB /* THRRequestManager.m in Sources */,
@@ -1347,6 +1358,7 @@
 				F7FB56712151372200DB118E /* TZImagePickerController.m in Sources */,
 				F700070021356F2200D52677 /* ZJSearchResultController.m in Sources */,
 				F7FB566D2151372200DB118E /* TZGifPhotoPreviewController.m in Sources */,
+				F7FC4E1D2151FBFC00E1AC8D /* THRUploadFile.m in Sources */,
 				F7FE4AFA215092E4005D5772 /* UserInfoBaseTableViewCell.m in Sources */,
 				F7B9BB5A21343629003F9277 /* HomeJobTableViewCell.m in Sources */,
 				F746CC9321393158009C2478 /* THRApplication.m in Sources */,

@@ -170,7 +170,7 @@
     _numberLabel.font = [UIFont systemFontOfSize:15];
     _numberLabel.textColor = [UIColor whiteColor];
     _numberLabel.textAlignment = NSTextAlignmentCenter;
-    _numberLabel.text = [NSString stringWithFormat:@"%zd",_tzImagePickerVc.selectedModels.count];
+    _numberLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)_tzImagePickerVc.selectedModels.count];
     _numberLabel.hidden = _tzImagePickerVc.selectedModels.count <= 0;
     _numberLabel.backgroundColor = [UIColor clearColor];
     
@@ -517,13 +517,13 @@
     _selectButton.selected = model.isSelected;
     [self refreshSelectButtonImageViewContentMode];
     if (_selectButton.isSelected && _tzImagePickerVc.showSelectedIndex && _tzImagePickerVc.showSelectBtn) {
-        NSString *index = [NSString stringWithFormat:@"%zd", [_tzImagePickerVc.selectedAssetIds indexOfObject:model.asset.localIdentifier] + 1];
+        NSString *index = [NSString stringWithFormat:@"%lu", [_tzImagePickerVc.selectedAssetIds indexOfObject:model.asset.localIdentifier] + 1];
         _indexLabel.text = index;
         _indexLabel.hidden = NO;
     } else {
         _indexLabel.hidden = YES;
     }
-    _numberLabel.text = [NSString stringWithFormat:@"%zd",_tzImagePickerVc.selectedModels.count];
+    _numberLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)_tzImagePickerVc.selectedModels.count];
     _numberImageView.hidden = (_tzImagePickerVc.selectedModels.count <= 0 || _isHideNaviBar || _isCropImage);
     _numberLabel.hidden = (_tzImagePickerVc.selectedModels.count <= 0 || _isHideNaviBar || _isCropImage);
     

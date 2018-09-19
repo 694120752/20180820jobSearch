@@ -243,7 +243,7 @@ static CGFloat itemMargin = 5;
     _numberLabel.font = [UIFont systemFontOfSize:15];
     _numberLabel.textColor = [UIColor whiteColor];
     _numberLabel.textAlignment = NSTextAlignmentCenter;
-    _numberLabel.text = [NSString stringWithFormat:@"%zd",tzImagePickerVc.selectedModels.count];
+    _numberLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)tzImagePickerVc.selectedModels.count];
     _numberLabel.hidden = tzImagePickerVc.selectedModels.count <= 0;
     _numberLabel.backgroundColor = [UIColor clearColor];
     
@@ -687,7 +687,7 @@ static CGFloat itemMargin = 5;
     
     _numberImageView.hidden = tzImagePickerVc.selectedModels.count <= 0;
     _numberLabel.hidden = tzImagePickerVc.selectedModels.count <= 0;
-    _numberLabel.text = [NSString stringWithFormat:@"%zd",tzImagePickerVc.selectedModels.count];
+    _numberLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)tzImagePickerVc.selectedModels.count];
     
     _originalPhotoButton.enabled = tzImagePickerVc.selectedModels.count > 0;
     _originalPhotoButton.selected = (_isSelectOriginalPhoto && _originalPhotoButton.enabled);
