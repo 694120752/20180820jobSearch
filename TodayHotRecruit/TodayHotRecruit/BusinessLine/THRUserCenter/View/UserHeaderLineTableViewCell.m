@@ -84,7 +84,7 @@
     //认证tag
     UILabel* cerLabel = [[UILabel alloc]init];
     _cerLabel = cerLabel;
-    cerLabel.text = @"未认证";
+//    cerLabel.text = @"未认证";
     cerLabel.textColor = [UIColor whiteColor];
     cerLabel.frame = CGRectMake(headerImage.mj_x + PXGet375Width(10) / 2, headerImage.mj_y + headerImage.mj_h - PXGet375Width(30)/2, headerImage.mj_w - PXGet375Width(10), PXGet375Width(30));
     cerLabel.backgroundColor = RGBACOLOR(205, 205, 205, 1);
@@ -149,6 +149,15 @@
     _userName.text = EncodeStringFromDic(ud, @"nickName");
     [_phone setTitle:EncodeStringFromDic(ud, @"phone") forState:UIControlStateNormal];
     [_headerImage sd_setImageWithURL:[NSURL URLWithString:EncodeStringFromDic(ud, @"portraitRequestUrl")] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+    
+     NSNumber* mark = EncodeNumberFromDic(ud, @"realFlag");
+    if ([mark integerValue] == 0) {
+        _cerLabel.text = @"未认证";
+    }else if ([mark integerValue] == 1){
+        _cerLabel.text = @"已认证";
+    }else if ([mark integerValue] == 2){
+        _cerLabel.text = @"待审核";
+    }
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "THRUploadFile.h"
+#import "NSDate+Helper.h"
 
 @implementation THRUploadFile
 + (void)upLoadFileWithData:(NSArray <NSData*>*)fileData andTitleArray:(NSArray <NSString*>*)titleArray UploadFailedReason:(errorBlock)errorBlock UploadProgressBlock:(progressBlock)progressblock UploadSuccessBlock:(uploadSuccess)successBlock{
@@ -25,11 +26,11 @@
     [manager POST:[HTTP stringByAppendingString:@"/file/uploadFile"] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         if (IsArrEmpty(titleArray)) {
             for (NSData* tempData in fileData) {
-                [formData appendPartWithFileData:tempData name:@"file" fileName:@"headImage.jpeg" mimeType:@"image/png"];
+                [formData appendPartWithFileData:tempData name:@"file" fileName:[[NSDate nowTimeStringWithFormart:@"yyyyMMddHHmmss"] stringByAppendingString:@".jpeg"] mimeType:@"image/png"];
             }
         }else{
-            for (NSUInteger i = 0; i< fileData.count ; i++) {
-                [formData appendPartWithFormData:fileData[i] name:titleArray[i]];
+            for (NSUInteger i = 0; i < fileData.count; i++) {
+                [formData appendPartWithFileData:fileData[i] name:@"file" fileName:[titleArray[i] stringByAppendingString:@".jpeg"] mimeType:@"image/png"];
             }
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {

@@ -19,6 +19,8 @@ typedef void(^errorBlock)(NSString* reasonStr,THRUploadFailedReason reason);
 typedef void(^progressBlock)(float progress);
 typedef void(^uploadSuccess)(NSString* filePath);
 
+
+// 目前服务器无法上传多张
 + (void)upLoadFileWithData:(NSArray <NSData*>*)fileData andTitleArray:(NSArray <NSString*>*)titleArray UploadFailedReason:(errorBlock)errorBlock UploadProgressBlock:(progressBlock)progressblock UploadSuccessBlock:(uploadSuccess)successBlock;
 
 

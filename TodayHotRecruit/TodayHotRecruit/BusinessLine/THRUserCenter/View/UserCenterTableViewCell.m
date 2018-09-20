@@ -125,7 +125,7 @@
         // 公司HR认证
         mark = EncodeNumberFromDic(dic, @"hrStatus");
     }
-    
+     
     if ([mark integerValue] == 0) {
         self.rightLabel.text = @"立即认证";
     }else if ([mark integerValue] == 1){

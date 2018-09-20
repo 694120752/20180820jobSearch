@@ -71,4 +71,12 @@
 #define UserDefault NSUserDefaults*ud=[NSUserDefaults standardUserDefaults];
 
 
+#pragma mark ------------- THRCustom
+#define CommonBlue RGBACOLOR(66, 146, 255, 1)
+
+#define HTTP @"http://api.njyzdd.com"//@"http://47.105.48.3/job.api"
+
+#define DESC NSDictionary*resultDic=responseObject;NSString*desc = [resultDic objectForKey:@"desc"];
+
+#define MBSuccess UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];UIImageView *imageView = [[UIImageView alloc] initWithImage:image];hud.customView = imageView;hud.mode = MBProgressHUDModeCustomView;
 #endif /* Constant_h */

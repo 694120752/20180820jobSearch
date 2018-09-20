@@ -19,10 +19,4 @@
 #import <MBProgressHUD.h>
 #import "UserDetail.h"
 
-#define CommonBlue RGBACOLOR(66, 146, 255, 1)
-
-#define HTTP @"http://api.njyzdd.com"//@"http://47.105.48.3/job.api"
-
-#define DESC NSDictionary*resultDic=responseObject;NSString*desc = [resultDic objectForKey:@"desc"];
-
 #endif /* THRPrefixHeader_pch */

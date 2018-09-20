@@ -140,10 +140,12 @@ static NSString *const kLocationCellId = @"kLocationCellId";
         if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
             NSArray* cityArr = [resultDic objectForKey:@"dataList"];
             for (NSDictionary* dict in cityArr) {
-                ZJCity* city = [ZJCity new];
-                city.name = EncodeStringFromDic(dict, @"name");
-                city.addressID = EncodeStringFromDic(dict, @"addressID");
-                [allCity addObject:city];
+                @autoreleasepool {
+                    ZJCity* city = [ZJCity new];
+                    city.name = EncodeStringFromDic(dict, @"name");
+                    city.addressID = EncodeStringFromDic(dict, @"addressID");
+                    [allCity addObject:city];
+                }
             }
             
             [allCity sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {

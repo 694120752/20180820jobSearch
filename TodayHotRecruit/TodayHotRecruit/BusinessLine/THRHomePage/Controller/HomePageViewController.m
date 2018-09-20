@@ -11,6 +11,7 @@
 #import "CityLocationViewController.h"
 #import "HomeSearchViewController.h"
 #import "ExclusiveConsultantViewController.h"
+#import "TodayHotJobViewController.h"
 
 //view
 #import "BaseTableView.h"
@@ -72,8 +73,7 @@ NSUInteger const listPageSize = 10;
     // 获取轮播数据
     [self GetBroCastData];
     
-    // 首页岗位
-    [self getJobList];
+    [self.tableView.mj_header beginRefreshing];
     
     self.pageNo = 1;
 
@@ -200,6 +200,12 @@ NSUInteger const listPageSize = 10;
 #pragma mark ---- iconSelectDelegate
 - (void)selectIconWithIndex:(NSInteger)index{
     switch (index) {
+        case 0:{
+            TodayHotJobViewController* today = [[TodayHotJobViewController alloc]init];
+            today.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:today animated:YES];
+        }
+            break;
         case 2:
         {
             ExclusiveConsultantViewController* ec = [ExclusiveConsultantViewController new];
@@ -391,7 +397,7 @@ NSUInteger const listPageSize = 10;
     THRRequestManager* jobRequest = [[THRRequestManager manager] setDefaultHeader];
     NSDictionary* pagrameter = @{
                                  @"pageNo":@(self.pageNo),
-                                 @"pageSize":@(listPageSize),@"city":@"上海"
+                                 @"pageSize":@(listPageSize)
                                  };
     __weak typeof(self)weakSelf = self;
     [jobRequest POST:[HTTP stringByAppendingString:@"/job/list"] parameters:pagrameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
