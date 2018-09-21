@@ -25,7 +25,7 @@ NSString* EncodeStringFromDic(NSDictionary *dic, NSString *key)
         }
     }
     
-    return nil;
+    return @"";
 }
 
 /**

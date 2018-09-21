@@ -78,5 +78,7 @@
 
 #define DESC NSDictionary*resultDic=responseObject;NSString*desc = [resultDic objectForKey:@"desc"];
 
-#define MBSuccess UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];UIImageView *imageView = [[UIImageView alloc] initWithImage:image];hud.customView = imageView;hud.mode = MBProgressHUDModeCustomView;
+#define HudSuccess UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];UIImageView *imageView = [[UIImageView alloc] initWithImage:image];hud.customView = imageView;hud.mode = MBProgressHUDModeCustomView;
+
+#define HudShow MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];hud.userInteractionEnabled = NO
 #endif /* Constant_h */

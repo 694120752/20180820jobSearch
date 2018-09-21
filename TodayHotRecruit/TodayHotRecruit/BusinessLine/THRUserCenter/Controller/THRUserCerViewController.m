@@ -100,7 +100,7 @@
             
         } UploadSuccessBlock:^(NSString *filePath) {
             [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/user/hrAuth"] parameters:@{@"hrFile":filePath} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                MBSuccess
+                HudSuccess
                 hud.label.text = @"上传成功";
                 [hud hideAnimated:YES afterDelay:1];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

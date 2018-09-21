@@ -72,6 +72,10 @@
 		F700071221356F8900D52677 /* ZJProgressHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070B21356F8800D52677 /* ZJProgressHUDView.m */; };
 		F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070D21356F8800D52677 /* ZJTextAndImageHUDView.m */; };
 		F700071421356F8900D52677 /* ZJTextOnlyHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070F21356F8800D52677 /* ZJTextOnlyHUDView.m */; };
+		F70305622154C8DC000478D4 /* TodayChildVcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70305612154C8DC000478D4 /* TodayChildVcViewController.m */; };
+		F70305652154EEB2000478D4 /* UnderLineStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70305642154EEB2000478D4 /* UnderLineStoreViewController.m */; };
+		F70305682154F450000478D4 /* UnderLineCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70305672154F450000478D4 /* UnderLineCardTableViewCell.m */; };
+		F703056B2154F5E7000478D4 /* UnderLineStoreChildVc.m in Sources */ = {isa = PBXBuildFile; fileRef = F703056A2154F5E7000478D4 /* UnderLineStoreChildVc.m */; };
 		F7058A692153CC0B008E0C59 /* TodayHotJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7058A682153CC0B008E0C59 /* TodayHotJobViewController.m */; };
 		F7058A6C2153D315008E0C59 /* THRJobListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F7058A6B2153D315008E0C59 /* THRJobListRequest.m */; };
 		F708B7E0214B667B00328555 /* FindPassRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7DF214B667B00328555 /* FindPassRequest.m */; };
@@ -290,6 +294,14 @@
 		F700070D21356F8800D52677 /* ZJTextAndImageHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextAndImageHUDView.m; sourceTree = "<group>"; };
 		F700070E21356F8800D52677 /* ZJTextOnlyHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextOnlyHUDView.h; sourceTree = "<group>"; };
 		F700070F21356F8800D52677 /* ZJTextOnlyHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextOnlyHUDView.m; sourceTree = "<group>"; };
+		F70305602154C8DC000478D4 /* TodayChildVcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayChildVcViewController.h; sourceTree = "<group>"; };
+		F70305612154C8DC000478D4 /* TodayChildVcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayChildVcViewController.m; sourceTree = "<group>"; };
+		F70305632154EEB2000478D4 /* UnderLineStoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnderLineStoreViewController.h; sourceTree = "<group>"; };
+		F70305642154EEB2000478D4 /* UnderLineStoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnderLineStoreViewController.m; sourceTree = "<group>"; };
+		F70305662154F450000478D4 /* UnderLineCardTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnderLineCardTableViewCell.h; sourceTree = "<group>"; };
+		F70305672154F450000478D4 /* UnderLineCardTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnderLineCardTableViewCell.m; sourceTree = "<group>"; };
+		F70305692154F5E7000478D4 /* UnderLineStoreChildVc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnderLineStoreChildVc.h; sourceTree = "<group>"; };
+		F703056A2154F5E7000478D4 /* UnderLineStoreChildVc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnderLineStoreChildVc.m; sourceTree = "<group>"; };
 		F7058A672153CC0B008E0C59 /* TodayHotJobViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayHotJobViewController.h; sourceTree = "<group>"; };
 		F7058A682153CC0B008E0C59 /* TodayHotJobViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayHotJobViewController.m; sourceTree = "<group>"; };
 		F7058A6A2153D315008E0C59 /* THRJobListRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRJobListRequest.h; sourceTree = "<group>"; };
@@ -504,11 +516,11 @@
 		ED25C069213A90460022717E /* FSScrollContentViewLib */ = {
 			isa = PBXGroup;
 			children = (
-				ED25C06A213A90460022717E /* FSSegmentTitleView.m */,
-				ED25C06B213A90460022717E /* FSPageContentView.h */,
 				ED25C06C213A90460022717E /* FSScrollContentView.h */,
+				ED25C06B213A90460022717E /* FSPageContentView.h */,
 				ED25C06D213A90460022717E /* FSPageContentView.m */,
 				ED25C06E213A90460022717E /* FSSegmentTitleView.h */,
+				ED25C06A213A90460022717E /* FSSegmentTitleView.m */,
 			);
 			path = FSScrollContentViewLib;
 			sourceTree = "<group>";
@@ -943,6 +955,8 @@
 				F70006CD21353CD000D52677 /* JobTableViewCell.m */,
 				F76D2274213D1A4700466BC2 /* ExPersonalDataTableViewCell.h */,
 				F76D2275213D1A4700466BC2 /* ExPersonalDataTableViewCell.m */,
+				F70305662154F450000478D4 /* UnderLineCardTableViewCell.h */,
+				F70305672154F450000478D4 /* UnderLineCardTableViewCell.m */,
 			);
 			name = View;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/View;
@@ -965,6 +979,12 @@
 				F76D2272213CD9C500466BC2 /* ConsultantSubActivityViewController.m */,
 				F7058A672153CC0B008E0C59 /* TodayHotJobViewController.h */,
 				F7058A682153CC0B008E0C59 /* TodayHotJobViewController.m */,
+				F70305602154C8DC000478D4 /* TodayChildVcViewController.h */,
+				F70305612154C8DC000478D4 /* TodayChildVcViewController.m */,
+				F70305632154EEB2000478D4 /* UnderLineStoreViewController.h */,
+				F70305642154EEB2000478D4 /* UnderLineStoreViewController.m */,
+				F70305692154F5E7000478D4 /* UnderLineStoreChildVc.h */,
+				F703056A2154F5E7000478D4 /* UnderLineStoreChildVc.m */,
 			);
 			name = Controller;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/Controller;
@@ -1311,6 +1331,7 @@
 				F7FB56762151372200DB118E /* TZProgressView.m in Sources */,
 				F70C8DAF214A0F9F0027DBAB /* VerifyCodeRequest.m in Sources */,
 				F7FB56782151372200DB118E /* UIView+Layout.m in Sources */,
+				F70305622154C8DC000478D4 /* TodayChildVcViewController.m in Sources */,
 				F708B7E0214B667B00328555 /* FindPassRequest.m in Sources */,
 				F76D2276213D1A4700466BC2 /* ExPersonalDataTableViewCell.m in Sources */,
 				F7FB566E2151372200DB118E /* TZImageCropManager.m in Sources */,
@@ -1318,11 +1339,13 @@
 				F70006BA2135255600D52677 /* SDWebImagePrefetcher.m in Sources */,
 				ED3B90872144F8A000D3661C /* THRRealNameViewController.m in Sources */,
 				F70C8DB5214A585F0027DBAB /* RegistRequest.m in Sources */,
+				F70305682154F450000478D4 /* UnderLineCardTableViewCell.m in Sources */,
 				F70006E821356EEA00D52677 /* ZJCityTableViewCell.m in Sources */,
 				F70006DD21356ED900D52677 /* ZJCity.m in Sources */,
 				F7FE4B002150FFC9005D5772 /* THRSettingViewController.m in Sources */,
 				F70DBD4021369AB90031E642 /* UserSecondLine.m in Sources */,
 				F70006702134EB4400D52677 /* SelectDto.m in Sources */,
+				F70305652154EEB2000478D4 /* UnderLineStoreViewController.m in Sources */,
 				F70006872135251500D52677 /* UIView+SDExtension.m in Sources */,
 				F70006CB2135345600D52677 /* NSDate+Helper.m in Sources */,
 				ED25C056213169D20022717E /* THRMessageViewController.m in Sources */,
@@ -1372,6 +1395,7 @@
 				F7FC4E1D2151FBFC00E1AC8D /* THRUploadFile.m in Sources */,
 				F7058A692153CC0B008E0C59 /* TodayHotJobViewController.m in Sources */,
 				F7FE4AFA215092E4005D5772 /* UserInfoBaseTableViewCell.m in Sources */,
+				F703056B2154F5E7000478D4 /* UnderLineStoreChildVc.m in Sources */,
 				F7B9BB5A21343629003F9277 /* HomeJobTableViewCell.m in Sources */,
 				F746CC9321393158009C2478 /* THRApplication.m in Sources */,
 				F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */,

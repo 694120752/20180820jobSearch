@@ -12,6 +12,7 @@
 #import "HomeSearchViewController.h"
 #import "ExclusiveConsultantViewController.h"
 #import "TodayHotJobViewController.h"
+#import "UnderLineStoreViewController.h"
 
 //view
 #import "BaseTableView.h"
@@ -28,6 +29,7 @@
 
 // 网络请求
 #import "THRRequestManager.h"
+#import "THRJobListRequest.h"
 
 // 工作
 #import "THRJob.h"
@@ -37,7 +39,6 @@
 #import <MJExtension.h>
 #import <MJRefresh.h>
 
-NSUInteger const listPageSize = 10;
 
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,THRCommonDelegate>
 
@@ -200,12 +201,22 @@ NSUInteger const listPageSize = 10;
 #pragma mark ---- iconSelectDelegate
 - (void)selectIconWithIndex:(NSInteger)index{
     switch (index) {
-        case 0:{
+        case 0:
+        {
             TodayHotJobViewController* today = [[TodayHotJobViewController alloc]init];
             today.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:today animated:YES];
         }
             break;
+            
+        case 1:
+        {
+            UnderLineStoreViewController* line = [[UnderLineStoreViewController alloc]init];
+            line.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:line animated:YES];
+        }
+            break;
+            
         case 2:
         {
             ExclusiveConsultantViewController* ec = [ExclusiveConsultantViewController new];
@@ -383,9 +394,7 @@ NSUInteger const listPageSize = 10;
                       if (!IsStrEmpty(url)) {
                           [temp addObject:url];
                       }
-                      
                   }
-                  
                   [cell updateWithURL:[temp copy]];
               }
           } failure:nil];
@@ -393,50 +402,22 @@ NSUInteger const listPageSize = 10;
 }
 
 #pragma mark ------------------ 获取首页的列表数据
-- (void)getJobList{
-    THRRequestManager* jobRequest = [[THRRequestManager manager] setDefaultHeader];
-    NSDictionary* pagrameter = @{
-                                 @"pageNo":@(self.pageNo),
-                                 @"pageSize":@(listPageSize)
-                                 };
-    __weak typeof(self)weakSelf = self;
-    [jobRequest POST:[HTTP stringByAppendingString:@"/job/list"] parameters:pagrameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        DESC
-        NSArray* dataList = @[];
-        if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
-            dataList = [resultDic objectForKey:@"dataList"];
-           weakSelf.dataArray = [[weakSelf.dataArray arrayByAddingObjectsFromArray:[THRJob mj_objectArrayWithKeyValuesArray:dataList]] mutableCopy];
-        }
-        
-        [weakSelf.tableView.mj_header endRefreshing];
-        
-        if (dataList.count < listPageSize ) {
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
-        }else{
-            [weakSelf.tableView.mj_footer endRefreshing];
-        }
-        
-        weakSelf.tableView.mj_footer.hidden = NO;
-        
-        [weakSelf.tableView reloadData];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf.tableView.mj_header endRefreshing];
-        [weakSelf.tableView.mj_footer endRefreshing];
-        weakSelf.tableView.mj_footer.hidden = NO;
-    }];
-}
-
-
 - (void)getNewJobList{
     self.pageNo = 0;
     [self.tableView.mj_footer resetNoMoreData];
     [self.dataArray removeAllObjects];
-    [self getJobList];
+     __weak typeof(self)weakSelf = self;
+    [THRJobListRequest getJobDataWithPage:weakSelf.pageNo andTableView:weakSelf.tableView andSuccess:^(NSArray *dataList) {
+        weakSelf.dataArray = [dataList mutableCopy];
+    } andCityID:nil andKeyWord:nil];
 }
 
 - (void)getMoreJobList{
     self.pageNo ++;
-    [self getJobList];
+    __weak typeof(self)weakSelf = self;
+    [THRJobListRequest getJobDataWithPage:weakSelf.pageNo andTableView:weakSelf.tableView andSuccess:^(NSArray *dataList) {
+        weakSelf.dataArray = [[weakSelf.dataArray arrayByAddingObjectsFromArray:dataList] mutableCopy];
+    } andCityID:nil andKeyWord:nil];
 }
 
 #pragma mark ---- lazy

@@ -180,7 +180,7 @@
                     DESC
                     if ([desc isEqualToString:@"success"]) {
                         [UserDetail refreshUserDetail];
-                        MBSuccess
+                        HudSuccess
                         hud.label.text = @"上传成功";
                         [hud hideAnimated:YES afterDelay:1];
                     }else{

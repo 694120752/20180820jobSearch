@@ -74,7 +74,7 @@ typedef enum : NSUInteger {
  在FSIndicatorTypeCustom时可自定义此属性，为指示器一端延伸长度，默认5
  */
 @property (nonatomic, assign) CGFloat indicatorExtension;
-
+@property (nonatomic, strong) NSArray *titlesArr;
 /**
  对象方法创建FSSegmentTitleView
 

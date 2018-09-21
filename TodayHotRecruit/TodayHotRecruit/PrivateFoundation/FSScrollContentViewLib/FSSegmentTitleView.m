@@ -20,7 +20,7 @@
 
 @property (nonatomic, assign) FSIndicatorType indicatorType;
 
-@property (nonatomic, strong) NSArray *titlesArr;
+
 
 @end
 
