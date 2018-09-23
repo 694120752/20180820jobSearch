@@ -13,6 +13,7 @@
 #import "THRRequestManager.h"
 #import "BaseToast.h"
 #import "UIImageView+WebCache.h"
+#import <MBProgressHUD.h>
 
 @interface EcContentButtont :UIButton
 @end
@@ -100,6 +101,9 @@
 
 /** 顾问信息*/
 @property(nonatomic,strong)NSDictionary* dataDic;
+
+/** 全屏View*/
+@property(nonatomic,strong)UIView* fullView;
 @end
 
 @implementation ExclusiveConsultantViewController
@@ -194,7 +198,7 @@
     .rightSpaceToView(card, 0)
     .leftSpaceToView(card, 0);
     
-    nameLabel.text = @"王晓丽";
+    //nameLabel.text = @"王晓丽";
     
     // 手机号
     UILabel* phone = [UILabel new];
@@ -209,7 +213,7 @@
     .rightSpaceToView(card, 0)
     .leftSpaceToView(card, 0);
     
-    phone.text = @"手机号码：18066666666";
+    //phone.text = @"手机号码：18066666666";
     
     // lineView
     UIView* lineView = [UIView new];
@@ -235,6 +239,8 @@
     EcContentButtont* weChatButton = [EcContentButtont buttonWithType:UIButtonTypeCustom];
     [weChatButton setTitle:@"发送微信" forState:UIControlStateNormal];
     [weChatButton setImage:[UIImage imageNamed:@"weChat_b"] forState:UIControlStateNormal];
+    
+    [weChatButton addTarget:self action:@selector(showWechat) forControlEvents:UIControlEventTouchUpInside];
     [card addSubview:weChatButton];
     weChatButton.sd_layout
     .topSpaceToView(lineView, 0)
@@ -246,6 +252,7 @@
     EcContentButtont* phoneButton = [EcContentButtont buttonWithType:UIButtonTypeCustom];
     [phoneButton setImage:[UIImage imageNamed:@"phone_b"] forState:UIControlStateNormal];
     [phoneButton setTitle:@"立即联系" forState:UIControlStateNormal];
+    [phoneButton addTarget:self action:@selector(contentAdviser) forControlEvents:UIControlEventTouchUpInside];
     [card addSubview:phoneButton];
     phoneButton.sd_layout
     .topSpaceToView(lineView, 0)
@@ -361,6 +368,7 @@
             weakSelf.nameLable.text = EncodeStringFromDic(adviserDic, @"nickName");
             weakSelf.phoneNumberLabel.text = [@"手机号码：" stringByAppendingString:EncodeStringFromDic(adviserDic, @"phone")];
             weakSelf.subData.infoDic = adviserDic;
+            weakSelf.subActi.infoDic = adviserDic;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [BaseToast toast:@"顾问信息获取失败"];
@@ -373,4 +381,107 @@
     [self setButtonViewSelectIndex:endIndex];
 }
 
+- (void)showWechat{
+    
+    // 获取了微信
+    [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/eventRecord/add"] parameters:@{@"type":@(3),@"eventType":@(5),@"adviserUserID":EncodeStringFromDic(self.dataDic, @"id")} progress:nil success:nil failure:nil ];
+    
+    UIView *fullView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    self.fullView = fullView;
+    fullView.backgroundColor = RGBACOLOR(0, 0, 0, 0.5);
+    
+    UIView *cardView = [UIView new];
+    cardView.backgroundColor = [UIColor whiteColor];
+    cardView.layer.cornerRadius = 8;
+    cardView.clipsToBounds = YES;
+    [fullView addSubview:cardView];
+    
+    cardView.sd_layout
+    .widthIs(PXGet375Width(450))
+    .heightIs(PXGet375Width(250))
+    .centerXEqualToView(fullView)
+    .centerYEqualToView(fullView);
+    
+    UIImageView *headerImage = [[UIImageView alloc]init];
+    [cardView addSubview:headerImage];
+    
+    headerImage.sd_layout
+    .topSpaceToView(cardView, PXGet375Width(20))
+    .heightIs(PXGet375Width(75))
+    .widthIs(PXGet375Width(75))
+    .centerXEqualToView(cardView);
+    
+    headerImage.layer.cornerRadius = PXGet375Width(75) / 2;
+    headerImage.clipsToBounds = YES;
+    
+    [headerImage sd_setImageWithURL:[NSURL URLWithString:EncodeStringFromDic(self.dataDic, @"portraitRequestUrl")] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+    
+    
+    UILabel *nameLabel = [UILabel new];
+    [cardView addSubview:nameLabel];
+    nameLabel.sd_layout
+    .topSpaceToView(headerImage, PXGet375Width(5))
+    .widthRatioToView(cardView, 1)
+    .heightIs(PXGet375Width(20))
+    .centerXEqualToView(headerImage);
+    
+    nameLabel.text = EncodeStringFromDic(self.dataDic, @"nickName");
+    nameLabel.font = font(12);
+    nameLabel.textColor = [UIColor grayColor];
+    nameLabel.textAlignment = NSTextAlignmentCenter;
+    
+    
+    UILabel* weChatLabel = [UILabel new];
+    [cardView addSubview:weChatLabel];
+    weChatLabel.sd_layout
+    .topSpaceToView(nameLabel, PXGet375Width(25))
+    .rightSpaceToView(cardView, 0)
+    .leftSpaceToView(cardView, 0)
+    .heightIs(PXGet375Width(23));
+    weChatLabel.text = [@"微信号:" stringByAppendingString:EncodeStringFromDic(self.dataDic, @"wxAccount")];
+    
+    
+    weChatLabel.font = font(14);
+    weChatLabel.textColor = [UIColor grayColor];
+    weChatLabel.textAlignment = NSTextAlignmentCenter;
+    
+    
+    UIButton* copyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cardView addSubview:copyButton];
+    copyButton.sd_layout
+    .bottomSpaceToView(cardView, 0)
+    .topSpaceToView(weChatLabel, 0)
+    .rightSpaceToView(cardView, 0)
+    .leftSpaceToView(cardView, 0);
+    [copyButton setTitle:@"复制" forState:UIControlStateNormal];
+    [copyButton setImage:[UIImage imageNamed:@"copy"] forState:UIControlStateNormal];
+    [copyButton addTarget:self action:@selector(copyAction) forControlEvents:UIControlEventTouchUpInside];
+    [copyButton setTitleColor:RGBACOLOR(140, 186, 249, 1) forState:UIControlStateNormal];
+    copyButton.titleLabel.font = font(11);
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:fullView];
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideView)];
+    [fullView addGestureRecognizer:tap];
+}
+
+- (void)hideView{
+    [self.fullView removeFromSuperview];
+}
+
+- (void)copyAction{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = EncodeStringFromDic(self.dataDic, @"wxAccount");
+    [BaseToast toast:@"复制成功"];
+}
+
+// 联系顾问
+- (void)contentAdviser{
+    
+    [[[THRRequestManager manager] setDefaultHeader ]POST:[HTTP stringByAppendingString:@"/eventRecord/add"] parameters:@{@"type":@(3),@"eventType":@(4),@"adviserUserID":EncodeStringFromDic(self.dataDic, @"id")} progress:nil success:nil failure:nil];
+    
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",EncodeStringFromDic(self.dataDic, @"phone")];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+
+}
 @end

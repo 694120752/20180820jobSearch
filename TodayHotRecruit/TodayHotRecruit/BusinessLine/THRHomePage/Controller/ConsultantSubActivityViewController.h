@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface ConsultantSubActivityViewController : UIViewController
-
+/** infoDic*/
+@property(nonatomic,strong)NSDictionary* infoDic;
 @end
