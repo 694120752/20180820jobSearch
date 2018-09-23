@@ -13,7 +13,7 @@
 #import "UnderLineCardTableViewCell.h"
 #import "UnderLineStoreChildVc.h"
 
-@interface UnderLineStoreViewController ()
+@interface UnderLineStoreViewController ()<FSSegmentTitleViewDelegate,FSPageContentViewDelegate>
 @property (nonatomic, strong) FSSegmentTitleView *titleView;
 @property (nonatomic, strong) FSPageContentView *contentPage;
 @end
@@ -23,9 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavi];
-    
+    [self.view addSubview:self.titleView];
+    //self.view addSubview:self.contentPage];
     // 获取热门城市
+    self.view.backgroundColor = RGBACOLOR(240, 240, 240, 1);
     [self getLocationAndSetupContent];
+    
 }
 
 - (void)setUpNavi{
@@ -34,33 +37,47 @@
     self.navBar.titleLabel.text = @"线下门店";
 }
 
+
+#pragma mark --------------- titleViewDelegate  && FSPageContentDelegate
+
+- (void)FSSegmentTitleView:(FSSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex{
+    self.contentPage.contentViewCurrentIndex = endIndex;
+}
+
+- (void)FSContenViewDidEndDecelerating:(FSPageContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex{
+    self.titleView.selectIndex = endIndex;
+}
+
+
 - (void)getLocationAndSetupContent{
     // 先去 请求热门城市
     MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.userInteractionEnabled = NO;
     __weak typeof(self)weakSelf = self;
     [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/address/list"] parameters:@{@"level":@"2",@"hotFlag":@"1"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
         DESC
         if ([desc isEqualToString:@"success"]) {
-//            NSArray* cityArray = EncodeArrayFromDic(resultDic, @"dataList");
-//
-//            NSMutableArray* titleArray = [NSMutableArray array];
-//            NSMutableArray* vcArray = [NSMutableArray array];
-//
-//            for (NSDictionary* cityDic in cityArray) {
-//                [titleArray addObject:EncodeStringFromDic(cityDic, @"name")];
-//                TodayChildVcViewController* childVc = [[TodayChildVcViewController alloc]initWithCityID:EncodeStringFromDic(cityDic, @"name")];
-//                [vcArray addObject:childVc];
-//            }
-//
-//            weakSelf.titleView.titlesArr = [titleArray copy];
-//            weakSelf.pageView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y + PXGet375Width(100), kScreenWidth, kScreenHeight - NavigationBar_Bottom_Y - Bottom_iPhoneX_SPACE - PXGet375Width(100)) childVCs:vcArray parentVC:self delegate:self];
-//            [weakSelf.view addSubview:weakSelf.pageView];
+            NSArray* cityArray = EncodeArrayFromDic(resultDic, @"dataList");
             
-        }else{
-            [BaseToast toast:desc];
+            NSMutableArray* titleArray = [NSMutableArray array];
+            NSMutableArray* vcArray = [NSMutableArray array];
+            
+            for (NSDictionary* cityDic in cityArray) {
+                [titleArray addObject:EncodeStringFromDic(cityDic, @"name")];
+                UnderLineStoreChildVc* childVc = [[UnderLineStoreChildVc alloc]initWithCityID:EncodeStringFromDic(cityDic, @"addressID") andProvinceID:EncodeStringFromDic(cityDic, @"parentID")];
+                [vcArray addObject:childVc];
+                
+            }
+            
+            weakSelf.titleView.titlesArr = [titleArray copy];
+            
+            weakSelf.contentPage = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y + PXGet375Width(100), kScreenWidth, kScreenHeight - PXGet375Width(100) - NavigationBar_Bottom_Y - Bottom_iPhoneX_SPACE) childVCs:[vcArray copy] parentVC:weakSelf delegate:weakSelf];
+            weakSelf.contentPage.collectionView.backgroundColor = RGBACOLOR(240, 240, 240, 1);
+            weakSelf.contentPage.bgColor = RGBACOLOR(240, 240, 240, 1);
+            weakSelf.contentPage.backgroundColor = RGBACOLOR(240, 240, 240, 1);
+            [weakSelf.view addSubview:weakSelf.contentPage];
         }
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
         });
@@ -75,4 +92,17 @@
     }];
 }
 
+#pragma mark ---- lazy
+
+-(FSSegmentTitleView *)titleView{
+    if (!_titleView) {
+        _titleView = [[FSSegmentTitleView alloc]initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, PXGet375Width(100)) titles:@[] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
+        _titleView.titleSelectColor = CommonBlue;
+        _titleView.indicatorColor = CommonBlue;
+        _titleView.backgroundColor = [UIColor whiteColor];
+    }
+    return _titleView;
+}
+
 @end
+

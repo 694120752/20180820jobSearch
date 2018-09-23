@@ -20,4 +20,11 @@
 
 // Dto
 - (void)selectWithDto:(SelectDto*)selectDto;
+
+// 导航
+- (void)naviWithDic:(NSDictionary *)dataDic;
+
+// 拨打电话
+- (void)callContentPhone:(NSString *)phoneNumber;
+
 @end

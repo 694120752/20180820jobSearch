@@ -52,7 +52,7 @@
             
             for (NSDictionary* cityDic in cityArray) {
                 [titleArray addObject:EncodeStringFromDic(cityDic, @"name")];
-                TodayChildVcViewController* childVc = [[TodayChildVcViewController alloc]initWithCityID:EncodeStringFromDic(cityDic, @"name")];
+                TodayChildVcViewController* childVc = [[TodayChildVcViewController alloc]initWithCityID:EncodeStringFromDic(cityDic, @"addressID")];
                 [vcArray addObject:childVc];
             }
             

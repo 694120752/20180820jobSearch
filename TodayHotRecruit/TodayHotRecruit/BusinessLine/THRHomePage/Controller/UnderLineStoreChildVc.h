@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UnderLineStoreChildVc : UIViewController
-
+- (instancetype)initWithCityID:(NSString *)cityID andProvinceID:(NSString *)provinceID;
 @end

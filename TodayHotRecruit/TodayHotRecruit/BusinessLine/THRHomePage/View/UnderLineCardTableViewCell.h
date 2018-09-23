@@ -8,6 +8,13 @@
 
 #import "BaseTableViewCell.h"
 
-@interface UnderLineCardTableViewCell : BaseTableViewCell
 
+@interface OutLineButton:UIButton
+@end
+
+@interface UnderLineCardTableViewCell : BaseTableViewCell
+/** dataDic*/
+@property(nonatomic,strong)NSDictionary* dataDic;
+
++ (CGFloat)cellHeightWithDic:(NSDictionary *)dataDic;
 @end

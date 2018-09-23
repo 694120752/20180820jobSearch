@@ -11,7 +11,8 @@
 #import "ExPersonalDataTableViewCell.h"
 
 @interface ConsultantSubDataViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+/** base*/
+@property(nonatomic,strong)BaseTableView* tableView;
 @end
 
 @implementation ConsultantSubDataViewController
@@ -22,6 +23,7 @@
     
     //主体tableView
     BaseTableView* base = [[BaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView = base;
     base.dataSource = self;
     base.delegate = self;
     [base registerClass:[ExPersonalDataTableViewCell class] forCellReuseIdentifier:NSStringFromClass([ExPersonalDataTableViewCell class])];
@@ -44,18 +46,18 @@
     switch (indexPath.row) {
         case 0:{
             cell.leftStr = @"个性签名";
-            cell.contentStr = @"超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试";
+            cell.contentStr = EncodeStringFromDic(self.infoDic, @"signature");
         }
             break;
         case 1:{
             cell.leftStr = @"所在家乡";
-            cell.contentStr = @"测试";
+            cell.contentStr = EncodeStringFromDic(self.infoDic, @"birthCityName");
         }
             break;
             
         default:{
             cell.leftStr = @"所在城市";
-            cell.contentStr = @"测试";
+            cell.contentStr = EncodeStringFromDic(self.infoDic, @"cityName");
 }
             break;
     }
@@ -65,16 +67,24 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:{
-            return [ExPersonalDataTableViewCell selfHeightWithStr:@"超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试超长测试"];
+            return [ExPersonalDataTableViewCell selfHeightWithStr:EncodeStringFromDic(self.infoDic, @"signature")];
         }
             
             break;
-            
+        case 1:{
+            return [ExPersonalDataTableViewCell selfHeightWithStr:EncodeStringFromDic(self.infoDic, @"birthCityName")];
+        }
+            break;
         default:{
-            return [ExPersonalDataTableViewCell selfHeightWithStr:@"测试"];
+            return [ExPersonalDataTableViewCell selfHeightWithStr:EncodeStringFromDic(self.infoDic, @"cityName")];
         }
             break;
     }
 }
 
+
+-(void)setInfoDic:(NSDictionary *)infoDic{
+    _infoDic = infoDic;
+    [self.tableView reloadData];
+}
 @end

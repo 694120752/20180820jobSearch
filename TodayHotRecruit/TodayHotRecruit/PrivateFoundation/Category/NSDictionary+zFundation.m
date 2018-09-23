@@ -75,7 +75,7 @@ NSDictionary *EncodeDicFromDic(NSDictionary *dic, NSString *key)
         }
     }
     
-    return nil;
+    return @{};
 }
 
 NSArray      *EncodeArrayFromDic(NSDictionary *dic, NSString *key)
@@ -89,7 +89,7 @@ NSArray      *EncodeArrayFromDic(NSDictionary *dic, NSString *key)
         }
     }
     
-    return nil;
+    return @[];
 }
 
 NSArray      *EncodeArrayFromDicUsingParseBlock(NSDictionary *dic, NSString *key, id(^parseBlock)(NSDictionary *innerDic))

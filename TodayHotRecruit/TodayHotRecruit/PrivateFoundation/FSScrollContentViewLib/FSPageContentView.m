@@ -15,7 +15,7 @@ static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
 
 @property (nonatomic, weak) UIViewController *parentVC;//父视图
 @property (nonatomic, strong) NSArray *childsVCs;//子视图数组
-@property (nonatomic, weak) UICollectionView *collectionView;
+
 @property (nonatomic, assign) CGFloat startOffsetX;
 @property (nonatomic, assign) BOOL isSelectBtn;//是否是滑动
 
@@ -97,6 +97,10 @@ static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
         UIViewController *childVC = self.childsVCs[indexPath.item];
         childVC.view.frame = cell.contentView.bounds;
         [cell.contentView addSubview:childVC.view];
+    }
+    
+    if (self.bgColor) {
+        cell.backgroundColor = self.bgColor;
     }
     return cell;
 }

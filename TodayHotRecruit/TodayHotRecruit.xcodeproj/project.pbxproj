@@ -22,6 +22,7 @@
 		ED3B908D214502AE00D3661C /* UserInfoHeadImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B908C214502AE00D3661C /* UserInfoHeadImageTableViewCell.m */; };
 		ED3B9090214E681900D3661C /* THRJob.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B908F214E681900D3661C /* THRJob.m */; };
 		ED3B9093214E740000D3661C /* THRCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B9092214E740000D3661C /* THRCompany.m */; };
+		ED3B90962156871200D3661C /* UILabel+zFundation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90952156871200D3661C /* UILabel+zFundation.m */; };
 		EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */; };
 		F2C13BDE1646393BCCCB6C1D /* libPods-TodayHotRecruitUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */; };
 		F70006702134EB4400D52677 /* SelectDto.m in Sources */ = {isa = PBXBuildFile; fileRef = F700066F2134EB4400D52677 /* SelectDto.m */; };
@@ -195,6 +196,8 @@
 		ED3B908F214E681900D3661C /* THRJob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = THRJob.m; path = TodayHotRecruit/BusinessLine/THRUserCenter/View/THRJob.m; sourceTree = SOURCE_ROOT; };
 		ED3B9091214E740000D3661C /* THRCompany.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = THRCompany.h; path = TodayHotRecruit/BusinessLine/THRUserCenter/View/THRCompany.h; sourceTree = SOURCE_ROOT; };
 		ED3B9092214E740000D3661C /* THRCompany.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = THRCompany.m; path = TodayHotRecruit/BusinessLine/THRUserCenter/View/THRCompany.m; sourceTree = SOURCE_ROOT; };
+		ED3B90942156871200D3661C /* UILabel+zFundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+zFundation.h"; sourceTree = "<group>"; };
+		ED3B90952156871200D3661C /* UILabel+zFundation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+zFundation.m"; sourceTree = "<group>"; };
 		EDAC72AE2131393D00FA61C5 /* HomePageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageNavController.h; sourceTree = "<group>"; };
 		EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageNavController.m; sourceTree = "<group>"; };
 		F700066E2134EB4400D52677 /* SelectDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectDto.h; sourceTree = "<group>"; };
@@ -709,6 +712,8 @@
 				F70006CA2135345600D52677 /* NSDate+Helper.m */,
 				F708B7E6214BB7AB00328555 /* NSDictionary+zFundation.h */,
 				F708B7E7214BB7AB00328555 /* NSDictionary+zFundation.m */,
+				ED3B90942156871200D3661C /* UILabel+zFundation.h */,
+				ED3B90952156871200D3661C /* UILabel+zFundation.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1409,6 +1414,7 @@
 				F7FB56722151372200DB118E /* TZLocationManager.m in Sources */,
 				F70006FB21356F0D00D52677 /* PinyinFormatter.m in Sources */,
 				F76D226D213CC30700466BC2 /* ExclusiveConsultantViewController.m in Sources */,
+				ED3B90962156871200D3661C /* UILabel+zFundation.m in Sources */,
 				F700071121356F8900D52677 /* ZJProgressHUD.m in Sources */,
 				F79A7F91212FA889002E73E0 /* BaseViewController.m in Sources */,
 				F70006DE21356ED900D52677 /* ZJCitiesGroup.m in Sources */,

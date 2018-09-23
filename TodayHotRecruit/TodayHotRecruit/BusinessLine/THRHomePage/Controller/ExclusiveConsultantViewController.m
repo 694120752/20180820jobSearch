@@ -10,6 +10,9 @@
 #import "FSPageContentView.h"
 #import "ConsultantSubDataViewController.h"
 #import "ConsultantSubActivityViewController.h"
+#import "THRRequestManager.h"
+#import "BaseToast.h"
+#import "UIImageView+WebCache.h"
 
 @interface EcContentButtont :UIButton
 @end
@@ -88,6 +91,15 @@
 
 // 下方的内容
 @property (nonatomic, strong) FSPageContentView *contentView;
+
+/** ConsultantSubDataViewController*/
+@property(nonatomic,strong)ConsultantSubDataViewController* subData;
+
+/** ConsultantSubActivityViewController*/
+@property(nonatomic,strong)ConsultantSubActivityViewController* subActi;
+
+/** 顾问信息*/
+@property(nonatomic,strong)NSDictionary* dataDic;
 @end
 
 @implementation ExclusiveConsultantViewController
@@ -104,6 +116,9 @@
     
     //最下面为你服务多少天
     [self setUpServiceDate];
+    
+    // 请求顾问的内容
+    [self getConsultantData];
 }
 
 - (void)setUpNavi{
@@ -293,7 +308,9 @@
     
     
     //下面的具体内容
-    FSPageContentView* content = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, PXGet375Width(250) + PXGet375Width(150) + NavigationBar_Bottom_Y + PXGet375Width(100), kScreenWidth, kScreenHeight - PXGet375Width(250) - PXGet375Width(150) - NavigationBar_Bottom_Y - PXGet375Width(100)) childVCs:@[[ConsultantSubDataViewController new],[ConsultantSubActivityViewController new]] parentVC:self delegate:self];
+    self.subData = [ConsultantSubDataViewController new];
+    self.subActi = [ConsultantSubActivityViewController new];
+    FSPageContentView* content = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, PXGet375Width(250) + PXGet375Width(150) + NavigationBar_Bottom_Y + PXGet375Width(100), kScreenWidth, kScreenHeight - PXGet375Width(250) - PXGet375Width(150) - NavigationBar_Bottom_Y - PXGet375Width(100)) childVCs:@[self.subData,self.subActi] parentVC:self delegate:self];
     _contentView = content;
     [self.view addSubview:content];
     
@@ -331,7 +348,24 @@
     }
 }
 
+#pragma mark ---- dataDelegate
 
+- (void)getConsultantData{
+    [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/adviser/myAdviser"] parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        DESC
+        __weak typeof(self)weakSelf = self;
+        if ([desc isEqualToString:@"success"]) {
+            NSDictionary* adviserDic = EncodeDicFromDic(resultDic, @"adviser");
+            weakSelf.dataDic = adviserDic;
+            [weakSelf.headerImage sd_setImageWithURL:[NSURL URLWithString:EncodeStringFromDic(adviserDic, @"portraitRequestUrl")] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+            weakSelf.nameLable.text = EncodeStringFromDic(adviserDic, @"nickName");
+            weakSelf.phoneNumberLabel.text = [@"手机号码：" stringByAppendingString:EncodeStringFromDic(adviserDic, @"phone")];
+            weakSelf.subData.infoDic = adviserDic;
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [BaseToast toast:@"顾问信息获取失败"];
+    }];
+}
 
 #pragma mark ---- FSContenViewDidEndDecelerating
 -(void)FSContenViewDidEndDecelerating:(FSPageContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex{

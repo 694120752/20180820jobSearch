@@ -18,7 +18,7 @@
 
 @implementation ExPersonalDataTableViewCell
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         // 左边的标题
         UILabel* smallLabel = [UILabel new];
@@ -60,17 +60,17 @@
     return self;
 }
 
--(void)setLeftStr:(NSString *)leftStr{
+- (void)setLeftStr:(NSString *)leftStr{
     _leftStr = leftStr;
     _leftLable.text = leftStr;
 }
 
--(void)setContentStr:(NSString *)contentStr{
+- (void)setContentStr:(NSString *)contentStr{
     _contentStr = contentStr;
     _rightLabel.text = contentStr;
 }
 
-+(CGFloat)selfHeightWithStr:(NSString*)str{
++ (CGFloat)selfHeightWithStr:(NSString*)str{
     CGSize titleSize = [str sizeWithFont:font(PXGet375Width(28)) limitedSize:CGSizeMake(PXGet375Width(480), MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
     return titleSize.height + PXGet375Width(50) + PXGet375Width(20) + PXGet375Width(20);
 }

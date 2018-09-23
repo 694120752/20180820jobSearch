@@ -29,7 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = RANDOMCOLOR;
     [self.view addSubview:self.listView];
 }
 
@@ -66,7 +65,7 @@
         
         _listView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
             [THRJobListRequest getJobDataWithPage:weakSelf.pageNumber andTableView:weakSelf.listView andSuccess:^(NSArray *dataList) {
-                weakSelf.dataArray = [dataList mutableCopy];
+                weakSelf.dataArray = [[weakSelf.dataArray arrayByAddingObjectsFromArray:dataList] mutableCopy];
             } andCityID:weakSelf.cityID andKeyWord:nil];
         }];
         

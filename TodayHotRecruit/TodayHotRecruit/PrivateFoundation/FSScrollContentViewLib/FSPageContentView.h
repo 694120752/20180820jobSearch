@@ -53,7 +53,7 @@
  @return FSPageContentView
  */
 - (instancetype)initWithFrame:(CGRect)frame childVCs:(NSArray *)childVCs parentVC:(UIViewController *)parentVC delegate:(id<FSPageContentViewDelegate>)delegate;
-
+@property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, weak) id<FSPageContentViewDelegate>delegate;
 
 /**
@@ -65,5 +65,7 @@
  设置contentView能否左右滑动，默认YES
  */
 @property (nonatomic, assign) BOOL contentViewCanScroll;
+
+@property(nonatomic,strong)UIColor* bgColor;
 
 @end
