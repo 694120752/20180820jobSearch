@@ -23,6 +23,10 @@
 		ED3B9090214E681900D3661C /* THRJob.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B908F214E681900D3661C /* THRJob.m */; };
 		ED3B9093214E740000D3661C /* THRCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B9092214E740000D3661C /* THRCompany.m */; };
 		ED3B90962156871200D3661C /* UILabel+zFundation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90952156871200D3661C /* UILabel+zFundation.m */; };
+		ED3B90992157E96400D3661C /* HomepageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90982157E96400D3661C /* HomepageViewModel.m */; };
+		ED3B909C2157F06100D3661C /* JobDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B909B2157F06100D3661C /* JobDetailViewController.m */; };
+		ED3B909F2158E58600D3661C /* THRMySigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B909E2158E58500D3661C /* THRMySigninViewController.m */; };
+		ED3B90A22158E7EB00D3661C /* MySignViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90A12158E7EB00D3661C /* MySignViewModel.m */; };
 		EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */; };
 		F2C13BDE1646393BCCCB6C1D /* libPods-TodayHotRecruitUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */; };
 		F70006702134EB4400D52677 /* SelectDto.m in Sources */ = {isa = PBXBuildFile; fileRef = F700066F2134EB4400D52677 /* SelectDto.m */; };
@@ -198,6 +202,14 @@
 		ED3B9092214E740000D3661C /* THRCompany.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = THRCompany.m; path = TodayHotRecruit/BusinessLine/THRUserCenter/View/THRCompany.m; sourceTree = SOURCE_ROOT; };
 		ED3B90942156871200D3661C /* UILabel+zFundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+zFundation.h"; sourceTree = "<group>"; };
 		ED3B90952156871200D3661C /* UILabel+zFundation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+zFundation.m"; sourceTree = "<group>"; };
+		ED3B90972157E96400D3661C /* HomepageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomepageViewModel.h; sourceTree = "<group>"; };
+		ED3B90982157E96400D3661C /* HomepageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomepageViewModel.m; sourceTree = "<group>"; };
+		ED3B909A2157F06100D3661C /* JobDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobDetailViewController.h; sourceTree = "<group>"; };
+		ED3B909B2157F06100D3661C /* JobDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobDetailViewController.m; sourceTree = "<group>"; };
+		ED3B909D2158E58500D3661C /* THRMySigninViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRMySigninViewController.h; sourceTree = "<group>"; };
+		ED3B909E2158E58500D3661C /* THRMySigninViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRMySigninViewController.m; sourceTree = "<group>"; };
+		ED3B90A02158E7EB00D3661C /* MySignViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MySignViewModel.h; sourceTree = "<group>"; };
+		ED3B90A12158E7EB00D3661C /* MySignViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySignViewModel.m; sourceTree = "<group>"; };
 		EDAC72AE2131393D00FA61C5 /* HomePageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageNavController.h; sourceTree = "<group>"; };
 		EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageNavController.m; sourceTree = "<group>"; };
 		F700066E2134EB4400D52677 /* SelectDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectDto.h; sourceTree = "<group>"; };
@@ -777,6 +789,8 @@
 				ED3B90862144F8A000D3661C /* THRRealNameViewController.m */,
 				F7FE4AFE2150FFC9005D5772 /* THRSettingViewController.h */,
 				F7FE4AFF2150FFC9005D5772 /* THRSettingViewController.m */,
+				ED3B909D2158E58500D3661C /* THRMySigninViewController.h */,
+				ED3B909E2158E58500D3661C /* THRMySigninViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -788,6 +802,8 @@
 				F7FE4AFC215097D6005D5772 /* UserDetail.m */,
 				F7FC4E1B2151FBFC00E1AC8D /* THRUploadFile.h */,
 				F7FC4E1C2151FBFC00E1AC8D /* THRUploadFile.m */,
+				ED3B90A02158E7EB00D3661C /* MySignViewModel.h */,
+				ED3B90A12158E7EB00D3661C /* MySignViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -990,6 +1006,8 @@
 				F70305642154EEB2000478D4 /* UnderLineStoreViewController.m */,
 				F70305692154F5E7000478D4 /* UnderLineStoreChildVc.h */,
 				F703056A2154F5E7000478D4 /* UnderLineStoreChildVc.m */,
+				ED3B909A2157F06100D3661C /* JobDetailViewController.h */,
+				ED3B909B2157F06100D3661C /* JobDetailViewController.m */,
 			);
 			name = Controller;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/Controller;
@@ -1004,6 +1022,8 @@
 				ED3B9092214E740000D3661C /* THRCompany.m */,
 				F7058A6A2153D315008E0C59 /* THRJobListRequest.h */,
 				F7058A6B2153D315008E0C59 /* THRJobListRequest.m */,
+				ED3B90972157E96400D3661C /* HomepageViewModel.h */,
+				ED3B90982157E96400D3661C /* HomepageViewModel.m */,
 			);
 			name = Model;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/Model;
@@ -1331,6 +1351,7 @@
 				F70C8DB2214A507E0027DBAB /* BaseToast.m in Sources */,
 				F70006B12135255600D52677 /* NSData+ImageContentType.m in Sources */,
 				F700071021356F8900D52677 /* ZJImageOnlyHUDView.m in Sources */,
+				ED3B909F2158E58600D3661C /* THRMySigninViewController.m in Sources */,
 				EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */,
 				F7B9BB572133EC1F003F9277 /* BaseTableViewCell.m in Sources */,
 				F7FB56762151372200DB118E /* TZProgressView.m in Sources */,
@@ -1376,6 +1397,7 @@
 				ED25C04921314A5D0022717E /* HomePageViewController.m in Sources */,
 				F7FB56752151372200DB118E /* TZPhotoPreviewController.m in Sources */,
 				F7599FDD212D69A700A98074 /* main.m in Sources */,
+				ED3B90A22158E7EB00D3661C /* MySignViewModel.m in Sources */,
 				F70C8DBC214A7B770027DBAB /* WLCaptcheButton.m in Sources */,
 				F70006842135251500D52677 /* TAPageControl.m in Sources */,
 				F70006F821356F0D00D52677 /* ChineseToPinyinResource.m in Sources */,
@@ -1415,6 +1437,7 @@
 				F70006FB21356F0D00D52677 /* PinyinFormatter.m in Sources */,
 				F76D226D213CC30700466BC2 /* ExclusiveConsultantViewController.m in Sources */,
 				ED3B90962156871200D3661C /* UILabel+zFundation.m in Sources */,
+				ED3B909C2157F06100D3661C /* JobDetailViewController.m in Sources */,
 				F700071121356F8900D52677 /* ZJProgressHUD.m in Sources */,
 				F79A7F91212FA889002E73E0 /* BaseViewController.m in Sources */,
 				F70006DE21356ED900D52677 /* ZJCitiesGroup.m in Sources */,
@@ -1426,6 +1449,7 @@
 				ED3B9090214E681900D3661C /* THRJob.m in Sources */,
 				F70006B52135255600D52677 /* SDWebImageCompat.m in Sources */,
 				F759A014212D955900A98074 /* BaseNavigationController.m in Sources */,
+				ED3B90992157E96400D3661C /* HomepageViewModel.m in Sources */,
 				F70006FA21356F0D00D52677 /* NSString+PinYin4Cocoa.m in Sources */,
 				F700070321356F5300D52677 /* ZJCityCollectionViewCell.m in Sources */,
 				F76D2279213D1C7F00466BC2 /* NSString+zFundation.m in Sources */,

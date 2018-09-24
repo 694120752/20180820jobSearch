@@ -13,6 +13,7 @@
 #import "THRRealNameViewController.h"
 #import "THRUserInfoViewController.h"
 #import "THRSettingViewController.h"
+#import "THRMySigninViewController.h"
 
 // tableViewCell
 #import "BaseTableView.h"
@@ -136,7 +137,9 @@
             break;
             
         case 4:{
-            [self.contentTableView reloadData];
+            THRMySigninViewController * sign = [THRMySigninViewController new];
+            sign.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:sign animated:YES];
         }
             break;
         case 6:

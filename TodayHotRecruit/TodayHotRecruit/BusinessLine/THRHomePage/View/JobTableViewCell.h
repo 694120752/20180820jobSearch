@@ -19,8 +19,11 @@
 
 @interface JobTableViewCell : BaseTableViewCell
 
-//- (void)updateWithJobData:(NSDictionary *)dic;
-//
 @property (nonatomic, strong) THRJob *job;
+
+- (void)mySignWithJob:(THRJob *)job;
+
 +(CGFloat)selfHeight;
+
++ (CGFloat)cellHeightInMySign;
 @end

@@ -27,4 +27,7 @@
 // 拨打电话
 - (void)callContentPhone:(NSString *)phoneNumber;
 
+// 详情
+- (void)selectWithJobId:(NSString *)jobID;
+
 @end

@@ -9,10 +9,14 @@
 #import "ScrollMessageTableViewCell.h"
 #import "SDCycleScrollView.h"
 #import "MessageCollectionViewCell.h"
+#import "THRRequestManager.h"
 
 @interface ScrollMessageTableViewCell()<SDCycleScrollViewDelegate>
 // 自定义轮播
 @property (nonatomic, strong) SDCycleScrollView *messageScroll;
+
+/** */
+@property(nonatomic,strong)NSArray* dicArray;
 @end
 
 @implementation ScrollMessageTableViewCell
@@ -20,7 +24,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.messageScroll = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, PXGet375Width(10), kScreenWidth, PXGet375Width(50)) delegate:self placeholderImage:nil];
         self.messageScroll.scrollDirection = UICollectionViewScrollDirectionVertical;
-        self.messageScroll.imageURLStringsGroup = @[@"1",@"2",@"3"];
+        //self.messageScroll.imageURLStringsGroup = @[@"1",@"2",@"3"];
         self.messageScroll.pageControlStyle = SDCycleScrollViewPageContolStyleNone;
         self.contentView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.messageScroll];
@@ -36,11 +40,35 @@
 - (void)setupCustomCell:(UICollectionViewCell *)cell forIndex:(NSInteger)index cycleScrollView:(SDCycleScrollView *)view
 {
     MessageCollectionViewCell *myCell = (MessageCollectionViewCell *)cell;
-    myCell.titleContentLabel.text = [NSString stringWithFormat:@"%ld",(long)index];
+    NSDictionary* data = self.dicArray[index];
+    myCell.titleContentLabel.text = [[EncodeStringFromDic(data, @"userNickName") stringByAppendingString:@"领取了"] stringByAppendingString:EncodeStringFromDic(data, @"amount")];
+    myCell.timeLabel.text = EncodeStringFromDic(data, @"createTime");
+}
+
+- (void)upDateData{
     
+    __weak typeof(self)weakSelf = self;
+    [[[THRRequestManager manager]setDefaultHeader] POST:[HTTP stringByAppendingString:@"/userAmountRecord/list"] parameters:@{@"pageNo":@"1",@"pageSize":@"10"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        DESC
+        if ([desc isEqualToString:@"success"]) {
+            weakSelf.dicArray = EncodeArrayFromDic(resultDic, @"dataList");
+            NSMutableArray *temp = [NSMutableArray array];
+            for (NSDictionary* dic in weakSelf.dicArray) {
+                [temp addObject:EncodeStringFromDic(dic, @"id")];
+            }
+            weakSelf.messageScroll.imageURLStringsGroup = [temp copy];
+        }
+    } failure:nil];
 }
 
 +(CGFloat)selfHeight{
     return PXGet375Width(70);
+}
+
+-(NSArray *)dicArray{
+    if (!_dicArray) {
+        _dicArray = [NSArray array];
+    }
+    return _dicArray;
 }
 @end

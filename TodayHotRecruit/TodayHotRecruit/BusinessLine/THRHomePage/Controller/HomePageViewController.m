@@ -13,6 +13,7 @@
 #import "ExclusiveConsultantViewController.h"
 #import "TodayHotJobViewController.h"
 #import "UnderLineStoreViewController.h"
+#import "JobDetailViewController.h"
 
 //view
 #import "BaseTableView.h"
@@ -31,13 +32,16 @@
 #import "THRRequestManager.h"
 #import "THRJobListRequest.h"
 
-// 工作
+// 工作obj
 #import "THRJob.h"
 #import "THRCompany.h"
+#import "HomepageViewModel.h"
 
 // MJ
 #import <MJExtension.h>
 #import <MJRefresh.h>
+
+
 
 
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,THRCommonDelegate>
@@ -58,6 +62,8 @@
 /** 页数*/
 @property(nonatomic,assign)NSUInteger pageNo;
 
+/** model*/
+@property(nonatomic,strong)HomepageViewModel* viewModel;
 @end
 
 @implementation HomePageViewController
@@ -77,7 +83,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     self.pageNo = 1;
-
+   
 }
 
 // 设置导航栏
@@ -277,6 +283,11 @@
                 {
                     //scroll
                     ScrollMessageTableViewCell* base = [[ScrollMessageTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([ScrollMessageTableViewCell class])];
+                    if (!self.viewModel.isUpdateMessageScroll) {
+                        [base upDateData];
+                        self.viewModel.isUpdateMessageScroll = YES;
+                    }
+                    
                     return base;
                     
                 }
@@ -401,14 +412,25 @@
    
 }
 
+#pragma mmark ------------------- 点击进入详情
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    THRJob *job = self.dataArray[indexPath.row];
+    JobDetailViewController *detail = [JobDetailViewController new];
+    detail.jobId = job.id;
+    detail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
 #pragma mark ------------------ 获取首页的列表数据
 - (void)getNewJobList{
     self.pageNo = 0;
     [self.tableView.mj_footer resetNoMoreData];
     [self.dataArray removeAllObjects];
+    
      __weak typeof(self)weakSelf = self;
     [THRJobListRequest getJobDataWithPage:weakSelf.pageNo andTableView:weakSelf.tableView andSuccess:^(NSArray *dataList) {
         weakSelf.dataArray = [dataList mutableCopy];
+        weakSelf.viewModel.isUpdateMessageScroll = NO;
     } andCityID:nil andKeyWord:nil];
 }
 
@@ -473,6 +495,14 @@
         _geocoder = [[CLGeocoder alloc]init];
     }
     return _geocoder;
+}
+
+-(HomepageViewModel *)viewModel{
+    if (!_viewModel) {
+        _viewModel = [[HomepageViewModel alloc]init];
+        _viewModel.isUpdateMessageScroll = NO;
+    }
+    return _viewModel;
 }
 
 @end
