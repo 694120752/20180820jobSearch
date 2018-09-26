@@ -14,6 +14,7 @@
 #import "THRUserInfoViewController.h"
 #import "THRSettingViewController.h"
 #import "THRMySigninViewController.h"
+#import "CurriculumVitaeViewController.h"
 
 // tableViewCell
 #import "BaseTableView.h"
@@ -140,6 +141,12 @@
             THRMySigninViewController * sign = [THRMySigninViewController new];
             sign.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:sign animated:YES];
+        }
+            break;
+        case 5:{
+            CurriculumVitaeViewController * curriculumVitae = [CurriculumVitaeViewController new];
+            curriculumVitae.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:curriculumVitae animated:YES];
         }
             break;
         case 6:

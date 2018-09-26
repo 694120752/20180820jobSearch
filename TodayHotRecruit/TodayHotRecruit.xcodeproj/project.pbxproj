@@ -110,6 +110,7 @@
 		F759A00C212D873E00A98074 /* AppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F759A00B212D873E00A98074 /* AppTabBarController.m */; };
 		F759A011212D922700A98074 /* UIView+zFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = F759A010212D922700A98074 /* UIView+zFoundation.m */; };
 		F759A014212D955900A98074 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F759A013212D955900A98074 /* BaseNavigationController.m */; };
+		F75D00F42159C47C00E57B3E /* CurriculumVitaeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F75D00F32159C47C00E57B3E /* CurriculumVitaeViewController.m */; };
 		F76D226D213CC30700466BC2 /* ExclusiveConsultantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76D226C213CC30700466BC2 /* ExclusiveConsultantViewController.m */; };
 		F76D2270213CD97600466BC2 /* ConsultantSubDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76D226F213CD97600466BC2 /* ConsultantSubDataViewController.m */; };
 		F76D2273213CD9C500466BC2 /* ConsultantSubActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76D2272213CD9C500466BC2 /* ConsultantSubActivityViewController.m */; };
@@ -121,6 +122,7 @@
 		F79A7F8E212F96C7002E73E0 /* BaseNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F79A7F8D212F96C7002E73E0 /* BaseNavigationBar.m */; };
 		F79A7F91212FA889002E73E0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79A7F90212FA889002E73E0 /* BaseViewController.m */; };
 		F79A7F94212FE22E002E73E0 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F79A7F93212FE22D002E73E0 /* BaseTableView.m */; };
+		F79F21E2215BBF3E0093718A /* CVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F79F21E1215BBF3E0093718A /* CVTableViewCell.m */; };
 		F7B9BB502133E84E003F9277 /* BannerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9BB4F2133E84E003F9277 /* BannerTableViewCell.m */; };
 		F7B9BB532133E9AF003F9277 /* IconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9BB522133E9AF003F9277 /* IconTableViewCell.m */; };
 		F7B9BB572133EC1F003F9277 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9BB562133EC1F003F9277 /* BaseTableViewCell.m */; };
@@ -376,6 +378,8 @@
 		F759A010212D922700A98074 /* UIView+zFoundation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+zFoundation.m"; sourceTree = "<group>"; };
 		F759A012212D955900A98074 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		F759A013212D955900A98074 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		F75D00F22159C47C00E57B3E /* CurriculumVitaeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurriculumVitaeViewController.h; sourceTree = "<group>"; };
+		F75D00F32159C47C00E57B3E /* CurriculumVitaeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurriculumVitaeViewController.m; sourceTree = "<group>"; };
 		F76D226B213CC30700466BC2 /* ExclusiveConsultantViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExclusiveConsultantViewController.h; sourceTree = "<group>"; };
 		F76D226C213CC30700466BC2 /* ExclusiveConsultantViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExclusiveConsultantViewController.m; sourceTree = "<group>"; };
 		F76D226E213CD97600466BC2 /* ConsultantSubDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsultantSubDataViewController.h; sourceTree = "<group>"; };
@@ -398,6 +402,8 @@
 		F79A7F90212FA889002E73E0 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		F79A7F92212FE22D002E73E0 /* BaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
 		F79A7F93212FE22D002E73E0 /* BaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
+		F79F21E0215BBF3E0093718A /* CVTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVTableViewCell.h; sourceTree = "<group>"; };
+		F79F21E1215BBF3E0093718A /* CVTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CVTableViewCell.m; sourceTree = "<group>"; };
 		F7B9BB4E2133E84E003F9277 /* BannerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerTableViewCell.h; sourceTree = "<group>"; };
 		F7B9BB4F2133E84E003F9277 /* BannerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerTableViewCell.m; sourceTree = "<group>"; };
 		F7B9BB512133E9AF003F9277 /* IconTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IconTableViewCell.h; sourceTree = "<group>"; };
@@ -772,6 +778,8 @@
 				ED3B908C214502AE00D3661C /* UserInfoHeadImageTableViewCell.m */,
 				F7FE4AF8215092E4005D5772 /* UserInfoBaseTableViewCell.h */,
 				F7FE4AF9215092E4005D5772 /* UserInfoBaseTableViewCell.m */,
+				F79F21E0215BBF3E0093718A /* CVTableViewCell.h */,
+				F79F21E1215BBF3E0093718A /* CVTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -791,6 +799,8 @@
 				F7FE4AFF2150FFC9005D5772 /* THRSettingViewController.m */,
 				ED3B909D2158E58500D3661C /* THRMySigninViewController.h */,
 				ED3B909E2158E58500D3661C /* THRMySigninViewController.m */,
+				F75D00F22159C47C00E57B3E /* CurriculumVitaeViewController.h */,
+				F75D00F32159C47C00E57B3E /* CurriculumVitaeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1386,6 +1396,7 @@
 				F70006862135251500D52677 /* SDCycleScrollView.m in Sources */,
 				F70006BB2135255600D52677 /* UIButton+WebCache.m in Sources */,
 				F70006BC2135255600D52677 /* UIImage+GIF.m in Sources */,
+				F75D00F42159C47C00E57B3E /* CurriculumVitaeViewController.m in Sources */,
 				F7FB56742151372200DB118E /* TZPhotoPreviewCell.m in Sources */,
 				F70006BE2135255600D52677 /* UIImageView+HighlightedWebCache.m in Sources */,
 				F70DBD492136BA560031E642 /* UserCenterTableViewCell.m in Sources */,
@@ -1401,6 +1412,7 @@
 				F70C8DBC214A7B770027DBAB /* WLCaptcheButton.m in Sources */,
 				F70006842135251500D52677 /* TAPageControl.m in Sources */,
 				F70006F821356F0D00D52677 /* ChineseToPinyinResource.m in Sources */,
+				F79F21E2215BBF3E0093718A /* CVTableViewCell.m in Sources */,
 				F70DBD38213639F50031E642 /* UserHeaderLineTableViewCell.m in Sources */,
 				F7FB566C2151372200DB118E /* TZAssetModel.m in Sources */,
 				F7FE4AFD215097D6005D5772 /* UserDetail.m in Sources */,
