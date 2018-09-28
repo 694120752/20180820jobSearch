@@ -33,15 +33,22 @@
     .leftSpaceToView(self.contentView, 0);
     
     UIButton* addExpButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [addExpButton setImage:[UIImage imageNamed:@"blueCross"] forState:UIControlStateNormal];
     [addExpButton setTitle:@"添加工作经历" forState:UIControlStateNormal];
+    [addExpButton setTitleColor:CommonBlue forState:UIControlStateNormal];
     [self.contentView addSubview:addExpButton];
     addExpButton.sd_layout
     .topSpaceToView(lineView, 0)
     .heightIs(PXGet375Width(80))
     .rightSpaceToView(self.contentView, 0)
     .leftSpaceToView(self.contentView, 0);
+    UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blueCross"]];
+    [addExpButton addSubview:image];
     
+    image.sd_layout
+    .rightSpaceToView(addExpButton.titleLabel, 5)
+    .centerYEqualToView(addExpButton)
+    .widthIs(PXGet375Width(40))
+    .heightIs(PXGet375Width(40));
     return self;
 }
 @end
@@ -77,9 +84,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger lastCount = self.experienceList.count + 2;
     
-    
-    
-    
     if (indexPath.row == 0) {
         // 个人资料
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commonCell"];
@@ -93,18 +97,20 @@
     
     if (indexPath.row == 1) {
         // 求职期望
+        ButtonCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ButtonCell class])];
+        cell.backgroundColor = [UIColor redColor];
+        return cell;
     }
     
     
     if (indexPath.row == lastCount) {
         // 添加工作经历
         ButtonCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ButtonCell class])];
+       
         return cell;
     }
     
-    
     CVTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CVTableViewCell class])];
-    
     return cell;
     
 }
@@ -117,7 +123,7 @@
     
         if (indexPath.row == 1) {
         // 求职期望
-            return 0;
+            return PXGet375Width(95);
         }
     
     
@@ -127,6 +133,13 @@
         }
     
     return [CVTableViewCell cellHeight];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == self.experienceList.count + 2) {
+        // 新增工作经验
+        
+    }
 }
 
 

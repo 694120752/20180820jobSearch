@@ -7,7 +7,20 @@
 //
 
 #import "BaseViewController.h"
+#import "BaseTableViewCell.h"
 
 @interface THRMessageViewController : BaseViewController
 
+@end
+
+@interface MessageCell : BaseTableViewCell
+/** titleLabel*/
+@property (nonatomic, strong) UILabel *messageTitle;
+/** contentLabel*/
+@property (nonatomic, strong) UILabel *messageContent;
+/** messageDic*/
+@property (nonatomic, strong) NSDictionary *messageDic;
+
+
++ (CGFloat)cellHeightWithMessageDic:(NSDictionary *)dic;
 @end
