@@ -13,12 +13,19 @@
 #import <MBProgressHUD.h>
 #import "BaseTableView.h"
 
-@interface JobDetailViewController ()
+#import "THRJob.h"
+#import "BannerTableViewCell.h"
+#import "JobTableViewCell.h"
+
+@interface JobDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** tableView*/
 @property(nonatomic,strong)BaseTableView* tableView;
 
 /** bottomView*/
 @property(nonatomic,strong)UIView* bottomView;
+
+/** THRJob*/
+@property (nonatomic, strong) THRJob *job;
 @end
 
 @implementation JobDetailViewController
@@ -41,14 +48,39 @@
 
 -(void)setJobId:(NSString *)jobId{
     _jobId = jobId;
-    
     [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/job/detail"] parameters:@{@"jobID":jobId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         DESC
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
-    
+    } failure:nil];
 }
+
+#pragma mark ------- UITableViewdeleagte && UITbaleViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row ==0) {
+        BannerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BannerTableViewCell"];
+        return cell;
+    }
+    
+    BaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"BaseTableViewCell"];
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row == 0) {
+        return [BannerTableViewCell cellHeight];
+    }
+    
+    
+    return 0;
+}
+
+#pragma mark ------- lazy
+
 
 -(UIView *)bottomView{
     if (!_bottomView) {
@@ -67,6 +99,13 @@
         [signButton setTitle:@"立即报名" forState:UIControlStateNormal];
         [contentCustom setImage:[UIImage imageNamed:@"customer"] forState:UIControlStateNormal];
         [contentCustom setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        
+        
+        contentCustom.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+        
+        contentCustom.titleLabel.font = font(PXGet375Width(28));
+        recommand.titleLabel.font     = font(PXGet375Width(28));
+        signButton.titleLabel.font    = font(PXGet375Width(28));
         
         signButton.backgroundColor = CommonBlue;
         recommand.backgroundColor = RGBACOLOR(246, 188, 77, 1);
@@ -125,6 +164,19 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [BaseToast toast:@"网络不畅报名失败"];
     }];
+}
+
+- (BaseTableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, kScreenHeight - NavigationBar_Bottom_Y - Bottom_iPhoneX_SPACE) style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        
+    
+        [_tableView registerClass:[BannerTableViewCell class] forCellReuseIdentifier:@"BannerTableViewCell"];
+        [_tableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:@"BaseTableViewCell"];
+    }
+    return _tableView;
 }
 
 @end
