@@ -11,13 +11,8 @@
 #import "BaseTableView.h"
 #import "NSString+zFundation.h"
 #import <MJRefresh.h>
+#import "BaseToast.h"
 
-@interface THRMessageViewController ()<UITableViewDelegate,UITableViewDataSource>
-/** messageList*/
-@property(nonatomic,strong)BaseTableView* messageTableView;
-/** dataSource*/
-@property (nonatomic, strong) NSMutableArray *dataArray;
-@end
 
 @implementation MessageCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -33,10 +28,7 @@
         self.messageContent.font = font(PXGet375Width(23));
         [self.contentView addSubview:self.messageContent];
         [self.contentView addSubview:self.messageTitle];
-        
-        self.messageTitle.backgroundColor = [UIColor greenColor];
-        self.messageContent.backgroundColor = [UIColor yellowColor];
-        
+      
     }
     return self;
 }
@@ -55,7 +47,7 @@
     
     self.messageTitle.sd_layout
     .heightIs(Get375Width(10) + titleSize.height + Get375Width(5))
-    .topSpaceToView(self.contentView, Get375Width(20))
+    .topSpaceToView(self.contentView, Get375Width(10))
     .rightSpaceToView(self.contentView, Get375Width(20))
     .leftSpaceToView(self.contentView, Get375Width(20));
     
@@ -74,9 +66,15 @@
     CGSize titleSize            = [titleStr sizeWithFont:font(PXGet375Width(25)) limitedSize:CGSizeMake(kScreenWidth - Get375Width(20)*2, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
     CGSize contentSize          = [contentStr sizeWithFont:font(PXGet375Width(23)) limitedSize:CGSizeMake(kScreenWidth - Get375Width(20)*2, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
     
-    return Get375Width(10) + titleSize.height + Get375Width(5)*2 + contentSize.height + Get375Width(10);
+    return Get375Width(10) + Get375Width(10) + titleSize.height + Get375Width(5)*2 + contentSize.height + Get375Width(10);
 }
+@end
 
+@interface THRMessageViewController ()<UITableViewDelegate,UITableViewDataSource>
+/** messageList*/
+@property(nonatomic,strong)BaseTableView* messageTableView;
+/** dataSource*/
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end
 
 @implementation THRMessageViewController
@@ -96,6 +94,7 @@
     self.navBar.titleLabel.text = @"消息";
     self.navBar.backgroundColor = CommonBlue;
     self.navBarItemView.backgroundColor = CommonBlue;
+    self.navBar.backButton.hidden = YES;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -110,6 +109,28 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [MessageCell cellHeightWithMessageDic:self.dataArray[indexPath.row]];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    // 删除动作
+    __weak typeof(self)weakSelf = self;
+    NSDictionary *messgaeDic = self.dataArray[indexPath.row];
+    [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/message/update"] parameters:@{@"delIds":EncodeStringFromDic(messgaeDic, @"id")} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [weakSelf.messageTableView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [BaseToast toast:@"删除失败"];
+    }];
+//
 }
 
 #pragma mark ----------- lazy

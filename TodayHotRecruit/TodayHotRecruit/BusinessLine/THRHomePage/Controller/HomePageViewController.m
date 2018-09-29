@@ -14,6 +14,7 @@
 #import "TodayHotJobViewController.h"
 #import "UnderLineStoreViewController.h"
 #import "JobDetailViewController.h"
+#import "WebViewController.h"
 
 //view
 #import "BaseTableView.h"
@@ -229,6 +230,14 @@
         case 2:
         {
             ExclusiveConsultantViewController* ec = [ExclusiveConsultantViewController new];
+            ec.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:ec animated:YES];
+        }
+            break;
+            
+        case 3:
+        {
+            WebViewController* ec = [WebViewController new];
             ec.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:ec animated:YES];
         }

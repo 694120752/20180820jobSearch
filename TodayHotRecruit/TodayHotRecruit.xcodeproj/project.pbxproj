@@ -111,6 +111,7 @@
 		F70DBD4021369AB90031E642 /* UserSecondLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F70DBD3F21369AB90031E642 /* UserSecondLine.m */; };
 		F70DBD4221369AC40031E642 /* UserSecondLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DBD4121369AC40031E642 /* UserSecondLine.xib */; };
 		F70DBD492136BA560031E642 /* UserCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */; };
+		F71C2251215F60140076112E /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F71C2250215F60140076112E /* WebViewController.m */; };
 		F746CC902138E1D7009C2478 /* CustomSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = F746CC8F2138E1D7009C2478 /* CustomSearch.m */; };
 		F746CC9321393158009C2478 /* THRApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = F746CC9221393158009C2478 /* THRApplication.m */; };
 		F7557CA521379FE2009C92D8 /* AdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7557CA421379FE2009C92D8 /* AdTableViewCell.m */; };
@@ -393,6 +394,8 @@
 		F70DBD4121369AC40031E642 /* UserSecondLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSecondLine.xib; sourceTree = "<group>"; };
 		F70DBD462136BA560031E642 /* UserCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenterTableViewCell.h; sourceTree = "<group>"; };
 		F70DBD472136BA560031E642 /* UserCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterTableViewCell.m; sourceTree = "<group>"; };
+		F71C224F215F60140076112E /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = TodayHotRecruit/BusinessLine/THRHomePage/Controller/WebViewController.h; sourceTree = SOURCE_ROOT; };
+		F71C2250215F60140076112E /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = TodayHotRecruit/BusinessLine/THRHomePage/Controller/WebViewController.m; sourceTree = SOURCE_ROOT; };
 		F746CC8E2138E1D7009C2478 /* CustomSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSearch.h; sourceTree = "<group>"; };
 		F746CC8F2138E1D7009C2478 /* CustomSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSearch.m; sourceTree = "<group>"; };
 		F746CC9121393158009C2478 /* THRApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRApplication.h; sourceTree = "<group>"; };
@@ -545,8 +548,8 @@
 			isa = PBXGroup;
 			children = (
 				87E929A8215F5A9A005EABAF /* THRBBSViewController.h */,
-				87E929A9215F5A9A005EABAF /* models */,
 				87E929AE215F5A9A005EABAF /* THRBBSViewController.m */,
+				87E929A9215F5A9A005EABAF /* models */,
 				87E929AF215F5A9A005EABAF /* views */,
 			);
 			path = THRBBS;
@@ -1133,6 +1136,8 @@
 				F703056A2154F5E7000478D4 /* UnderLineStoreChildVc.m */,
 				ED3B909A2157F06100D3661C /* JobDetailViewController.h */,
 				ED3B909B2157F06100D3661C /* JobDetailViewController.m */,
+				F71C224F215F60140076112E /* WebViewController.h */,
+				F71C2250215F60140076112E /* WebViewController.m */,
 			);
 			name = Controller;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/Controller;
@@ -1594,6 +1599,7 @@
 				ED3B90992157E96400D3661C /* HomepageViewModel.m in Sources */,
 				F70006FA21356F0D00D52677 /* NSString+PinYin4Cocoa.m in Sources */,
 				F700070321356F5300D52677 /* ZJCityCollectionViewCell.m in Sources */,
+				F71C2251215F60140076112E /* WebViewController.m in Sources */,
 				F76D2279213D1C7F00466BC2 /* NSString+zFundation.m in Sources */,
 				F70006C521352CBA00D52677 /* ScrollMessageTableViewCell.m in Sources */,
 				F708B7E8214BB7AB00328555 /* NSDictionary+zFundation.m in Sources */,
