@@ -11,3 +11,6 @@
 @interface THRSettingViewController : BaseViewController
 
 @end
+
+
+

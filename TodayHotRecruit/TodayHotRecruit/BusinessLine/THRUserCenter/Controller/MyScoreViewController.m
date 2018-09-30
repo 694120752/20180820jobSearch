@@ -9,6 +9,7 @@
 #import "MyScoreViewController.h"
 #import "UIButton+WebCache.h"
 #import <MJRefresh.h>
+#import "THRRequestManager.h"
 
 @interface MyScoreViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 积分列表*/
@@ -121,8 +122,22 @@
     
     self.scoreTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
+        __weak typeof(self)weakSelf = self;
+        [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/eventRecord/list"] parameters:@{@"type":@"1"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            DESC
+            if ([desc isEqualToString:@"success"]) {
+                weakSelf.scoreArray = [EncodeArrayFromDic(resultDic, @"dataList") mutableCopy];
+            }
+            
+            [weakSelf.scoreTableView.mj_header endRefreshing];
+            [weakSelf.scoreTableView reloadData];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [weakSelf.scoreTableView.mj_header endRefreshing];
+        }];
     }];
     [self.scoreTableView.mj_header beginRefreshing];
+    self.scoreTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
 }
 
 
@@ -137,8 +152,10 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     }
-    
-    
+    NSDictionary *scoreDic = self.scoreArray[indexPath.row];
+    cell.textLabel.text = EncodeStringFromDic(scoreDic, @"eventContent");
+    cell.detailTextLabel.text = EncodeStringFromDic(scoreDic, @"createTime");
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

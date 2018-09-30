@@ -156,10 +156,13 @@
      NSNumber* mark = EncodeNumberFromDic(ud, @"realFlag");
     if ([mark integerValue] == 0) {
         _cerLabel.text = @"未认证";
+        _cerLabel.backgroundColor = RGBACOLOR(205, 205, 205, 1);
     }else if ([mark integerValue] == 1){
         _cerLabel.text = @"已认证";
+        _cerLabel.backgroundColor = RGBACOLOR(247, 201, 71, 1);
     }else if ([mark integerValue] == 2){
         _cerLabel.text = @"待审核";
+        _cerLabel.backgroundColor = RGBACOLOR(205, 205, 205, 1);
     }
 }
 
