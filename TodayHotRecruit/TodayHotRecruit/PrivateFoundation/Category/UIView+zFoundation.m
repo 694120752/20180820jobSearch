@@ -141,4 +141,25 @@
     
     [view.superview.layer insertSublayer:shadowLayer below:view.layer];
 }
+
+- (void)addGrid:(UIView *)view withWidthSize:(CGFloat)widthSize andHeightSize:(CGFloat)heightSize andColor:(UIColor *)lineColor{
+    CGFloat widthView = view.frame.size.width;
+    CGFloat heightView = view.frame.size.height;
+    
+    void (^addLineWidthRect)(CGRect rect) = ^(CGRect rect) {
+        CALayer *layer = [[CALayer alloc] init];
+        [view.layer addSublayer:layer];
+        layer.frame = rect;
+        layer.backgroundColor = [lineColor CGColor];
+    };
+    
+    for (int i=0; i<widthView; i+=heightSize) {
+        addLineWidthRect(CGRectMake(i, 0, 1, heightView));
+    }
+    for (int i=0; i<heightView; i+=widthSize) {
+        addLineWidthRect(CGRectMake(0, i, widthView, 1));
+    }
+}
+
+
 @end

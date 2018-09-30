@@ -13,10 +13,12 @@
 #import <MBProgressHUD.h>
 #import <MJExtension.h>
 #import "BaseTableView.h"
-
 #import "THRJob.h"
+
 #import "BannerTableViewCell.h"
 #import "JobTableViewCell.h"
+#import "JobTimeLineTableViewCell.h"
+#import "JobDetailTitleViewTableViewCell.h"
 
 @interface JobDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** tableView*/
@@ -43,7 +45,6 @@
     [self setUpNavi];
 }
 
-
 - (void)setUpNavi{
     self.navBarItemView.backgroundColor = CommonBlue;
     self.navBar.backgroundColor = CommonBlue;
@@ -53,15 +54,27 @@
 -(void)setJobId:(NSString *)jobId{
     _jobId = jobId;
     __weak typeof(self)weakSelf = self;
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.userInteractionEnabled = NO;
     [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/job/detail"] parameters:@{@"jobID":jobId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         DESC
         if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
             weakSelf.job = [THRJob mj_objectWithKeyValues:EncodeDicFromDic(resultDic, @"job")];
             weakSelf.subsidyList = EncodeArrayFromDic(resultDic, @"subsidyList");
             [weakSelf.tableView reloadData];
+            weakSelf.tableView.hidden = NO;
         }
         
-    } failure:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES];
+        });
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES];
+        });
+    }];
 }
 
 #pragma mark ------- UITableViewdeleagte && UITbaleViewDataSource
@@ -97,7 +110,22 @@
         cell.textLabel.textColor    = RGBACOLOR(237, 178, 88, 1);
         
         cell.textLabel.font         = font(PXGet375Width(23));
+        cell.selectionStyle         = UITableViewCellSelectionStyleNone;
         return cell;
+    }
+    
+    // 时间线
+    if (indexPath.row == 3) {
+        JobTimeLineTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"JobTimeLineTableViewCell"];
+        cell.selectionStyle         = UITableViewCellSelectionStyleNone;
+        [cell updateWithArray:self.subsidyList andContent:self.job.subsidyDesc];
+        return cell;
+    }
+    
+    // 标题
+    if (indexPath.row == 4) {
+        JobDetailTitleViewTableViewCell * title = [tableView dequeueReusableCellWithIdentifier:@"JobDetailTitleViewTableViewCell"];
+        return title;
     }
     
     BaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"BaseTableViewCell"];
@@ -117,7 +145,16 @@
     if (indexPath.row == 2) {
         return Get375Width(25);
     }
+   
+    if (indexPath.row == 3) {
+        if (self.job) {
+            return [JobTimeLineTableViewCell cellHeightWithContent:self.job.subsidyDesc];
+        }
+    }
     
+    if (indexPath.row == 4) {
+        return [JobDetailTitleViewTableViewCell cellHeight];
+    }
     
     return 0;
 }
@@ -142,8 +179,6 @@
         [signButton setTitle:@"立即报名" forState:UIControlStateNormal];
         [contentCustom setImage:[UIImage imageNamed:@"customer"] forState:UIControlStateNormal];
         [contentCustom setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
-        
-        
         contentCustom.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
         
         contentCustom.titleLabel.font = font(PXGet375Width(28));
@@ -152,7 +187,6 @@
         
         signButton.backgroundColor = CommonBlue;
         recommand.backgroundColor = RGBACOLOR(246, 188, 77, 1);
-        
         [_bottomView sd_addSubviews:@[contentCustom,recommand,signButton]];
         
         contentCustom.sd_layout
@@ -213,11 +247,13 @@
         _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, kScreenHeight - NavigationBar_Bottom_Y - Bottom_iPhoneX_SPACE) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        
-    
+   
         [_tableView registerClass:[BannerTableViewCell class] forCellReuseIdentifier:@"BannerTableViewCell"];
         [_tableView registerClass:[JobTableViewCell class] forCellReuseIdentifier:@"JobTableViewCell"];
         [_tableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:@"BaseTableViewCell"];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([JobTimeLineTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([JobTimeLineTableViewCell class])];
+        [_tableView registerClass:[JobDetailTitleViewTableViewCell class] forCellReuseIdentifier:@"JobDetailTitleViewTableViewCell"];
+        _tableView.hidden = YES;
     }
     return _tableView;
 }

@@ -30,4 +30,7 @@
 // 详情
 - (void)selectWithJobId:(NSString *)jobID;
 
+// 专属顾问跳转
+- (void)jumpToExclusiveVc;
+
 @end

@@ -65,6 +65,9 @@
 
 /** model*/
 @property(nonatomic,strong)HomepageViewModel* viewModel;
+
+/** signButton*/
+@property (nonatomic, strong) UIButton *signButton;
 @end
 
 @implementation HomePageViewController
@@ -119,6 +122,7 @@
     
     //签到
     UIButton* signButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _signButton = signButton;
     [signButton setImage:[UIImage imageNamed:@"sign"] forState:UIControlStateNormal];
     signButton.frame = CGRectMake(kScreenWidth - PXGet375Width(80) - 15, 20, PXGet375Width(80), NavigationBar_Bottom_Y - 20);
     [signButton addTarget:self action:@selector(signAction) forControlEvents:UIControlEventTouchUpInside];
@@ -192,7 +196,8 @@
             
             hud.mode = MBProgressHUDModeText;
             hud.label.text = NSLocalizedString(@"已经签到过", @"HUD completed title");
-            
+            //sign_c
+            [self->_signButton setImage:[UIImage imageNamed:@"sign_c"] forState:UIControlStateNormal];
         }
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

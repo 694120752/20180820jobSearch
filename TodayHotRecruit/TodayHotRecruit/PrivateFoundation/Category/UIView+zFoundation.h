@@ -23,6 +23,17 @@
 - (void)z_removeAllSubviews;
 - (UIViewController *)z_viewController;
 
+
+/**
+ 添加网格线
+
+ @param view 要添加的View
+ @param widthSize 竖线间距离
+ @param heightSize 横线间距离
+ @param lineColor 线的颜色
+ */
+- (void)addGrid:(UIView *)view withWidthSize:(CGFloat)widthSize andHeightSize:(CGFloat)heightSize andColor:(UIColor *)lineColor;
+
 - (void)addShadowToView:(UIView *)view
             withOpacity:(float)shadowOpacity
            shadowRadius:(CGFloat)shadowRadius

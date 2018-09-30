@@ -69,10 +69,6 @@
 
 @implementation CurriculumVitaeViewController
 
--(void)dealloc{
-    NSLog(@"");
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavi];
@@ -218,6 +214,7 @@
         [self addWorkExperience];
     }
 }
+
 //跳转个人资料
 -(void)goToPersonInfo{
     THRUserInfoViewController *info = [THRUserInfoViewController new];

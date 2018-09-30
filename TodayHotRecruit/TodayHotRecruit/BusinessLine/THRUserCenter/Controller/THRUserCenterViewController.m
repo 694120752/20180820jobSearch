@@ -15,6 +15,7 @@
 #import "THRSettingViewController.h"
 #import "THRMySigninViewController.h"
 #import "CurriculumVitaeViewController.h"
+#import "ExclusiveConsultantViewController.h"
 
 // tableViewCell
 #import "BaseTableView.h"
@@ -25,7 +26,7 @@
 
 #import "UserDetail.h"
 
-@interface THRUserCenterViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface THRUserCenterViewController () <UITableViewDataSource,UITableViewDelegate,THRCommonDelegate>
 // 主体tableView
 @property (nonatomic, strong) BaseTableView *contentTableView;
 @end
@@ -66,6 +67,7 @@
         case 0:
         {
             UserHeaderLineTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserHeaderLineTableViewCell class])];
+            cell.delegate = self;
             [cell upDateData];
             return cell;
         }
@@ -160,6 +162,13 @@
         default:
             break;
     }
+}
+
+#pragma mark ------------- commonDelegate
+- (void)jumpToExclusiveVc{
+    ExclusiveConsultantViewController * ex = [ExclusiveConsultantViewController new];
+    ex.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ex animated:YES];
 }
 
 #pragma mark --------------- 刷新相关

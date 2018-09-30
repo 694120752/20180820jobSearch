@@ -9,5 +9,8 @@
 #import "BaseTableViewCell.h"
 
 @interface JobTimeLineTableViewCell : BaseTableViewCell
++ (CGFloat)cellHeightWithContent:(NSString *)content;
+
+- (void)updateWithArray:(NSArray *)sub andContent:(NSString *)content;
 
 @end

@@ -33,9 +33,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqg-UC-VS6">
-                        <rect key="frame" x="32" y="56" width="410" height="100"/>
-                        <color key="backgroundColor" white="0.82912946428571432" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="36" y="57" width="446" height="100"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17f-8f-i5X">
+                                <rect key="frame" x="20" y="49.5" width="406" height="1"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="kjb-Ov-W9i"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="17f-8f-i5X" firstAttribute="centerX" secondItem="Dqg-UC-VS6" secondAttribute="centerX" id="ciX-ro-Cum"/>
+                            <constraint firstItem="17f-8f-i5X" firstAttribute="centerY" secondItem="Dqg-UC-VS6" secondAttribute="centerY" id="gSg-x4-5R1"/>
+                            <constraint firstItem="17f-8f-i5X" firstAttribute="leading" secondItem="Dqg-UC-VS6" secondAttribute="leading" constant="20" id="k9h-ee-Ya9"/>
+                            <constraint firstAttribute="trailing" secondItem="17f-8f-i5X" secondAttribute="trailing" constant="20" id="xqx-Ku-5Kw"/>
                             <constraint firstAttribute="height" constant="100" id="yGh-wy-OkB"/>
                         </constraints>
                     </view>
@@ -43,16 +56,20 @@
                 <constraints>
                     <constraint firstItem="llv-ds-3GX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="61T-Ok-Xvz"/>
                     <constraint firstItem="B2s-Cg-Wsx" firstAttribute="height" secondItem="llv-ds-3GX" secondAttribute="height" id="HX8-GY-EIJ"/>
-                    <constraint firstItem="Dqg-UC-VS6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="Jho-Cx-Vwc"/>
+                    <constraint firstItem="Dqg-UC-VS6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="36" id="Jho-Cx-Vwc"/>
                     <constraint firstItem="B2s-Cg-Wsx" firstAttribute="bottom" secondItem="llv-ds-3GX" secondAttribute="bottom" id="OD4-Ph-ggq"/>
                     <constraint firstItem="B2s-Cg-Wsx" firstAttribute="leading" secondItem="llv-ds-3GX" secondAttribute="trailing" constant="10" id="VQe-1t-R6V"/>
                     <constraint firstItem="B2s-Cg-Wsx" firstAttribute="top" secondItem="llv-ds-3GX" secondAttribute="top" id="bBV-bq-Dpv"/>
                     <constraint firstItem="llv-ds-3GX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hB9-qJ-2Ym"/>
-                    <constraint firstItem="Dqg-UC-VS6" firstAttribute="top" secondItem="B2s-Cg-Wsx" secondAttribute="bottom" constant="16" id="qgb-L9-mRR"/>
-                    <constraint firstAttribute="trailing" secondItem="Dqg-UC-VS6" secondAttribute="trailing" constant="68" id="xve-yM-67c"/>
+                    <constraint firstItem="Dqg-UC-VS6" firstAttribute="top" secondItem="B2s-Cg-Wsx" secondAttribute="bottom" constant="17" id="qgb-L9-mRR"/>
+                    <constraint firstAttribute="trailing" secondItem="Dqg-UC-VS6" secondAttribute="trailing" constant="28" id="xve-yM-67c"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="16" y="-158"/>
+            <connections>
+                <outlet property="lineView" destination="17f-8f-i5X" id="uns-3C-xoN"/>
+                <outlet property="timeView" destination="Dqg-UC-VS6" id="4DA-bJ-fct"/>
+            </connections>
+            <point key="canvasLocation" x="-123" y="-238"/>
         </tableViewCell>
     </objects>
 </document>

@@ -10,6 +10,7 @@
 #import "UserSecondLine.h"
 #import "UserDetail.h"
 #import "UIImageView+WebCache.h"
+#import "ExclusiveConsultantViewController.h"
 
 @implementation ScoreButton
 +(instancetype)buttonWithType:(UIButtonType)buttonType andIsLast:(BOOL)condition{
@@ -166,7 +167,9 @@
 }
 
 - (void)checkConsultantInfo{
-    NSLog(@"截获");
+    if (self.delegate && [self.delegate respondsToSelector:@selector(jumpToExclusiveVc)]) {
+        [self.delegate jumpToExclusiveVc];
+    }
 }
 // voidAction
 - (void)tapAction{}
