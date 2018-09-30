@@ -33,4 +33,11 @@
 // 专属顾问跳转
 - (void)jumpToExclusiveVc;
 
+// 跳我的积分
+- (void)jumpToMyScore;
+
+// 跳我的资金
+- (void)jumpToMyfd;
+
+
 @end

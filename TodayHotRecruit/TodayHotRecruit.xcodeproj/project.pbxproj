@@ -106,6 +106,8 @@
 		F7003B5A216078370060EB95 /* CVS0C0TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B4F216078360060EB95 /* CVS0C0TableViewCell.m */; };
 		F7003B5D216078530060EB95 /* UITableView+YKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B5C216078530060EB95 /* UITableView+YKHelper.m */; };
 		F7003B602160AA750060EB95 /* JobDetailTitleViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B5F2160AA750060EB95 /* JobDetailTitleViewTableViewCell.m */; };
+		F7003B632160D1FF0060EB95 /* MyScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B622160D1FF0060EB95 /* MyScoreViewController.m */; };
+		F7003B662160D3D30060EB95 /* MyfundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B652160D3D30060EB95 /* MyfundsViewController.m */; };
 		F70305622154C8DC000478D4 /* TodayChildVcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70305612154C8DC000478D4 /* TodayChildVcViewController.m */; };
 		F70305652154EEB2000478D4 /* UnderLineStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70305642154EEB2000478D4 /* UnderLineStoreViewController.m */; };
 		F70305682154F450000478D4 /* UnderLineCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70305672154F450000478D4 /* UnderLineCardTableViewCell.m */; };
@@ -393,6 +395,10 @@
 		F7003B5C216078530060EB95 /* UITableView+YKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+YKHelper.m"; sourceTree = "<group>"; };
 		F7003B5E2160AA750060EB95 /* JobDetailTitleViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobDetailTitleViewTableViewCell.h; sourceTree = "<group>"; };
 		F7003B5F2160AA750060EB95 /* JobDetailTitleViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobDetailTitleViewTableViewCell.m; sourceTree = "<group>"; };
+		F7003B612160D1FF0060EB95 /* MyScoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScoreViewController.h; sourceTree = "<group>"; };
+		F7003B622160D1FF0060EB95 /* MyScoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScoreViewController.m; sourceTree = "<group>"; };
+		F7003B642160D3D30060EB95 /* MyfundsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyfundsViewController.h; sourceTree = "<group>"; };
+		F7003B652160D3D30060EB95 /* MyfundsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyfundsViewController.m; sourceTree = "<group>"; };
 		F70305602154C8DC000478D4 /* TodayChildVcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayChildVcViewController.h; sourceTree = "<group>"; };
 		F70305612154C8DC000478D4 /* TodayChildVcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayChildVcViewController.m; sourceTree = "<group>"; };
 		F70305632154EEB2000478D4 /* UnderLineStoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnderLineStoreViewController.h; sourceTree = "<group>"; };
@@ -970,6 +976,10 @@
 				ED3B909E2158E58500D3661C /* THRMySigninViewController.m */,
 				F75D00F22159C47C00E57B3E /* CurriculumVitaeViewController.h */,
 				F75D00F32159C47C00E57B3E /* CurriculumVitaeViewController.m */,
+				F7003B612160D1FF0060EB95 /* MyScoreViewController.h */,
+				F7003B622160D1FF0060EB95 /* MyScoreViewController.m */,
+				F7003B642160D3D30060EB95 /* MyfundsViewController.h */,
+				F7003B652160D3D30060EB95 /* MyfundsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1531,6 +1541,7 @@
 				ED25C04C21315DFF0022717E /* AppTabBar.m in Sources */,
 				F70006B32135255600D52677 /* SDImageCache.m in Sources */,
 				F70006C02135255600D52677 /* UIView+WebCache.m in Sources */,
+				F7003B662160D3D30060EB95 /* MyfundsViewController.m in Sources */,
 				F7003B5D216078530060EB95 /* UITableView+YKHelper.m in Sources */,
 				F70006FC21356F0D00D52677 /* PinyinHelper.m in Sources */,
 				F7FB566A2151372200DB118E /* NSBundle+TZImagePicker.m in Sources */,
@@ -1549,6 +1560,7 @@
 				F79A7F94212FE22E002E73E0 /* BaseTableView.m in Sources */,
 				F70C8DB2214A507E0027DBAB /* BaseToast.m in Sources */,
 				F70006B12135255600D52677 /* NSData+ImageContentType.m in Sources */,
+				F7003B632160D1FF0060EB95 /* MyScoreViewController.m in Sources */,
 				F700071021356F8900D52677 /* ZJImageOnlyHUDView.m in Sources */,
 				ED3B909F2158E58600D3661C /* THRMySigninViewController.m in Sources */,
 				87E929D9215F5A9A005EABAF /* YCPhotoBrowserConst.m in Sources */,

@@ -134,6 +134,8 @@
     [backView addSubview:second];
     
     [second.conButton addTarget:self action:@selector(checkConsultantInfo) forControlEvents:UIControlEventTouchUpInside];
+    [second.myScore addTarget:self action:@selector(myScoreAction) forControlEvents:UIControlEventTouchUpInside];
+    [second.myFd addTarget:self action:@selector(myFdAction) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:backView];
     
     // 添加空白事件 点击前两个Label的时候不响应
@@ -161,7 +163,6 @@
     }
 }
 
-
 + (CGFloat)selfHeight{
     return PXGet375Width(290);
 }
@@ -171,7 +172,19 @@
         [self.delegate jumpToExclusiveVc];
     }
 }
-// voidAction
+
+- (void)myScoreAction{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(jumpToMyScore)]) {
+        [self.delegate jumpToMyScore];
+    }
+}
+
+- (void)myFdAction{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(jumpToMyfd)]) {
+        [self.delegate jumpToMyfd];
+    }
+}
+
 - (void)tapAction{}
 @end
 

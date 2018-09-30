@@ -17,4 +17,7 @@
 //顾问按钮
 @property (weak, nonatomic) IBOutlet UIButton *conButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *myScore;
+@property (weak, nonatomic) IBOutlet UIButton *myFd;
+
 @end

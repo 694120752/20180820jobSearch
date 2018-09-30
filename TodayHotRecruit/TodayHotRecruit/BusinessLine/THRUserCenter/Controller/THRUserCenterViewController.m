@@ -16,6 +16,8 @@
 #import "THRMySigninViewController.h"
 #import "CurriculumVitaeViewController.h"
 #import "ExclusiveConsultantViewController.h"
+#import "MyScoreViewController.h"
+#import "MyfundsViewController.h"
 
 // tableViewCell
 #import "BaseTableView.h"
@@ -169,6 +171,18 @@
     ExclusiveConsultantViewController * ex = [ExclusiveConsultantViewController new];
     ex.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:ex animated:YES];
+}
+
+- (void)jumpToMyScore{
+    MyScoreViewController * score = [MyScoreViewController new];
+    score.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:score animated:YES];
+}
+
+- (void)jumpToMyfd{
+    MyfundsViewController * fun = [MyfundsViewController new];
+    fun.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:fun animated:YES];
 }
 
 #pragma mark --------------- 刷新相关

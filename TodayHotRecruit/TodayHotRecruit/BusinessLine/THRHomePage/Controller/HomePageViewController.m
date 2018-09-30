@@ -177,7 +177,6 @@
     }
     
     [manager GET:[HTTP stringByAppendingString:@"/signRecord/add"] parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
         
         MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.userInteractionEnabled = NO;
