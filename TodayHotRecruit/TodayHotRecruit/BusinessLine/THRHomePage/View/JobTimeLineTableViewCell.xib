@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="235" id="KGk-i7-Jjw" customClass="JobTimeLineTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="510" height="235"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="510" height="234.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llv-ds-3GX">
+                        <rect key="frame" x="20" y="10" width="2" height="30"/>
+                        <color key="backgroundColor" red="1" green="0.7803921568627451" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="2" id="cZF-qC-Vgr"/>
+                            <constraint firstAttribute="height" constant="30" id="qmO-1p-me3"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="入职补助时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2s-Cg-Wsx">
+                        <rect key="frame" x="32" y="10" width="104" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqg-UC-VS6">
+                        <rect key="frame" x="32" y="56" width="410" height="100"/>
+                        <color key="backgroundColor" white="0.82912946428571432" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="yGh-wy-OkB"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="llv-ds-3GX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="61T-Ok-Xvz"/>
+                    <constraint firstItem="B2s-Cg-Wsx" firstAttribute="height" secondItem="llv-ds-3GX" secondAttribute="height" id="HX8-GY-EIJ"/>
+                    <constraint firstItem="Dqg-UC-VS6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="Jho-Cx-Vwc"/>
+                    <constraint firstItem="B2s-Cg-Wsx" firstAttribute="bottom" secondItem="llv-ds-3GX" secondAttribute="bottom" id="OD4-Ph-ggq"/>
+                    <constraint firstItem="B2s-Cg-Wsx" firstAttribute="leading" secondItem="llv-ds-3GX" secondAttribute="trailing" constant="10" id="VQe-1t-R6V"/>
+                    <constraint firstItem="B2s-Cg-Wsx" firstAttribute="top" secondItem="llv-ds-3GX" secondAttribute="top" id="bBV-bq-Dpv"/>
+                    <constraint firstItem="llv-ds-3GX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hB9-qJ-2Ym"/>
+                    <constraint firstItem="Dqg-UC-VS6" firstAttribute="top" secondItem="B2s-Cg-Wsx" secondAttribute="bottom" constant="16" id="qgb-L9-mRR"/>
+                    <constraint firstAttribute="trailing" secondItem="Dqg-UC-VS6" secondAttribute="trailing" constant="68" id="xve-yM-67c"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="16" y="-158"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -11,5 +11,4 @@
 @interface JobDetailViewController : BaseViewController
 /** jobId*/
 @property(nonatomic,strong)NSString* jobId;
-
 @end

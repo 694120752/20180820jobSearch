@@ -92,6 +92,19 @@
 		F700071221356F8900D52677 /* ZJProgressHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070B21356F8800D52677 /* ZJProgressHUDView.m */; };
 		F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070D21356F8800D52677 /* ZJTextAndImageHUDView.m */; };
 		F700071421356F8900D52677 /* ZJTextOnlyHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F700070F21356F8800D52677 /* ZJTextOnlyHUDView.m */; };
+		F7003B4021606FE60060EB95 /* JobTimeLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B3E21606FE60060EB95 /* JobTimeLineTableViewCell.m */; };
+		F7003B4121606FE60060EB95 /* JobTimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7003B3F21606FE60060EB95 /* JobTimeLineTableViewCell.xib */; };
+		F7003B51216078370060EB95 /* CVS1C1TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B42216078340060EB95 /* CVS1C1TableViewCell.m */; };
+		F7003B52216078370060EB95 /* CVS2C0TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7003B43216078340060EB95 /* CVS2C0TableViewCell.xib */; };
+		F7003B53216078370060EB95 /* CVS3C0TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B44216078340060EB95 /* CVS3C0TableViewCell.m */; };
+		F7003B54216078370060EB95 /* CVS1C1TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7003B45216078340060EB95 /* CVS1C1TableViewCell.xib */; };
+		F7003B55216078370060EB95 /* CVS1C0TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7003B47216078350060EB95 /* CVS1C0TableViewCell.xib */; };
+		F7003B56216078370060EB95 /* CVS1C0TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B48216078350060EB95 /* CVS1C0TableViewCell.m */; };
+		F7003B57216078370060EB95 /* CVS2C0TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B4A216078350060EB95 /* CVS2C0TableViewCell.m */; };
+		F7003B58216078370060EB95 /* CVS3C0TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7003B4C216078360060EB95 /* CVS3C0TableViewCell.xib */; };
+		F7003B59216078370060EB95 /* CVS0C0TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7003B4D216078360060EB95 /* CVS0C0TableViewCell.xib */; };
+		F7003B5A216078370060EB95 /* CVS0C0TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B4F216078360060EB95 /* CVS0C0TableViewCell.m */; };
+		F7003B5D216078530060EB95 /* UITableView+YKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7003B5C216078530060EB95 /* UITableView+YKHelper.m */; };
 		F70305622154C8DC000478D4 /* TodayChildVcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70305612154C8DC000478D4 /* TodayChildVcViewController.m */; };
 		F70305652154EEB2000478D4 /* UnderLineStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70305642154EEB2000478D4 /* UnderLineStoreViewController.m */; };
 		F70305682154F450000478D4 /* UnderLineCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70305672154F450000478D4 /* UnderLineCardTableViewCell.m */; };
@@ -357,6 +370,26 @@
 		F700070D21356F8800D52677 /* ZJTextAndImageHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextAndImageHUDView.m; sourceTree = "<group>"; };
 		F700070E21356F8800D52677 /* ZJTextOnlyHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextOnlyHUDView.h; sourceTree = "<group>"; };
 		F700070F21356F8800D52677 /* ZJTextOnlyHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextOnlyHUDView.m; sourceTree = "<group>"; };
+		F7003B3D21606FE60060EB95 /* JobTimeLineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobTimeLineTableViewCell.h; sourceTree = "<group>"; };
+		F7003B3E21606FE60060EB95 /* JobTimeLineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobTimeLineTableViewCell.m; sourceTree = "<group>"; };
+		F7003B3F21606FE60060EB95 /* JobTimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobTimeLineTableViewCell.xib; sourceTree = "<group>"; };
+		F7003B42216078340060EB95 /* CVS1C1TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVS1C1TableViewCell.m; sourceTree = "<group>"; };
+		F7003B43216078340060EB95 /* CVS2C0TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVS2C0TableViewCell.xib; sourceTree = "<group>"; };
+		F7003B44216078340060EB95 /* CVS3C0TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVS3C0TableViewCell.m; sourceTree = "<group>"; };
+		F7003B45216078340060EB95 /* CVS1C1TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVS1C1TableViewCell.xib; sourceTree = "<group>"; };
+		F7003B46216078340060EB95 /* CVS2C0TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVS2C0TableViewCell.h; sourceTree = "<group>"; };
+		F7003B47216078350060EB95 /* CVS1C0TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVS1C0TableViewCell.xib; sourceTree = "<group>"; };
+		F7003B48216078350060EB95 /* CVS1C0TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVS1C0TableViewCell.m; sourceTree = "<group>"; };
+		F7003B49216078350060EB95 /* CVS1C1TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVS1C1TableViewCell.h; sourceTree = "<group>"; };
+		F7003B4A216078350060EB95 /* CVS2C0TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVS2C0TableViewCell.m; sourceTree = "<group>"; };
+		F7003B4B216078350060EB95 /* CVS3C0TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVS3C0TableViewCell.h; sourceTree = "<group>"; };
+		F7003B4C216078360060EB95 /* CVS3C0TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVS3C0TableViewCell.xib; sourceTree = "<group>"; };
+		F7003B4D216078360060EB95 /* CVS0C0TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVS0C0TableViewCell.xib; sourceTree = "<group>"; };
+		F7003B4E216078360060EB95 /* CVS0C0TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVS0C0TableViewCell.h; sourceTree = "<group>"; };
+		F7003B4F216078360060EB95 /* CVS0C0TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVS0C0TableViewCell.m; sourceTree = "<group>"; };
+		F7003B50216078360060EB95 /* CVS1C0TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVS1C0TableViewCell.h; sourceTree = "<group>"; };
+		F7003B5B216078530060EB95 /* UITableView+YKHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+YKHelper.h"; sourceTree = "<group>"; };
+		F7003B5C216078530060EB95 /* UITableView+YKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+YKHelper.m"; sourceTree = "<group>"; };
 		F70305602154C8DC000478D4 /* TodayChildVcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayChildVcViewController.h; sourceTree = "<group>"; };
 		F70305612154C8DC000478D4 /* TodayChildVcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayChildVcViewController.m; sourceTree = "<group>"; };
 		F70305632154EEB2000478D4 /* UnderLineStoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnderLineStoreViewController.h; sourceTree = "<group>"; };
@@ -898,6 +931,21 @@
 				F7FE4AF9215092E4005D5772 /* UserInfoBaseTableViewCell.m */,
 				F79F21E0215BBF3E0093718A /* CVTableViewCell.h */,
 				F79F21E1215BBF3E0093718A /* CVTableViewCell.m */,
+				F7003B4E216078360060EB95 /* CVS0C0TableViewCell.h */,
+				F7003B4F216078360060EB95 /* CVS0C0TableViewCell.m */,
+				F7003B4D216078360060EB95 /* CVS0C0TableViewCell.xib */,
+				F7003B50216078360060EB95 /* CVS1C0TableViewCell.h */,
+				F7003B48216078350060EB95 /* CVS1C0TableViewCell.m */,
+				F7003B47216078350060EB95 /* CVS1C0TableViewCell.xib */,
+				F7003B49216078350060EB95 /* CVS1C1TableViewCell.h */,
+				F7003B42216078340060EB95 /* CVS1C1TableViewCell.m */,
+				F7003B45216078340060EB95 /* CVS1C1TableViewCell.xib */,
+				F7003B46216078340060EB95 /* CVS2C0TableViewCell.h */,
+				F7003B4A216078350060EB95 /* CVS2C0TableViewCell.m */,
+				F7003B43216078340060EB95 /* CVS2C0TableViewCell.xib */,
+				F7003B4B216078350060EB95 /* CVS3C0TableViewCell.h */,
+				F7003B44216078340060EB95 /* CVS3C0TableViewCell.m */,
+				F7003B4C216078360060EB95 /* CVS3C0TableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -932,6 +980,8 @@
 				F7FC4E1C2151FBFC00E1AC8D /* THRUploadFile.m */,
 				ED3B90A02158E7EB00D3661C /* MySignViewModel.h */,
 				ED3B90A12158E7EB00D3661C /* MySignViewModel.m */,
+				F7003B5B216078530060EB95 /* UITableView+YKHelper.h */,
+				F7003B5C216078530060EB95 /* UITableView+YKHelper.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1106,6 +1156,9 @@
 				F76D2275213D1A4700466BC2 /* ExPersonalDataTableViewCell.m */,
 				F70305662154F450000478D4 /* UnderLineCardTableViewCell.h */,
 				F70305672154F450000478D4 /* UnderLineCardTableViewCell.m */,
+				F7003B3D21606FE60060EB95 /* JobTimeLineTableViewCell.h */,
+				F7003B3E21606FE60060EB95 /* JobTimeLineTableViewCell.m */,
+				F7003B3F21606FE60060EB95 /* JobTimeLineTableViewCell.xib */,
 			);
 			name = View;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/View;
@@ -1308,11 +1361,17 @@
 			files = (
 				F7599FDA212D69A700A98074 /* LaunchScreen.storyboard in Resources */,
 				F7FB56702151372200DB118E /* TZImagePickerController.bundle in Resources */,
+				F7003B4121606FE60060EB95 /* JobTimeLineTableViewCell.xib in Resources */,
+				F7003B52216078370060EB95 /* CVS2C0TableViewCell.xib in Resources */,
+				F7003B54216078370060EB95 /* CVS1C1TableViewCell.xib in Resources */,
+				F7003B58216078370060EB95 /* CVS3C0TableViewCell.xib in Resources */,
 				F7599FD7212D69A700A98074 /* Assets.xcassets in Resources */,
 				F7599FD5212D69A500A98074 /* Main.storyboard in Resources */,
+				F7003B59216078370060EB95 /* CVS0C0TableViewCell.xib in Resources */,
 				F70006DF21356ED900D52677 /* cityGroups.plist in Resources */,
 				F70DBD4221369AC40031E642 /* UserSecondLine.xib in Resources */,
 				F70006FD21356F0D00D52677 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				F7003B55216078370060EB95 /* CVS1C0TableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1467,6 +1526,7 @@
 				ED25C04C21315DFF0022717E /* AppTabBar.m in Sources */,
 				F70006B32135255600D52677 /* SDImageCache.m in Sources */,
 				F70006C02135255600D52677 /* UIView+WebCache.m in Sources */,
+				F7003B5D216078530060EB95 /* UITableView+YKHelper.m in Sources */,
 				F70006FC21356F0D00D52677 /* PinyinHelper.m in Sources */,
 				F7FB566A2151372200DB118E /* NSBundle+TZImagePicker.m in Sources */,
 				F76D227D213D345C00466BC2 /* LoginViewController.m in Sources */,
@@ -1502,6 +1562,7 @@
 				ED3B90872144F8A000D3661C /* THRRealNameViewController.m in Sources */,
 				F70C8DB5214A585F0027DBAB /* RegistRequest.m in Sources */,
 				F70305682154F450000478D4 /* UnderLineCardTableViewCell.m in Sources */,
+				F7003B51216078370060EB95 /* CVS1C1TableViewCell.m in Sources */,
 				F70006E821356EEA00D52677 /* ZJCityTableViewCell.m in Sources */,
 				F70006DD21356ED900D52677 /* ZJCity.m in Sources */,
 				F7FE4B002150FFC9005D5772 /* THRSettingViewController.m in Sources */,
@@ -1534,6 +1595,7 @@
 				F7058A6C2153D315008E0C59 /* THRJobListRequest.m in Sources */,
 				F746CC902138E1D7009C2478 /* CustomSearch.m in Sources */,
 				F708B7E3214B93CA00328555 /* LoginRequest.m in Sources */,
+				F7003B53216078370060EB95 /* CVS3C0TableViewCell.m in Sources */,
 				F76D2273213CD9C500466BC2 /* ConsultantSubActivityViewController.m in Sources */,
 				ED25C04921314A5D0022717E /* HomePageViewController.m in Sources */,
 				F7FB56752151372200DB118E /* TZPhotoPreviewController.m in Sources */,
@@ -1545,6 +1607,7 @@
 				F79F21E2215BBF3E0093718A /* CVTableViewCell.m in Sources */,
 				F70DBD38213639F50031E642 /* UserHeaderLineTableViewCell.m in Sources */,
 				F7FB566C2151372200DB118E /* TZAssetModel.m in Sources */,
+				F7003B56216078370060EB95 /* CVS1C0TableViewCell.m in Sources */,
 				F7FE4AFD215097D6005D5772 /* UserDetail.m in Sources */,
 				87E929D6215F5A9A005EABAF /* UIView+YCExtension.m in Sources */,
 				ED25C06F213A90460022717E /* FSSegmentTitleView.m in Sources */,
@@ -1562,6 +1625,7 @@
 				87E929D1215F5A9A005EABAF /* BBSBaseViewController.m in Sources */,
 				87E929D7215F5A9A005EABAF /* YCCycleProgressView.m in Sources */,
 				F700070021356F2200D52677 /* ZJSearchResultController.m in Sources */,
+				F7003B4021606FE60060EB95 /* JobTimeLineTableViewCell.m in Sources */,
 				F7FB566D2151372200DB118E /* TZGifPhotoPreviewController.m in Sources */,
 				87E929DA215F5A9A005EABAF /* YCPhotoBrowserController.m in Sources */,
 				F7FC4E1D2151FBFC00E1AC8D /* THRUploadFile.m in Sources */,
@@ -1577,10 +1641,12 @@
 				F7FB566B2151372200DB118E /* TZAssetCell.m in Sources */,
 				F70006B72135255600D52677 /* SDWebImageDownloader.m in Sources */,
 				F700071421356F8900D52677 /* ZJTextOnlyHUDView.m in Sources */,
+				F7003B57216078370060EB95 /* CVS2C0TableViewCell.m in Sources */,
 				F70006B42135255600D52677 /* SDImageCacheConfig.m in Sources */,
 				F70006832135251500D52677 /* TADotView.m in Sources */,
 				F7FB56722151372200DB118E /* TZLocationManager.m in Sources */,
 				F70006FB21356F0D00D52677 /* PinyinFormatter.m in Sources */,
+				F7003B5A216078370060EB95 /* CVS0C0TableViewCell.m in Sources */,
 				F76D226D213CC30700466BC2 /* ExclusiveConsultantViewController.m in Sources */,
 				ED3B90962156871200D3661C /* UILabel+zFundation.m in Sources */,
 				ED3B909C2157F06100D3661C /* JobDetailViewController.m in Sources */,
