@@ -84,9 +84,14 @@
     
     //下面的线
     UIView* lineView = [UIView new];
-    lineView.frame = CGRectMake(0, areaLabel.mj_y + areaLabel.mj_h, kScreenWidth, 1);
+//    lineView.frame = CGRectMake(0, areaLabel.mj_y + areaLabel.mj_h, kScreenWidth, 1);
     lineView.backgroundColor = RGBACOLOR(228, 228, 228, 1);
     [self.contentView addSubview:lineView];
+    lineView.sd_layout
+    .bottomSpaceToView(self.contentView, 0)
+    .rightSpaceToView(self.contentView, 0)
+    .leftSpaceToView(self.contentView, 0)
+    .heightIs(1);
     
     // 公司名
     UILabel* comLabel = [UILabel new];
@@ -157,6 +162,10 @@
 
 + (CGFloat)cellHeightInMySign{
     return PXGet375Width(20) + PXGet375Width(120) + PXGet375Width(55) + PXGet375Width(20);
+}
+
++ (CGFloat)cellHeightInDetail{
+    return PXGet375Width(20) + PXGet375Width(120) + PXGet375Width(55) - Get375Width(15);//+ PXGet375Width(20);
 }
 
 
@@ -292,7 +301,90 @@
             [_tagView addSubview:taglabel];
         }
     }
+}
+
+- (void)detailWithJob:(THRJob *)job{
+    _job = job;
+    _hasSign.hidden = YES;
+    _detaillabel.hidden = NO;
+    //[_jogImage sd_setImageWithURL:[NSURL URLWithString:job.coverUrl] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+    _jogImage.hidden = YES;
+    _jogImage.width = 0;
+    _areaLabel.height = 0;
+    _areaLabel.hidden = YES;
+    _comLabel.left = Get375Width(15);
+    _salaryLabel.left = Get375Width(15);
+    _tagView.left = Get375Width(15);
     
+    _detaillabel.top -= Get375Width(10);
+    if (NotNilAndNull(job.company)) {
+        
+        if (IsStrEmpty(job.company.address)) {
+            job.company.address = @"";
+        }
+        
+        NSString* orginStr = [[job.company.name stringByAppendingString:@"  "] stringByAppendingString:job.company.address];
+        NSMutableAttributedString* comStr = [[NSMutableAttributedString alloc]initWithString:orginStr];
+        NSRange jobNameRange = [orginStr rangeOfString:job.name];
+        [comStr addAttribute:NSFontAttributeName value:font(10) range:jobNameRange];
+        
+        _comLabel.attributedText = comStr;
+        
+        _detaillabel.text = job.name;
+    }
+    
+    if (IsStrEmpty(job.subsidy)) {
+        _helpButton.hidden = YES;
+    }else{
+        _helpButton.hidden = NO;
+        _helpButton.priceLabel.text = [job.subsidy stringByAppendingString:@"元"];
+    }
+    
+    if (!IsStrEmpty(job.salary)) {
+        NSString* st = [job.salary stringByAppendingString:@"元/月"];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:st];
+        [str addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:[st rangeOfString:job.salary]];
+        [str addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:[st rangeOfString:@"元/月"]];
+        
+        [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:PXGet375Width(25)] range:[st rangeOfString:job.salary]];
+        [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:PXGet375Width(15)] range:[st rangeOfString:@"元/月"]];
+        
+        _salaryLabel.attributedText = str;
+    }
+    
+    //_detaillabel.text = job.name;
+    
+    
+    [_tagView z_removeAllSubviews];
+    
+    NSMutableArray<NSNumber*>* widthArr = [NSMutableArray array];
+    [widthArr addObject:@(0)];
+    
+    if (!IsArrEmpty(job.tagList)) {
+        for (NSUInteger i = 0  ;i< job.tagList.count ; i++) {
+            NSString* tagStr = job.tagList[i];
+            UILabel* taglabel = [UILabel new];
+            CGSize titleSize;
+            if (@available(iOS 8.2, *)) {
+                titleSize = [tagStr sizeWithFont:[UIFont systemFontOfSize:PXGet375Width(18) weight:PXGet375Width(200)] limitedSize:CGSizeMake(MAXFLOAT, PXGet375Width(20)) lineBreakMode:NSLineBreakByWordWrapping];
+                taglabel.font = [UIFont systemFontOfSize:PXGet375Width(18) weight:PXGet375Width(200)];
+            } else {
+                titleSize = [tagStr sizeWithFont:[UIFont systemFontOfSize:PXGet375Width(18)] limitedSize:CGSizeMake(MAXFLOAT, PXGet375Width(20)) lineBreakMode:NSLineBreakByWordWrapping];
+                taglabel.font = font(PXGet375Width(18));
+            }
+            
+            taglabel.frame = CGRectMake([widthArr[i] doubleValue], 0, titleSize.width + PXGet375Width(10)*2, PXGet375Width(35));
+            taglabel.textColor = RGBACOLOR(200, 154, 223, 1);
+            taglabel.layer.borderColor = RGBACOLOR(200, 154, 223, 1).CGColor;
+            taglabel.layer.borderWidth = 1;
+            taglabel.text = tagStr;
+            taglabel.layer.cornerRadius = 3;
+            taglabel.textAlignment = NSTextAlignmentCenter;
+            
+            [widthArr addObject:[NSNumber numberWithDouble:taglabel.mj_x + taglabel.mj_w + PXGet375Width(5)]];
+            [_tagView addSubview:taglabel];
+        }
+    }
 }
 
 @end

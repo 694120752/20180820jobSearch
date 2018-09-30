@@ -11,6 +11,7 @@
 #import "BaseToast.h"
 #import "UIImageView+WebCache.h"
 #import <MBProgressHUD.h>
+#import <MJExtension.h>
 #import "BaseTableView.h"
 
 #import "THRJob.h"
@@ -26,6 +27,9 @@
 
 /** THRJob*/
 @property (nonatomic, strong) THRJob *job;
+
+/** NSArray*/
+@property (nonatomic, strong) NSArray *subsidyList;
 @end
 
 @implementation JobDetailViewController
@@ -48,8 +52,15 @@
 
 -(void)setJobId:(NSString *)jobId{
     _jobId = jobId;
+    __weak typeof(self)weakSelf = self;
     [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/job/detail"] parameters:@{@"jobID":jobId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         DESC
+        if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
+            weakSelf.job = [THRJob mj_objectWithKeyValues:EncodeDicFromDic(resultDic, @"job")];
+            weakSelf.subsidyList = EncodeArrayFromDic(resultDic, @"subsidyList");
+            [weakSelf.tableView reloadData];
+        }
+        
     } failure:nil];
 }
 
@@ -60,8 +71,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row ==0) {
+    if (indexPath.row == 0) {
         BannerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BannerTableViewCell"];
+        if (self.job && self.job.company && self.job.company.coverRequestUrl) {
+            [cell updateWithURL:@[self.job.company.coverRequestUrl]];
+        }
+        return cell;
+    }
+    
+    if (indexPath.row == 1) {
+        JobTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JobTableViewCell"];
+        [cell detailWithJob:self.job];
+        return cell;
+    }
+    
+    if (indexPath.row == 2) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+        }
+        cell.textLabel.text         = @"推荐好友出清七个工作日后即可获得200元红包";
+        cell.imageView.image        = [UIImage imageNamed:@"reminder"];
+        
+        cell.backgroundColor        = RGBACOLOR(255, 248, 233, 1);
+        cell.textLabel.textColor    = RGBACOLOR(237, 178, 88, 1);
+        
+        cell.textLabel.font         = font(PXGet375Width(23));
         return cell;
     }
     
@@ -73,6 +108,14 @@
     
     if (indexPath.row == 0) {
         return [BannerTableViewCell cellHeight];
+    }
+    
+    if (indexPath.row == 1) {
+        return [JobTableViewCell cellHeightInDetail];
+    }
+    
+    if (indexPath.row == 2) {
+        return Get375Width(25);
     }
     
     
@@ -130,7 +173,6 @@
         .bottomSpaceToView(_bottomView, 0)
         .leftSpaceToView(recommand, 0);
         
-        
         UIView* line = [UIView new];
         line.backgroundColor = RGBACOLOR(223, 223, 223, 1);
         [contentCustom addSubview:line];
@@ -174,6 +216,7 @@
         
     
         [_tableView registerClass:[BannerTableViewCell class] forCellReuseIdentifier:@"BannerTableViewCell"];
+        [_tableView registerClass:[JobTableViewCell class] forCellReuseIdentifier:@"JobTableViewCell"];
         [_tableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:@"BaseTableViewCell"];
     }
     return _tableView;

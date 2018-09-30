@@ -23,7 +23,11 @@
 
 - (void)mySignWithJob:(THRJob *)job;
 
-+(CGFloat)selfHeight;
+- (void)detailWithJob:(THRJob *)job;
+
++ (CGFloat)selfHeight;
 
 + (CGFloat)cellHeightInMySign;
+
++ (CGFloat)cellHeightInDetail;
 @end
