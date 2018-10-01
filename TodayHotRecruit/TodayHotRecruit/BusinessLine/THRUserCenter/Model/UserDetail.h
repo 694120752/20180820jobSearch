@@ -22,5 +22,6 @@ typedef void(^UserDetailRefreshFailed)(NSString* reason);
 + (instancetype)sharedInstance;
 
 + (void)refreshUserDetailWith:(UserDetailRefreshSuccess)successBlock andFailedBlock:(UserDetailRefreshFailed)failedBlock;
-
+// 获取客服电话
++ (NSString *)getCustomPhone;
 @end

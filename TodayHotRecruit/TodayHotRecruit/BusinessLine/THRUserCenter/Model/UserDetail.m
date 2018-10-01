@@ -11,6 +11,7 @@
 #import "BaseToast.h"
 
 static UserDetail* userDetail = nil;
+static NSString* customPhone = @"";
 
 @interface UserDetail()
 @property (nonatomic, strong) NSDictionary *uDict;
@@ -29,6 +30,12 @@ static UserDetail* userDetail = nil;
             [UserDetail sharedInstance].uDict = [resultDic objectForKey:@"user"];
             [[NSNotificationCenter defaultCenter]postNotificationName:UserCenterRefresh object:nil];
         }
+    } failure:nil];
+    
+    // 更新客服电话
+    
+    [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/config/get"] parameters:@{@"configName":@"system_service_telephone"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        customPhone = EncodeStringFromDic(responseObject, @"configValue");
     } failure:nil];
 }
 
@@ -78,6 +85,14 @@ static UserDetail* userDetail = nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failedBlock(@"网络原因");
     }];
+    
+    [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/config/get"] parameters:@{@"configName":@"system_service_telephone"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        customPhone = EncodeStringFromDic(responseObject, @"configValue");
+    } failure:nil];
 }
 
+
++ (NSString *)getCustomPhone{
+    return customPhone;
+}
 @end

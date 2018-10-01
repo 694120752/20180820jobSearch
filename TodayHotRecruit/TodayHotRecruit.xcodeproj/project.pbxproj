@@ -117,6 +117,8 @@
 		F708B7E0214B667B00328555 /* FindPassRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7DF214B667B00328555 /* FindPassRequest.m */; };
 		F708B7E3214B93CA00328555 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7E2214B93CA00328555 /* LoginRequest.m */; };
 		F708B7E8214BB7AB00328555 /* NSDictionary+zFundation.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7E7214BB7AB00328555 /* NSDictionary+zFundation.m */; };
+		F70B371C2161B5AD00CD1271 /* FedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70B371B2161B5AD00CD1271 /* FedbackViewController.m */; };
+		F70B371F2161CD9700CD1271 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70B371E2161CD9700CD1271 /* AboutUsViewController.m */; };
 		F70C8DAF214A0F9F0027DBAB /* VerifyCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C8DAE214A0F9F0027DBAB /* VerifyCodeRequest.m */; };
 		F70C8DB2214A507E0027DBAB /* BaseToast.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C8DB1214A507E0027DBAB /* BaseToast.m */; };
 		F70C8DB5214A585F0027DBAB /* RegistRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C8DB4214A585F0027DBAB /* RegistRequest.m */; };
@@ -417,6 +419,10 @@
 		F708B7E2214B93CA00328555 /* LoginRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
 		F708B7E6214BB7AB00328555 /* NSDictionary+zFundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+zFundation.h"; sourceTree = "<group>"; };
 		F708B7E7214BB7AB00328555 /* NSDictionary+zFundation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+zFundation.m"; sourceTree = "<group>"; };
+		F70B371A2161B5AD00CD1271 /* FedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FedbackViewController.h; sourceTree = "<group>"; };
+		F70B371B2161B5AD00CD1271 /* FedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FedbackViewController.m; sourceTree = "<group>"; };
+		F70B371D2161CD9700CD1271 /* AboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		F70B371E2161CD9700CD1271 /* AboutUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		F70C8DAD214A0F9F0027DBAB /* VerifyCodeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerifyCodeRequest.h; sourceTree = "<group>"; };
 		F70C8DAE214A0F9F0027DBAB /* VerifyCodeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerifyCodeRequest.m; sourceTree = "<group>"; };
 		F70C8DB0214A507E0027DBAB /* BaseToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseToast.h; sourceTree = "<group>"; };
@@ -611,16 +617,16 @@
 		87E929AF215F5A9A005EABAF /* views */ = {
 			isa = PBXGroup;
 			children = (
+				87E929B8215F5A9A005EABAF /* BBSBaseView.h */,
 				87E929B0215F5A9A005EABAF /* BBSBaseView.m */,
-				87E929B1215F5A9A005EABAF /* BBSBaseViewController.m */,
 				87E929B2215F5A9A005EABAF /* YBAttributeTextTapAction */,
+				87E929C9215F5A9A005EABAF /* BBSTableViewCell.h */,
 				87E929B5215F5A9A005EABAF /* BBSTableViewCell.m */,
+				87E929C8215F5A9A005EABAF /* BBSCommentView.h */,
 				87E929B6215F5A9A005EABAF /* BBSCommentView.m */,
 				87E929B7215F5A9A005EABAF /* BBSBaseViewController.h */,
-				87E929B8215F5A9A005EABAF /* BBSBaseView.h */,
+				87E929B1215F5A9A005EABAF /* BBSBaseViewController.m */,
 				87E929B9215F5A9A005EABAF /* YCPhotoBrowerCompont */,
-				87E929C8215F5A9A005EABAF /* BBSCommentView.h */,
-				87E929C9215F5A9A005EABAF /* BBSTableViewCell.h */,
 				87E929CA215F5A9A005EABAF /* SPPageMenu */,
 			);
 			path = views;
@@ -659,8 +665,8 @@
 		87E929CA215F5A9A005EABAF /* SPPageMenu */ = {
 			isa = PBXGroup;
 			children = (
-				87E929CB215F5A9A005EABAF /* SPPageMenu.m */,
 				87E929CC215F5A9A005EABAF /* SPPageMenu.h */,
+				87E929CB215F5A9A005EABAF /* SPPageMenu.m */,
 			);
 			path = SPPageMenu;
 			sourceTree = "<group>";
@@ -980,6 +986,10 @@
 				F7003B622160D1FF0060EB95 /* MyScoreViewController.m */,
 				F7003B642160D3D30060EB95 /* MyfundsViewController.h */,
 				F7003B652160D3D30060EB95 /* MyfundsViewController.m */,
+				F70B371A2161B5AD00CD1271 /* FedbackViewController.h */,
+				F70B371B2161B5AD00CD1271 /* FedbackViewController.m */,
+				F70B371D2161CD9700CD1271 /* AboutUsViewController.h */,
+				F70B371E2161CD9700CD1271 /* AboutUsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1589,6 +1599,7 @@
 				F70006872135251500D52677 /* UIView+SDExtension.m in Sources */,
 				F70006CB2135345600D52677 /* NSDate+Helper.m in Sources */,
 				ED25C056213169D20022717E /* THRMessageViewController.m in Sources */,
+				F70B371C2161B5AD00CD1271 /* FedbackViewController.m in Sources */,
 				F70006BD2135255600D52677 /* UIImage+MultiFormat.m in Sources */,
 				F76D2270213CD97600466BC2 /* ConsultantSubDataViewController.m in Sources */,
 				F7FC4E1A2151DBC600E1AC8D /* THRPhotoAction.m in Sources */,
@@ -1625,6 +1636,7 @@
 				F70DBD38213639F50031E642 /* UserHeaderLineTableViewCell.m in Sources */,
 				F7FB566C2151372200DB118E /* TZAssetModel.m in Sources */,
 				F7003B56216078370060EB95 /* CVS1C0TableViewCell.m in Sources */,
+				F70B371F2161CD9700CD1271 /* AboutUsViewController.m in Sources */,
 				F7FE4AFD215097D6005D5772 /* UserDetail.m in Sources */,
 				87E929D6215F5A9A005EABAF /* UIView+YCExtension.m in Sources */,
 				ED25C06F213A90460022717E /* FSSegmentTitleView.m in Sources */,

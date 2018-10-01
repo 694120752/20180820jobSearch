@@ -34,6 +34,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIImageView* image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"withdrawBack"]];
+    image.userInteractionEnabled = YES;
     image.frame = CGRectMake(0, 0, kScreenWidth, PXGet375Width(370));
     [self.view addSubview:image];
     [self.view bringSubviewToFront:self.navBar];
@@ -71,18 +72,19 @@
     .leftSpaceToView(image, 0);
     
     UIButton *withdrawCash = [UIButton buttonWithType:UIButtonTypeCustom];
-    [image addSubview:withdrawCash];
+    [self.view addSubview:withdrawCash];
     withdrawCash.layer.cornerRadius = 8;
     withdrawCash.clipsToBounds = YES;
     withdrawCash.backgroundColor = RGBACOLOR(247, 201, 71, 1);
     [withdrawCash setTitle:@"提现" forState:UIControlStateNormal];
-    withdrawCash.titleLabel.font = font(PXGet375Width(22));
+    [withdrawCash addTarget:self action:@selector(cashAction) forControlEvents:UIControlEventTouchUpInside];
+    withdrawCash.titleLabel.font = font(PXGet375Width(25));
     [withdrawCash setTitleColor:RGBACOLOR(53, 70, 92, 1) forState:UIControlStateNormal];
     withdrawCash.sd_layout
     .widthIs(PXGet375Width(220))
     .heightIs(PXGet375Width(75))
     .centerXEqualToView(image)
-    .bottomSpaceToView(image, -PXGet375Width(75)/2);
+    .topSpaceToView(image, -PXGet375Width(75)/2);
     
 }
 
@@ -104,6 +106,78 @@
     }
     
     return cell;
+}
+
+#pragma mark ------- 提现动作
+
+- (void)cashAction{
+    
+//    if ([EncodeNumberFromDic([UserDetail getDetail], @"amount") floatValue] <= 0) {
+//        [BaseToast toast:@"当前无余额"];
+//        return;
+//    }
+//
+    UIAlertController* cash = [UIAlertController alertControllerWithTitle:@"申请提现" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [cash addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"输入你的支付宝账号";
+    }];
+    
+    [cash addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"你要提取的金额";
+    }];
+    
+    [cash addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"你的真实姓名";
+    }];
+    
+    UITextField* amountField = cash.textFields.lastObject;
+    amountField.keyboardType = UIKeyboardTypeDecimalPad;
+   
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        // 阿里账号
+        NSString* aliAcount = cash.textFields.firstObject.text;
+        // 金额
+        NSString* amount = cash.textFields[1].text;
+        // 真实姓名
+        NSString* realName = cash.textFields.lastObject.text;
+        
+        if (IsStrEmpty(aliAcount)) {
+            [BaseToast toast:@"请输入阿里账号"];
+            return;
+        }
+        
+        if (IsStrEmpty(amount)) {
+            [BaseToast toast:@"请输入金额"];
+            return;
+        }
+        
+        if (IsStrEmpty(realName)) {
+            [BaseToast toast:@"请输入真实姓名"];
+            return;
+        }
+        
+        [BaseToast toast:@"正在提现"];
+        [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/eventRecord/addAmount"] parameters:@{@"amount":amount,@"realName":realName,@"aliAccount":aliAcount} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSDictionary* resultDic  =responseObject;
+            if ([EncodeStringFromDic(resultDic, @"resultCode") isEqualToString:@"301019"]) {
+                [BaseToast toast:@"余额不足"];
+            }else{
+                [BaseToast toast:@"已提交申请"];
+            }
+            
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [BaseToast toast:@"网络不通"];
+        }];
+        
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [cash addAction:action1];
+    [cash addAction:action2];
+    
+    [self presentViewController:cash animated:YES completion:nil];
 }
 
 

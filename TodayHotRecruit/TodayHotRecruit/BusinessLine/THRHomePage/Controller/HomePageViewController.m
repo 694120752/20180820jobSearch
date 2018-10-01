@@ -88,6 +88,8 @@
     
     self.pageNo = 1;
    
+    //查询是否签到
+    [self checkSingInfo];
 }
 
 // 设置导航栏
@@ -190,6 +192,7 @@
                 hud.customView = imageView;
                 hud.mode = MBProgressHUDModeCustomView;
                 hud.label.text = NSLocalizedString(@"签到成功", @"HUD completed title");
+                [self->_signButton setImage:[UIImage imageNamed:@"sign_c"] forState:UIControlStateNormal];
             }
         }else{
             
@@ -456,6 +459,18 @@
     [THRJobListRequest getJobDataWithPage:weakSelf.pageNo andTableView:weakSelf.tableView andSuccess:^(NSArray *dataList) {
         weakSelf.dataArray = [[weakSelf.dataArray arrayByAddingObjectsFromArray:dataList] mutableCopy];
     } andCityID:nil andKeyWord:nil];
+}
+
+
+#pragma mark ---- 查询是否签到
+- (void)checkSingInfo{
+    [[[THRRequestManager manager] setDefaultHeader ] POST:[HTTP stringByAppendingString:@"/user/indexMsg"] parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary * resultDic = responseObject;
+        NSString* mark = EncodeStringFromDic(resultDic, @"signStatus");
+        if ([mark isEqualToString:@"1"]) {
+            [self->_signButton setImage:[UIImage imageNamed:@"sign_c"] forState:UIControlStateNormal];
+        }
+    } failure:nil];
 }
 
 #pragma mark ---- lazy

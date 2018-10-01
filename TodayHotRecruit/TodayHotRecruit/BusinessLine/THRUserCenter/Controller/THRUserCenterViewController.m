@@ -18,6 +18,7 @@
 #import "ExclusiveConsultantViewController.h"
 #import "MyScoreViewController.h"
 #import "MyfundsViewController.h"
+#import "AboutUsViewController.h"
 
 // tableViewCell
 #import "BaseTableView.h"
@@ -156,6 +157,13 @@
         case 6:
         {
             THRSettingViewController* cer = [[THRSettingViewController alloc]init];
+            cer.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:cer animated:YES];
+        }
+            break;
+        case 7:
+        {
+            AboutUsViewController* cer = [[AboutUsViewController alloc]init];
             cer.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:cer animated:YES];
         }

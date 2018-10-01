@@ -16,6 +16,8 @@
 #import "THRSettingViewController.h"
 #import "LoginViewController.h"
 #import "THRRequestManager.h"
+#import "FedbackViewController.h"
+#import "BaseToast.h"
 // 清除缓存
 @interface CacheTool :NSObject
 +(CGFloat)cacheSize;
@@ -122,6 +124,8 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if (indexPath.row == 0) {
         cell.textLabel.text = @"用户反馈";
         cell.detailTextLabel.text = EncodeStringFromDic([UserDetail getDetail], @"nickName");
@@ -129,6 +133,7 @@
     
     if (indexPath.row == 1) {
         cell.textLabel.text = @"联系我们";
+        cell.detailTextLabel.text = [UserDetail getCustomPhone];
     }
     
     if (indexPath.row == 2) {
@@ -141,6 +146,18 @@
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        FedbackViewController *fed = [FedbackViewController new];
+        [self.navigationController pushViewController:fed animated:YES];
+    }
+    if (indexPath.row == 2) {
+        [CacheTool cleanCaches];
+        [BaseToast toast:@"已清除"];
+        [tableView reloadData];
+    }
 }
 
 

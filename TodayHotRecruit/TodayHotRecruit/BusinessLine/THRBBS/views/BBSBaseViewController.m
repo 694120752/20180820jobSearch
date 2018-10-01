@@ -79,7 +79,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     BBSModel* model = self.tableDataSource[indexPath.section];
-    return [tableView cellHeightForIndexPath:indexPath model:model keyPath:@"bbsModel" cellClass:[BBSTableViewCell class] contentViewWidth:kScreenWidth];
+    return [tableView cellHeightForIndexPath:indexPath model:model keyPath:@"bbsModel" cellClass:[BBSTableViewCell class] contentViewWidth:kScreenWidth] ;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
