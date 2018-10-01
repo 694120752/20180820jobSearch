@@ -607,9 +607,9 @@
 			isa = PBXGroup;
 			children = (
 				87E929AA215F5A9A005EABAF /* CommentModel.h */,
-				87E929AB215F5A9A005EABAF /* BBSModel.m */,
-				87E929AC215F5A9A005EABAF /* BBSModel.h */,
 				87E929AD215F5A9A005EABAF /* CommentModel.m */,
+				87E929AC215F5A9A005EABAF /* BBSModel.h */,
+				87E929AB215F5A9A005EABAF /* BBSModel.m */,
 			);
 			path = models;
 			sourceTree = "<group>";

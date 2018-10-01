@@ -7,8 +7,27 @@
 //
 
 #import "BBSModel.h"
-#import "CommentModel.h"
+
 @implementation BBSModel
+
+
++ (BBSModel *)encodeFromDic:(NSDictionary *)dic{
+    BBSModel *model = [[BBSModel alloc]init];
+    model.bbsID = EncodeStringFromDic(dic, @"id");
+    model.userID = EncodeStringFromDic(dic, @"userID");
+    model.parentID = EncodeStringFromDic(dic, @"categoryID");
+    model.avatar = EncodeStringFromDic(dic, @"portraitRequestUrl");
+    model.nickName = EncodeStringFromDic(dic, @"userNickName");
+    //是否已关注发帖人，0-否，1-是
+    model.isFollowed = [EncodeNumberFromDic(dic, @"concernFlag") integerValue] == 0?NO:YES;
+    model.content = EncodeStringFromDic(dic, @"content");
+    model.pics = EncodeArrayFromDic(dic, @"fileList");
+    model.likeFlag = ([EncodeNumberFromDic(dic, @"likeFlag") integerValue] == 0)?NO:YES;
+    model.shareCount = [EncodeNumberFromDic(dic, @"shareCount") integerValue];
+    model.commentCount = [EncodeNumberFromDic(dic, @"commentCount") integerValue];
+    model.likeCount = [EncodeNumberFromDic(dic, @"likeCount") integerValue];
+    return model;
+}
 +(NSArray *)getTempModels {
     BBSModel* m1 = [[BBSModel alloc] init];
     m1.avatar = @"http://b-ssl.duitang.com/uploads/item/201408/08/20140808171354_XkhfE.jpeg";
@@ -70,51 +89,6 @@
     
 }
 
-+(NSArray *)getTempModels2 {
-    BBSModel* m1 = [[BBSModel alloc] init];
-    m1.avatar = @"http://b-ssl.duitang.com/uploads/item/201408/08/20140808171354_XkhfE.jpeg";
-    m1.content = @"大社群设计师提供高顺准的行业设计讲座和领先的设计资讯分享。为设计师发声，替好作品说话，是平台的运营宗旨。";
-    m1.nickName = @"王晓丽";
-    m1.isFollowed = true;
-    m1.pics = @[@"http://upload.gezila.com/data/20161121/26881479693763.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/9358d109b3de9c82c178468c6181800a19d84397.jpg"];
-
-    
-    BBSModel* m2 = [[BBSModel alloc] init];
-    m2.avatar = @"http://p1.qqyou.com/touxiang/UploadPic/2014-12/13/2014121313414466278.jpeg";
-    m2.content = @"大社群设计师提供高顺准的行业设计";
-    
-    
-    
-    
-    BBSModel* m3 = [[BBSModel alloc] init];
-    m3.avatar = @"http://p1.qqyou.com/touxiang/UploadPic/2014-12/13/2014121313414466278.jpeg";
-    m3.content = @"大社群设计师提供高顺准的行业设计";
-    
-    BBSModel* m4 = [[BBSModel alloc] init];
-    m4.avatar = @"http://b-ssl.duitang.com/uploads/item/201408/08/20140808171354_XkhfE.jpeg";
-    m4.content = @"大社群设计师提供高顺准的行业设计讲座和领先的设计资讯分享。为设计师发声，替好作品说话，是平台的运营宗旨。";
-    
-    
-    BBSModel* m5 = [[BBSModel alloc] init];
-    m5.avatar = @"http://p1.qqyou.com/touxiang/UploadPic/2014-12/13/2014121313414466278.jpeg";
-    m5.content = @"大社群设计师提供高顺准的行业设计";
-    
-    BBSModel* m6 = [[BBSModel alloc] init];
-    m6.avatar = @"http://b-ssl.duitang.com/uploads/item/201408/08/20140808171354_XkhfE.jpeg";
-    m6.content = @"大社群设计师提供高顺准的行业设计讲座和领先的设计资讯分享。为设计师发声，替好作品说话，是平台的运营宗旨。";
-    
-    
-    BBSModel* m7 = [[BBSModel alloc] init];
-    m7.avatar = @"http://p1.qqyou.com/touxiang/UploadPic/2014-12/13/2014121313414466278.jpeg";
-    m7.content = @"大社群设计师提供高顺准的行业设计";
-    
-    
-    BBSModel* m8 = [[BBSModel alloc] init];
-    m8.avatar = @"http://b-ssl.duitang.com/uploads/item/201408/08/20140808171354_XkhfE.jpeg";
-    m8.content = @"大社群设计师提供高顺准的行业设计讲座和领先的设计资讯分享。为设计师发声，替好作品说话，是平台的运营宗旨。";
-    m8.pics = @[@"http://d.hiphotos.baidu.com/image/pic/item/e61190ef76c6a7ef55757931f0faaf51f3de6652.jpg"];
-    return @[m1,m2,m3,m4,m2,m3,m8];
-}
 
 +(NSArray*)getComments {
     CommentModel* c1 = [[CommentModel alloc] init];

@@ -11,16 +11,15 @@
 #import "SPPageMenu.h"
 #import "BBSModel.h"
 #import "THRRequestManager.h"
+#import "BaseToast.h"
+#import <MJRefresh.h>
+#import <MJExtension.h>
 #define SCROLLVIEW_MARGIN 40
 #define SCROLLVIEW_HEIGHT kScreenHeight - SCROLLVIEW_MARGIN - 120
 @interface THRBBSViewController () <SPPageMenuDelegate, UIScrollViewDelegate, BBSBaseViewControllerDataSource>
 @property (nonatomic,strong)SPPageMenu* topMenu;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
-
-
-@property (nonatomic,strong)NSArray* recommandData;
-@property (nonatomic,strong)NSArray* moodData;;
 
 @property (nonatomic,assign)NSInteger tabIndex;
 
@@ -32,26 +31,26 @@
 @end
 
 @implementation THRBBSViewController
--(NSMutableArray *)vcArray {
+
+- (NSMutableArray *)vcArray {
     if (!_vcArray) {
         _vcArray = [NSMutableArray array];
     }
     return _vcArray;
 }
--(void)viewWillAppear:(BOOL)animated {
+
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.tabIndex = 0;
     
+    // 配置标题 子控制器
     [self setupViews];
-    
-    //[self loadData];
-    
+
     [self setupNavi];
 }
 
@@ -80,15 +79,57 @@
 -(void)loadData {
     // 模拟请求
     // 根据 tabIndex 决定调用接口
-    BBSBaseViewController* vc = self.vcArray[self.tabIndex];
-    NSArray* datasource = @[];
-    if (self.tabIndex == 0)  {
-         datasource = [BBSModel getTempModels];
-    } else {
-        datasource = [BBSModel getTempModels2];
+    
+    if (IsArrEmpty(self.vcArray) || IsArrEmpty(self.titleDto)) {
+        return;
     }
-    self.currentDataSource = datasource;
-    [vc reloadData];
+    
+    BBSBaseViewController* vc = self.vcArray[self.tabIndex];
+   
+    
+    // 暂时不管上拉下拉 先去搞数据
+    NSDictionary *dic = self.titleDto[self.tabIndex];
+    // 获取帖子列表
+    __weak typeof(self)weakSelf = self;
+    [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/forum/list"] parameters:@{@"pageNo":@"1",@"categoryID":EncodeStringFromDic(dic, @"id"),@"pageSize":@(10)} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary*resultDic=responseObject;
+        NSMutableArray* tempSourceData = [EncodeArrayFromDic(resultDic, @"dataList") mutableCopy];
+        NSMutableArray* tempTargetData = [NSMutableArray array];
+        
+        dispatch_group_t group = dispatch_group_create();
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+         // 为每条帖子获取评论
+        for (NSDictionary *dic in tempSourceData) {
+            BBSModel* model = [BBSModel encodeFromDic:dic];
+            [tempTargetData addObject:model];
+            dispatch_group_enter(group);
+            dispatch_async(queue, ^{
+                [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/forumComment/list"] parameters:@{@"pageNo":@"1",@"pageSize":@"99",@"forumID":model.bbsID} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    NSDictionary*resultDic=responseObject;
+                    model.comments = [CommentModel mj_objectArrayWithKeyValuesArray:EncodeArrayFromDic(resultDic, @"dataList")];//[NSMutableArray mj_objectArrayWithKeyValuesArray:];
+                    dispatch_group_leave(group);
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    dispatch_group_leave(group);
+                }];
+                
+            });
+
+        }
+   
+        dispatch_group_notify(group, queue, ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 所有的都请求完了
+                weakSelf.currentDataSource = [tempTargetData copy];
+                [vc reloadData];
+            });
+        });
+       
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [BaseToast toast:@"网络不通"];
+    }];
+    
+   
 }
 
 #pragma mark UI
@@ -99,39 +140,42 @@
     self.topMenu = menu;
     [self.view addSubview:menu];
     [self.view addSubview:self.scrollView];
-    //NSArray* titleArray = @[@"推荐" ,@"情感",@"工作",@"心情",@"交友",@"二手"];
+
     [menu setSelectedItemTitleColor: [UIColor colorWithRed:93/255.0 green:157/255.0 blue:248/255.0 alpha:1]];
     menu.delegate = self;
     menu.bridgeScrollView = self.scrollView;
-//
-//    for (NSInteger i = 0; i < titleArray.count; i++) {
-//        BBSBaseViewController* vc = [[BBSBaseViewController alloc] init];
-//        [self addChildViewController:vc];
-//        vc.view.frame = CGRectMake( i * kScreenWidth, 0, kScreenWidth, SCROLLVIEW_HEIGHT);
-//        vc.dataSource = self;
-//        [self.vcArray addObject:vc];
-//
-//        [self.scrollView addSubview:vc.view];
-//        vc.view.frame = CGRectMake(kScreenWidth* i , 0, kScreenWidth, SCROLLVIEW_HEIGHT);
-//        self.scrollView .contentOffset = CGPointMake(kScreenWidth*i, 0);
-//        self.scrollView .contentSize = CGSizeMake(titleArray.count*kScreenWidth, 0);
-//
-//    }
-//    [menu setItems:titleArray selectedItemIndex:self.tabIndex];
+
     MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.userInteractionEnabled = NO;
     // 请求分类
     __weak typeof(self)weakSelf = self;
     [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/forumCategory/list"] parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary* resultDic = responseObject;
         [weakSelf.titleDto removeAllObjects];
-        weakSelf.titleDto = [EncodeStringFromDic(resultDic, @"dataList") mutableCopy];
+        weakSelf.titleDto = [EncodeArrayFromDic(resultDic, @"dataList") mutableCopy];
         
         // 配置标题和子控制器
         NSMutableArray *titleArray = [NSMutableArray array];
         for (NSUInteger i = 0; i< weakSelf.titleDto.count ; i++) {
+            [titleArray addObject:EncodeStringFromDic(weakSelf.titleDto[i], @"name")];
             
+            BBSBaseViewController* vc = [[BBSBaseViewController alloc] init];
+            [weakSelf addChildViewController:vc];
+            vc.view.frame = CGRectMake( i * kScreenWidth, 0, kScreenWidth, SCROLLVIEW_HEIGHT);
+            vc.dataSource = self;
+            [weakSelf.vcArray addObject:vc];
+            [weakSelf.scrollView addSubview:vc.view];
+            
+            weakSelf.scrollView .contentOffset = CGPointMake(kScreenWidth*i, 0);
+            weakSelf.scrollView .contentSize = CGSizeMake(titleArray.count*kScreenWidth, 0);
+
         }
-     
+        
+        
+        [menu setItems:[titleArray copy] selectedItemIndex:weakSelf.tabIndex];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES];
+        });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
@@ -166,10 +210,7 @@
     }
     
     if ([targetViewController isViewLoaded]) return;
-    
-    
-   
-    
+ 
     targetViewController.view.frame = CGRectMake(kScreenWidth * toIndex, 0, kScreenWidth, SCROLLVIEW_HEIGHT);
     [_scrollView addSubview:targetViewController.view];
 }

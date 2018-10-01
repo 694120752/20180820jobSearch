@@ -7,8 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CommentModel.h"
 
 @interface BBSModel : NSObject
+
+/** id*/
+@property (nonatomic, strong) NSString *bbsID;
+
+/** 用户id*/
+@property (nonatomic, strong) NSString *userID;
+
+/** 父类ID*/
+@property (nonatomic, strong) NSString *parentID;
+
 /**
  头像 url
  */
@@ -34,17 +45,28 @@
  */
 @property (nonatomic, strong)NSArray* pics;
 
+/** 是否已点赞*/
+@property (nonatomic, assign) BOOL likeFlag;
 
+/** 分享数量*/
+@property (nonatomic, assign) NSUInteger shareCount;
+
+/** 评论数量*/
+@property (nonatomic, assign) NSUInteger commentCount;
+
+/** 点赞数量*/
+@property (nonatomic, assign) NSUInteger likeCount;
 /**
  评论
  */
-@property (nonatomic, strong)NSArray* comments;
+@property (nonatomic, strong)NSArray<CommentModel *>* comments;
 /**
  附加属性 显示评论
  */
 @property (nonatomic, assign)BOOL isShowComment;
-+(NSArray*)getTempModels;
 
 
-+(NSArray*)getTempModels2;
++ (BBSModel *)encodeFromDic:(NSDictionary *)dic;
+
+
 @end

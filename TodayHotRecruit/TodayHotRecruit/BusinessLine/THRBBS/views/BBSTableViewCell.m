@@ -25,6 +25,14 @@
 @property (nonatomic, strong)NSMutableArray* bottomButtonArray;
 
 @property (nonatomic, strong)BBSCommentView* commentView;
+
+
+/** 分享按钮*/
+@property (nonatomic, strong) UIButton *shareButton;
+/** 评论按钮*/
+@property (nonatomic, strong) UIButton *commitButton;
+/** 点赞按钮*/
+@property (nonatomic, strong) UIButton *zanButton;
 @end;
 @implementation BBSTableViewCell
 -(NSMutableArray *)imageViewArray {
@@ -133,7 +141,9 @@
 
     
     UIButton* shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareButton setTitle:@"102" forState:UIControlStateNormal];
+    _shareButton = shareButton;
+    [shareButton setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
+    //[shareButton setTitle:@"102" forState:UIControlStateNormal];
     [self.contentView addSubview:shareButton];
     shareButton.sd_layout
     .leftSpaceToView(self.contentView, 0)
@@ -143,13 +153,16 @@
     [self.bottomButtonArray addObject:shareButton];
     [shareButton setTitleColor:TEXT_COLOR forState:UIControlStateNormal];
     [shareButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
- 
+    shareButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
     shareButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     shareButton.layer.borderWidth = 0.4;
     
     
     
     UIButton* commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [commentButton setImage:[UIImage imageNamed:@"comment"] forState:UIControlStateNormal];
+    commentButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    _commitButton = commentButton;
     [commentButton setTitle:@"0" forState:UIControlStateNormal];
     [self.contentView addSubview:commentButton];
     commentButton.sd_layout
@@ -167,6 +180,9 @@
     [commentButton setBackgroundColor:[UIColor whiteColor]];
     
     UIButton* zanButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [zanButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+    zanButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    _zanButton = zanButton;
     [zanButton setTitle:@"300" forState:UIControlStateNormal];
     [self.contentView addSubview:zanButton];
     zanButton.sd_layout
@@ -195,6 +211,11 @@
 
 -(void)setBbsModel:(BBSModel *)bbsModel {
     _bbsModel = bbsModel;
+    
+    // 配置三个按钮的数量
+    [_shareButton setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)bbsModel.shareCount] forState:UIControlStateNormal];
+    [_commitButton setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)bbsModel.commentCount] forState:UIControlStateNormal];
+    [_zanButton setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)bbsModel.likeCount] forState:UIControlStateNormal];
     
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:bbsModel.avatar]];
     

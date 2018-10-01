@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 @class BBSBaseViewController;
 @protocol BBSBaseViewControllerDataSource <NSObject>
+// 父控制器中 为每个子控制器 提供数据
 -(NSArray*)datasourceForBBSBaseViewController:(BBSBaseViewController*)BBSBaseViewController;
+
 -(void)BBSBaseViewControllerDidRefreshData:(BBSBaseViewController*)BBSBaseViewController;
 @end
 @interface BBSBaseViewController : UIViewController

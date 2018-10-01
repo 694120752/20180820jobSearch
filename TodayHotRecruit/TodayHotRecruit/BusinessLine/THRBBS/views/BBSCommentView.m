@@ -73,20 +73,31 @@
         CommentModel* comment = commentArray[i];
         UIView* bgView = self.commentViewArray[i];
         UIImageView* avatarImageView = [bgView viewWithTag:100];
-        [avatarImageView sd_setImageWithURL:[NSURL URLWithString:comment.avatar]];
+        
+        if (comment.avatar) {
+            [avatarImageView sd_setImageWithURL:[NSURL URLWithString:comment.avatar]];
+        }
         
         UILabel* contentLB = [bgView viewWithTag:101];
         NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
         paragraphStyle.lineSpacing = 6;
         NSMutableAttributedString* content = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: %@",comment.nickName,comment.content] attributes:@{NSForegroundColorAttributeName: RGBACOLOR(120, 120, 120, 1),NSFontAttributeName: [UIFont systemFontOfSize:14], NSParagraphStyleAttributeName: paragraphStyle}];
-        NSRange range = [content.string rangeOfString:comment.nickName];
-        [content addAttributes:@{NSForegroundColorAttributeName: RGBACOLOR(102, 146, 193, 1)} range:range];
-        contentLB.attributedText = content;
         contentLB.numberOfLines = 0;
         contentLB.isAttributedContent = YES;
-        [contentLB yb_addAttributeTapActionWithStrings:@[comment.nickName] tapClicked:^(NSString *string, NSRange range, NSInteger index) {
-            NSLog(@"点击了用户名: %@", comment.nickName);
-        }];
+        if (comment.nickName) {
+            NSRange range = [content.string rangeOfString:comment.nickName];
+            [content addAttributes:@{NSForegroundColorAttributeName: RGBACOLOR(102, 146, 193, 1)} range:range];
+        }
+       
+        contentLB.attributedText = content;
+        
+        
+        if (comment.nickName) {
+            [contentLB yb_addAttributeTapActionWithStrings:@[comment.nickName] tapClicked:^(NSString *string, NSRange range, NSInteger index) {
+                NSLog(@"点击了用户名: %@", comment.nickName);
+            }];
+        }
+        
     }
     
     if (self.commentViewArray.count) {

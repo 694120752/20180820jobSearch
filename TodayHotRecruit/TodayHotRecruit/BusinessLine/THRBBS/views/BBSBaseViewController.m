@@ -31,8 +31,7 @@
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
-    
-    
+
 }
 
 
@@ -41,17 +40,15 @@
     
     [self setupViews];
 
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 -(void)reloadData {
     self.tableDataSource = [self.dataSource datasourceForBBSBaseViewController:self];
     [self.tableView reloadData];
 }
+
+
 #pragma mark UITableViewDataSource, UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.tableDataSource.count;
@@ -60,6 +57,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.01f;
 }
@@ -67,6 +65,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 5.0f;
 }
+
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BBSTableViewCell* cell = [BBSTableViewCell cellWithTableView:tableView];
     BBSModel* model = self.tableDataSource[indexPath.section];
@@ -99,14 +98,5 @@
             [weakSelf.tableView reloadRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationNone];
         });
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
