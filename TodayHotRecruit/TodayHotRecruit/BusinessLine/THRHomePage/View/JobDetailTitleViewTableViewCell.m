@@ -26,7 +26,9 @@
 
 
 - (void)FSSegmentTitleView:(FSSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex{
-    
+    if (self.selectDelegate && [self.selectDelegate respondsToSelector:@selector(selectWithIndex:)]) {
+        [self.selectDelegate selectWithIndex:endIndex];
+    }
 }
 
 + (CGFloat)cellHeight{

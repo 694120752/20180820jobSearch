@@ -83,17 +83,16 @@
     return [tableView cellHeightForIndexPath:indexPath model:model keyPath:@"bbsModel" cellClass:[BBSTableViewCell class] contentViewWidth:kScreenWidth] ;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
+
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//}
 
 #pragma mark BBSTableViewCellDelegate
 -(void)BBSTableViewCell:(BBSTableViewCell *)cell didClickFollowForBBSModel:(BBSModel *)bbsModel {
     
     // 去关注这个人
-    
-    
-    
+
     NSString *urlStr = [HTTP stringByAppendingString:@"/concernRecord/cancel"];
     NSDictionary *parameters = @{
                                  @"id":bbsModel.userID
@@ -112,9 +111,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [BaseToast toast:@"操作失败"];
     }];
-    
-    
-    
+
 }
 
 // 点赞

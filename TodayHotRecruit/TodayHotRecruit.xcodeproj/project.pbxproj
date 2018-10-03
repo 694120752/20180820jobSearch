@@ -81,6 +81,8 @@
 		ED3B9114216459FA00D3661C /* XWPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90EE216459FA00D3661C /* XWPhotoCell.m */; };
 		ED3B9115216459FA00D3661C /* XWPublishController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3B90EF216459FA00D3661C /* XWPublishController.xib */; };
 		ED3B9116216459FA00D3661C /* XWPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3B90F2216459FA00D3661C /* XWPhotoCell.xib */; };
+		ED3B9119216507F700D3661C /* JobDetailExplainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B9118216507F700D3661C /* JobDetailExplainTableViewCell.m */; };
+		ED3B911C21650AF100D3661C /* NSArray+zFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B911B21650AF100D3661C /* NSArray+zFoundation.m */; };
 		EDAC72B02131393E00FA61C5 /* HomePageNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */; };
 		F2C13BDE1646393BCCCB6C1D /* libPods-TodayHotRecruitUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD05244E44A81991328D572A /* libPods-TodayHotRecruitUITests.a */; };
 		F70006702134EB4400D52677 /* SelectDto.m in Sources */ = {isa = PBXBuildFile; fileRef = F700066F2134EB4400D52677 /* SelectDto.m */; };
@@ -378,6 +380,10 @@
 		ED3B90F0216459FA00D3661C /* XWPublishBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWPublishBaseController.h; sourceTree = "<group>"; };
 		ED3B90F1216459FA00D3661C /* XWPublishController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWPublishController.h; sourceTree = "<group>"; };
 		ED3B90F2216459FA00D3661C /* XWPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWPhotoCell.xib; sourceTree = "<group>"; };
+		ED3B9117216507F700D3661C /* JobDetailExplainTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobDetailExplainTableViewCell.h; sourceTree = "<group>"; };
+		ED3B9118216507F700D3661C /* JobDetailExplainTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobDetailExplainTableViewCell.m; sourceTree = "<group>"; };
+		ED3B911A21650AF100D3661C /* NSArray+zFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+zFoundation.h"; sourceTree = "<group>"; };
+		ED3B911B21650AF100D3661C /* NSArray+zFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+zFoundation.m"; sourceTree = "<group>"; };
 		EDAC72AE2131393D00FA61C5 /* HomePageNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageNavController.h; sourceTree = "<group>"; };
 		EDAC72AF2131393E00FA61C5 /* HomePageNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageNavController.m; sourceTree = "<group>"; };
 		F700066E2134EB4400D52677 /* SelectDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectDto.h; sourceTree = "<group>"; };
@@ -1144,6 +1150,8 @@
 				F759A010212D922700A98074 /* UIView+zFoundation.m */,
 				F76D2277213D1C7F00466BC2 /* NSString+zFundation.h */,
 				F76D2278213D1C7F00466BC2 /* NSString+zFundation.m */,
+				ED3B911A21650AF100D3661C /* NSArray+zFoundation.h */,
+				ED3B911B21650AF100D3661C /* NSArray+zFoundation.m */,
 				F70006C92135345600D52677 /* NSDate+Helper.h */,
 				F70006CA2135345600D52677 /* NSDate+Helper.m */,
 				F708B7E6214BB7AB00328555 /* NSDictionary+zFundation.h */,
@@ -1438,6 +1446,8 @@
 				F7003B3F21606FE60060EB95 /* JobTimeLineTableViewCell.xib */,
 				F7003B5E2160AA750060EB95 /* JobDetailTitleViewTableViewCell.h */,
 				F7003B5F2160AA750060EB95 /* JobDetailTitleViewTableViewCell.m */,
+				ED3B9117216507F700D3661C /* JobDetailExplainTableViewCell.h */,
+				ED3B9118216507F700D3661C /* JobDetailExplainTableViewCell.m */,
 			);
 			name = View;
 			path = TodayHotRecruit/BusinessLine/THRHomepage/View;
@@ -1841,6 +1851,7 @@
 				87E929D0215F5A9A005EABAF /* BBSBaseView.m in Sources */,
 				ED3B9093214E740000D3661C /* THRCompany.m in Sources */,
 				ED25C070213A90460022717E /* FSPageContentView.m in Sources */,
+				ED3B9119216507F700D3661C /* JobDetailExplainTableViewCell.m in Sources */,
 				F70006E621356EEA00D52677 /* CityLocationViewController.m in Sources */,
 				F79A7F94212FE22E002E73E0 /* BaseTableView.m in Sources */,
 				F70C8DB2214A507E0027DBAB /* BaseToast.m in Sources */,
@@ -1950,6 +1961,7 @@
 				F7058A692153CC0B008E0C59 /* TodayHotJobViewController.m in Sources */,
 				F7FE4AFA215092E4005D5772 /* UserInfoBaseTableViewCell.m in Sources */,
 				F703056B2154F5E7000478D4 /* UnderLineStoreChildVc.m in Sources */,
+				ED3B911C21650AF100D3661C /* NSArray+zFoundation.m in Sources */,
 				F7B9BB5A21343629003F9277 /* HomeJobTableViewCell.m in Sources */,
 				F746CC9321393158009C2478 /* THRApplication.m in Sources */,
 				F700071321356F8900D52677 /* ZJTextAndImageHUDView.m in Sources */,

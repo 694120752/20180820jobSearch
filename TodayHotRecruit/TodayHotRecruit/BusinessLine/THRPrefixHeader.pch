@@ -13,6 +13,7 @@
 
 #import "UIView+zFoundation.h"
 #import "NSString+zFundation.h"
+#import "NSArray+zFoundation.h"
 #import <UIView+MJExtension.h>
 #import "NSDictionary+zFundation.h"
 #import <SDAutoLayout.h>

@@ -11,6 +11,7 @@
 #import "BaseTableView.h"
 #import "JobTableViewCell.h"
 #import <MJRefresh.h>
+#import "JobDetailViewController.h"
 
 @interface TodayChildVcViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSString *cityID;
@@ -45,6 +46,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [JobTableViewCell selfHeight];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    THRJob *job = self.dataArray[indexPath.row];
+    JobDetailViewController *detail = [JobDetailViewController new];
+    detail.jobId = job.id;
+    detail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark ------------------- lazy

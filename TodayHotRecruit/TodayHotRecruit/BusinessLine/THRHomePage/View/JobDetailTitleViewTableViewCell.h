@@ -8,6 +8,12 @@
 
 #import "BaseTableViewCell.h"
 
-@interface JobDetailTitleViewTableViewCell : BaseTableViewCell 
+@protocol jobDetailSelectIndexProtocol <NSObject>
+- (void)selectWithIndex:(NSUInteger)index;
+@end
+
+@interface JobDetailTitleViewTableViewCell : BaseTableViewCell
+
+@property(nonatomic,weak)id<jobDetailSelectIndexProtocol> selectDelegate;
 + (CGFloat)cellHeight;
 @end

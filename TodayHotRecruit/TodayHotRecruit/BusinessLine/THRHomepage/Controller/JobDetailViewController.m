@@ -19,8 +19,9 @@
 #import "JobTableViewCell.h"
 #import "JobTimeLineTableViewCell.h"
 #import "JobDetailTitleViewTableViewCell.h"
+#import "JobDetailExplainTableViewCell.h"
 
-@interface JobDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface JobDetailViewController ()<UITableViewDelegate,UITableViewDataSource,jobDetailSelectIndexProtocol>
 /** tableView*/
 @property(nonatomic,strong)BaseTableView* tableView;
 
@@ -30,8 +31,11 @@
 /** THRJob*/
 @property (nonatomic, strong) THRJob *job;
 
-/** NSArray*/
+/** 上面的补贴*/
 @property (nonatomic, strong) NSArray *subsidyList;
+
+/** 下方的几个详情*/
+@property(nonatomic,strong)NSArray* detailArray;
 @end
 
 @implementation JobDetailViewController
@@ -62,6 +66,7 @@
         if (!IsStrEmpty(desc) && [desc isEqualToString:@"success"]) {
             weakSelf.job = [THRJob mj_objectWithKeyValues:EncodeDicFromDic(resultDic, @"job")];
             weakSelf.subsidyList = EncodeArrayFromDic(resultDic, @"subsidyList");
+            weakSelf.detailArray = EncodeArrayFromDic(resultDic, @"itemList");
             [weakSelf.tableView reloadData];
             weakSelf.tableView.hidden = NO;
         }
@@ -79,7 +84,7 @@
 
 #pragma mark ------- UITableViewdeleagte && UITbaleViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return 5 + self.detailArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -125,10 +130,52 @@
     // 标题
     if (indexPath.row == 4) {
         JobDetailTitleViewTableViewCell * title = [tableView dequeueReusableCellWithIdentifier:@"JobDetailTitleViewTableViewCell"];
+        title.selectDelegate = self;
         return title;
     }
     
+    
+    // 薪资情况
+    if (  indexPath.row == 5) {
+        JobDetailExplainTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"JobDetailExplainTableViewCell"];
+        [cell setContent:@[[self.detailArray safeObjectAtIndex:indexPath.row - 5],[self.detailArray safeObjectAtIndex:indexPath.row - 4]] andTitle:@"薪资情况"];
+        return cell;
+    }
+    
+    // 岗位说明
+    if (  indexPath.row == 6) {
+        JobDetailExplainTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"JobDetailExplainTableViewCell"];
+        [cell setContent:@[[self.detailArray safeObjectAtIndex:indexPath.row - 5],[self.detailArray safeObjectAtIndex:indexPath.row - 4]] andTitle:@"岗位说明"];
+        return cell;
+    }
+    
+    // 录用条件
+    if (  indexPath.row == 7) {
+        JobDetailExplainTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"JobDetailExplainTableViewCell"];
+        [cell setContent:@[[self.detailArray safeObjectAtIndex:indexPath.row - 5],[self.detailArray safeObjectAtIndex:indexPath.row - 4]] andTitle:@"录用条件"];
+        return cell;
+    }
+    
+    // 食宿条件
+    if (  indexPath.row == 8) {
+        JobDetailExplainTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"JobDetailExplainTableViewCell"];
+        [cell setContent:@[[self.detailArray safeObjectAtIndex:indexPath.row - 5],[self.detailArray safeObjectAtIndex:indexPath.row - 4]] andTitle:@"食宿条件"];
+        return cell;
+    }
+    
+    // 其他说明
+    if (  indexPath.row == 9) {
+        JobDetailExplainTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"JobDetailExplainTableViewCell"];
+        [cell setContent:@[[self.detailArray safeObjectAtIndex:indexPath.row - 5],[self.detailArray safeObjectAtIndex:indexPath.row - 4]] andTitle:@"其他说明"];
+        return cell;
+    }
+    
+    
+    
     BaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"BaseTableViewCell"];
+    
+    //
+    
     return cell;
 }
 
@@ -156,6 +203,11 @@
         return [JobDetailTitleViewTableViewCell cellHeight];
     }
     
+    if (indexPath.row > 4 && indexPath.row < 10) {
+        // 取到对应的dic然后 传进去
+        return [JobDetailExplainTableViewCell cellHeightWithContent:@[[self.detailArray safeObjectAtIndex:indexPath.row - 5],[self.detailArray safeObjectAtIndex:indexPath.row - 4]]];
+    }
+    
     return 0;
 }
 
@@ -175,6 +227,7 @@
         [signButton addTarget:self action:@selector(signAction) forControlEvents:UIControlEventTouchUpInside];
         
         [contentCustom setTitle:@"联系客服" forState:UIControlStateNormal];
+        [contentCustom addTarget:self action:@selector(linxikefu) forControlEvents:UIControlEventTouchUpInside];
         [recommand setTitle:@"推荐好友" forState:UIControlStateNormal];
         [signButton setTitle:@"立即报名" forState:UIControlStateNormal];
         [contentCustom setImage:[UIImage imageNamed:@"customer"] forState:UIControlStateNormal];
@@ -242,9 +295,19 @@
     }];
 }
 
+// 滚动
+- (void)selectWithIndex:(NSUInteger)index{
+//    0 - > 5
+    
+    if (self.detailArray.count <= index) {
+        return;
+    }
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index + 5 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+
 - (BaseTableView *)tableView{
     if (!_tableView) {
-        _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, kScreenHeight - NavigationBar_Bottom_Y - Bottom_iPhoneX_SPACE) style:UITableViewStylePlain];
+        _tableView = [[BaseTableView alloc]initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, kScreenHeight - NavigationBar_Bottom_Y - Bottom_iPhoneX_SPACE - PXGet375Width(90)) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
    
@@ -253,9 +316,19 @@
         [_tableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:@"BaseTableViewCell"];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([JobTimeLineTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([JobTimeLineTableViewCell class])];
         [_tableView registerClass:[JobDetailTitleViewTableViewCell class] forCellReuseIdentifier:@"JobDetailTitleViewTableViewCell"];
+        [_tableView registerClass:[JobDetailExplainTableViewCell class] forCellReuseIdentifier:@"JobDetailExplainTableViewCell"];
         _tableView.hidden = YES;
     }
     return _tableView;
 }
 
+
+- (void)linxikefu{
+//    [BaseToast toast:[UserDetail getCustomPhone]];
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",[UserDetail getCustomPhone]];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
+   
+}
 @end

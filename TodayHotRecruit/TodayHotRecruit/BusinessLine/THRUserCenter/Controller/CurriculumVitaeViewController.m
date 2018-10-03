@@ -74,19 +74,21 @@
     [self setUpNavi];
     
     // 获取简历详情
-    __weak typeof(self)weakSelf = self;
     [[[THRRequestManager manager]setDefaultHeader] POST:[HTTP stringByAppendingString:@"/userResume/detail"] parameters:@{@"userID":[UserDetail getUserID]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         DESC
         if ([desc isEqualToString:@"success"]) {
             NSDictionary *resultDic = responseObject;
             NSArray *resArr = resultDic[@"experienceList"];
-            weakSelf.experienceList = [NSMutableArray arrayWithArray:resArr];
+            self.experienceList = [NSMutableArray arrayWithArray:resArr];
             NSDictionary *resDic = resultDic[@"userResume"];
-            weakSelf.exportDic = [[NSMutableDictionary alloc] initWithDictionary:resDic];
-            [weakSelf.listTableView reloadData];
+            self.exportDic = [[NSMutableDictionary alloc] initWithDictionary:resDic];
+            [self.listTableView reloadData];
             
         }
-    } failure:nil];
+        NSLog(@"123");
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
     [self.view addSubview:self.listTableView];
 }
 
@@ -171,13 +173,14 @@
     CVS2C0TableViewCell *cell = [_listTableView dequeueReusableCellWithIdentifier:@"CVS2C0TableViewCell" forIndexPath:indexPath];
     cell.num.text = [NSString stringWithFormat:@"工作经历%ld",indexPath.row+1];
     cell.model = _experienceList[indexPath.row];
+    __weak typeof(self) weakSelf = self;
     cell.btnClicked = ^(NSInteger tag) {
         if (tag == 3) {
             //起止时间
-            [self changeBeginTime:indexPath.row];
+            [weakSelf changeBeginTime:indexPath.row];
         }else{
             //工厂名称 职位 月薪
-            [self changeExperience:indexPath.row AndTag:tag];
+            [weakSelf changeExperience:indexPath.row AndTag:tag];
         }
     };
     
@@ -214,7 +217,6 @@
         [self addWorkExperience];
     }
 }
-
 //跳转个人资料
 -(void)goToPersonInfo{
     THRUserInfoViewController *info = [THRUserInfoViewController new];
@@ -243,15 +245,13 @@
     [alertVC addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = placeholderStr;
     }];
-    
+    __weak typeof(self) weakSelf = self;
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *infoStr  = alertVC.textFields.lastObject.text;
         if (!IsStrEmpty(infoStr)) {
             NSDictionary *param = @{@"id":[UserDetail getUserID],
                                     exportKey:infoStr
                                     };
-            
-            __weak typeof(self)weakSelf = self;
             [[[THRRequestManager manager]setDefaultHeader] POST:[HTTP stringByAppendingString:@"/userResume/edit"] parameters:
              param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                  DESC
@@ -259,8 +259,8 @@
                      [BaseToast toast:@"修改成功"];
                      weakSelf.exportDic[exportKey] = infoStr;
                      [weakSelf.listTableView reloadIndexSection:1];
+                     
                  }
-                 
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  NSLog(@"%@",error);
              }];
@@ -275,7 +275,7 @@
 
 //修改工作经历
 -(void)changeExperience:(NSInteger)row AndTag:(NSInteger)tag {
-    //tab 区分说选项  rowx区分在list中下标
+    //  tab 区分说选项  rowx区分在list中下标
     NSString *tittle;
     NSString *experienceKey;
     if (tag==1) {
@@ -298,7 +298,7 @@
     [alertVC addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = placeholderStr;
     }];
-    
+    __weak typeof(self) weakSelf = self;
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *infoStr  = alertVC.textFields.lastObject.text;
         if (!IsStrEmpty(infoStr)) {
@@ -311,7 +311,6 @@
                                     @"endDate":experienceDic[@"endDate"],
                                     @"salary":experienceDic[@"salary"]
                                     };
-            __weak typeof(self)weakSelf = self;
             [weakSelf saveExperienceWithParam:param AndRow:row];
         }
         
@@ -324,16 +323,13 @@
 
 //修改工作经历 - 起止时间
 -(void)changeBeginTime:(NSInteger)row{
-    __weak typeof(self)weakSelf = self;
     [BRDatePickerView showDatePickerWithTitle:@"开始时间" dateType:BRDatePickerModeYM defaultSelValue:nil resultBlock:^(NSString *selectValue) {
-        [weakSelf changeEndTime:row WithBeginTime:selectValue];
+        [self changeEndTime:row WithBeginTime:selectValue];
     }];
 }
 -(void)changeEndTime:(NSInteger)row WithBeginTime:(NSString *)value{
-    
-    __weak typeof(self)weakSelf = self;
     [BRDatePickerView showDatePickerWithTitle:@"结束时间" dateType:BRDatePickerModeYM defaultSelValue:nil resultBlock:^(NSString *selectValue) {
-        NSDictionary *dic = weakSelf.experienceList[row];
+        NSDictionary *dic = self.experienceList[row];
         NSMutableDictionary *experienceDic = [[NSMutableDictionary alloc] initWithDictionary:dic];
         experienceDic[@"beginDate"] = [NSString stringWithFormat:@"%@",value];
         experienceDic[@"endDate"] =  [NSString stringWithFormat:@"%@",selectValue];
@@ -345,7 +341,7 @@
                                 @"endDate":experienceDic[@"endDate"],
                                 @"salary":experienceDic[@"salary"]
                                 };
-        [weakSelf saveExperienceWithParam:param AndRow:row];
+        [self saveExperienceWithParam:param AndRow:row];
         
     }];
 }
@@ -368,7 +364,7 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 20)];
-    view.backgroundColor = RGBACOLOR(240, 240, 240, 1);
+    view.backgroundColor = RGBACOLOR(240, 240, 240, 1);//[UIColor lightGrayColor];
     return  view;
 }
 
@@ -413,8 +409,6 @@
 
 #pragma mark - http
 -(void)saveExperienceWithParam:(NSDictionary *)param AndRow:(NSInteger)row{
-    
-    __weak typeof(self)weakSelf = self;
     [[[THRRequestManager manager]setDefaultHeader] POST:[HTTP stringByAppendingString:@"/userResume/saveExperience"] parameters:
      param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
          DESC
@@ -422,29 +416,32 @@
              [BaseToast toast:@"修改成功"];
              NSDictionary *resultDic = responseObject;
              NSDictionary *workEx = resultDic[@"entity"];
-             [weakSelf.experienceList removeObjectAtIndex:row];
-             [weakSelf.experienceList insertObject:workEx atIndex:row];
-             
-             [weakSelf.listTableView reloadIndexSection:2];
+             [self.experienceList removeObjectAtIndex:row];
+             [self.experienceList insertObject:workEx atIndex:row];
+             [self.listTableView reloadIndexSection:2];
          }
          
-     } failure:nil];
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         NSLog(@"%@",error);
+     }];
 }
 //删除工作经验
 -(void)deleteExperienceWithID:(NSInteger)row{
     NSString *experienceID = _experienceList[row][@"id"];
     NSDictionary *param = @{@"id":experienceID};
-    __weak typeof(self)weakSelf = self;
     [[[THRRequestManager manager]setDefaultHeader] POST:[HTTP stringByAppendingString:@"/userResume/delExperience"] parameters:
      param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
          DESC
          if ([desc isEqualToString:@"success"]) {
              [BaseToast toast:@"删除成功"];
-             [weakSelf.experienceList removeObjectAtIndex:row];
-             [weakSelf.listTableView reloadIndexSection:2];
+             [self.experienceList removeObjectAtIndex:row];
+             [self.listTableView reloadIndexSection:2];
          }
          
-     } failure:nil];
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         NSLog(@"%@",error);
+     }];
 }
+
 @end
 
