@@ -9,6 +9,8 @@
 #import "BBSBaseViewController.h"
 #import "BBSModel.h"
 #import "BBSTableViewCell.h"
+#import "THRRequestManager.h"
+#import "BaseToast.h"
 @interface BBSBaseViewController () <UITableViewDataSource, UITableViewDelegate, BBSTableViewCellDelegate>
 @property (nonatomic,strong)UITableView* tableView;
 @end
@@ -87,9 +89,45 @@
 
 #pragma mark BBSTableViewCellDelegate
 -(void)BBSTableViewCell:(BBSTableViewCell *)cell didClickFollowForBBSModel:(BBSModel *)bbsModel {
-    bbsModel.isFollowed = !bbsModel.isFollowed;
-    [self.tableView reloadData];
+    
+    // 去关注这个人
+    
+    
+    
+    NSString *urlStr = [HTTP stringByAppendingString:@"/concernRecord/cancel"];
+    NSDictionary *parameters = @{
+                                 @"id":bbsModel.userID
+                                 };
+    if (bbsModel.isFollowed) {
+        urlStr = [HTTP stringByAppendingString:@"/concernRecord/add"];
+        parameters = @{
+                       @"concernUserID":bbsModel.bbsID
+                       };
+    }
+    __weak typeof(self)weakSelf = self;
+    [[[THRRequestManager manager] setDefaultHeader] POST:urlStr parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        bbsModel.isFollowed = !bbsModel.isFollowed;
+        [BaseToast toast:@"操作成功"];
+        [weakSelf.tableView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [BaseToast toast:@"操作失败"];
+    }];
+    
+    
+    
 }
+
+// 点赞
+- (void)BBSTableViewCell:(BBSTableViewCell *)cell didClickLikeForBBSModel:(BBSModel *)bbsModel{
+    __weak typeof(self)weakSelf = self;
+    [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/forum/like"] parameters:@{@"forumID":bbsModel.bbsID} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        bbsModel.likeCount ++;
+        [weakSelf.tableView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
 
 -(void)BBSTableViewCell:(BBSTableViewCell *)cell didClickCommentForBBSModel:(BBSModel *)bbsModel {
     __weak __typeof(self) weakSelf = self;

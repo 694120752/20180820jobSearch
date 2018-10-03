@@ -14,6 +14,9 @@
 #import "BaseToast.h"
 #import <MJRefresh.h>
 #import <MJExtension.h>
+#import "PopoverView.h"
+#import "XWPublishController.h"
+
 #define SCROLLVIEW_MARGIN 40
 #define SCROLLVIEW_HEIGHT kScreenHeight - SCROLLVIEW_MARGIN - 120
 @interface THRBBSViewController () <SPPageMenuDelegate, UIScrollViewDelegate, BBSBaseViewControllerDataSource>
@@ -52,6 +55,9 @@
     [self setupViews];
 
     [self setupNavi];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshComment" object:nil];
 }
 
 - (void)setupNavi{
@@ -59,15 +65,21 @@
     self.navBarItemView.backgroundColor = CommonBlue;
     self.navBar.titleLabel.text = @"交流天地";
     self.navBar.backButton.hidden = YES;
+    
+    self.navBar.rightButton.hidden = NO;
+    [self.navBar.rightButton setImage:[UIImage imageNamed:@"write"] forState:UIControlStateNormal];
+    
+    [self.navBar.rightButton addTarget:self action:@selector(writeComment:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setupViews {
+    [self.view addSubview:self.scrollView];
     [self setupTopMenu];
 }
 
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, SCROLLVIEW_MARGIN + 64,kScreenWidth, SCROLLVIEW_HEIGHT)];
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, SCROLLVIEW_MARGIN + NavigationBar_Bottom_Y,kScreenWidth, SCROLLVIEW_HEIGHT)];
         _scrollView.delegate = self;
         _scrollView.pagingEnabled = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
@@ -106,7 +118,7 @@
             dispatch_async(queue, ^{
                 [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/forumComment/list"] parameters:@{@"pageNo":@"1",@"pageSize":@"99",@"forumID":model.bbsID} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     NSDictionary*resultDic=responseObject;
-                    model.comments = [CommentModel mj_objectArrayWithKeyValuesArray:EncodeArrayFromDic(resultDic, @"dataList")];//[NSMutableArray mj_objectArrayWithKeyValuesArray:];
+                    model.comments = [CommentModel mj_objectArrayWithKeyValuesArray:EncodeArrayFromDic(resultDic, @"dataList")];
                     dispatch_group_leave(group);
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                     dispatch_group_leave(group);
@@ -136,11 +148,9 @@
 
 -(void)setupTopMenu {
     
-    SPPageMenu* menu = [[SPPageMenu alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 40) trackerStyle:SPPageMenuTrackerStyleLine];
+    SPPageMenu* menu = [[SPPageMenu alloc] initWithFrame:CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, 40) trackerStyle:SPPageMenuTrackerStyleLine];
     self.topMenu = menu;
     [self.view addSubview:menu];
-    [self.view addSubview:self.scrollView];
-
     [menu setSelectedItemTitleColor: [UIColor colorWithRed:93/255.0 green:157/255.0 blue:248/255.0 alpha:1]];
     menu.delegate = self;
     menu.bridgeScrollView = self.scrollView;
@@ -153,6 +163,9 @@
         NSDictionary* resultDic = responseObject;
         [weakSelf.titleDto removeAllObjects];
         weakSelf.titleDto = [EncodeArrayFromDic(resultDic, @"dataList") mutableCopy];
+        
+        [weakSelf.vcArray removeAllObjects];
+        [weakSelf.scrollView z_removeAllSubviews];
         
         // 配置标题和子控制器
         NSMutableArray *titleArray = [NSMutableArray array];
@@ -171,7 +184,6 @@
 
         }
         
-        
         [menu setItems:[titleArray copy] selectedItemIndex:weakSelf.tabIndex];
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES];
@@ -184,7 +196,11 @@
     
     
 }
+#pragma refresh
 
+- (void)refresh{
+    [self setupTopMenu];
+}
 
 
 #pragma mark SPPSegmentDelegate
@@ -222,6 +238,33 @@
 
 -(void)BBSBaseViewControllerDidRefreshData:(BBSBaseViewController *)BBSBaseViewController {
     [self loadData];
+}
+
+#pragma mark ---------- 写动态
+- (void)writeComment:(UIButton*)button{
+    if (IsArrEmpty(self.titleDto)) {
+        // 没有分类
+        [BaseToast toast:@"没有分类"];
+        return;
+    }
+    
+    
+    PopoverView *popoverView = [PopoverView popoverView];
+    popoverView.style = PopoverViewStyleDark;
+    popoverView.showShade = YES;
+
+    NSMutableArray*actionArray = [NSMutableArray array];
+    for (NSDictionary *dic in self.titleDto) {
+        PopoverAction *action = [PopoverAction actionWithTitle:EncodeStringFromDic(dic, @"name") handler:^(PopoverAction *action) {
+            // 去发帖子 跳去新的发帖页面
+            XWPublishController *publishVC = [[XWPublishController alloc] init];
+            publishVC.categoryId = EncodeStringFromDic(dic, @"id");
+            [self presentViewController:publishVC animated:YES completion:nil];
+        }];
+        [actionArray addObject:action];
+    }
+    
+    [popoverView showToView:button withActions:actionArray];
 }
 
 #pragma mark ------ lazy

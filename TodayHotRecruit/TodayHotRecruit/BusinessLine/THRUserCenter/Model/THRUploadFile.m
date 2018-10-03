@@ -34,7 +34,11 @@
             }
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        progressblock(1.0 * (uploadProgress.completedUnitCount / uploadProgress.totalUnitCount));
+        
+        if (progressblock) {
+            progressblock(1.0 * (uploadProgress.completedUnitCount / uploadProgress.totalUnitCount));
+        }
+        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary*resultDic  =   responseObject;
         NSString* fileUrl      =   EncodeStringFromDic(resultDic, @"fileUrl");

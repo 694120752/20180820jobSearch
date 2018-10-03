@@ -27,6 +27,15 @@
  @param bbsModel model
  */
 -(void)BBSTableViewCell:(BBSTableViewCell*)cell didClickCommentForBBSModel:(BBSModel*)bbsModel;
+
+
+/**
+ 点赞
+
+ @param cell cell
+ @param bbsModel model
+ */
+- (void)BBSTableViewCell:(BBSTableViewCell*)cell didClickLikeForBBSModel:(BBSModel*)bbsModel;
 @end
 @interface BBSTableViewCell : UITableViewCell
 +(instancetype)cellWithTableView:(UITableView*)tableView;

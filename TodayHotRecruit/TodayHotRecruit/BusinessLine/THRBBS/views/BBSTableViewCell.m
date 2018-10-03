@@ -104,9 +104,9 @@
     UIColor* buttonColor = [UIColor colorWithRed:93/255.0 green:157/255.0 blue:248/255.0 alpha:1];
     self.followButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.followButton setTitle:@"+ 关注" forState:UIControlStateNormal];
-    [self.followButton setTitle:@"已关注" forState:UIControlStateDisabled];
+    [self.followButton setTitle:@"已关注" forState:UIControlStateSelected];
     [self.followButton setTitleColor:buttonColor forState:UIControlStateNormal];
-    [self.followButton setTitleColor:TEXT_COLOR forState:UIControlStateDisabled];
+    [self.followButton setTitleColor:TEXT_COLOR forState:UIControlStateSelected];
     self.followButton.layer.borderColor = buttonColor.CGColor;
     [self.followButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [self.contentView addSubview:self.followButton];
@@ -181,6 +181,7 @@
     
     UIButton* zanButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+    [zanButton addTarget:self action:@selector(likeAction) forControlEvents:UIControlEventTouchUpInside];
     zanButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
     _zanButton = zanButton;
     [zanButton setTitle:@"300" forState:UIControlStateNormal];
@@ -224,8 +225,9 @@
     self.contentLB.text = bbsModel.content;
     
     
-    [self.followButton setEnabled:!bbsModel.isFollowed];
-    self.followButton.layer.borderWidth = bbsModel.isFollowed ?  0 : 1;
+    //[self.followButton setEnabled:!bbsModel.isFollowed];
+    self.followButton.selected = !bbsModel.isFollowed;
+    self.followButton.layer.borderWidth = !bbsModel.isFollowed ?  0 : 1;
     
     CGFloat margin = 15;
     CGFloat buttonWidth = (kScreenWidth - 4 * margin) / 3;
@@ -294,12 +296,21 @@
 }
 
 -(void)commentButtonClickHandle:(UIButton*)button {
+    
+    // 这边想办法 附加一个填写评论的cell进去
     if (self.bbsModel.comments.count <= 0) {
         return;
     }
    
     [self.delegate BBSTableViewCell:self didClickCommentForBBSModel:self.bbsModel];
 
+}
+
+// 点赞
+- (void)likeAction{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(BBSTableViewCell:didClickLikeForBBSModel:)]) {
+        [self.delegate BBSTableViewCell:self didClickLikeForBBSModel:self.bbsModel];
+    }
 }
 
 @end
