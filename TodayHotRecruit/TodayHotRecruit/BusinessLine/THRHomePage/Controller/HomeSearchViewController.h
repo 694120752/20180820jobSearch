@@ -9,5 +9,10 @@
 #import "BaseViewController.h"
 #import "CustomSearch.h"
 @interface HomeSearchViewController : BaseViewController
+@end
 
+@interface SearchItem : UICollectionViewCell
+
+@property(nonatomic,strong)UILabel* contentLabel;
+@property(nonatomic,strong)NSDictionary* dic;
 @end

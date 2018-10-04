@@ -226,8 +226,8 @@
     
     
     //[self.followButton setEnabled:!bbsModel.isFollowed];
-    self.followButton.selected = !bbsModel.isFollowed;
-    self.followButton.layer.borderWidth = !bbsModel.isFollowed ?  0 : 1;
+    self.followButton.selected = bbsModel.isFollowed;
+    self.followButton.layer.borderWidth = bbsModel.isFollowed ?  0 : 1;
     
     CGFloat margin = 15;
     CGFloat buttonWidth = (kScreenWidth - 4 * margin) / 3;

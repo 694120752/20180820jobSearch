@@ -12,12 +12,15 @@
 #import "JobTableViewCell.h"
 #import <MJRefresh.h>
 #import "JobDetailViewController.h"
+#import "BaseNavigationBar.h"
 
 @interface TodayChildVcViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSString *cityID;
 @property (nonatomic, strong) BaseTableView *listView;
 @property (nonatomic, assign) NSUInteger pageNumber;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSString *KeyWord;
+@property (nonatomic,strong) BaseNavigationBar *mNavBar;
 @end
 
 @implementation TodayChildVcViewController
@@ -28,9 +31,24 @@
     return self;
 }
 
+- (instancetype)initWithKeyWord:(NSString *)word{
+    self = [super init];
+    _KeyWord = word;
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.listView];
+    
+    if (IsStrEmpty(_cityID)) {
+        // 从搜索页进来的
+        self.listView.frame = CGRectMake(0, NavigationBar_Bottom_Y, kScreenWidth, kScreenHeight - NavigationBar_Bottom_Y);
+        self.navigationController.navigationBarHidden = YES;
+        [self.view addSubview:self.mNavBar];
+        _mNavBar.titleLabel.text = _KeyWord;
+    }
+    
 }
 
 #pragma mark --------------------- tableViewDelegate && DataSource
@@ -69,13 +87,13 @@
         _listView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [THRJobListRequest getJobDataWithPage:weakSelf.pageNumber andTableView:weakSelf.listView andSuccess:^(NSArray *dataList) {
                  weakSelf.dataArray = [dataList mutableCopy];
-            } andCityID:weakSelf.cityID andKeyWord:nil];
+            } andCityID:weakSelf.cityID andKeyWord:weakSelf.KeyWord];
         }];
         
         _listView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
             [THRJobListRequest getJobDataWithPage:weakSelf.pageNumber andTableView:weakSelf.listView andSuccess:^(NSArray *dataList) {
                 weakSelf.dataArray = [[weakSelf.dataArray arrayByAddingObjectsFromArray:dataList] mutableCopy];
-            } andCityID:weakSelf.cityID andKeyWord:nil];
+            } andCityID:weakSelf.cityID andKeyWord:weakSelf.KeyWord];
         }];
         
         [_listView.mj_header beginRefreshing];
@@ -90,4 +108,27 @@
     }
     return _dataArray;
 }
+
+
+-(BaseNavigationBar *)mNavBar{
+    if (!_mNavBar) {
+         _mNavBar = [BaseNavigationBar navigationBar];
+        [_mNavBar.backButton addTarget:self
+                                action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+        _mNavBar.backgroundColor = CommonBlue;
+        _mNavBar.barItem.backgroundColor = CommonBlue;
+
+    }
+    return _mNavBar;
+}
+
+-(void)onBack:(id)sender{
+    NSArray *vcs = self.navigationController.viewControllers;
+    if (vcs.count > 1 && [vcs objectAtIndex:vcs.count-1] == self) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 @end

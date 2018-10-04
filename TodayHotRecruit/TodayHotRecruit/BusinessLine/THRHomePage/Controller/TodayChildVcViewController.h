@@ -11,4 +11,6 @@
 @interface TodayChildVcViewController : UIViewController
 
 - (instancetype)initWithCityID:(NSString *)cityID;
+
+- (instancetype)initWithKeyWord:(NSString *)word;
 @end

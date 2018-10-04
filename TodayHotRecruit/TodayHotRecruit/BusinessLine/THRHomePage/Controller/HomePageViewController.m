@@ -43,8 +43,6 @@
 #import <MJRefresh.h>
 
 
-
-
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,THRCommonDelegate>
 
 /** 主体tableView*/
