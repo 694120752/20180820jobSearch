@@ -9,9 +9,12 @@
 #import "BBSCommentView.h"
 #import "UIImageView+WebCache.h"
 #import "UILabel+YBAttributeTextTapAction.h"
+#import "THRRequestManager.h"
+
 @interface BBSCommentView ()
 @property (nonatomic, strong) NSMutableArray *commentViewArray;
-
+/** 评论输入框*/
+@property (nonatomic, strong) UITextField *commentField;
 @end
 @implementation BBSCommentView
 -(NSMutableArray *)commentViewArray {
@@ -47,7 +50,6 @@
       // 添加控件
         UIView* bgView = [[UIView alloc] init];
         [self addSubview:bgView];
-       
         
         UIImageView* avatarImageView = [[UIImageView alloc] init];
         [bgView addSubview:avatarImageView];
@@ -107,7 +109,12 @@
         }];
     }
     
-    if (!commentArray.count || !isShow) {
+    if (self.commentField) {
+        [self.commentField sd_clearAutoLayoutSettings];
+        self.commentField.hidden = YES;
+    }
+    
+    if (!isShow) {
         self.fixedWidth = @(0); // 如果没有评论或者点赞，设置commentview的固定宽度为0（设置了fixedWith的控件将不再在自动布局过程中调整宽度）
         self.fixedHeight = @(0); // 如果没有评论或者点赞，设置commentview的固定高度为0（设置了fixedHeight的控件将不再在自动布局过程中调整高度）
         return;
@@ -116,15 +123,20 @@
         self.fixedWidth = nil; // 取消固定高度约束
     }
     
-    UIView* lastTopView = nil;
+    UIView* tempTopView = nil;
 
     for (int i = 0; i < self.commentArray.count; i++) {
       
-        UIView *bgView = (UIView *)self.commentViewArray[i];
+        UIView *bgView = [self.commentViewArray safeObjectAtIndex:i];
+        
+        if (![bgView isKindOfClass:[UIView class]]) {
+            break;
+        }
+        
         bgView.hidden = NO;
         bgView.sd_layout
         .leftSpaceToView(self, 0)
-        .topSpaceToView(lastTopView ? lastTopView : self, 0)
+        .topSpaceToView(tempTopView ? tempTopView : self, 0)
         .rightSpaceToView(self, 0);
         
         UIImageView* avatarImageView = [bgView viewWithTag:100];
@@ -144,13 +156,45 @@
         contentLB.isAttributedContent = YES;
         
         [bgView setupAutoHeightWithBottomViewsArray:@[avatarImageView,contentLB] bottomMargin:10];
-
         
-       lastTopView = bgView;
+        tempTopView = bgView;
         
     }
     
+    UITextField* addCommentField = [UITextField new];
+    self.commentField = addCommentField;
+    self.commentField.hidden = NO;
+    addCommentField.borderStyle = UITextBorderStyleRoundedRect;
+    addCommentField.placeholder = @"请输入评论";
+    
+    UIView *lastTopView = addCommentField;
+    [self addSubview:addCommentField];
+    addCommentField.sd_layout
+    .topSpaceToView(tempTopView, 10)
+    .heightIs(30)
+    .rightSpaceToView(self, 10)
+    .leftSpaceToView(self, 10);
+    
+    UIButton* subMit = [UIButton buttonWithType:UIButtonTypeCustom];
+    subMit.frame = CGRectMake(0, 0, 50, 30);
+    
+    addCommentField.rightView = subMit;
+    addCommentField.rightViewMode = UITextFieldViewModeAlways;
+    [subMit setTitle:@"提交" forState:UIControlStateNormal];
+    [subMit setTitleColor:RGBACOLOR(142, 142, 142, 1) forState:UIControlStateNormal];
+    [subMit addTarget:self action:@selector(commitComent) forControlEvents:UIControlEventTouchUpInside];
+    
     [self setupAutoHeightWithBottomView:lastTopView bottomMargin:6];
 
+}
+
+- (void)commitComent{
+    
+    if (IsStrEmpty(self.commentField.text)) {
+        return;
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(subMitCommentWithContent:)]) {
+        [self.delegate subMitCommentWithContent:self.commentField.text];
+    }
 }
 @end

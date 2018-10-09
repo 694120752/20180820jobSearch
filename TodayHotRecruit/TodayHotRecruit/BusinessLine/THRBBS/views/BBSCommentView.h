@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CommentModel.h"
+
+@protocol THRCommentDelegate <NSObject>
+- (void)subMitCommentWithContent:(NSString *)content;
+@end
+
 @interface BBSCommentView : UIView
 @property (nonatomic, strong)NSArray* commentArray;
+@property (nonatomic, weak) id<THRCommentDelegate> delegate;
 -(void)setCommentArray:(NSArray*)commentArray isShow:(BOOL)isShow;
 @end

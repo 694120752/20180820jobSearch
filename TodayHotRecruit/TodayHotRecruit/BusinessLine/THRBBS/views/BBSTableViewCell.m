@@ -15,7 +15,7 @@
 #import "UILabel+YBAttributeTextTapAction.h"
 #import "BBSCommentView.h"
 #define TEXT_COLOR [UIColor colorWithRed:68/255.0 green:68/255.0 blue:68/255.0 alpha:1]
-@interface BBSTableViewCell () <AnimatorPresentedDelegate>
+@interface BBSTableViewCell () <AnimatorPresentedDelegate,THRCommentDelegate>
 @property (nonatomic, strong)UIImageView* avatarImageView;
 @property (nonatomic, strong)UILabel* nameLB;
 @property (nonatomic, strong)UILabel* contentLB;
@@ -199,6 +199,7 @@
     zanButton.layer.borderWidth = 0.4;
     
     self.commentView = [[BBSCommentView alloc] init];
+    self.commentView.delegate = self;
     [self.contentView addSubview:self.commentView];
     self.commentView.sd_layout
     .leftSpaceToView(self.contentView, 0)
@@ -318,6 +319,12 @@
 - (void)likeAction{
     if (self.delegate && [self.delegate respondsToSelector:@selector(BBSTableViewCell:didClickLikeForBBSModel:)]) {
         [self.delegate BBSTableViewCell:self didClickLikeForBBSModel:self.bbsModel];
+    }
+}
+
+- (void)subMitCommentWithContent:(NSString *)content{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(BBSTableViewCellCommitComment:WithModel:WithCell:)]) {
+        [self.delegate BBSTableViewCellCommitComment:content WithModel:self.bbsModel WithCell:self];
     }
 }
 

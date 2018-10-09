@@ -36,6 +36,14 @@
  @param bbsModel model
  */
 - (void)BBSTableViewCell:(BBSTableViewCell*)cell didClickLikeForBBSModel:(BBSModel*)bbsModel;
+
+
+/**
+ 提交评论
+
+ @param content 评论内容
+ */
+- (void)BBSTableViewCellCommitComment:(NSString *)content WithModel:(BBSModel*)bbsModel WithCell:(BBSTableViewCell *)cell;
 @end
 @interface BBSTableViewCell : UITableViewCell
 +(instancetype)cellWithTableView:(UITableView*)tableView;

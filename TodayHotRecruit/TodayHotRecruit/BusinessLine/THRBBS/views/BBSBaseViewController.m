@@ -134,4 +134,14 @@
         });
 }
 
+// 发表评论
+- (void)BBSTableViewCellCommitComment:(NSString *)content WithModel:(BBSModel *)bbsModel WithCell:(BBSTableViewCell *)cell{
+     __weak __typeof(self) weakSelf = self;
+    [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/forumComment/add"] parameters:@{@"forumID":bbsModel.bbsID,@"content":content} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [weakSelf.tableView reloadRowsAtIndexPaths:@[[weakSelf.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationNone];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [BaseToast toast:@"网络不畅"];
+    }];
+}
+
 @end
