@@ -42,9 +42,6 @@
 		ED3B909C2157F06100D3661C /* JobDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B909B2157F06100D3661C /* JobDetailViewController.m */; };
 		ED3B909F2158E58600D3661C /* THRMySigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B909E2158E58500D3661C /* THRMySigninViewController.m */; };
 		ED3B90A22158E7EB00D3661C /* MySignViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90A12158E7EB00D3661C /* MySignViewModel.m */; };
-		ED3B90AA2164528900D3661C /* PopoverAction.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90A72164528900D3661C /* PopoverAction.m */; };
-		ED3B90AB2164528900D3661C /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90A82164528900D3661C /* PopoverView.m */; };
-		ED3B90AC2164528900D3661C /* PopoverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90A92164528900D3661C /* PopoverViewCell.m */; };
 		ED3B90F3216459FA00D3661C /* XWPublishBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3B90B1216459FA00D3661C /* XWPublishBaseController.m */; };
 		ED3B90F4216459FA00D3661C /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = ED3B90B4216459FA00D3661C /* plus.png */; };
 		ED3B90F5216459FA00D3661C /* ico_check_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED3B90B5216459FA00D3661C /* ico_check_select@2x.png */; };
@@ -155,6 +152,9 @@
 		F703056B2154F5E7000478D4 /* UnderLineStoreChildVc.m in Sources */ = {isa = PBXBuildFile; fileRef = F703056A2154F5E7000478D4 /* UnderLineStoreChildVc.m */; };
 		F7058A692153CC0B008E0C59 /* TodayHotJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7058A682153CC0B008E0C59 /* TodayHotJobViewController.m */; };
 		F7058A6C2153D315008E0C59 /* THRJobListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F7058A6B2153D315008E0C59 /* THRJobListRequest.m */; };
+		F7087A60216C4481009EB460 /* PopoverAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F7087A5B216C4481009EB460 /* PopoverAction.m */; };
+		F7087A61216C4481009EB460 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7087A5D216C4481009EB460 /* PopoverView.m */; };
+		F7087A62216C4481009EB460 /* PopoverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7087A5F216C4481009EB460 /* PopoverViewCell.m */; };
 		F708B7E0214B667B00328555 /* FindPassRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7DF214B667B00328555 /* FindPassRequest.m */; };
 		F708B7E3214B93CA00328555 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7E2214B93CA00328555 /* LoginRequest.m */; };
 		F708B7E8214BB7AB00328555 /* NSDictionary+zFundation.m in Sources */ = {isa = PBXBuildFile; fileRef = F708B7E7214BB7AB00328555 /* NSDictionary+zFundation.m */; };
@@ -317,12 +317,6 @@
 		ED3B909E2158E58500D3661C /* THRMySigninViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRMySigninViewController.m; sourceTree = "<group>"; };
 		ED3B90A02158E7EB00D3661C /* MySignViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MySignViewModel.h; sourceTree = "<group>"; };
 		ED3B90A12158E7EB00D3661C /* MySignViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySignViewModel.m; sourceTree = "<group>"; };
-		ED3B90A42164528900D3661C /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
-		ED3B90A52164528900D3661C /* PopoverViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewCell.h; sourceTree = "<group>"; };
-		ED3B90A62164528900D3661C /* PopoverAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverAction.h; sourceTree = "<group>"; };
-		ED3B90A72164528900D3661C /* PopoverAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverAction.m; sourceTree = "<group>"; };
-		ED3B90A82164528900D3661C /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
-		ED3B90A92164528900D3661C /* PopoverViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverViewCell.m; sourceTree = "<group>"; };
 		ED3B90B1216459FA00D3661C /* XWPublishBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWPublishBaseController.m; sourceTree = "<group>"; };
 		ED3B90B2216459FA00D3661C /* XWPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWPhotoCell.h; sourceTree = "<group>"; };
 		ED3B90B4216459FA00D3661C /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
@@ -521,6 +515,12 @@
 		F7058A682153CC0B008E0C59 /* TodayHotJobViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayHotJobViewController.m; sourceTree = "<group>"; };
 		F7058A6A2153D315008E0C59 /* THRJobListRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THRJobListRequest.h; sourceTree = "<group>"; };
 		F7058A6B2153D315008E0C59 /* THRJobListRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THRJobListRequest.m; sourceTree = "<group>"; };
+		F7087A5A216C4481009EB460 /* PopoverAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverAction.h; sourceTree = "<group>"; };
+		F7087A5B216C4481009EB460 /* PopoverAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverAction.m; sourceTree = "<group>"; };
+		F7087A5C216C4481009EB460 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
+		F7087A5D216C4481009EB460 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		F7087A5E216C4481009EB460 /* PopoverViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewCell.h; sourceTree = "<group>"; };
+		F7087A5F216C4481009EB460 /* PopoverViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverViewCell.m; sourceTree = "<group>"; };
 		F708B7DE214B667B00328555 /* FindPassRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindPassRequest.h; sourceTree = "<group>"; };
 		F708B7DF214B667B00328555 /* FindPassRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindPassRequest.m; sourceTree = "<group>"; };
 		F708B7E1214B93CA00328555 /* LoginRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
@@ -818,20 +818,6 @@
 				ED25C06A213A90460022717E /* FSSegmentTitleView.m */,
 			);
 			path = FSScrollContentViewLib;
-			sourceTree = "<group>";
-		};
-		ED3B90A32164528900D3661C /* PopoverView */ = {
-			isa = PBXGroup;
-			children = (
-				ED3B90A42164528900D3661C /* PopoverView.h */,
-				ED3B90A52164528900D3661C /* PopoverViewCell.h */,
-				ED3B90A62164528900D3661C /* PopoverAction.h */,
-				ED3B90A72164528900D3661C /* PopoverAction.m */,
-				ED3B90A82164528900D3661C /* PopoverView.m */,
-				ED3B90A92164528900D3661C /* PopoverViewCell.m */,
-			);
-			name = PopoverView;
-			path = "../../../../../../Downloads/Popover-master/PopoverView";
 			sourceTree = "<group>";
 		};
 		ED3B90B0216459FA00D3661C /* XWPublish */ = {
@@ -1143,6 +1129,19 @@
 			path = ZJProgressHUD;
 			sourceTree = "<group>";
 		};
+		F7087A59216C4481009EB460 /* PopoverView */ = {
+			isa = PBXGroup;
+			children = (
+				F7087A5A216C4481009EB460 /* PopoverAction.h */,
+				F7087A5B216C4481009EB460 /* PopoverAction.m */,
+				F7087A5C216C4481009EB460 /* PopoverView.h */,
+				F7087A5D216C4481009EB460 /* PopoverView.m */,
+				F7087A5E216C4481009EB460 /* PopoverViewCell.h */,
+				F7087A5F216C4481009EB460 /* PopoverViewCell.m */,
+			);
+			path = PopoverView;
+			sourceTree = "<group>";
+		};
 		F70C8DAB214A0E9A0027DBAB /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1323,8 +1322,8 @@
 		F7599FFF212D6AA400A98074 /* PrivateFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				F7087A59216C4481009EB460 /* PopoverView */,
 				ED3B90B0216459FA00D3661C /* XWPublish */,
-				ED3B90A32164528900D3661C /* PopoverView */,
 				F7FB564C2151372200DB118E /* TZImagePickerController */,
 				F70C8DB6214A7B5E0027DBAB /* WLCountingDown */,
 				F70C8DAB214A0E9A0027DBAB /* Category */,
@@ -1828,7 +1827,6 @@
 				87E929D5215F5A9A005EABAF /* YCPhotoBrowserAnimator.m in Sources */,
 				ED3B9106216459FA00D3661C /* SDLoopProgressView.m in Sources */,
 				87E929DC215F5A9A005EABAF /* SPPageMenu.m in Sources */,
-				ED3B90AB2164528900D3661C /* PopoverView.m in Sources */,
 				F7557CA521379FE2009C92D8 /* AdTableViewCell.m in Sources */,
 				F70006C12135255600D52677 /* UIView+WebCacheOperation.m in Sources */,
 				ED25C04C21315DFF0022717E /* AppTabBar.m in Sources */,
@@ -1877,7 +1875,6 @@
 				F70006B82135255600D52677 /* SDWebImageDownloaderOperation.m in Sources */,
 				F70006BA2135255600D52677 /* SDWebImagePrefetcher.m in Sources */,
 				ED3B90872144F8A000D3661C /* THRRealNameViewController.m in Sources */,
-				ED3B90AA2164528900D3661C /* PopoverAction.m in Sources */,
 				F70C8DB5214A585F0027DBAB /* RegistRequest.m in Sources */,
 				F70305682154F450000478D4 /* UnderLineCardTableViewCell.m in Sources */,
 				F7003B51216078370060EB95 /* CVS1C1TableViewCell.m in Sources */,
@@ -1889,9 +1886,11 @@
 				F70006702134EB4400D52677 /* SelectDto.m in Sources */,
 				F70305652154EEB2000478D4 /* UnderLineStoreViewController.m in Sources */,
 				F70006872135251500D52677 /* UIView+SDExtension.m in Sources */,
+				F7087A61216C4481009EB460 /* PopoverView.m in Sources */,
 				F70006CB2135345600D52677 /* NSDate+Helper.m in Sources */,
 				ED25C056213169D20022717E /* THRMessageViewController.m in Sources */,
 				ED3B90F3216459FA00D3661C /* XWPublishBaseController.m in Sources */,
+				F7087A62216C4481009EB460 /* PopoverViewCell.m in Sources */,
 				F70B371C2161B5AD00CD1271 /* FedbackViewController.m in Sources */,
 				F70006BD2135255600D52677 /* UIImage+MultiFormat.m in Sources */,
 				F76D2270213CD97600466BC2 /* ConsultantSubDataViewController.m in Sources */,
@@ -1972,6 +1971,7 @@
 				F7FB566B2151372200DB118E /* TZAssetCell.m in Sources */,
 				F70006B72135255600D52677 /* SDWebImageDownloader.m in Sources */,
 				F700071421356F8900D52677 /* ZJTextOnlyHUDView.m in Sources */,
+				F7087A60216C4481009EB460 /* PopoverAction.m in Sources */,
 				F7003B57216078370060EB95 /* CVS2C0TableViewCell.m in Sources */,
 				F70006B42135255600D52677 /* SDImageCacheConfig.m in Sources */,
 				F70006832135251500D52677 /* TADotView.m in Sources */,
@@ -1986,7 +1986,6 @@
 				87E929CD215F5A9A005EABAF /* BBSModel.m in Sources */,
 				F700071121356F8900D52677 /* ZJProgressHUD.m in Sources */,
 				F79A7F91212FA889002E73E0 /* BaseViewController.m in Sources */,
-				ED3B90AC2164528900D3661C /* PopoverViewCell.m in Sources */,
 				F70006DE21356ED900D52677 /* ZJCitiesGroup.m in Sources */,
 				ED3B908A2144FE4600D3661C /* THRUserInfoViewController.m in Sources */,
 				F7FB56732151372200DB118E /* TZPhotoPickerController.m in Sources */,
