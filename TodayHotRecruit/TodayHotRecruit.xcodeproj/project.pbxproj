@@ -823,15 +823,15 @@
 		ED3B90B0216459FA00D3661C /* XWPublish */ = {
 			isa = PBXGroup;
 			children = (
-				ED3B90B1216459FA00D3661C /* XWPublishBaseController.m */,
 				ED3B90B2216459FA00D3661C /* XWPhotoCell.h */,
-				ED3B90B3216459FA00D3661C /* images */,
-				ED3B90C0216459FA00D3661C /* XWPublishController.m */,
-				ED3B90C1216459FA00D3661C /* XWImagePicker */,
 				ED3B90EE216459FA00D3661C /* XWPhotoCell.m */,
+				ED3B90B3216459FA00D3661C /* images */,
+				ED3B90C1216459FA00D3661C /* XWImagePicker */,
 				ED3B90EF216459FA00D3661C /* XWPublishController.xib */,
 				ED3B90F0216459FA00D3661C /* XWPublishBaseController.h */,
+				ED3B90B1216459FA00D3661C /* XWPublishBaseController.m */,
 				ED3B90F1216459FA00D3661C /* XWPublishController.h */,
+				ED3B90C0216459FA00D3661C /* XWPublishController.m */,
 				ED3B90F2216459FA00D3661C /* XWPhotoCell.xib */,
 			);
 			path = XWPublish;

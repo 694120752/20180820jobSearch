@@ -92,6 +92,8 @@
     // 模拟请求
     // 根据 tabIndex 决定调用接口
     
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     if (IsArrEmpty(self.vcArray) || IsArrEmpty(self.titleDto)) {
         return;
     }
@@ -133,6 +135,9 @@
                 // 所有的都请求完了
                 weakSelf.currentDataSource = [tempTargetData copy];
                 [vc reloadData];
+                
+                
+                [hud hideAnimated:YES];
             });
         });
        

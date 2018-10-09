@@ -254,13 +254,17 @@
         [commentButton setBackgroundColor:[UIColor whiteColor]];
     }
     
+    // 配置 comment
     [self.commentView setCommentArray:bbsModel.comments isShow: bbsModel.isShowComment];
     
     UIView *bottomView;
+    //!bbsModel.comments.count ||  没有评论也要展示一下
     
-    if (!bbsModel.comments.count || !bbsModel.isShowComment) {
+    if (!bbsModel.isShowComment) {
         bottomView = commentButton;
     } else {
+        
+        // 这边bottomView添加个textFiled
         bottomView = self.commentView;
     }
     
@@ -270,8 +274,12 @@
 
 
 - (UIImageView *)imageViewWithIndexPath:(NSIndexPath *)index{
-    UIButton* button = [self.imageViewArray objectAtIndex:index.item];
-    UIImageView* imageView = button.imageView;
+    UIButton* button = [self.imageViewArray safeObjectAtIndex:index.item];
+    UIImageView* imageView = [UIImageView new];
+    if ([button isKindOfClass:[UIButton class]]) {
+        imageView = button.imageView;
+    }
+    
     return imageView;
 }
 
@@ -297,10 +305,10 @@
 
 -(void)commentButtonClickHandle:(UIButton*)button {
     
-    // 这边想办法 附加一个填写评论的cell进去
-    if (self.bbsModel.comments.count <= 0) {
-        return;
-    }
+    // 没有 也要展示
+//    if (self.bbsModel.comments.count <= 0) {
+//        return;
+//    }
    
     [self.delegate BBSTableViewCell:self didClickCommentForBBSModel:self.bbsModel];
 

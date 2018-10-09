@@ -15,6 +15,7 @@
 @property (nonatomic,strong)UITableView* tableView;
 @end
 
+
 @implementation BBSBaseViewController
 
 - (void)viewWillLayoutSubviews {
@@ -33,7 +34,6 @@
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
-
 }
 
 
@@ -44,12 +44,10 @@
 
 }
 
-
 -(void)reloadData {
     self.tableDataSource = [self.dataSource datasourceForBBSBaseViewController:self];
     [self.tableView reloadData];
 }
-
 
 #pragma mark UITableViewDataSource, UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -83,11 +81,6 @@
     return [tableView cellHeightForIndexPath:indexPath model:model keyPath:@"bbsModel" cellClass:[BBSTableViewCell class] contentViewWidth:kScreenWidth] ;
 }
 
-
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//}
-
 #pragma mark BBSTableViewCellDelegate
 -(void)BBSTableViewCell:(BBSTableViewCell *)cell didClickFollowForBBSModel:(BBSModel *)bbsModel {
     
@@ -95,9 +88,9 @@
 
     NSString *urlStr = [HTTP stringByAppendingString:@"/concernRecord/cancel"];
     NSDictionary *parameters = @{
-                                 @"id":bbsModel.userID
+                                 @"id":bbsModel.bbsID
                                  };
-    if (bbsModel.isFollowed) {
+    if (!bbsModel.isFollowed) {
         urlStr = [HTTP stringByAppendingString:@"/concernRecord/add"];
         parameters = @{
                        @"concernUserID":bbsModel.bbsID
@@ -118,14 +111,21 @@
 - (void)BBSTableViewCell:(BBSTableViewCell *)cell didClickLikeForBBSModel:(BBSModel *)bbsModel{
     __weak typeof(self)weakSelf = self;
     [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/forum/like"] parameters:@{@"forumID":bbsModel.bbsID} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        bbsModel.likeCount ++;
+        if (!bbsModel.likeFlag) {
+            bbsModel.likeCount ++;
+            bbsModel.likeFlag = YES;
+        }else{
+            bbsModel.likeCount --;
+            bbsModel.likeFlag = NO;
+        }
+        
         [weakSelf.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
 }
 
-
+// 点击评论
 -(void)BBSTableViewCell:(BBSTableViewCell *)cell didClickCommentForBBSModel:(BBSModel *)bbsModel {
     __weak __typeof(self) weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^{
