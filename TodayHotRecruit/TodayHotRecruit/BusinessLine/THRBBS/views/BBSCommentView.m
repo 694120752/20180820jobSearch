@@ -77,13 +77,15 @@
         UIImageView* avatarImageView = [bgView viewWithTag:100];
         
         if (comment.avatar) {
-            [avatarImageView sd_setImageWithURL:[NSURL URLWithString:comment.avatar]];
+            [avatarImageView sd_setImageWithURL:[NSURL URLWithString:comment.avatar] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+        }else{
+            avatarImageView.image = [UIImage imageNamed:@"placeHolder"];
         }
         
         UILabel* contentLB = [bgView viewWithTag:101];
         NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
         paragraphStyle.lineSpacing = 6;
-        NSMutableAttributedString* content = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: %@",comment.nickName,comment.content] attributes:@{NSForegroundColorAttributeName: RGBACOLOR(120, 120, 120, 1),NSFontAttributeName: [UIFont systemFontOfSize:14], NSParagraphStyleAttributeName: paragraphStyle}];
+        NSMutableAttributedString* content = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: %@",IsStrEmpty(comment.nickName)?@"":comment.nickName,comment.content] attributes:@{NSForegroundColorAttributeName: RGBACOLOR(120, 120, 120, 1),NSFontAttributeName: [UIFont systemFontOfSize:14], NSParagraphStyleAttributeName: paragraphStyle}];
         contentLB.numberOfLines = 0;
         contentLB.isAttributedContent = YES;
         if (comment.nickName) {
