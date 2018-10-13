@@ -2186,7 +2186,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjs.666.TodayHotRecruit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjs.666.TodayHotRecruit.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2206,7 +2206,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjs.666.TodayHotRecruit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjs.666.TodayHotRecruit.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

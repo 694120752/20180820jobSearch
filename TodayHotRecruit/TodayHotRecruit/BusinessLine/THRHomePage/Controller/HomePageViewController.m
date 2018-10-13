@@ -43,7 +43,7 @@
 #import <MJRefresh.h>
 
 
-@interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,THRCommonDelegate>
+@interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,THRCommonDelegate,CLLocationManagerDelegate>
 
 /** 主体tableView*/
 @property(nonatomic,strong)BaseTableView* tableView;
@@ -72,6 +72,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.locManager requestWhenInUseAuthorization];
     
     [self beginGetLocation];
     
@@ -160,6 +162,14 @@
     HomeSearchViewController* search = [[HomeSearchViewController alloc]init];
     search.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:search animated:YES];
+}
+
+#pragma mark -------------
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        // 允许定位改变了状态
+        [self beginGetLocation];
+    }
 }
 
 
@@ -384,7 +394,7 @@
 #pragma mark --------------- 获取用定位
 // 开始定位
 - (void)beginGetLocation {
-    [self.locManager requestWhenInUseAuthorization];
+    
     
     __weak typeof(self) weakSelf = self;
     [self.geocoder reverseGeocodeLocation:self.locManager.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
@@ -514,6 +524,7 @@
         CLLocationManager *locManager = [CLLocationManager new];
         locManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         locManager.distanceFilter = kCLDistanceFilterNone;
+        locManager.delegate = self;
         _locManager = locManager;
     }
     return _locManager;
