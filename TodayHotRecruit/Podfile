@@ -14,6 +14,7 @@ target 'TodayHotRecruit' do
     pod 'MBProgressHUD'
     pod 'MJExtension'
     pod 'BRPickerView'
+    pod 'WechatOpenSDK'
 
   target 'TodayHotRecruitTests' do
     inherit! :search_paths
