@@ -20,7 +20,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        self.bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, PXGet375Width(250)) delegate:self placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+        self.bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, PXGet375Width(260)) delegate:self placeholderImage:[UIImage imageNamed:@"placeHolder"]];
         
         [self.contentView addSubview:self.bannerView];
     }
@@ -28,7 +28,7 @@
 }
 
 +(CGFloat)cellHeight{
-    return PXGet375Width(250);
+    return PXGet375Width(260);
 }
 
 

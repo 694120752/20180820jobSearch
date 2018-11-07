@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AppTabBarController.h"
 #import "UserDetail.h"
+#import <WXApi.h>
 
 @interface AppDelegate ()
 
@@ -26,7 +27,7 @@
     self.window.rootViewController = tabbar;
     
     [self.window makeKeyAndVisible];
-    
+    [WXApi registerApp:@"wx014b8abfdde3d355"];
     return YES;
 }
 

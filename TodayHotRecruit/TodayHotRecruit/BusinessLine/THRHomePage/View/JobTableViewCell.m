@@ -68,7 +68,7 @@
     UIImageView* jobImage = [[UIImageView alloc]initWithFrame:CGRectMake(PXGet375Width(20), PXGet375Width(20), PXGet375Width(170), PXGet375Width(120))];
     //jobImage.image = [UIImage imageNamed:@"placeHolder"];
     _jogImage = jobImage;
-    jobImage.backgroundColor = RANDOMCOLOR;
+    //jobImage.backgroundColor = RANDOMCOLOR;
     jobImage.layer.cornerRadius = PXGet375Width(15);
     jobImage.clipsToBounds = YES;
     [self.contentView addSubview:jobImage];
@@ -174,7 +174,7 @@
     _job = job;
     _hasSign.hidden = NO;
     _detaillabel.hidden = YES;
-    [_jogImage sd_setImageWithURL:[NSURL URLWithString:job.coverUrl] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+    [_jogImage sd_setImageWithURL:[NSURL URLWithString:job.company.coverRequestUrl] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
     if (NotNilAndNull(job.company)) {
         _areaLabel.text = job.company.address;
 //        _comLabel.text = ;
@@ -243,7 +243,7 @@
 
 -(void)setJob:(THRJob *)job{
     _job = job;
-     [_jogImage sd_setImageWithURL:[NSURL URLWithString:job.coverUrl] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+     [_jogImage sd_setImageWithURL:[NSURL URLWithString:job.company.coverRequestUrl] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
     if (NotNilAndNull(job.company)) {
         _areaLabel.text = job.company.address;
         _comLabel.text = job.company.name;
@@ -307,7 +307,7 @@
     _job = job;
     _hasSign.hidden = YES;
     _detaillabel.hidden = NO;
-    //[_jogImage sd_setImageWithURL:[NSURL URLWithString:job.coverUrl] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+    [_jogImage sd_setImageWithURL:[NSURL URLWithString:job.company.coverRequestUrl] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
     _jogImage.hidden = YES;
     _jogImage.width = 0;
     _areaLabel.height = 0;

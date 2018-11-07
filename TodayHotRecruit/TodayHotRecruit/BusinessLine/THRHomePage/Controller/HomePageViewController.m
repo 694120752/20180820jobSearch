@@ -90,6 +90,7 @@
    
     //查询是否签到
     [self checkSingInfo];
+    
 }
 
 // 设置导航栏
@@ -105,7 +106,7 @@
     [location setImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
     //location.contentMode = UIViewContentModeCenter;
     _locationButton = location;
-    location.frame = CGRectMake(25, 20, PXGet375Width(200), NavigationBar_Bottom_Y - 20);
+    location.frame = CGRectMake(25, 20, PXGet375Width(400), NavigationBar_Bottom_Y - 20);
     location.imageView.sd_layout.leftSpaceToView(location, 0);
     location.imageView.sd_layout.widthIs(PXGet375Width(25));
     location.imageView.sd_layout.heightIs(PXGet375Width(30));
@@ -153,7 +154,7 @@
 
         [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         [weakSelf.locationButton setTitle:title forState:UIControlStateNormal];
-        
+        [weakSelf getWeaterInnfoWithStr:title];
     }];
     [self.navigationController pushViewController:city animated:YES];
 }
@@ -164,7 +165,7 @@
     [self.navigationController pushViewController:search animated:YES];
 }
 
-#pragma mark -------------
+#pragma mark ------------- 改变定位授权
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         // 允许定位改变了状态
@@ -172,6 +173,26 @@
     }
 }
 
+#pragma mark -------------------- 获取天气情况
+- (void)getWeaterInnfoWithStr:(NSString *)cityStr{
+    
+    __weak typeof(self)weakSelf =self;
+    [[[THRRequestManager manager] setDefaultHeader] POST:[HTTP stringByAppendingString:@"/config/getWeather"] parameters:@{@"city":IsStrEmpty(cityStr)?@"南京":cityStr} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        DESC
+        if ([desc isEqualToString:@"success"] && [resultDic objectForKey:@"data"]) {
+            NSString *weather = [[resultDic objectForKey:@"data"] objectForKey:@"info"];
+            if (weather) {
+                weather = [weather stringByAppendingString:[NSString stringWithFormat:@" %@°C",[[resultDic objectForKey:@"data"] objectForKey:@"temperature"]]];
+            }
+            NSString *reginStr = weakSelf.locationButton.titleLabel.text;
+            
+            [weakSelf.locationButton setTitle:[NSString stringWithFormat:@"%@  %@",reginStr,weather] forState:UIControlStateNormal];
+            //[weakSelf.locationButton sizeToFit];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //NSLog(@"123");
+    }];
+}
 
 #pragma mark -------------------- 签到
 - (void)signAction{
@@ -406,7 +427,8 @@
             CLPlacemark *currentPlace = [placemarks firstObject];
             //weakSelf.locationCityName = currentPlace.locality;
             [weakSelf.locationButton setTitle:currentPlace.locality forState:UIControlStateNormal];
-            
+            //  增加天气情况
+            [weakSelf getWeaterInnfoWithStr:currentPlace.locality];
         }
 //        [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(reloadLocationCity) userInfo:nil repeats:NO];
     }];

@@ -66,10 +66,6 @@
     .widthIs(PXGet375Width(666))
     .heightIs(PXGet375Width(270));
     
-   
-    
-    
-    
     
     // 公司名
     UILabel* nameLabel = [UILabel new];
@@ -125,7 +121,7 @@
     contactLabel.yf_contentInsets = UIEdgeInsetsMake(PXGet375Width(30), PXGet375Width(20), PXGet375Width(10), PXGet375Width(20));
     _contactLabel.sd_layout
     .topSpaceToView(routeLabel, 0)
-    .leftEqualToView(routeLabel)
+    .leftSpaceToView(self.contentView, (kScreenWidth - PXGet375Width(666))/2)
     .heightIs(PXGet375Width(85))
     .widthIs(PXGet375Width(470));
     
@@ -153,7 +149,7 @@
     managerLable.sd_layout
     .topSpaceToView(contactLabel, 0)
     .rightEqualToView(mainImage)
-    .leftEqualToView(contactLabel)
+    .leftSpaceToView(self.contentView, (kScreenWidth - PXGet375Width(666))/2)
     .heightIs(PXGet375Width(80));
     
     // 手机
@@ -165,7 +161,7 @@
     phoneLabel.yf_contentInsets = UIEdgeInsetsMake(PXGet375Width(30), PXGet375Width(20), PXGet375Width(10), PXGet375Width(20));
     [self.contentView addSubview:phoneLabel];
     phoneLabel.sd_layout
-    .leftEqualToView(contactLabel)
+    .leftSpaceToView(self.contentView, (kScreenWidth - PXGet375Width(666))/2)
     .topSpaceToView(managerLable, 0)
     .heightIs(PXGet375Width(85))
     .widthIs(PXGet375Width(470));
@@ -270,6 +266,15 @@
     [phoneAttr addAttribute:NSForegroundColorAttributeName value:RGBACOLOR(151, 151, 151, 1) range:NSMakeRange(0,3)];
     [phoneAttr addAttribute:NSFontAttributeName value:font(15) range:NSMakeRange(0,3)];
     _phoneLabel.attributedText = phoneAttr;
+    
+//    [self.contentView setNeedsLayout];
+//    [self.contentView layoutIfNeeded];
+    
+    [_routeLabel setNeedsLayout];
+    [_routeLabel layoutIfNeeded];
+    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 + (CGFloat)cellHeightWithDic:(NSDictionary *)dataDic{

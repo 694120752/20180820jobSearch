@@ -21,6 +21,8 @@
 #import "JobDetailTitleViewTableViewCell.h"
 #import "JobDetailExplainTableViewCell.h"
 
+#import <WXApi.h>
+
 @interface JobDetailViewController ()<UITableViewDelegate,UITableViewDataSource,jobDetailSelectIndexProtocol>
 /** tableView*/
 @property(nonatomic,strong)BaseTableView* tableView;
@@ -229,6 +231,7 @@
         [contentCustom setTitle:@"联系客服" forState:UIControlStateNormal];
         [contentCustom addTarget:self action:@selector(linxikefu) forControlEvents:UIControlEventTouchUpInside];
         [recommand setTitle:@"推荐好友" forState:UIControlStateNormal];
+        [recommand addTarget:self action:@selector(recommendFriend) forControlEvents:UIControlEventTouchUpInside];
         [signButton setTitle:@"立即报名" forState:UIControlStateNormal];
         [contentCustom setImage:[UIImage imageNamed:@"customer"] forState:UIControlStateNormal];
         [contentCustom setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
@@ -330,5 +333,43 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
    
+}
+
+- (void)recommendFriend{
+     NSString *kLinkURL = @"http://www.njyzdd.com/download.html";
+    
+     NSString *kLinkTitle = @"一职到底";
+    // NSString *kLinkDescription = @"里面是一些自己总结的小知识点";
+    
+    SendMessageToWXReq *req1 = [[SendMessageToWXReq alloc]init];
+    
+    // 是否是文档
+    req1.bText =  NO;
+    
+    //    WXSceneSession  = 0,        /**< 聊天界面    */
+    //    WXSceneTimeline = 1,        /**< 朋友圈      */
+    //    WXSceneFavorite = 2,
+    
+    
+    req1.scene = WXSceneSession;
+    
+    //创建分享内容对象
+    WXMediaMessage *urlMessage = [WXMediaMessage message];
+    urlMessage.title = kLinkTitle;//分享标题
+    urlMessage.description = @"";//分享描述
+    //[urlMessage setThumbImage:[UIImage imageNamed:@"XXshar"]];//分享图片,使用SDK的setThumbImage方法可压缩图片大小
+    
+    //创建多媒体对象
+    WXWebpageObject *webObj = [WXWebpageObject object];
+    webObj.webpageUrl = kLinkURL;//分享链接
+    
+    //完成发送对象实例
+    urlMessage.mediaObject = webObj;
+    req1.message = urlMessage;
+    
+    //发送分享信息
+    [WXApi sendReq:req1];
+    
+    
 }
 @end
