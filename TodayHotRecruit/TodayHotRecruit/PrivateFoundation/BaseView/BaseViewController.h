@@ -66,4 +66,7 @@
 
 //pop或者右滑返回后做的事
 - (void)popOrSlideRightToForeVC;
+
+// 替换导航栏
+- (void)replaceNavBar:(BaseNavigationBar *)navBar;
 @end
